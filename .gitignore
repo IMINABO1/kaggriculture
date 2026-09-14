@@ -216,3 +216,12 @@ __marimo__/
 
 # Streamlit
 .streamlit/secrets.toml
+
+# Kaggriculture project
+.venv/
+replays/
+results/
+logs/
+*.tar.gz
+kaggriculture.zip
+.python-version.bak
