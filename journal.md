@@ -113,10 +113,39 @@ Replaying Majkel1337's recorded actions from episode 108982600 on its own seed:
   instead of days 1, 16, 17. The opponent's farm consumes a different number of random draws,
   so every later draw shifts.
 - seats swapped (same two recordings): 110,698 / 114,496, close but not exact.
+Later, five of Majkel1337's latest tapes against the passive wheat baseline banked 116k-175k
+versus 88k-132k recorded: with nobody else selling, premium prices hold up. So the coupling
+cuts both ways: weeds can wreck a fixed tape, and an uncontested market inflates it.
 Consequences: a verbatim tape is only faithful against the opponent it was recorded with;
 the arena's `tape:` opponents understate reactive teams (whose recordings cannot react);
 and any deterministic plan we write must survive weeds landing anywhere, because the seed
 alone does not fix them. This is the mechanism behind the forum's "weed route repair" work.
+
+### Checkpoint: the top-14 study is built
+`reports/top10/summary.md`, 14 dossiers, `decision_memo.md`. 3,769 replays stored and traced
+(zero trace failures), 3,431 of the 4,043 sampled games; the shortfall is the Q3 window,
+which the fetcher reached last before Kaggle's API started dropping connections. F, Q1, Q2,
+L, and C0 are complete for every team. Ratings cover 99% of sampled games after the refresh.
+
+Headline findings (numbers in the report):
+- **The head of the ladder moved from tapes to runtime agents in three weeks.** In their first
+  50 games most teams shared one field line across dozens of games (ymg_aq's Q1 window: 9
+  field lines and a single market line over 50 games; Mengfei Li F: 15 lines; DSM F: 16;
+  HowardLeeTW F: 7; アルモンド F: 9). In their latest 50 games every team's games are all
+  distinct by turn 400. Artem The Farmer and Otter Vibe were reactive from their first window.
+- **The #1's current submission is reactive from day 1** (4 openings, largest 54%), and being
+  off its usual opening tracks the opponent's opening (70% vs 16%). Its rating path: 651 after
+  game 1, 2,543 after 25, 2,875 after 50, 3,097 after 100, 3,247 after 200.
+- **Its edge is sales, not the farm**: 72 melons sold vs 18 for the median team, 182 milk vs
+  128, 109 wool vs 63, 365 units in the last three days vs 262, from 11 hands and 8 cows.
+- **Three teams run the identical public plan** (アルモンド, Catalyst, Thomas Tschinkel: 33
+  strawberry, 163 wheat, 12 melon, 8 cows, 6 sheep, 3 geese, same field line through turn
+  200). They sit at ranks 9-14 with 78-84% sampled win rates.
+- **Only one studied team beats the #1 head to head**: Artem The Farmer, 28-26, on a fixed
+  five-day opening with a sheep-heavy herd and almost no melon sales.
+- **Everyone's farm converged**: 3 quadrants, land on days 5-6 and 8-11, 11-15 hands, 7-11
+  cows, 3-8 sheep. Over time the field shifted from ~40 strawberry and ~100 wheat plantings
+  to ~30 strawberry and 150-190 wheat, and geese appeared in the latest windows.
 
 ### Surprise: SpaTaro's uniqueness is partly manufactured
 Every SpaTaro game is distinct from turn 24, yet its day-0 plan is stable: 2 cows, 2 sheep,

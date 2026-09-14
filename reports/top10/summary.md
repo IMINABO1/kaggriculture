@@ -25,20 +25,20 @@ Snapshot: 2026-09-14T1936Z. Teams studied: 14.
 
 | rank | team | games | field | market | plan |
 |---|---|---|---|---|---|
-| 1 | Majkel1337 | 69 | reactive from day 1: 4 openings at turn 24 (largest 55%), 38 lines at turn 100; every game distinct by turn 300 | one line through turn 24 (97%), then branching (46 lines at turn 136, 69 at turn 400); every game distinct by turn 300 | reactive from day 1: 5 openings at turn 24 (largest 55%), 42 lines at turn 100; every game distinct by turn 300 |
-| 2 | ymg_aq | 70 | one line through turn 48 (99%), then branching (49 lines at turn 136, 70 at turn 400); every game distinct by turn 200 | one line through turn 48 (99%), then branching (54 lines at turn 136, 70 at turn 400); every game distinct by turn 200 | one line through turn 48 (99%), then branching (53 lines at turn 136, 70 at turn 400); every game distinct by turn 200 |
+| 1 | Majkel1337 | 72 | reactive from day 1: 4 openings at turn 24 (largest 54%), 39 lines at turn 100; every game distinct by turn 300 | one line through turn 24 (97%), then branching (47 lines at turn 136, 72 at turn 400); every game distinct by turn 300 | reactive from day 1: 5 openings at turn 24 (largest 54%), 43 lines at turn 100; every game distinct by turn 300 |
+| 2 | ymg_aq | 73 | one line through turn 48 (99%), then branching (51 lines at turn 136, 73 at turn 400); every game distinct by turn 200 | one line through turn 48 (99%), then branching (57 lines at turn 136, 73 at turn 400); every game distinct by turn 200 | one line through turn 48 (99%), then branching (56 lines at turn 136, 73 at turn 400); every game distinct by turn 200 |
 | 3 | SpaTaro | 86 | reactive from day 1: 86 openings at turn 24 (largest 1%), 86 lines at turn 100; every game distinct by turn 24 | reactive from day 1: 86 openings at turn 24 (largest 1%), 86 lines at turn 100; every game distinct by turn 24 | reactive from day 1: 86 openings at turn 24 (largest 1%), 86 lines at turn 100; every game distinct by turn 24 |
 | 4 | Mengfei Li | 74 | reactive from day 1: 12 openings at turn 24 (largest 15%), 74 lines at turn 100; every game distinct by turn 100 | one line through turn 136 (93%), then branching (3 lines at turn 136, 74 at turn 400); every game distinct by turn 300 | one line through turn 136 (97%), then branching (2 lines at turn 136, 74 at turn 400); every game distinct by turn 300 |
 | 5 | Orbital Terraformer | 73 | reactive from day 1: 7 openings at turn 24 (largest 63%), 35 lines at turn 100; every game distinct by turn 300 | reactive from day 1: 8 openings at turn 24 (largest 55%), 30 lines at turn 100; every game distinct by turn 300 | reactive from day 1: 9 openings at turn 24 (largest 59%), 34 lines at turn 100; every game distinct by turn 300 |
-| 6 | DSM | 52 | reactive from day 1: 3 openings at turn 24 (largest 56%), 19 lines at turn 100; every game distinct by turn 300 | one line through turn 24 (100%), then branching (30 lines at turn 136, 52 at turn 400); every game distinct by turn 300 | reactive from day 1: 3 openings at turn 24 (largest 56%), 22 lines at turn 100; every game distinct by turn 300 |
-| 7 | redblackbst | 97 | reactive from day 1: 5 openings at turn 24 (largest 84%), 6 lines at turn 100; every game distinct by turn 719 | reactive from day 1: 5 openings at turn 24 (largest 84%), 5 lines at turn 100; every game distinct by turn 400 | reactive from day 1: 5 openings at turn 24 (largest 84%), 6 lines at turn 100; every game distinct by turn 400 |
+| 6 | DSM | 80 | reactive from day 1: 3 openings at turn 24 (largest 54%), 27 lines at turn 100; every game distinct by turn 300 | one line through turn 24 (100%), then branching (40 lines at turn 136, 80 at turn 400); every game distinct by turn 300 | reactive from day 1: 3 openings at turn 24 (largest 54%), 32 lines at turn 100; every game distinct by turn 300 |
+| 7 | redblackbst | 100 | reactive from day 1: 5 openings at turn 24 (largest 82%), 6 lines at turn 100; every game distinct by turn 719 | reactive from day 1: 5 openings at turn 24 (largest 82%), 5 lines at turn 100; every game distinct by turn 400 | reactive from day 1: 5 openings at turn 24 (largest 82%), 6 lines at turn 100; every game distinct by turn 400 |
 | 8 | Artem The Farmer 🍅 | 86 | one line through turn 136 (95%), then branching (5 lines at turn 136, 86 at turn 400); every game distinct by turn 400 | one line through turn 136 (97%), then branching (4 lines at turn 136, 86 at turn 400); every game distinct by turn 400 | one line through turn 136 (95%), then branching (5 lines at turn 136, 86 at turn 400); every game distinct by turn 400 |
-| 9 | アルモンド | 50 | one line through turn 48 (100%), then branching (2 lines at turn 136, 48 at turn 400); every game distinct by turn 719 | one line through turn 48 (98%), then branching (3 lines at turn 136, 50 at turn 400); every game distinct by turn 400 | one line through turn 48 (98%), then branching (3 lines at turn 136, 49 at turn 400); every game distinct by turn 719 |
-| 10 | HowardLeeTW | 69 | one line through turn 24 (100%), then branching (46 lines at turn 136, 69 at turn 400); every game distinct by turn 300 | one line through turn 24 (99%), then branching (41 lines at turn 136, 69 at turn 400); every game distinct by turn 300 | one line through turn 24 (100%), then branching (45 lines at turn 136, 69 at turn 400); every game distinct by turn 300 |
-| 11 | Otter Vibe | 95 | one line through turn 48 (100%), then branching (51 lines at turn 136, 95 at turn 400); every game distinct by turn 300 | one line through turn 48 (100%), then branching (52 lines at turn 136, 95 at turn 400); every game distinct by turn 300 | one line through turn 48 (100%), then branching (52 lines at turn 136, 95 at turn 400); every game distinct by turn 300 |
+| 9 | アルモンド | 62 | one line through turn 48 (100%), then branching (2 lines at turn 136, 59 at turn 400); every game distinct by turn 719 | one line through turn 48 (98%), then branching (3 lines at turn 136, 62 at turn 400); every game distinct by turn 400 | one line through turn 48 (98%), then branching (3 lines at turn 136, 61 at turn 400); every game distinct by turn 719 |
+| 10 | HowardLeeTW | 74 | one line through turn 24 (100%), then branching (47 lines at turn 136, 74 at turn 400); every game distinct by turn 300 | one line through turn 24 (99%), then branching (42 lines at turn 136, 74 at turn 400); every game distinct by turn 300 | one line through turn 24 (100%), then branching (46 lines at turn 136, 74 at turn 400); every game distinct by turn 300 |
+| 11 | Otter Vibe | 126 | one line through turn 48 (100%), then branching (66 lines at turn 136, 126 at turn 400); every game distinct by turn 300 | one line through turn 48 (100%), then branching (69 lines at turn 136, 126 at turn 400); every game distinct by turn 300 | one line through turn 48 (100%), then branching (69 lines at turn 136, 126 at turn 400); every game distinct by turn 300 |
 | 12 | Catalyst | 80 | reactive from day 1: 3 openings at turn 24 (largest 88%), 5 lines at turn 100; every game distinct by turn 719 | reactive from day 1: 3 openings at turn 24 (largest 88%), 3 lines at turn 100; every game distinct by turn 400 | reactive from day 1: 3 openings at turn 24 (largest 88%), 5 lines at turn 100; every game distinct by turn 400 |
-| 13 | feel the agi | 57 | one line through turn 136 (100%), then branching (1 lines at turn 136, 56 at turn 400); every game distinct by turn 719 | reactive from day 1: 12 openings at turn 24 (largest 53%), 12 lines at turn 100; every game distinct by turn 400 | reactive from day 1: 12 openings at turn 24 (largest 53%), 12 lines at turn 100; every game distinct by turn 400 |
-| 14 | Thomas Tschinkel | 63 | one line through turn 136 (100%), then branching (1 lines at turn 136, 41 at turn 400) | one line through turn 136 (97%), then branching (2 lines at turn 136, 61 at turn 400); every game distinct by turn 719 | one line through turn 136 (97%), then branching (2 lines at turn 136, 56 at turn 400); every game distinct by turn 719 |
+| 13 | feel the agi | 70 | one line through turn 136 (100%), then branching (1 lines at turn 136, 69 at turn 400); every game distinct by turn 719 | reactive from day 1: 16 openings at turn 24 (largest 46%), 16 lines at turn 100; every game distinct by turn 400 | reactive from day 1: 15 openings at turn 24 (largest 46%), 15 lines at turn 100; every game distinct by turn 400 |
+| 14 | Thomas Tschinkel | 69 | one line through turn 136 (100%), then branching (1 lines at turn 136, 46 at turn 400) | one line through turn 136 (97%), then branching (2 lines at turn 136, 66 at turn 400); every game distinct by turn 719 | one line through turn 136 (97%), then branching (2 lines at turn 136, 62 at turn 400); every game distinct by turn 719 |
 
 ## Shared field lines among the current submissions
 
@@ -65,63 +65,63 @@ Letters name the modal field-action line of each team at each turn cut; two team
 
 | rank | team | games | win % | hands (peak) | quadrants | land day 1 | land day 2 | cows bought | sheep bought | geese bought | strawberry planted | wheat planted | melon planted | CARE ops | FERTILIZE ops | melon sold | strawberry sold | milk sold | wool sold | units sold last 3 days | final_money |
 |---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|
-| 1 | Majkel1337 | 69 | 95.7 | 11 | 3 | 6 | 9 | 8 | 4 | 2 | 31 | 178 | 14 | 310 | 153 | 72 | 221 | 179 | 109 | 365 | 111023 |
-| 2 | ymg_aq | 70 | 88.6 | 13 | 3 | 5 | 8 | 7 | 3 | 0 | 33 | 151.5 | 14.5 | 246.5 | 135.5 | 30 | 193 | 141 | 54.5 | 263 | 104665.5 |
+| 1 | Majkel1337 | 72 | 94.4 | 11 | 3 | 6 | 9 | 8 | 4 | 2 | 31 | 177.5 | 14 | 311.5 | 153.5 | 72 | 223 | 181.5 | 109 | 365 | 112642.5 |
+| 2 | ymg_aq | 73 | 86.3 | 13 | 3 | 5 | 8 | 7 | 3 | 0 | 33 | 152 | 15 | 249 | 135 | 30 | 196 | 144 | 53 | 262 | 105617 |
 | 3 | SpaTaro | 86 | 79.1 | 11 | 3 | 6 | 8 | 11.5 | 8.5 | 0 | 26 | 192 | 11 | 272.5 | 95 | 18 | 115.5 | 131 | 62.5 | 277 | 97042 |
 | 4 | Mengfei Li | 74 | 83.8 | 13 | 3 | 6 | 11 | 9 | 5 | 3 | 33 | 113 | 13 | 286 | 187 | 18 | 174.5 | 82.5 | 65.5 | 204.5 | 103670 |
 | 5 | Orbital Terraformer | 73 | 87.7 | 11 | 3 | 6 | 9 | 8 | 5 | 2 | 31 | 188 | 14 | 332 | 154 | 72 | 202 | 170 | 101 | 339 | 103266 |
-| 6 | DSM | 52 | 98.1 | 11 | 3 | 6 | 9 | 9 | 5.5 | 2 | 30.5 | 187 | 14 | 349.5 | 157 | 64 | 226.5 | 185 | 113 | 361.5 | 108674 |
-| 7 | redblackbst | 97 | 78.4 | 11 | 3 | 6 | 11 | 7 | 5 | 3 | 32 | 162 | 13 | 337 | 87 | 18 | 165 | 113 | 62 | 259 | 105081 |
+| 6 | DSM | 80 | 97.5 | 11 | 3 | 6 | 9 | 9 | 4 | 2 | 30 | 187.5 | 14 | 340.5 | 154.5 | 64 | 224 | 177.5 | 92.5 | 361.5 | 104556.5 |
+| 7 | redblackbst | 100 | 78 | 11 | 3 | 6 | 11 | 7 | 5 | 3 | 32 | 162 | 13 | 336.5 | 87 | 18 | 164 | 109 | 62 | 259 | 104306 |
 | 8 | Artem The Farmer 🍅 | 86 | 94.2 | 13 | 3 | 6 | 8 | 7 | 6 | 2 | 27 | 143.5 | 13 | 311 | 156.5 | 6 | 143 | 103.5 | 35 | 269 | 102655 |
-| 9 | アルモンド | 50 | 92 | 12 | 3 | 6 | 11 | 8 | 6 | 1 | 33 | 148.5 | 15 | 417 | 123 | 30 | 131 | 155 | 114.5 | 276 | 101093.5 |
-| 10 | HowardLeeTW | 69 | 78.3 | 12 | 3 | 3 | 8 | 7 | 4 | 1 | 32 | 135 | 14 | 246 | 191 | 48 | 203 | 129 | 51 | 230 | 107431 |
-| 11 | Otter Vibe | 95 | 81.1 | 15 | 3 | 5 | 10 | 7 | 7 | 6 | 22 | 104 | 16 | 365 | 189 | 0 | 46 | 28 | 18 | 198 | 102917 |
+| 9 | アルモンド | 62 | 82.3 | 12 | 3 | 6 | 11 | 8 | 6 | 1 | 33 | 149 | 15 | 417 | 122.5 | 30 | 131 | 155 | 112 | 276 | 97458.5 |
+| 10 | HowardLeeTW | 74 | 77.0 | 12 | 3 | 3 | 8 | 6 | 4.5 | 1 | 32 | 131.5 | 13 | 247 | 190 | 48 | 203.5 | 127.5 | 55 | 229 | 107674 |
+| 11 | Otter Vibe | 126 | 73.8 | 15 | 3 | 5 | 10 | 7 | 7 | 6 | 24 | 104 | 15 | 368 | 189.5 | 0 | 46 | 28 | 21.5 | 203 | 103985.5 |
 | 12 | Catalyst | 80 | 83.8 | 12 | 3 | 6 | 11 | 8 | 6 | 3 | 33 | 162 | 12 | 389 | 119.5 | 12 | 170.5 | 143.5 | 103.5 | 279 | 102193 |
-| 13 | feel the agi | 57 | 86.0 | 13 | 3 | 6 | 11 | 7 | 3 | 6 | 29 | 151 | 12 | 391 | 163 | 12 | 203 | 88 | 41 | 225 | 116476 |
-| 14 | Thomas Tschinkel | 63 | 84.1 | 12 | 3 | 6 | 11 | 8 | 6 | 3 | 33 | 163 | 12 | 405 | 121 | 12 | 120 | 112 | 68 | 262 | 98800 |
+| 13 | feel the agi | 70 | 81.4 | 12 | 3 | 6 | 11 | 7 | 3 | 6 | 29 | 151 | 12 | 380 | 163 | 12 | 202.5 | 87.5 | 39.5 | 226.5 | 114367 |
+| 14 | Thomas Tschinkel | 69 | 81.2 | 12 | 3 | 6 | 11 | 8 | 6 | 3 | 33 | 163 | 12 | 405 | 121 | 12 | 120 | 112 | 68 | 262 | 98229 |
 
 ## What the #1 does differently
 
 | feature | #1 Majkel1337 | median of the others |
 |---|---|---|
-| win % | 95.7 | 84.1 |
+| win % | 94.4 | 82.3 |
 | hands (peak) | 11 | 12 |
 | quadrants | 3 | 3 |
 | land day 1 | 6 | 6 |
 | land day 2 | 9 | 10 |
 | cows bought | 8 | 8 |
-| sheep bought | 4 | 5.5 |
+| sheep bought | 4 | 5 |
 | geese bought | 2 | 2 |
 | strawberry planted | 31 | 32 |
-| wheat planted | 178 | 151.5 |
+| wheat planted | 177.5 | 152 |
 | melon planted | 14 | 13 |
-| CARE ops | 310 | 337 |
-| FERTILIZE ops | 153 | 154 |
+| CARE ops | 311.5 | 336.5 |
+| FERTILIZE ops | 153.5 | 154 |
 | melon sold | 72 | 18 |
-| strawberry sold | 221 | 170.5 |
-| milk sold | 179 | 129 |
+| strawberry sold | 223 | 170.5 |
+| milk sold | 181.5 | 127.5 |
 | wool sold | 109 | 62.5 |
-| units sold last 3 days | 365 | 263 |
-| final_money | 111023 | 103266 |
+| units sold last 3 days | 365 | 262 |
+| final_money | 112642.5 | 103670 |
 
 ## Market timing of the current submissions (median day)
 
 | rank | team | melon first sell day | melon last sell day | strawberry first sell day | strawberry last sell day | milk first sell day | milk last sell day | wool first sell day | wool last sell day | units sold last 3 days | units sold total |
 |---|---|---|---|---|---|---|---|---|---|---|---|
-| 1 | Majkel1337 | 10 | 20 | 14 | 29 | 8 | 29 | 6 | 29 | 365 | 1513 |
-| 2 | ymg_aq | 10 | 28 | 13 | 29 | 8 | 29 | 6 | 28 | 263 | 1619 |
-| 3 | SpaTaro | 10 | 13 | 14 | 29 | 8 | 29 | 6 | 29 | 277 | 1482 |
-| 4 | Mengfei Li | 10 | 26 | 16 | 28 | 8 | 29 | 6 | 29 | 204.5 | 1030 |
+| 1 | Majkel1337 | 10 | 20 | 14 | 29 | 8 | 29 | 6 | 29 | 365 | 1511.5 |
+| 2 | ymg_aq | 17 | 28 | 14 | 28 | 11 | 29 | 10 | 28 | 262 | 1612 |
+| 3 | SpaTaro | 10 | 13 | 14 | 29 | 11 | 29 | 12 | 29 | 277 | 1482 |
+| 4 | Mengfei Li | 11 | 23 | 16 | 28 | 13 | 28 | 7 | 27 | 204.5 | 1030 |
 | 5 | Orbital Terraformer | 10 | 13 | 14 | 29 | 8 | 29 | 6 | 29 | 339 | 1512 |
-| 6 | DSM | 0 | 29 | 0 | 29 | 0 | 29 | 0 | 29 | 361.5 | 1498 |
-| 7 | redblackbst | 10 | 23 | 15 | 29 | 8 | 29 | 6 | 29 | 259 | 1148 |
-| 8 | Artem The Farmer 🍅 | 10 | 20 | 16 | 29 | 8 | 29 | 6 | 29 | 269 | 1058 |
-| 9 | アルモンド | 10 | 29 | 15 | 29 | 8 | 29 | 6 | 29 | 276 | 1203 |
-| 10 | HowardLeeTW | 11 | 24 | 14 | 29 | 8 | 29 | 6 | 29 | 230 | 1003 |
-| 11 | Otter Vibe | 10 | 21 | 14 | 27 | 8 | 29 | 6 | 28 | 198 | 790 |
-| 12 | Catalyst | 10 | 11 | 15 | 28 | 8 | 29 | 6 | 29 | 279 | 1176 |
-| 13 | feel the agi | 10 | 29 | 16 | 29 | 8 | 29 | 6 | 29 | 225 | 1053 |
-| 14 | Thomas Tschinkel | 10 | 29 | 15 | 29 | 8 | 29 | 6 | 29 | 262 | 1108 |
+| 6 | DSM | 10 | 23 | 13 | 29 | 8 | 29 | 6 | 29 | 361.5 | 1509.5 |
+| 7 | redblackbst | 11 | 23.5 | 17 | 29 | 11 | 29 | 15 | 28 | 259 | 1148.5 |
+| 8 | Artem The Farmer 🍅 | 11 | 11 | 16 | 29 | 12 | 29 | 16 | 29 | 269 | 1058 |
+| 9 | アルモンド | 11 | 28 | 18 | 29 | 11 | 29 | 6 | 28.5 | 276 | 1202.5 |
+| 10 | HowardLeeTW | 11 | 24 | 15 | 29 | 8 | 29 | 10 | 29 | 229 | 998 |
+| 11 | Otter Vibe | 22 | 22 | 15 | 27 | 14 | 26 | 14 | 27 | 203 | 781 |
+| 12 | Catalyst | 11 | 11 | 16 | 28 | 11 | 29 | 7 | 28 | 279 | 1176 |
+| 13 | feel the agi | 11 | 11 | 16 | 29 | 11 | 29 | 7 | 28 | 226.5 | 1053.5 |
+| 14 | Thomas Tschinkel | 11 | 11 | 19 | 28 | 14 | 29 | 6 | 29 | 262 | 1107 |
 
 ## Head to head (wins-losses, row vs column, all public games in the histories)
 

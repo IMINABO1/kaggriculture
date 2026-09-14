@@ -2,50 +2,54 @@
 
 - team id 16622349; current submission 56173067 (374 public games)
 - 77 submissions found; 9162 public games from 2026-08-02 to 2026-09-14; 4519 of them with a known rating
-- sampled games with a replay: 100
+- sampled games with a replay: 300
 
 ## Ladder record by window
 
 | window | games | W-L-T | win % | median bank | mean bank | opp rating (mean) | seat 0 % | engines | from | to |
 |---|---|---|---|---|---|---|---|---|---|---|
-| L | 50 | 28-22-0 | 56 | 101506.5 | 102065.9 |  | 54 | 1.32.7 | 2026-09-14 | 2026-09-14 |
-| C0 | 50 | 49-1-0 | 98 | 104204.5 | 106892.3 | 2641.2 | 44 | 1.32.7 | 2026-09-11 | 2026-09-12 |
+| F | 50 | 46-4-0 | 92 | 139843.5 | 135327.5 | 1884.1 | 50 | 1.32.2,1.32.4 | 2026-08-02 | 2026-08-04 |
+| Q1 | 50 | 47-3-0 | 94 | 97809.5 | 100766.0 | 1798.3 | 54 | 1.32.6 | 2026-08-14 | 2026-08-14 |
+| Q2 | 50 | 29-21-0 | 58 | 91772 | 91057.0 | 1366.6 | 52 | 1.32.7 | 2026-08-26 | 2026-08-27 |
+| Q3 | 50 | 40-10-0 | 80 | 100182.5 | 96677.9 | 2678.3 | 44 | 1.32.7 | 2026-09-05 | 2026-09-05 |
+| L | 50 | 28-22-0 | 56 | 101506.5 | 102065.9 | 2933.1 | 54 | 1.32.7 | 2026-09-14 | 2026-09-14 |
+| C0 | 50 | 49-1-0 | 98 | 104204.5 | 106892.3 | 2206.6 | 44 | 1.32.7 | 2026-09-11 | 2026-09-12 |
 
 ## Rating path of the current submission
 
-game 1: nan, game 10: nan, game 25: nan, game 50: nan, game 100: nan, game 200: nan, game last: nan
+game 1: 737, game 10: 1713, game 25: 2565, game 50: 2868, game 100: 2965, game 200: 3051, game last: 3003
 
 ![rating](figs/mengfei-li_rating.png)
 
 ## Farm plan by window (median per game)
 
-| median per game | L | C0 |
-|---|---|---|
-| hands (peak) | 13 | 13 |
-| quadrants | 3 | 3 |
-| land day 1 | 6 | 6 |
-| land day 2 | 11 | 11 |
-| cows bought | 9 | 9 |
-| sheep bought | 5 | 5 |
-| geese bought | 3 | 3 |
-| first cow day | 0 | 0 |
-| wheat planted | 101 | 115 |
-| carrot planted | 32 | 37 |
-| tomato planted | 12 | 4.5 |
-| strawberry planted | 33 | 33 |
-| melon planted | 13 | 13 |
-| FERTILIZE ops | 176 | 189 |
-| CARE ops | 267.5 | 281 |
-| melon sold | 18 | 18 |
-| strawberry sold | 188 | 171 |
-| milk sold | 99 | 82.5 |
-| wool sold | 76.5 | 36 |
-| wheat sold | 252.5 | 309 |
-| fertilizer sold | 123 | 103.5 |
-| units sold last 3 days | 191 | 208 |
-| shed peak | 56 | 53.5 |
-| weeds spawned | 45 | 40 |
-| unexecutable market orders | 0 | 0 |
+| median per game | F | Q1 | Q2 | Q3 | L | C0 |
+|---|---|---|---|---|---|---|
+| hands (peak) | 12 | 12 | 14 | 12 | 13 | 13 |
+| quadrants | 3 | 3 | 3 | 3 | 3 | 3 |
+| land day 1 | 7 | 6 | 6 | 6 | 6 | 6 |
+| land day 2 | 10 | 11 | 10 | 11 | 11 | 11 |
+| cows bought | 8 | 10 | 9 | 9 | 9 | 9 |
+| sheep bought | 6 | 4 | 4 | 5 | 5 | 5 |
+| geese bought | 0 | 0 | 0 | 0 | 3 | 3 |
+| first cow day | 0 | 0 | 0 | 0 | 0 | 0 |
+| wheat planted | 66 | 127 | 143 | 188 | 101 | 115 |
+| carrot planted | 0 | 6 | 0 | 5 | 32 | 37 |
+| tomato planted | 0 | 0 | 0 | 0 | 12 | 4.5 |
+| strawberry planted | 44 | 34 | 37 | 33 | 33 | 33 |
+| melon planted | 21 | 20 | 19 | 12 | 13 | 13 |
+| FERTILIZE ops | 107 | 64 | 72 | 96 | 176 | 189 |
+| CARE ops | 308 | 318 | 285 | 381 | 267.5 | 281 |
+| melon sold | 68 | 25 | 24 | 12 | 18 | 18 |
+| strawberry sold | 216 | 151 | 220 | 92 | 188 | 171 |
+| milk sold | 180 | 228 | 85 | 147 | 99 | 82.5 |
+| wool sold | 100 | 92 | 99 | 51 | 76.5 | 36 |
+| wheat sold | 775 | 579 | 369.5 | 331.5 | 252.5 | 309 |
+| fertilizer sold | 189 | 214 | 214 | 284.5 | 123 | 103.5 |
+| units sold last 3 days | 242 | 246 | 213.5 | 233 | 191 | 208 |
+| shed peak | 76 | 26 | 30 | 64 | 56 | 53.5 |
+| weeds spawned | 40 | 25 | 15.5 | 26 | 45 | 40 |
+| unexecutable market orders | 0 | 0 | 0 | 0 | 0 | 0 |
 
 ![money by day](figs/mengfei-li_money.png)
 
@@ -94,6 +98,10 @@ Distinct action lines per window at each turn cut, with the share of the largest
 
 | window | games | h24 | h48 | h100 | h136 | h200 | h300 | h400 | h719 |
 |---|---|---|---|---|---|---|---|---|---|
+| F | 50 | 4 (86%) | 7 (62%) | 10 (62%) | 12 (60%) | 13 (60%) | 15 (58%) | 15 (58%) | 15 (58%) |
+| Q1 | 50 | 1 (100%) | 1 (100%) | 1 (100%) | 3 (94%) | 4 (68%) | 13 (58%) | 17 (52%) | 26 (38%) |
+| Q2 | 50 | 2 (56%) | 2 (56%) | 5 (54%) | 7 (48%) | 13 (38%) | 25 (28%) | 27 (28%) | 32 (24%) |
+| Q3 | 50 | 1 (100%) | 1 (100%) | 1 (100%) | 1 (100%) | 2 (80%) | 5 (46%) | 9 (24%) | 48 (4%) |
 | L | 50 | 10 (52%) | 23 (52%) | 25 (52%) | 25 (52%) | 26 (44%) | 48 (4%) | 50 (2%) | 50 (2%) |
 | C0 | 50 | 12 (16%) | 45 (4%) | 50 (2%) | 50 (2%) | 50 (2%) | 50 (2%) | 50 (2%) | 50 (2%) |
 
@@ -101,6 +109,10 @@ Distinct action lines per window at each turn cut, with the share of the largest
 
 | window | games | h24 | h48 | h100 | h136 | h200 | h300 | h400 | h719 |
 |---|---|---|---|---|---|---|---|---|---|
+| F | 50 | 3 (86%) | 4 (86%) | 6 (86%) | 6 (86%) | 8 (86%) | 9 (58%) | 10 (58%) | 11 (58%) |
+| Q1 | 50 | 1 (100%) | 1 (100%) | 1 (100%) | 2 (78%) | 7 (54%) | 16 (34%) | 32 (12%) | 50 (2%) |
+| Q2 | 50 | 2 (56%) | 2 (56%) | 4 (56%) | 8 (56%) | 11 (56%) | 21 (50%) | 35 (10%) | 50 (2%) |
+| Q3 | 50 | 1 (100%) | 1 (100%) | 2 (94%) | 2 (94%) | 5 (74%) | 10 (44%) | 29 (14%) | 50 (2%) |
 | L | 50 | 2 (52%) | 2 (52%) | 3 (52%) | 3 (52%) | 17 (24%) | 50 (2%) | 50 (2%) | 50 (2%) |
 | C0 | 50 | 1 (100%) | 1 (100%) | 2 (96%) | 2 (96%) | 10 (28%) | 50 (2%) | 50 (2%) | 50 (2%) |
 
@@ -108,6 +120,10 @@ Distinct action lines per window at each turn cut, with the share of the largest
 
 | window | games | h24 | h48 | h100 | h136 | h200 | h300 | h400 | h719 |
 |---|---|---|---|---|---|---|---|---|---|
+| F | 50 | 3 (86%) | 5 (86%) | 8 (82%) | 9 (78%) | 10 (78%) | 14 (50%) | 14 (50%) | 16 (50%) |
+| Q1 | 50 | 1 (100%) | 1 (100%) | 1 (100%) | 3 (94%) | 6 (64%) | 9 (54%) | 13 (46%) | 36 (14%) |
+| Q2 | 50 | 2 (56%) | 2 (56%) | 6 (54%) | 8 (48%) | 12 (38%) | 19 (28%) | 25 (28%) | 30 (24%) |
+| Q3 | 50 | 1 (100%) | 1 (100%) | 2 (94%) | 2 (94%) | 5 (74%) | 11 (44%) | 26 (16%) | 50 (2%) |
 | L | 50 | 2 (52%) | 2 (52%) | 2 (52%) | 2 (52%) | 15 (24%) | 50 (2%) | 50 (2%) | 50 (2%) |
 | C0 | 50 | 1 (100%) | 2 (96%) | 2 (96%) | 2 (96%) | 10 (28%) | 50 (2%) | 50 (2%) | 50 (2%) |
 
@@ -139,6 +155,10 @@ What goes with being off the modal field line at turn 24 (the first cut where fe
 
 | window | games | win % | median bank | hands | cows | sheep | geese | quadrants | land day 1 | strawberry | wheat | melon | melon sold | milk sold | wool sold | field lines @400 | market lines @400 |
 |---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|
+| F | 50 | 92 | 139843.5 | 12 | 8 | 6 | 0 | 3 | 7 | 44 | 66 | 21 | 68 | 180 | 100 | 15 | 10 |
+| Q1 | 50 | 94 | 97809.5 | 12 | 10 | 4 | 0 | 3 | 6 | 34 | 127 | 20 | 25 | 228 | 92 | 17 | 32 |
+| Q2 | 50 | 58 | 91772 | 14 | 9 | 4 | 0 | 3 | 6 | 37 | 143 | 19 | 24 | 85 | 99 | 27 | 35 |
+| Q3 | 50 | 80 | 100182.5 | 12 | 9 | 5 | 0 | 3 | 6 | 33 | 188 | 12 | 12 | 147 | 51 | 9 | 29 |
 | L | 50 | 56 | 101506.5 | 13 | 9 | 5 | 3 | 3 | 6 | 33 | 101 | 13 | 18 | 99 | 76.5 | 50 | 50 |
 | C0 | 50 | 98 | 104204.5 | 13 | 9 | 5 | 3 | 3 | 6 | 33 | 115 | 13 | 18 | 82.5 | 36 | 50 | 50 |
 
@@ -146,29 +166,33 @@ What goes with being off the modal field line at turn 24 (the first cut where fe
 
 | window | episode | opponent | opp rating | my bank | opp bank | margin | opp opening | biggest differences (opponent vs me) |
 |---|---|---|---|---|---|---|---|---|
-| C0 | 108000088 | yfy |  | 136100 | 137018 | -918 | 3bc18d7a | FERTILIZE ops: they 61 vs me 187; milk sold: they 203 vs me 120; CARE ops: they 419 vs me 345 |
-| L | 108917362 | Unknown Mother-Goose |  | 157300 | 169802 | -12502 | cfefcbaa | units sold last 3 days: they 366 vs me 164; milk sold: they 273 vs me 168; strawberry sold: they 184 vs me 250 |
-| L | 108921532 | HowardLeeTW |  | 112654 | 117021 | -4367 | 997b20f5 | strawberry sold: they 310 vs me 216; units sold last 3 days: they 225 vs me 137; CARE ops: they 220 vs me 289 |
-| L | 108946273 | DSM |  | 85626 | 94069 | -8443 | 88cd11eb | units sold last 3 days: they 359 vs me 160; wheat planted: they 219 vs me 101; milk sold: they 161 vs me 71 |
-| L | 108948557 | Knight of Favonius |  | 89847 | 90194 | -347 | 9b0c82fd | CARE ops: they 411 vs me 240; FERTILIZE ops: they 80 vs me 208; units sold last 3 days: they 256 vs me 162 |
-| L | 108957764 | Catalyst |  | 84509 | 88156 | -3647 | 9b0c82fd | CARE ops: they 388 vs me 246; wheat planted: they 162 vs me 77; milk sold: they 127 vs me 58 |
-| L | 108963059 | アルモンド |  | 112453 | 116376 | -3923 | 9b0c82fd | CARE ops: they 417 vs me 287; strawberry sold: they 134 vs me 246; units sold last 3 days: they 285 vs me 191 |
-| L | 108965060 | DSM |  | 100990 | 104133 | -3143 | 88cd11eb | wool sold: they 261 vs me 117; units sold last 3 days: they 373 vs me 271; strawberry sold: they 255 vs me 164 |
-| L | 108968262 | kobq |  | 109291 | 116129 | -6838 | 9b0c82fd | CARE ops: they 506 vs me 336; wool sold: they 159 vs me 239; wheat planted: they 163 vs me 95 |
-| L | 108968750 | Yoshihiro Hatakeyama |  | 102255 | 104225 | -1970 | 9b0c82fd | CARE ops: they 405 vs me 248; FERTILIZE ops: they 94 vs me 200; strawberry sold: they 123 vs me 222 |
-| L | 108971809 | mtmr_s1 |  | 99030 | 101160 | -2130 | 9b0c82fd | CARE ops: they 378 vs me 265; strawberry sold: they 132 vs me 218; FERTILIZE ops: they 107 vs me 190 |
-| L | 108972334 | Cow Boy |  | 136828 | 141204 | -4376 | 83322aec | CARE ops: they 510 vs me 379; FERTILIZE ops: they 67 vs me 176; strawberry sold: they 114 vs me 163 |
-| L | 108985765 | kyy666 |  | 109891 | 114209 | -4318 | 8008c86c | CARE ops: they 397 vs me 302; FERTILIZE ops: they 104 vs me 196; strawberry sold: they 131 vs me 192 |
-| L | 108987349 | Artem The Farmer 🍅 |  | 61443 | 72801 | -11358 | d6cc83df | units sold last 3 days: they 269 vs me 151; wheat planted: they 207 vs me 93; CARE ops: they 337 vs me 269 |
-| L | 108988876 | Majkel1337 |  | 88381 | 97383 | -9002 | 88cd11eb | units sold last 3 days: they 382 vs me 213; wool sold: they 150 vs me 86; wheat planted: they 156 vs me 103 |
-| L | 108991806 | Utkarsh #2 |  | 100937 | 101206 | -269 | 9b0c82fd | CARE ops: they 506 vs me 349; FERTILIZE ops: they 61 vs me 154; strawberry sold: they 99 vs me 147 |
-| L | 109000779 | yjshyfy |  | 113420 | 123726 | -10306 | 3bc18d7a | CARE ops: they 509 vs me 377; units sold last 3 days: they 258 vs me 152; FERTILIZE ops: they 85 vs me 146 |
-| L | 109007180 | Orbital Terraformer |  | 86177 | 90173 | -3996 | 826802ff | units sold last 3 days: they 338 vs me 215; wheat planted: they 195 vs me 101; CARE ops: they 287 vs me 204 |
-| L | 109007181 | Majkel1337 |  | 132527 | 138237 | -5710 | 88cd11eb | units sold last 3 days: they 368 vs me 174; milk sold: they 258 vs me 124; wool sold: they 227 vs me 136 |
-| L | 109007510 | Majkel1337 |  | 110659 | 121199 | -10540 | 2951cd6f | units sold last 3 days: they 358 vs me 197; CARE ops: they 350 vs me 280; strawberry sold: they 255 vs me 188 |
-| L | 109013049 | Leifson1337 |  | 75648 | 76242 | -594 | 9b0c82fd | CARE ops: they 474 vs me 231; units sold last 3 days: they 266 vs me 125; FERTILIZE ops: they 104 vs me 167 |
-| L | 109015548 | DSM |  | 102592 | 106306 | -3714 | 88cd11eb | units sold last 3 days: they 368 vs me 138; wheat planted: they 200 vs me 107; CARE ops: they 362 vs me 292 |
-| L | 109016628 | Driz Lo |  | 112841 | 113059 | -218 | 9b0c82fd | CARE ops: they 412 vs me 214; strawberry sold: they 124 vs me 240; units sold last 3 days: they 253 vs me 157 |
+| F | 90012704 | webmaking | 2049.5 | 96648 | 101468 | -4820 | 3797eb2c | units sold last 3 days: they 187 vs me 242; melon sold: they 62 vs me 68; weeds spawned: they 38 vs me 40 |
+| F | 90018559 | Zhizhou Sha | 2480.7 | 158445 | 158575 | -130 | 3797eb2c | units sold last 3 days: they 244 vs me 241; weeds spawned: they 39 vs me 41 |
+| F | 90021200 | MilanJoshi | 2537.4 | 152592 | 154474 | -1882 | 3797eb2c | units sold last 3 days: they 267 vs me 242; strawberry sold: they 218 vs me 213; milk sold: they 183 vs me 180 |
+| F | 90027189 | Sm00thiecodes | 2690.4 | 149374 | 151580 | -2206 | 3797eb2c | units sold last 3 days: they 247 vs me 242; strawberry sold: they 214 vs me 216; melon sold: they 67 vs me 68 |
+| C0 | 108000088 | yfy | 2793.4 | 136100 | 137018 | -918 | 3bc18d7a | FERTILIZE ops: they 61 vs me 187; milk sold: they 203 vs me 120; CARE ops: they 419 vs me 345 |
+| L | 108917362 | Unknown Mother-Goose | 2979.6 | 157300 | 169802 | -12502 | cfefcbaa | units sold last 3 days: they 366 vs me 164; milk sold: they 273 vs me 168; strawberry sold: they 184 vs me 250 |
+| L | 108921532 | HowardLeeTW | 2992.5 | 112654 | 117021 | -4367 | 997b20f5 | strawberry sold: they 310 vs me 216; units sold last 3 days: they 225 vs me 137; CARE ops: they 220 vs me 289 |
+| L | 108946273 | DSM | 2992.1 | 85626 | 94069 | -8443 | 88cd11eb | units sold last 3 days: they 359 vs me 160; wheat planted: they 219 vs me 101; milk sold: they 161 vs me 71 |
+| L | 108948557 | Knight of Favonius | 2883.9 | 89847 | 90194 | -347 | 9b0c82fd | CARE ops: they 411 vs me 240; FERTILIZE ops: they 80 vs me 208; units sold last 3 days: they 256 vs me 162 |
+| L | 108957764 | Catalyst | 2965.2 | 84509 | 88156 | -3647 | 9b0c82fd | CARE ops: they 388 vs me 246; wheat planted: they 162 vs me 77; milk sold: they 127 vs me 58 |
+| L | 108963059 | アルモンド | 2840.7 | 112453 | 116376 | -3923 | 9b0c82fd | CARE ops: they 417 vs me 287; strawberry sold: they 134 vs me 246; units sold last 3 days: they 285 vs me 191 |
+| L | 108965060 | DSM | 3013.8 | 100990 | 104133 | -3143 | 88cd11eb | wool sold: they 261 vs me 117; units sold last 3 days: they 373 vs me 271; strawberry sold: they 255 vs me 164 |
+| L | 108968262 | kobq | 2903.7 | 109291 | 116129 | -6838 | 9b0c82fd | CARE ops: they 506 vs me 336; wool sold: they 159 vs me 239; wheat planted: they 163 vs me 95 |
+| L | 108968750 | Yoshihiro Hatakeyama | 2830.7 | 102255 | 104225 | -1970 | 9b0c82fd | CARE ops: they 405 vs me 248; FERTILIZE ops: they 94 vs me 200; strawberry sold: they 123 vs me 222 |
+| L | 108971809 | mtmr_s1 | 2799.2 | 99030 | 101160 | -2130 | 9b0c82fd | CARE ops: they 378 vs me 265; strawberry sold: they 132 vs me 218; FERTILIZE ops: they 107 vs me 190 |
+| L | 108972334 | Cow Boy | 2958.7 | 136828 | 141204 | -4376 | 83322aec | CARE ops: they 510 vs me 379; FERTILIZE ops: they 67 vs me 176; strawberry sold: they 114 vs me 163 |
+| L | 108985765 | kyy666 | 2876.2 | 109891 | 114209 | -4318 | 8008c86c | CARE ops: they 397 vs me 302; FERTILIZE ops: they 104 vs me 196; strawberry sold: they 131 vs me 192 |
+| L | 108987349 | Artem The Farmer 🍅 | 2932.1 | 61443 | 72801 | -11358 | d6cc83df | units sold last 3 days: they 269 vs me 151; wheat planted: they 207 vs me 93; CARE ops: they 337 vs me 269 |
+| L | 108988876 | Majkel1337 | 3215.4 | 88381 | 97383 | -9002 | 88cd11eb | units sold last 3 days: they 382 vs me 213; wool sold: they 150 vs me 86; wheat planted: they 156 vs me 103 |
+| L | 108991806 | Utkarsh #2 | 2854.4 | 100937 | 101206 | -269 | 9b0c82fd | CARE ops: they 506 vs me 349; FERTILIZE ops: they 61 vs me 154; strawberry sold: they 99 vs me 147 |
+| L | 109000779 | yjshyfy | 2880.9 | 113420 | 123726 | -10306 | 3bc18d7a | CARE ops: they 509 vs me 377; units sold last 3 days: they 258 vs me 152; FERTILIZE ops: they 85 vs me 146 |
+| L | 109007180 | Orbital Terraformer | 2993.9 | 86177 | 90173 | -3996 | 826802ff | units sold last 3 days: they 338 vs me 215; wheat planted: they 195 vs me 101; CARE ops: they 287 vs me 204 |
+| L | 109007181 | Majkel1337 | 3209.9 | 132527 | 138237 | -5710 | 88cd11eb | units sold last 3 days: they 368 vs me 174; milk sold: they 258 vs me 124; wool sold: they 227 vs me 136 |
+| L | 109007510 | Majkel1337 | 3081.3 | 110659 | 121199 | -10540 | 2951cd6f | units sold last 3 days: they 358 vs me 197; CARE ops: they 350 vs me 280; strawberry sold: they 255 vs me 188 |
+| L | 109013049 | Leifson1337 | 2871.9 | 75648 | 76242 | -594 | 9b0c82fd | CARE ops: they 474 vs me 231; units sold last 3 days: they 266 vs me 125; FERTILIZE ops: they 104 vs me 167 |
+| L | 109015548 | DSM | 2994.4 | 102592 | 106306 | -3714 | 88cd11eb | units sold last 3 days: they 368 vs me 138; wheat planted: they 200 vs me 107; CARE ops: they 362 vs me 292 |
+| L | 109016628 | Driz Lo | 2899.9 | 112841 | 113059 | -218 | 9b0c82fd | CARE ops: they 412 vs me 214; strawberry sold: they 124 vs me 240; units sold last 3 days: they 253 vs me 157 |
 
 ## Head to head with the other studied teams (all games, not only sampled)
 
@@ -190,5 +214,9 @@ What goes with being off the modal field line at turn 24 (the first cut where fe
 
 ## Episodes behind each window
 
+- **F** (50): 89469266, 89469791, 89470325, 89470350, 89470880, 89471429, 89471964, 90004966, 90005604, 90006248, 90006896, 90007534, 90008179, 90008823, 90009465, 90010106, 90010223, 90010245, 90010763, 90011408, 90012052, 90012704, 90013347, 90013994, 90014636, 90014640, 90015300, 90015951, 90016601, 90017251, 90017910, 90018559, 90019248, 90019892, 90020551, 90021200, 90021851, 90022487, 90022529, 90023151, 90023806, 90023878, 90024459, 90025142, 90025824, 90026532, 90027189, 90027212, 90027899, 90028594
+- **Q1** (50): 93074522, 93075420, 93076530, 93077303, 93077439, 93078232, 93079139, 93079305, 93080098, 93081018, 93081928, 93082850, 93083789, 93084720, 93085640, 93086568, 93087505, 93088417, 93089341, 93090275, 93091203, 93092125, 93093051, 93093982, 93094888, 93095856, 93096750, 93097677, 93098605, 93099537, 93100455, 93101386, 93102312, 93103238, 93104170, 93105117, 93106718, 93106740, 93107652, 93108558, 93109478, 93110396, 93111327, 93112230, 93112237, 93113154, 93114079, 93114997, 93115926, 93116847
+- **Q2** (50): 99673792, 99675996, 99676081, 99678280, 99678361, 99680539, 99680566, 99680646, 99682855, 99682933, 99685132, 99687426, 99689721, 99691997, 99694290, 99696573, 99698876, 99701164, 99703444, 99703615, 99705727, 99708015, 99710304, 99712412, 99712597, 99714886, 99717180, 99719474, 99721774, 99724053, 99740102, 99762950, 99773973, 99785671, 99792594, 99808464, 99826754, 99851655, 99872263, 100670219, 100672492, 100674776, 100677045, 100679329, 100681608, 100683879, 100686152, 100688426, 100690705, 100692986
+- **Q3** (50): 105849142, 105849715, 105850060, 105850631, 105851018, 105851497, 105851896, 105852829, 105853751, 105854675, 105855098, 105855100, 105855584, 105856490, 105857400, 105858313, 105858896, 105859190, 105860115, 105860711, 105861042, 105861959, 105862202, 105862889, 105863237, 105863789, 105864228, 105864683, 105865141, 105865591, 105866483, 105867387, 105868307, 105868632, 105868827, 105869228, 105870128, 105871027, 105871934, 105872834, 105873148, 105873156, 105873350, 105873729, 105874620, 105874917, 105875531, 105876421, 105876759, 105876766
 - **L** (50): 108917361, 108917362, 108921532, 108924597, 108928774, 108931881, 108932556, 108933925, 108938833, 108940041, 108946273, 108947306, 108948557, 108950610, 108955732, 108957764, 108963059, 108965060, 108968262, 108968278, 108968750, 108971809, 108972334, 108978587, 108979457, 108979491, 108982600, 108985765, 108987349, 108988385, 108988684, 108988876, 108991806, 108995066, 108998026, 109000779, 109001191, 109004106, 109007179, 109007180, 109007181, 109007510, 109008355, 109008905, 109010167, 109012180, 109012656, 109013049, 109015548, 109016628
 - **C0** (50): 107960159, 107961157, 107962139, 107963108, 107964090, 107965082, 107966058, 107967049, 107968031, 107969024, 107969025, 107970003, 107970991, 107971523, 107971978, 107972980, 107973877, 107973975, 107974984, 107975988, 107976990, 107977999, 107979006, 107980006, 107980987, 107981993, 107982992, 107983990, 107984979, 107985978, 107986050, 107986591, 107986948, 107987985, 107988982, 107990022, 107990385, 107990596, 107991069, 107992090, 107993108, 107994113, 107995109, 107996099, 107997095, 107998092, 107999079, 108000088, 108001101, 108002077

@@ -176,7 +176,9 @@ def download_replay(episode_id: int) -> Path:
         if not files:
             raise FileNotFoundError(f"no replay file returned for episode {episode_id}")
         raw = files[0].read_bytes()
-    json.loads(raw)
+    head, tail = raw[:64].lstrip(), raw[-64:].rstrip()
+    if not (head.startswith(b"{") and tail.endswith(b"}") and b'"steps"' in raw):
+        raise ValueError(f"replay {episode_id} does not look like a replay document")
     out.parent.mkdir(parents=True, exist_ok=True)
     tmp_out = out.with_suffix(".tmp")
     tmp_out.write_bytes(zstd.ZstdCompressor(level=10).compress(raw))

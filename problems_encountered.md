@@ -91,3 +91,40 @@ entry also says why I missed it and what changes so it does not happen again.
   in 1.1 s in a probe). That client then returned 429 from `api.kaggle.com` after ~60 fast
   listings. Final shape: client-first with 1.5 s spacing and exponential backoff (10 tries,
   capped at 90 s), ratings joined from the community index instead of the public endpoint.
+
+### P8: `git push` disconnected twice on a 4.5 MB commit
+- **Symptom:** `send-pack: unexpected disconnect while reading sideband packet` /
+  `the remote end hung up unexpectedly`, twice in a row, on the commit that first added
+  `history.parquet` (3 MB) and `features.parquet` (1.5 MB).
+- **Cause:** Git's default HTTP post buffer (1 MiB) makes larger pushes go through chunked
+  transfer, which this connection dropped.
+- **Fix:** `git config http.postBuffer 524288000` (repo-local); the push then succeeded.
+- **Caught by:** me.
+- **Note:** `features.parquet` will grow to roughly 8 MB with all 4,043 episodes. It stays
+  tracked because it lets the verifier check every report number without the 100 GB of
+  replays behind it.
+
+### P9: the replay fetch and the queued pipeline were killed for low memory
+- **Symptom:** both background jobs stopped by the harness ("system is running low on
+  memory") at 2,150 of 3,351 downloads. The machine had 5.7 GB of 31 GB free with none of my
+  processes alive afterwards, so the rest of the desktop was already using most of it.
+- **Cause:** `download_replay` validated each 30 MB download with a full `json.loads`, which
+  expands to several hundred MB of Python objects per worker, three workers at a time, on top
+  of the trace extractor's own full parses.
+- **Fix:** structural validation only (starts with `{`, ends with `}`, contains `"steps"`);
+  fetch resumed with two workers; extraction runs with two workers. Nothing was lost: every
+  stored replay is written to a temp file and renamed only when complete.
+- **Caught by:** the harness (kill notification), then me.
+- **Prevention:** never fully parse a large payload just to check it; size worker counts to
+  the memory actually free, not the core count.
+
+### P10: sell orders that executed nothing counted toward "first sell day"
+- **Symptom:** the market-timing table showed DSM selling melon, strawberry, milk, and wool
+  from day 0, before any exist.
+- **Cause:** DSM issues SELL orders every turn; after P4's fix those rows carry `n = 0`
+  executed units, but the day statistics still included them.
+- **Fix:** zero-unit sells are dropped before computing first and last sell days
+  (`scripts/top10/extract.py`); unit totals were already unaffected.
+- **Caught by:** me, reading the final summary table (a day-0 melon sale is impossible).
+- **Lesson:** when a derived record can legitimately be empty, exclude it from "first" and
+  "last" statistics explicitly; sums forgive zeros, extrema do not.

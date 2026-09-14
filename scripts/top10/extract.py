@@ -52,6 +52,8 @@ def seat_features(trace: dict, seat: int) -> dict:
         if s["buys"]
         else pd.DataFrame(columns=["day", "hour", "kind", "item", "n"])
     )
+    if len(sells):
+        sells = sells[sells.n > 0]
     plants_total = {c: sum(d.get(c, 0) for d in s["plants_by_day"]) for c in CROPS}
     animals_bought = buys[buys.kind == "BUY_ANIMAL"] if len(buys) else buys
     row = {
@@ -137,6 +139,7 @@ def main() -> None:
     ap.add_argument("--jobs", type=int, default=4)
     ap.add_argument("--all", action="store_true", help="every replay on disk, not just sample.csv")
     ap.add_argument("--traces-only", action="store_true", help="skip the feature table")
+    ap.add_argument("--limit", type=int, default=0, help="build at most this many new traces")
     args = ap.parse_args()
 
     if args.all:
@@ -148,6 +151,8 @@ def main() -> None:
         sample = pd.read_csv(TOP10 / "sample.csv")
         episodes = sorted({int(e) for e in sample.episode_id if replay_path(int(e)).exists()})
     todo = [e for e in episodes if not trace_path(e).exists()]
+    if args.limit:
+        todo = todo[: args.limit]
     print(f"{len(episodes)} replays on disk, {len(todo)} traces to build")
     failures = []
     with ProcessPoolExecutor(max_workers=args.jobs) as pool:
