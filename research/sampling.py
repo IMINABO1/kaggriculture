@@ -18,7 +18,7 @@ def windows(n: int) -> dict[str, list[int]]:
     half = WINDOW // 2
     out = {"F": list(range(WINDOW))}
     for name, frac in (("Q1", 0.25), ("Q2", 0.5), ("Q3", 0.75)):
-        centre = int(round(n * frac))
+        centre = round(n * frac)
         start = min(max(centre - half, 0), n - WINDOW)
         out[name] = list(range(start, start + WINDOW))
     out["L"] = list(range(n - WINDOW, n))

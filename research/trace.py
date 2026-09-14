@@ -3,9 +3,11 @@
 A trace keeps both seats' full action streams (so the game can be replayed or used as an
 opponent), per-day state series, per-event lists, and the stream hashes the community uses
 to identify a line of play. Sell units are the executed amount, capped by what the shed held
-before the turn's orders, because some agents request thousands of units every turn. Hashing follows destbreso's normalisation byte for byte (canonical
-JSON per action, NUL between turns, first 16 hex chars, steps[0] skipped) so values are
-comparable with `stream_hashes.csv` from georgymamarin/kaggriculture-episodes.
+before the turn's orders, because some agents request thousands of units every turn.
+
+Stream hashing follows destbreso's normalisation byte for byte (canonical JSON per action,
+NUL between turns, first 16 hex chars, steps[0] skipped) so values are comparable with
+`stream_hashes.csv` from georgymamarin/kaggriculture-episodes.
 """
 
 from __future__ import annotations
@@ -56,6 +58,57 @@ def stream_hashes(actions: list[dict], cuts=HASH_CUTS) -> dict[str, str]:
         if t in cuts:
             out[f"h{t}"] = h.hexdigest()[:16]
     return out
+
+
+MOVES = {"NORTH", "SOUTH", "EAST", "WEST", "PASS"}
+BUYABLE = {"WHEAT", "FERTILIZER"}
+
+
+def order_is_valid(order) -> bool:
+    """Structural validity of a market order; the engine silently drops the rest."""
+    if not isinstance(order, list) or not order:
+        return False
+    kind = order[0]
+    if kind in ("HIRE", "BUY_LAND"):
+        return True
+    if len(order) < 3:
+        return False
+    item = order[1]
+    return (
+        (kind == "BUY_PRODUCT" and item in BUYABLE)
+        or (kind == "BUY_SEED" and item in CROPS)
+        or (kind == "BUY_ANIMAL" and item in ANIMALS)
+        or (kind == "SELL" and item in PRODUCTS)
+    )
+
+
+def invalid_order_count(actions: list[dict]) -> int:
+    return sum(1 for a in actions for order in (a.get("market") or []) if not order_is_valid(order))
+
+
+def plan_signature(actions: list[dict], upto: int) -> str:
+    """Order-insensitive fingerprint of what was done through turn `upto`.
+
+    Counts every non-movement unit op (with its arguments) and every executable market order,
+    so two games that follow the same plan along different paths, or with hands in a different
+    order, hash the same; two games that plant, buy, or sell differently do not. Orders the
+    engine cannot execute are ignored: some agents emit them by the dozen, which would make
+    every game look unique.
+    """
+    ops: Counter = Counter()
+    for a in actions[:upto]:
+        for op in unit_ops(a):
+            if op[0] not in MOVES:
+                ops["U " + " ".join(map(str, op))] += 1
+        for order in a.get("market") or []:
+            if order_is_valid(order):
+                ops["M " + " ".join(map(str, order))] += 1
+    payload = json.dumps(sorted(ops.items()), separators=(",", ":")).encode()
+    return hashlib.sha256(payload).hexdigest()[:16]
+
+
+def plan_hashes(actions: list[dict], cuts=HASH_CUTS) -> dict[str, str]:
+    return {f"h{t}": plan_signature(actions, t) for t in cuts}
 
 
 def split_streams(actions: list[dict]) -> tuple[list[dict], list[dict]]:

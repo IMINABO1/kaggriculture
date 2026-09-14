@@ -14,6 +14,7 @@ import argparse
 import csv
 import time
 from concurrent.futures import ThreadPoolExecutor, as_completed
+from pathlib import Path
 
 import pandas as pd
 
@@ -46,7 +47,8 @@ def main() -> None:
     args = ap.parse_args()
 
     if args.ids_file:
-        ids = [int(x) for x in open(args.ids_file, encoding="utf-8").read().split() if x.strip()]
+        text = Path(args.ids_file).read_text(encoding="utf-8")
+        ids = [int(x) for x in text.split() if x.strip()]
         sample = pd.DataFrame(
             {
                 "episode_id": ids,

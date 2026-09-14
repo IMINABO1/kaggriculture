@@ -18,7 +18,14 @@ import pandas as pd
 from research.kaggle_api import load_replay, replay_path
 from research.paths import TOP10
 from research.store import load_trace, save_trace, trace_path
-from research.trace import ANIMALS, CROPS, PRODUCTS, build_trace
+from research.trace import (
+    ANIMALS,
+    CROPS,
+    PRODUCTS,
+    build_trace,
+    invalid_order_count,
+    plan_hashes,
+)
 
 
 def make_trace(episode_id: int) -> tuple[int, str | None]:
@@ -117,6 +124,9 @@ def seat_features(trace: dict, seat: int) -> dict:
         row[f"full_{name}"] = s["hashes"].get(name)
         row[f"field_{name}"] = s["field_hashes"].get(name)
         row[f"market_{name}"] = s["market_hashes"].get(name)
+    for name, value in plan_hashes(s["actions"]).items():
+        row[f"plan_{name}"] = value
+    row["invalid_orders"] = invalid_order_count(s["actions"])
     return row
 
 

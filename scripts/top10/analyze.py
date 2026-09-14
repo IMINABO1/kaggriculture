@@ -15,8 +15,10 @@ from collections import Counter
 import numpy as np
 import pandas as pd
 
+from research.narrate import day_table
 from research.paths import REPORTS, TOP10
 from research.report import SERIES, WINDOW_ORDER, bar_figure, line_figure, md_table
+from research.store import load_trace
 
 CUTS = ["h24", "h48", "h100", "h136", "h200", "h300", "h400", "h719"]
 PREMIUM = ["melon", "strawberry", "milk", "wool"]
@@ -45,6 +47,7 @@ PLAN_COLS = {
     "sells_last_3_days": "units sold last 3 days",
     "shed_peak": "shed peak",
     "weeds_spawned": "weeds spawned",
+    "invalid_orders": "unexecutable market orders",
 }
 DIFF_COLS = [
     "bought_cow",
@@ -66,9 +69,15 @@ DIFF_COLS = [
 ]
 
 
-def slug(name: str) -> str:
+def slug(name: str, team_id=None) -> str:
     s = re.sub(r"[^a-z0-9]+", "-", str(name).lower()).strip("-")
-    return s or "team"
+    return s or (f"team-{int(team_id)}" if team_id is not None else "team")
+
+
+def display(name: str, team_id=None) -> str:
+    """Figure-safe team name: the bundled font has no emoji or CJK glyphs."""
+    s = re.sub(r"[^\x20-\x7e -ɏ]", "", str(name)).strip()
+    return s or (f"team {int(team_id)}" if team_id is not None else "team")
 
 
 def load() -> tuple[pd.DataFrame, pd.DataFrame, pd.DataFrame, pd.DataFrame]:
@@ -224,6 +233,12 @@ def divergence_drivers(rows: pd.DataFrame, cut: str) -> pd.DataFrame:
         "played seat 1": rows.seat == 1,
         "lost the game": rows.result == "L",
     }
+    if day >= 4:
+        first_shop = rows.shops.fillna("").str.split("|").str[0]
+        modal_shop = first_shop.value_counts().index[0]
+        checks[f"first shop (day 3) is not {modal_shop.title().replace('_', ' ')}"] = (
+            first_shop != modal_shop
+        )
     out = []
     for name, cond in checks.items():
         a, b = (
@@ -319,13 +334,20 @@ def rating_path(hist: pd.DataFrame, sub: int) -> pd.Series:
 
 def team_dossier(t, hist, sample, feats, all_team_ids) -> str:
     rows = team_windows(sample, feats, int(t.team_id))
-    name, sl = t.team_name, slug(t.team_name)
+    name, sl = t.team_name, slug(t.team_name, t.team_id)
+    shown = display(name, t.team_id)
     md = [f"# {name} (rank {int(t['rank'])}, score {t.score:.1f})", ""]
+    current = int(t.current_sub) if pd.notna(t.current_sub) else "unknown"
     md += [
-        f"- team id {int(t.team_id)}; current submission {int(t.current_sub) if pd.notna(t.current_sub) else 'unknown'}"
-        f" ({int(t.current_sub_games)} public games)",
-        f"- submissions found {int(t.subs_found)} of {int(t.subs_declared) if pd.notna(t.subs_declared) else '?'} declared;"
-        f" {int(t.public_games)} public games from {str(t.first_game)[:10]} to {str(t.last_game)[:10]}",
+        (
+            f"- team id {int(t.team_id)}; current submission {current}"
+            f" ({int(t.current_sub_games)} public games)"
+        ),
+        (
+            f"- {int(t.subs_found)} submissions found; {int(t.public_games)} public games from "
+            f"{str(t.first_game)[:10]} to {str(t.last_game)[:10]}; "
+            f"{int(t.games_with_rating)} of them with a known rating"
+        ),
         f"- sampled games with a replay: {rows.episode_id.nunique()}",
         "",
     ]
@@ -351,7 +373,7 @@ def team_dossier(t, hist, sample, feats, all_team_ids) -> str:
         ]
         line_figure(
             {"rating after game": list(path)},
-            f"{name}: rating of the current submission",
+            f"{shown}: rating of the current submission",
             "game",
             "rating",
             REPORTS / "figs" / f"{sl}_rating.png",
@@ -363,13 +385,32 @@ def team_dossier(t, hist, sample, feats, all_team_ids) -> str:
     if curves:
         line_figure(
             curves,
-            f"{name}: median money by day, per window",
+            f"{shown}: median money by day, per window",
             "day",
             "coins",
             REPORTS / "figs" / f"{sl}_money.png",
             colors=SERIES,
         )
         md += [f"![money by day](figs/{sl}_money.png)", ""]
+
+    latest = rows[rows.window.isin(("L", "ALL:last50"))].drop_duplicates("episode_id")
+    if len(latest):
+        order = (latest.final_money - latest.final_money.median()).abs().sort_values()
+        pick = latest.loc[order.index[0]]
+        trace = load_trace(int(pick.episode_id))
+        md += [
+            "## A typical recent game, day by day",
+            "",
+            (
+                f"Episode {int(pick.episode_id)} (the median-bank game of the latest window): seat "
+                f"{int(pick.seat)}, bank {pick.final_money:.0f} vs {pick.o_final_money:.0f} "
+                f"({pick.o_team}), seed {trace['seed']}. Letters: W wheat, C carrot, T tomato, "
+                f"S strawberry, M melon, E egg, Mk milk, Wl wool, F fertilizer."
+            ),
+            "",
+            md_table(day_table(trace, int(pick.seat))),
+            "",
+        ]
 
     md += [
         "## Determinism",
@@ -384,12 +425,22 @@ def team_dossier(t, hist, sample, feats, all_team_ids) -> str:
         "",
         md_table(family_table(rows, "market")),
         "",
+        (
+            "**Plans (order-insensitive)**: same multiset of non-movement unit ops and market "
+            "orders through the cut, regardless of path or hand order."
+        ),
+        "",
+        md_table(family_table(rows, "plan")),
+        "",
     ]
     cur = rows[rows.is_current_sub == True].drop_duplicates("episode_id")
     if len(cur):
         md += [
-            f"Current submission ({len(cur)} sampled games): field is **{verdict(cur, 'field')}**; "
-            f"market is **{verdict(cur, 'market')}**.",
+            (
+                f"Current submission ({len(cur)} sampled games): field is "
+                f"**{verdict(cur, 'field')}**; market is **{verdict(cur, 'market')}**; "
+                f"plan is **{verdict(cur, 'plan')}**."
+            ),
             "",
             "Games on the modal field line, by cut (current submission):",
             "",
@@ -400,8 +451,10 @@ def team_dossier(t, hist, sample, feats, all_team_ids) -> str:
         drv = divergence_drivers(cur, branch) if branch else pd.DataFrame()
         if len(drv):
             md += [
-                f"What goes with being off the modal field line at turn {int(branch[1:])} "
-                f"(the first cut where fewer than 90% of games share one line):",
+                (
+                    f"What goes with being off the modal field line at turn {int(branch[1:])} "
+                    f"(the first cut where fewer than 90% of games share one line):"
+                ),
                 "",
                 md_table(drv),
                 "",
@@ -463,8 +516,8 @@ def cross_team(teams, hist, sample, feats) -> str:
             "current_sub",
             "current_sub_games",
             "subs_found",
-            "subs_declared",
             "public_games",
+            "games_with_rating",
             "first_game",
             "last_game",
         ]
@@ -474,12 +527,14 @@ def cross_team(teams, hist, sample, feats) -> str:
     md += ["## Coverage", "", md_table(cov), ""]
 
     latest = {}
+    ids_by_name = {}
     fam_rows = []
     verdicts = []
     for _, t in teams.iterrows():
         rows = team_windows(sample, feats, int(t.team_id))
         cur = rows[rows.is_current_sub == True].drop_duplicates("episode_id")
         latest[t.team_name] = cur
+        ids_by_name[t.team_name] = int(t.team_id)
         if len(cur):
             verdicts.append(
                 {
@@ -488,6 +543,7 @@ def cross_team(teams, hist, sample, feats) -> str:
                     "games": len(cur),
                     "field": verdict(cur, "field"),
                     "market": verdict(cur, "market"),
+                    "plan": verdict(cur, "plan"),
                 }
             )
             rec = {"rank": int(t["rank"]), "team": t.team_name}
@@ -509,8 +565,11 @@ def cross_team(teams, hist, sample, feats) -> str:
         md += [
             "## Shared field lines among the current submissions",
             "",
-            "Letters name the modal field-action line of each team at each turn cut; two teams with the "
-            "same letter at a cut submitted identical farmer and hand actions through that turn.",
+            (
+                "Letters name the modal field-action line of each team at each turn cut; two teams "
+                "with the same letter at a cut submitted identical farmer and hand actions through "
+                "that turn."
+            ),
             "",
             md_table(fam),
             "",
@@ -606,14 +665,17 @@ def cross_team(teams, hist, sample, feats) -> str:
             "",
         ]
 
-    labels = [v["team"] for v in verdicts]
-    values = [len(latest[v["team"]].field_h400.unique()) for v in verdicts]
+    labels = [display(v["team"], ids_by_name[v["team"]]) for v in verdicts]
+    values = [
+        100 * latest[v["team"]].field_h100.value_counts().iloc[0] / len(latest[v["team"]])
+        for v in verdicts
+    ]
     if labels:
         bar_figure(
             labels,
             values,
-            "Distinct field-action lines at turn 400 (current submissions)",
-            "lines",
+            "Games on the modal field line at turn 100, current submissions (%)",
+            "% of games",
             REPORTS / "figs" / "families_h400.png",
         )
         md += ["![families](figs/families_h400.png)", ""]
@@ -621,12 +683,12 @@ def cross_team(teams, hist, sample, feats) -> str:
     for v in verdicts:
         cur = latest[v["team"]]
         arr = np.array([list(m) + [np.nan] * (30 - len(m)) for m in cur.money_by_day])
-        curves[v["team"]] = list(np.nanmedian(arr, axis=0))
+        curves[display(v["team"], ids_by_name[v["team"]])] = list(np.nanmedian(arr, axis=0))
     if curves:
         small_multiples(curves, REPORTS / "figs" / "money_current.png")
         md += ["![money by day, current submissions](figs/money_current.png)", ""]
     md += ["## Team dossiers", ""]
-    md += [f"- [{t.team_name}]({slug(t.team_name)}.md)" for _, t in teams.iterrows()]
+    md += [f"- [{t.team_name}]({slug(t.team_name, t.team_id)}.md)" for _, t in teams.iterrows()]
     return "\n".join(md) + "\n"
 
 
@@ -668,8 +730,8 @@ def main() -> None:
     ids = set(teams.team_id.astype(int))
     for _, t in teams.iterrows():
         text = team_dossier(t, hist, sample, feats, ids)
-        (REPORTS / f"{slug(t.team_name)}.md").write_text(text, encoding="utf-8")
-        print(f"wrote {slug(t.team_name)}.md")
+        (REPORTS / f"{slug(t.team_name, t.team_id)}.md").write_text(text, encoding="utf-8")
+        print(f"wrote {slug(t.team_name, t.team_id)}.md")
     (REPORTS / "summary.md").write_text(cross_team(teams, hist, sample, feats), encoding="utf-8")
     print("wrote summary.md")
     meta = {

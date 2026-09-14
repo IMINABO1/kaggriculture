@@ -4,8 +4,12 @@
 
 For each team: seed its submission ids from the community index (data/community/agents.csv),
 list every episode of every known submission, and expand the submission set from what those
-listings reveal (ListEpisodes also returns the submissions and teams present in each game)
-until nothing new appears. Only submissions belonging to snapshot teams are ever listed.
+listings reveal until nothing new appears. Only submissions of snapshot teams are listed.
+
+Listings go through the authenticated Kaggle client (fast, never throttled so far). It does
+not return ratings, so ratings are joined from the community index (episodes.csv, which
+carries the rating after each game) and from any cached raw-endpoint payloads. The rating
+before a game is the same submission's rating after its previous game.
 
 Outputs:
   data/top10/history.parquet  one row per (submission, episode) of a snapshot team
@@ -28,39 +32,35 @@ def main() -> None:
 
     agents = pd.read_csv(COMMUNITY / "agents.csv")
     known: dict[int, set[int]] = defaultdict(set)
-    for team_id, sub in agents[agents.team_id.isin(targets)][
-        ["team_id", "submission_id"]
-    ].itertuples(index=False):
+    seeds = agents[agents.team_id.isin(targets)][["team_id", "submission_id"]]
+    for team_id, sub in seeds.itertuples(index=False):
         known[int(team_id)].add(int(sub))
 
     team_info: dict[int, dict] = {}
     listed: dict[int, dict] = {}
-    queue = sorted(s for subs in known.values() for s in subs)
     sub_team = {s: t for t, subs in known.items() for s in subs}
+    queue = sorted(sub_team)
     while queue:
         sub = queue.pop(0)
         if sub in listed:
             continue
-        data = list_episodes(sub)
+        data = list_episodes(sub, prefer_client=True)
         listed[sub] = data
         for t in data.get("teams", []):
             if int(t["id"]) in targets:
                 team_info[int(t["id"])] = t
-        for s in data.get("submissions", []):
-            team_id = int(s.get("teamId", 0))
-            sid = int(s["id"])
-            if team_id in targets and sid not in listed and sid not in queue:
+        discovered = [
+            (int(s.get("teamId", 0)), int(s["id"])) for s in data.get("submissions", [])
+        ] + [
+            (int(a.get("teamId") or 0), int(a.get("submissionId") or 0))
+            for ep in data.get("episodes", [])
+            for a in ep.get("agents", [])
+        ]
+        for team_id, sid in discovered:
+            if team_id in targets and sid and sid not in listed and sid not in sub_team:
                 known[team_id].add(sid)
                 sub_team[sid] = team_id
                 queue.append(sid)
-        for ep in data.get("episodes", []):
-            for a in ep.get("agents", []):
-                team_id = int(a.get("teamId", 0))
-                sid = int(a.get("submissionId", 0))
-                if team_id in targets and sid and sid not in listed and sid not in queue:
-                    known[team_id].add(sid)
-                    sub_team[sid] = team_id
-                    queue.append(sid)
         print(
             f"listed sub {sub} ({targets.get(sub_team.get(sub), '?')}): "
             f"{len(data.get('episodes', []))} episodes; queue {len(queue)}",
@@ -72,12 +72,11 @@ def main() -> None:
         team_id = sub_team[sub]
         for ep in data.get("episodes", []):
             agents_ = ep.get("agents", [])
-            mine = [a for a in agents_ if int(a.get("submissionId", 0)) == sub]
+            mine = [a for a in agents_ if int(a.get("submissionId") or 0) == sub]
             if len(mine) != 1 or len(agents_) != 2:
                 continue
             me = mine[0]
             opp = next(a for a in agents_ if a is not me)
-            seat = int(me.get("index", 0))
             bank, opp_bank = me.get("reward"), opp.get("reward")
             rows.append(
                 {
@@ -89,14 +88,16 @@ def main() -> None:
                     "end_time": ep.get("endTime"),
                     "type": ep.get("type"),
                     "state": ep.get("state"),
-                    "seat": seat,
+                    "seat": int(me.get("index") or 0),
                     "bank": bank,
                     "rating_before": me.get("initialScore"),
                     "rating_after": me.get("updatedScore"),
-                    "opp_sub": int(opp.get("submissionId", 0)),
-                    "opp_team_id": int(opp.get("teamId", 0)),
+                    "opp_sub": int(opp.get("submissionId") or 0),
+                    "opp_team_id": int(opp.get("teamId") or 0),
+                    "opp_team_name": opp.get("teamName"),
                     "opp_bank": opp_bank,
                     "opp_rating_before": opp.get("initialScore"),
+                    "opp_rating_after": opp.get("updatedScore"),
                     "result": None
                     if bank is None or opp_bank is None
                     else "W"
@@ -110,9 +111,41 @@ def main() -> None:
     hist["create_time"] = pd.to_datetime(hist.create_time, utc=True, format="mixed")
     hist["end_time"] = pd.to_datetime(hist.end_time, utc=True, format="mixed")
     hist = hist.sort_values(["team_id", "create_time", "episode_id"]).reset_index(drop=True)
-    current = {
-        t: int(info.get("publicLeaderboardSubmissionId", 0)) for t, info in team_info.items()
-    }
+
+    comm = pd.read_csv(
+        COMMUNITY / "episodes.csv",
+        usecols=["episode_id", "sub_0", "rating_0", "sub_1", "rating_1"],
+    )
+    after = {}
+    for e, s0, r0, s1, r1 in comm.itertuples(index=False):
+        after[(int(e), int(s0))] = r0
+        after[(int(e), int(s1))] = r1
+    hist["rating_after"] = hist.rating_after.astype(float)
+    hist["opp_rating_after"] = hist.opp_rating_after.astype(float)
+    fill = [after.get((e, s)) for e, s in zip(hist.episode_id, hist["sub"])]
+    hist["rating_after"] = hist.rating_after.fillna(pd.Series(fill, index=hist.index, dtype=float))
+    fill = [after.get((e, s)) for e, s in zip(hist.episode_id, hist.opp_sub)]
+    hist["opp_rating_after"] = hist.opp_rating_after.fillna(
+        pd.Series(fill, index=hist.index, dtype=float)
+    )
+    hist["rating_before"] = hist.rating_before.astype(float)
+    shifted = hist.groupby("sub").rating_after.shift(1)
+    hist["rating_before"] = hist.rating_before.fillna(shifted)
+    hist["opp_rating_before"] = hist.opp_rating_before.astype(float)
+    hist["opp_rating_before"] = hist.opp_rating_before.fillna(hist.opp_rating_after)
+
+    current = {}
+    current_source = {}
+    for t in targets:
+        info = team_info.get(t, {})
+        if info.get("publicLeaderboardSubmissionId"):
+            current[t] = int(info["publicLeaderboardSubmissionId"])
+            current_source[t] = "leaderboard"
+        else:
+            h = hist[(hist.team_id == t) & (hist.type == "EPISODE_TYPE_PUBLIC")]
+            if len(h):
+                current[t] = int(h.sort_values("create_time")["sub"].iloc[-1])
+                current_source[t] = "latest-episode"
     hist["is_current_sub"] = [s == current.get(t) for t, s in zip(hist.team_id, hist["sub"])]
     hist.to_parquet(TOP10 / "history.parquet", index=False)
 
@@ -127,13 +160,16 @@ def main() -> None:
                 "team_id": t,
                 "team_name": r.team_name,
                 "score": r.score,
+                "snapshot": r.get("snapshot"),
                 "current_sub": current.get(t),
+                "current_sub_source": current_source.get(t),
                 "subs_found": len(known[t]),
                 "subs_declared": info.get("submissionCount"),
                 "public_games": len(h),
                 "first_game": h.create_time.min() if len(h) else None,
                 "last_game": h.create_time.max() if len(h) else None,
                 "current_sub_games": int((h["sub"] == current.get(t)).sum()),
+                "games_with_rating": int(h.rating_after.notna().sum()),
             }
         )
     teams_df = pd.DataFrame(teams)

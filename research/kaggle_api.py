@@ -70,13 +70,29 @@ def _enum_name(value) -> str:
     return s.rsplit(".", 1)[-1]
 
 
+def _client_episodes(submission_id: int):
+    """The client's episode list, retried with backoff when api.kaggle.com throttles."""
+    for attempt in range(10):
+        try:
+            return _kaggle().competition_list_episodes(int(submission_id))
+        except Exception as exc:
+            if "429" not in str(exc):
+                raise
+            time.sleep(min(90, 10 * 2**attempt))
+    raise RuntimeError(f"client kept throttling for submission {submission_id}")
+
+
 def _list_via_client(submission_id: int) -> dict:
     """Same shape as the raw endpoint, minus ratings, submissions, and teams."""
     episodes = []
-    for ep in _kaggle().competition_list_episodes(int(submission_id)):
+    _throttle()
+    for ep in _client_episodes(submission_id):
         d = _as_dict(ep)
+        raw_agents = d.get("agents") or []
+        if isinstance(raw_agents, str):
+            raw_agents = json.loads(raw_agents)
         agents = []
-        for i, a in enumerate(d.get("agents") or []):
+        for i, a in enumerate(raw_agents):
             ad = _as_dict(a)
             agents.append(
                 {
@@ -100,14 +116,23 @@ def _list_via_client(submission_id: int) -> dict:
     return {"episodes": episodes, "submissions": [], "teams": [], "source": "client"}
 
 
-def list_episodes(submission_id: int, refresh: bool = False) -> dict:
-    """Full ListEpisodes payload for one submission: episodes, submissions, teams."""
+def list_episodes(submission_id: int, refresh: bool = False, prefer_client: bool = False) -> dict:
+    """Full ListEpisodes payload for one submission: episodes, submissions, teams.
+
+    With prefer_client the authenticated client is used first (fast, never throttled so far,
+    but no ratings); a cached raw payload is still returned when one exists.
+    """
     path = EPISODE_CACHE / f"{submission_id}.json"
     if path.exists() and not refresh:
         age = datetime.now(UTC) - datetime.fromtimestamp(path.stat().st_mtime, UTC)
         cached = json.loads(path.read_text(encoding="utf-8"))
-        if age < CACHE_MAX_AGE and cached.get("source") != "client":
+        if age < CACHE_MAX_AGE and (prefer_client or cached.get("source") != "client"):
             return cached
+    if prefer_client:
+        data = _list_via_client(submission_id)
+        path.parent.mkdir(parents=True, exist_ok=True)
+        path.write_text(json.dumps(data), encoding="utf-8")
+        return data
     data = None
     for attempt in range(MAX_ATTEMPTS):
         _throttle()

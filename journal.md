@@ -118,6 +118,34 @@ the arena's `tape:` opponents understate reactive teams (whose recordings cannot
 and any deterministic plan we write must survive weeds landing anywhere, because the seed
 alone does not fix them. This is the mechanism behind the forum's "weed route repair" work.
 
+### Surprise: SpaTaro's uniqueness is partly manufactured
+Every SpaTaro game is distinct from turn 24, yet its day-0 plan is stable: 2 cows, 2 sheep,
+7-10 melons, 6-8 wheat, 4-5 pastures, 6 hands hired on turn 0, animals placed by turn 4.
+The difference between games is dozens of `BUY_PRODUCT CARROT/MILK/TOMATO/WOOL/MELON/EGG n`
+orders the engine cannot execute (only wheat and fertilizer are buyable), sprinkled through
+the market queue with varying counts. They cost nothing and make every action stream, and
+every naive plan hash, unique. Whether the intent is anti-copying or a side effect of a
+noisy market layer, the effect is the same: replay-based cloning of SpaTaro is harder.
+
+### Decision: measure plans, not just streams
+Three fingerprints per game now: the exact action stream (community convention), the field
+stream (farmer + hands only), and an order-insensitive plan signature (multiset of
+non-movement unit ops with arguments plus executable market orders). The plan signature
+ignores orders the engine would drop, and `invalid_orders` per game is a feature in its own
+right. This separates "different plan" from "same plan, different path" from "same plan
+plus noise".
+
+### Checkpoint: histories crawled for 14 teams
+`data/top10/history.parquet`: 56,338 (submission, game) rows from 364 submissions. Public
+games per team range from 906 (Catalyst, playing since 2026-09-12) to 9,162 (Mengfei Li,
+77 submissions since 08-02). Every team exceeds 250 games, so all get F/Q1/Q2/Q3/L plus C0:
+4,200 sample rows, 4,043 unique episodes, 941 already stored from the prefetch.
+Two caveats recorded for the report: the API's `submissionCount` is the number of *active*
+submissions (always 2), not the lifetime count, so "found vs declared" cannot be checked that
+way; and ratings come from the community index because both Kaggle listing endpoints throttle,
+so rating coverage is uneven (4,519 of 9,162 games for Mengfei Li, 1 of 906 for Catalyst).
+A slow refresher for the current submissions' ratings runs after the downloads.
+
 ### Surprise: the top 10 is brand new
 Every current top-10 submission is 0-6 days old (all created 2026-09-08 to 09-14), and the
 board's tenth place flipped between two reads an hour apart. The community index has only

@@ -86,3 +86,8 @@ entry also says why I missed it and what changes so it does not happen again.
 - **Caught by:** me (background job exited 1).
 - **Prevention:** never run the metadata crawl concurrently with bulk downloads; make every
   network client survive a throttling burst rather than raise on it.
+- **Follow-up:** after the downloads ended, the public endpoint still answered every call with
+  429 and `Retry-After: 30`, so the crawl was moved to the authenticated client (5 listings
+  in 1.1 s in a probe). That client then returned 429 from `api.kaggle.com` after ~60 fast
+  listings. Final shape: client-first with 1.5 s spacing and exponential backoff (10 tries,
+  capped at 90 s), ratings joined from the community index instead of the public endpoint.

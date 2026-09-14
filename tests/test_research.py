@@ -81,3 +81,15 @@ def test_stream_hash_matches_community_convention():
     ours = stream_hashes(actions_from_replay(replay, 0))
     for cut in (24, 100, 200, 400, 719):
         assert ours[f"h{cut}"] == ref[f"stream_h{cut}"]
+
+
+@pytest.mark.skipif(not replay_path(PROBE_EPISODE).exists(), reason="probe replay not stored")
+def test_day_table_covers_every_day():
+    from research.narrate import day_table
+
+    trace = build_trace(load_replay(PROBE_EPISODE))
+    table = day_table(trace, 0)
+    assert len(table) == 30
+    assert table.money.iloc[0] == 3000
+    assert table.quads.iloc[-1] >= 1
+    assert (table.harvest >= 0).all()
