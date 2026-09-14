@@ -50,3 +50,39 @@ entry also says why I missed it and what changes so it does not happen again.
 - **Why I missed it:** assumed a Python formatter only touches `.py` files.
 - **Prevention:** run formatters with an explicit path list, or check `git status` for
   unexpected modifications before every commit. Reference material under `data/` is read-only.
+
+### P6: leaderboard snapshot crashed on a team name
+- **Symptom:** `scripts/top10/snapshot.py` died with `CalledProcessError` from
+  `kaggle competitions leaderboard -s -v`; the CLI had printed
+  `'charmap' codec can't encode characters in position 9-13` after the first rows.
+- **Cause:** same root cause as P2, one layer down: the CLI runs as a subprocess whose stdout
+  is cp1252 on this machine, and the top 50 contains team names in mathematical bold and CJK
+  characters. My subprocess call also used `check=True` without surfacing stderr, so the first
+  run in the background log showed only a traceback.
+- **Fix, first attempt:** pass `PYTHONIOENCODING=utf-8` and `PYTHONUTF8=1` to the subprocess and
+  decode its output as UTF-8. That fixed the CLI call, and the rerun then crashed one line
+  later in my own `print` of the rank-7 team name, for the same reason. Two background runs
+  lost to one root cause.
+- **Fix, second attempt:** `research/__init__.py` reconfigures `sys.stdout` and `sys.stderr` to
+  UTF-8 on import, so every research script and test is covered without remembering anything.
+- **Caught by:** me (background job exited 1, twice).
+- **Why I missed it the first time:** I patched the layer that failed instead of the property
+  that failed (console encoding for the whole process tree).
+- **Prevention:** on this machine, treat "prints user-generated text" as "needs UTF-8 streams",
+  and fix it once at the process level, not per call site.
+
+### P7: the history crawl died on the episode endpoint's rate limit
+- **Symptom:** `crawl.py` exited after 81 of ~190 submissions with
+  `RuntimeError: ListEpisodes kept throttling for submission 55865537`. Progress had slowed
+  from ~40 listings a minute (plan-mode probe) to ~3.
+- **Cause:** the public endpoint returns 429 in bursts; my client gave up after six tries with
+  a linear 5-30 s backoff. I had also started the bulk replay download (65 replays a minute
+  through the authenticated client) from the same address at the same time, which is the
+  likeliest reason the bursts got denser.
+- **Fix:** exponential backoff capped at 120 s over eight attempts, honour `Retry-After`,
+  and fall back to the authenticated Python client (same episodes and agents, no ratings;
+  the cached payload is marked `source=client` so a refresh can fill the ratings later).
+  The crawl was already resumable through its per-submission cache, so nothing was lost.
+- **Caught by:** me (background job exited 1).
+- **Prevention:** never run the metadata crawl concurrently with bulk downloads; make every
+  network client survive a throttling burst rather than raise on it.

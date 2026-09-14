@@ -60,3 +60,66 @@ against `starter`.
 2. Build the economy as a runtime agent (labor scheduling, feed safety, land timing) until it
    beats the tape family on both seats.
 3. Only then work the market layer: premium sell timing and clone detection.
+
+### Milestone: top-10 study planned and approved
+Iminabo's ask: for each top-10 team, study the first 50 games, the last 50, and 50-game windows
+at the quarter points of long histories, and settle whether our agent should be a fixed plan or
+switch strategy. Plan file: `~/.claude/plans/parallel-floating-aurora.md`. Facts established in
+plan mode that the pipeline relies on:
+- The unauthenticated `ListEpisodes` endpoint returns, per game, both agents' bank, rating
+  before and after, submission and team ids, plus the submissions and teams involved. The CLI
+  and the Python client drop the ratings, so the pipeline calls the endpoint directly
+  (1.2 s spacing, cached).
+- Replays download through the authenticated Python client only; the old public CDN path
+  now returns 404. A replay is 20-33 MB and compresses ~236x with zstd.
+- Replaying a recorded game from its seed and both action streams reproduced episode
+  108982600's banks exactly (113995 / 113209) in 4.7 s. That makes recorded games usable as
+  local opponents and lets us regenerate any observation from actions alone.
+- Community assets reused: `georgymamarin/kaggriculture-episodes` (index of 145k episodes,
+  Apache-2.0) for team-to-submission seeds; `raykkretzschmar/kaggriculture-reference-agents`
+  (MIT, ten runnable agents) and `destbreso/kaggriculture-benchmark-matchups` (CC0, 45k
+  replayable matchups) noted for the arena.
+
+### Decision: sample windows over the team's whole history, plus the current sub's first 50
+"First 50 plays" is read as the team's earliest games across all its submissions, because
+that is what shows how they climbed. The current submission's first 50 (window C0) is added
+because that is the agent that will be on the ladder at the deadline. Histories of 250 games
+or fewer are taken whole; sampling them would cost more than fetching them.
+
+### Decision: study the union of the screenshot's top 10 and the live top 10
+Between Iminabo's screenshot, my first read, and the crawl's snapshot an hour later, four
+teams rotated through ranks 7-10 (Otter Vibe, Catalyst, Thomas Tschinkel, feel the agi out;
+アルモンド, Artem The Farmer, HowardLeeTW, DSM in). Ranks 5-15 sit within the ±50-point
+noise the former #1 documented, so "the top 10" is really a band. The study therefore covers
+every team that was top-10 in either the screenshot or the snapshot (14 teams), each tagged
+with its live rank at snapshot time. Cost: roughly 40% more replays than a strict ten.
+
+### Surprise: the top three are not tapes
+First 144 traces (the current subs' first and last 50 games). Distinct field-action lines
+across a submission's games, by turn cut:
+- Majkel1337 (#1), 100 games: 4 openings at turn 24 (largest 49%), 23 lines at turn 48,
+  53 at turn 100, all 100 distinct by turn 300. Market orders branch the same way.
+- ymg_aq (#2), 47 games: one identical line through turn 48 (day 2), 21 lines at turn 100,
+  all distinct by turn 200. The break sits right after the first shop unlock on day 3.
+- SpaTaro (#3), 19 games: every game distinct from turn 24 onward.
+So the leaders react to state from the first days; the "everyone replays a tape" picture
+from the forum describes the mass of the ladder, not its head. Sell units in traces are now
+the executed amount (capped by the shed), because one agent requests 17,878 wheat a game.
+
+### Surprise: weeds are coupled to the opponent through the shared random stream
+Replaying Majkel1337's recorded actions from episode 108982600 on its own seed:
+- against the original opponent's recording: 113,209 (exact);
+- against `pass`: 52,568; against `starter`: 48,467. Weeds land on days 3, 5, 8 (five at once)
+  instead of days 1, 16, 17. The opponent's farm consumes a different number of random draws,
+  so every later draw shifts.
+- seats swapped (same two recordings): 110,698 / 114,496, close but not exact.
+Consequences: a verbatim tape is only faithful against the opponent it was recorded with;
+the arena's `tape:` opponents understate reactive teams (whose recordings cannot react);
+and any deterministic plan we write must survive weeds landing anywhere, because the seed
+alone does not fix them. This is the mechanism behind the forum's "weed route repair" work.
+
+### Surprise: the top 10 is brand new
+Every current top-10 submission is 0-6 days old (all created 2026-09-08 to 09-14), and the
+board's tenth place flipped between two reads an hour apart. The community index has only
+0-2 stored games for these subs, so their games must be fetched directly. Team histories are
+long though: Mengfei Li has 70+ submissions since 2026-08-02, Thomas Tschinkel 49+ since 08-14.

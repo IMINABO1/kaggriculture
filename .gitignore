@@ -225,3 +225,15 @@ logs/
 *.tar.gz
 kaggriculture.zip
 .python-version.bak
+
+# research data (large or regenerable)
+data/community/
+data/replays/
+data/traces/
+data/top10/episodes/
+reports/top10/figs/*.png
+
+# regenerable research artifacts
+data/top10/prefetch_ids.txt
+opponents/test/
+opponents/top10/
