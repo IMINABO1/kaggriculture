@@ -196,3 +196,13 @@ entry also says why I missed it and what changes so it does not happen again.
   rule as a footnote. When a rule has been checked, the checked rule wins over the example.
 - **Prevention:** medal zones come from `snapshot.py --full` (Kaggle's rule applied to the
   live team count), never from a hand-picked cutoff, and every report table shows the zone.
+
+### P14: the 63-team crawl died on one dropped connection
+- **Symptom:** `crawl.py` exited with `ConnectionError: Remote end closed connection
+  without response` after 555 listings, before writing `teams.csv`.
+- **Cause:** the listing client retried only on 429; every other exception propagated.
+- **Fix:** connection errors and timeouts now back off and retry like a 429 (up to ten
+  attempts). The crawl resumed from its per-submission cache and lost nothing.
+- **Caught by:** me (background job exited with a traceback).
+- **Prevention:** the same rule as P7 and P12: a network call in a long job retries on
+  every transient failure, not only the one seen last.

@@ -95,15 +95,20 @@ def _enum_name(value) -> str:
 
 
 def _client_episodes(submission_id: int):
-    """The client's episode list, retried with backoff when api.kaggle.com throttles."""
+    """The client's episode list, retried with backoff on throttling and dropped connections."""
     for attempt in range(10):
         try:
             return _kaggle().competition_list_episodes(int(submission_id))
+        except requests.RequestException as exc:
+            transient = "429" in str(exc) or not isinstance(exc, requests.HTTPError)
+            if not transient:
+                raise
+            time.sleep(min(90, 10 * 2**attempt))
         except Exception as exc:
             if "429" not in str(exc):
                 raise
             time.sleep(min(90, 10 * 2**attempt))
-    raise RuntimeError(f"client kept throttling for submission {submission_id}")
+    raise RuntimeError(f"client kept failing for submission {submission_id}")
 
 
 def _list_via_client(submission_id: int) -> dict:
