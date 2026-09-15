@@ -40,6 +40,15 @@ def main() -> None:
         choices=["all", "C0"],
         help="windows for teams not in the frozen file: all history windows, or C0 only",
     )
+    ap.add_argument(
+        "--keep-c0",
+        action="store_true",
+        help=(
+            "frozen teams also keep their frozen C0 rows, and teams.csv / history.parquet are "
+            "reset to that submission (a team's two active submissions swap places on the "
+            "board as ratings move, so 'current' is pinned to the first snapshot)"
+        ),
+    )
     args = ap.parse_args()
 
     hist = pd.read_parquet(TOP10 / "history.parquet")
@@ -48,11 +57,17 @@ def main() -> None:
     if "group" not in teams:
         teams["group"] = "top"
     frozen = pd.read_csv(args.freeze) if args.freeze else pd.DataFrame(columns=["team_id"])
+    pinned: dict[int, int] = {}
     if "window" in frozen:
-        frozen = frozen[frozen.window != "C0"]
+        if args.keep_c0:
+            c0 = frozen[frozen.window == "C0"]
+            pinned = {int(t): int(s) for t, s in zip(c0.team_id, c0["sub"])}
+        else:
+            frozen = frozen[frozen.window != "C0"]
 
     rows = []
     kept = 0
+    repinned = 0
     for _, t in teams.iterrows():
         h = (
             hist[hist.team_id == t.team_id]
@@ -60,7 +75,8 @@ def main() -> None:
             .reset_index(drop=True)
         )
         old = frozen[frozen.team_id == t.team_id]
-        if (args.freeze_group == "all" or t.group == args.freeze_group) and len(old):
+        is_frozen = (args.freeze_group == "all" or t.group == args.freeze_group) and len(old)
+        if is_frozen:
             rows.extend(old.to_dict("records"))
             kept += 1
             history_windows = {}
@@ -68,6 +84,14 @@ def main() -> None:
             history_windows = {}
         else:
             history_windows = windows(len(h))
+        if is_frozen and int(t.team_id) in pinned:
+            repinned += pinned[int(t.team_id)] != t.current_sub
+            teams.loc[teams.team_id == t.team_id, "current_sub"] = pinned[int(t.team_id)]
+            teams.loc[teams.team_id == t.team_id, "current_sub_source"] = "frozen"
+            teams.loc[teams.team_id == t.team_id, "current_sub_games"] = int(
+                (h["sub"] == pinned[int(t.team_id)]).sum()
+            )
+            continue
         for name, positions in history_windows.items():
             for pos in positions:
                 r = h.iloc[pos]
@@ -101,6 +125,15 @@ def main() -> None:
                 )
     sample = pd.DataFrame(rows)
     sample.to_csv(TOP10 / "sample.csv", index=False)
+    if pinned:
+        teams.to_csv(TOP10 / "teams.csv", index=False)
+        full = pd.read_parquet(TOP10 / "history.parquet")
+        current_of = dict(zip(teams.team_id, teams.current_sub))
+        full["is_current_sub"] = [s == current_of.get(t) for t, s in zip(full.team_id, full["sub"])]
+        full.to_parquet(TOP10 / "history.parquet", index=False)
+        print(
+            f"current submissions pinned to the frozen sample for {len(pinned)} teams ({repinned} changed)"
+        )
 
     summary = sample.groupby(["team_name", "window"]).size().unstack(fill_value=0)
     print(summary.to_string())

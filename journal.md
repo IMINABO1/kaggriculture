@@ -331,3 +331,14 @@ The board moved a lot in 13 hours (Unknown Mother-Goose from 8 to 3, ElephtAI fr
 234), so the report states each team's rank at both snapshots. New teams get only the
 current-submission window (C0, 50 games each) because of the replay quota; the 29 teams
 already sampled keep their windows (`data/top10/sample_29teams_2026-09-15T0033Z.csv`).
+
+### Checkpoint: histories for 63 teams, current submissions confirmed
+Crawl at 15:20Z: 2,189 submissions, 309,306 (submission, game) rows. The 12-hour listing
+cache had expired, so every listing came from the client, which carries no team block:
+all 63 current submissions started as "latest episode" guesses and the ratings refresher
+corrected 36 of them from the endpoint's team block. A team's most recently played
+submission is its leaderboard submission only about half the time (P11 was not a fluke).
+Sample: the 29 already-studied teams keep their windows; the 34 new gold, silver, and
+bronze teams get C0 only (50 games each, 1,700 replays, about 14 hours at the quota's
+pace). The fetcher takes C0 first, so the zone comparison lands before the first batch's
+remaining history windows.
