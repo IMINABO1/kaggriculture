@@ -230,3 +230,26 @@ About 160 replays into the batch, the replay endpoint began answering 429 with a
 Retry-After near 20 minutes (P12). The community replay dataset holds only 92 of the
 missing games, so the fetch is quota-bound and runs as one long background job with a
 shared wait gate. Throughput per quota window is measured below once the window reopens.
+
+### Checkpoint: batch histories crawled, sample cut, comparison code in place
+- `history.parquet`: 127,435 (submission, game) rows from 843 submissions for 29 teams.
+  Batch histories range from 728 games (𝕯𝖊𝖔𝖉𝖎𝖒𝖘 & 𝕮𝖔, playing since 09-02) to 9,900
+  (leave you, 95 submissions since 08-01). Every batch team exceeds 250 games, so all get
+  F/Q1/Q2/Q3/L plus C0: 8,700 sample rows, 8,480 unique episodes, 4,851 still to fetch.
+- Four current submissions corrected from the endpoint's team block (P11), one of them a
+  first-study team (アルモンド), whose dossier is rebuilt from the right submission.
+- `analyze.py` builds `groups.md`: per-team profiles of the current submissions, group
+  medians with a Mann-Whitney AUC and p per feature, branch-point and driver counts,
+  head-to-head between the groups, and a loss breakdown. A dry run on the 158 batch replays
+  fetched before the quota closed produced tables and figures without errors; its numbers
+  are not reported anywhere.
+- Committed and pushed as f07814c.
+
+### Surprise: the official daily episode datasets hold only the leaders' games
+Kaggle publishes one dataset per day (`kaggle/kaggriculture-episodes-<date>`, indexed by
+`kaggle/kaggriculture-episodes-index`) with that day's top-scoring 650-930 episodes as
+individual JSON files, and the datasets endpoint is not rationed (32 MB in 3 s). A full
+index (`scripts/top10/daily_index.py`, 32,802 episodes over 47 days) covers only 290 of the
+4,851 missing games: 184 of the top-14's Q3 backlog and about 100 batch games. The batch
+teams' games rarely score high enough to be "top episodes". The fetcher now takes indexed
+episodes from the daily datasets and everything else from the rationed endpoint.

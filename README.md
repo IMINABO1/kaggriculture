@@ -18,11 +18,12 @@ uv run python scripts/package.py                                             # b
 kaggle competitions submit kaggriculture -f submission.tar.gz -m "..."
 ```
 
-## Top-14 study
+## Top-14 and next-15 study
 
-How the prize contenders play, sampled across each team's history. Method in
-`reports/top10/METHOD.md`, results in `reports/top10/summary.md` and the team dossiers,
-recommendation in `reports/top10/decision_memo.md`.
+How the prize contenders play, sampled across each team's history, and what separates them
+from the next 15 teams of the gold zone. Method in `reports/top10/METHOD.md`, results in
+`reports/top10/summary.md`, the group comparison in `reports/top10/groups.md`, one dossier
+per team, recommendation in `reports/top10/decision_memo.md`.
 
 ## Layout
 

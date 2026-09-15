@@ -66,11 +66,14 @@ recomputed, because one team's current submission had been mis-identified (P11 i
   ratings from the community index, and a slow refresher (`refresh_ratings.py`) fills the rest
   from the public endpoint. Result: `data/top10/history.parquet`, 56,338 (submission, game)
   rows, 99% of sampled games with a rating.
-- **Replays**: downloaded through the authenticated client, one 20-33 MB JSON per game,
-  stored zstd-compressed (about 150 KB each) under `data/replays/`. A replay holds both
-  seats' actions and full observations for all 720 turns. Kaggle rations this endpoint
-  (429 with a Retry-After near 20 minutes once a quota is spent), so the fetcher waits the
-  quota out with one shared gate and runs for hours; see section 8 for the counts.
+- **Replays**: one 20-33 MB JSON per game, stored zstd-compressed (about 150 KB each)
+  under `data/replays/`. A replay holds both seats' actions and full observations for all
+  720 turns. Two sources: the official daily episode datasets
+  (`kaggle/kaggriculture-episodes-<date>`, each day's top-scoring 650-930 games as
+  individual files, indexed by `scripts/top10/daily_index.py`, no quota) for the games
+  they hold, and the authenticated client's replay endpoint for the rest. Kaggle rations
+  that endpoint (429 with a Retry-After near 20 minutes once a quota is spent), so the
+  fetcher waits it out with one shared gate and runs for hours; see section 8 for counts.
 
 ## 4. What was extracted from each game
 
@@ -148,7 +151,9 @@ uv run python scripts/top10/snapshot.py --top 0 --include "Team A,Team B" --rank
 uv run python scripts/top10/crawl.py                                          # histories
 uv run python scripts/top10/refresh_ratings.py --budget-min 8                 # ratings; fixes guessed current submissions
 uv run python scripts/top10/sample.py --freeze data/top10/sample_top14_2026-09-14T1936Z.csv   # windows (top-14 frozen)
-uv run python scripts/top10/fetch.py --jobs 3                                 # replays; waits out the quota, hours
+uv run python scripts/top10/daily_index.py                                    # index the official daily episode datasets
+uv run python scripts/top10/fetch.py --jobs 2 --source daily                  # replays held by the daily datasets, no quota
+uv run python scripts/top10/fetch.py --jobs 2 --source endpoint               # the rest; waits out the quota, hours
 uv run python scripts/top10/extract.py --traces-only --jobs 2 --limit 700     # traces, in chunks
 uv run python scripts/top10/extract.py --jobs 2                               # feature table
 uv run python scripts/top10/analyze.py                                        # summary, groups, dossiers

@@ -189,24 +189,38 @@ def replay_path(episode_id: int) -> Path:
     return REPLAYS / f"{episode_id}.json.zst"
 
 
-QUOTA_ATTEMPTS = 4
+QUOTA_GIVE_UP_S = 4 * 3600
+QUOTA_MIN_WAIT_S = 120.0
+QUOTA_FILE = EPISODE_CACHE.parent / "quota_until.txt"
+
+
+def _quota_open_at_wall() -> float:
+    """Epoch time when the replay endpoint may be tried again (persisted across runs)."""
+    try:
+        return float(QUOTA_FILE.read_text(encoding="utf-8").strip())
+    except (OSError, ValueError):
+        return 0.0
 
 
 def _wait_for_quota() -> None:
-    """Block while the replay endpoint is known to be refusing (shared by all workers)."""
+    """Block while the replay endpoint is known to be refusing (shared by all workers and runs)."""
     with _quota_lock:
-        wait = _quota_open_at - time.monotonic()
+        wait = max(_quota_open_at - time.monotonic(), _quota_open_at_wall() - time.time())
     if wait > 0:
         time.sleep(wait)
 
 
 def _note_quota(retry_after: str | None) -> None:
-    """Record a 429 from the replay endpoint; Retry-After has been ~20 minutes in practice."""
+    """Record a 429 from the replay endpoint; Retry-After has been 1-20 minutes in practice."""
     global _quota_open_at
     wait = float(retry_after) if retry_after and retry_after.isdigit() else 60.0
+    wait = max(wait, QUOTA_MIN_WAIT_S)
     with _quota_lock:
         _quota_open_at = max(_quota_open_at, time.monotonic() + wait + 2)
-    print(f"replay quota hit: waiting {wait:.0f}s", flush=True)
+        QUOTA_FILE.parent.mkdir(parents=True, exist_ok=True)
+        QUOTA_FILE.write_text(f"{time.time() + wait + 2:.0f}", encoding="utf-8")
+    stamp = time.strftime("%H:%M:%SZ", time.gmtime())
+    print(f"{stamp} replay quota hit: waiting {wait:.0f}s", flush=True)
 
 
 def download_replay(episode_id: int) -> Path:
@@ -218,7 +232,8 @@ def download_replay(episode_id: int) -> Path:
 
     api = _kaggle()
     with tempfile.TemporaryDirectory() as tmp:
-        for attempt in range(QUOTA_ATTEMPTS):
+        started = time.monotonic()
+        while True:
             _wait_for_quota()
             try:
                 with api.build_kaggle_client() as kaggle:
@@ -232,8 +247,10 @@ def download_replay(episode_id: int) -> Path:
                 if exc.response is None or exc.response.status_code != 429:
                     raise
                 _note_quota(exc.response.headers.get("Retry-After"))
-        else:
-            raise RuntimeError(f"replay endpoint kept throttling for episode {episode_id}")
+                if time.monotonic() - started > QUOTA_GIVE_UP_S:
+                    raise RuntimeError(
+                        f"replay endpoint kept throttling for episode {episode_id}"
+                    ) from exc
         outfile = Path(tmp) / f"episode-{episode_id}-replay.json"
         api.download_file(
             response, str(outfile), kaggle.http_client(), quiet=True, max_retries=2, timeout=90
@@ -241,14 +258,37 @@ def download_replay(episode_id: int) -> Path:
         if not outfile.exists():
             raise FileNotFoundError(f"no replay file returned for episode {episode_id}")
         raw = outfile.read_bytes()
+    _store_raw(episode_id, raw)
+    return out
+
+
+def download_replay_from_daily(episode_id: int, dataset: str) -> Path:
+    """Fetch one replay from an official daily episode dataset (datasets endpoint, no quota)."""
+    out = replay_path(episode_id)
+    if out.exists():
+        return out
+    api = _kaggle()
+    with tempfile.TemporaryDirectory() as tmp:
+        api.dataset_download_file(
+            dataset, f"{int(episode_id)}.json", path=tmp, force=True, quiet=True
+        )
+        files = list(Path(tmp).glob("*.json"))
+        if not files:
+            raise FileNotFoundError(f"{dataset} returned no file for episode {episode_id}")
+        raw = files[0].read_bytes()
+    _store_raw(episode_id, raw)
+    return out
+
+
+def _store_raw(episode_id: int, raw: bytes) -> None:
     head, tail = raw[:64].lstrip(), raw[-64:].rstrip()
     if not (head.startswith(b"{") and tail.endswith(b"}") and b'"steps"' in raw):
         raise ValueError(f"replay {episode_id} does not look like a replay document")
+    out = replay_path(episode_id)
     out.parent.mkdir(parents=True, exist_ok=True)
     tmp_out = out.with_suffix(".tmp")
     tmp_out.write_bytes(zstd.ZstdCompressor(level=10).compress(raw))
     tmp_out.replace(out)
-    return out
 
 
 def load_replay(episode_id: int) -> dict:

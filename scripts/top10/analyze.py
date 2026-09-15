@@ -51,6 +51,7 @@ PLAN_COLS = {
     "invalid_orders": "unexecutable market orders",
 }
 GROUP_NAMES = {"top": "top-14", "batch": "next-15"}
+MIN_PROFILE_GAMES = 10
 GROUP_COLORS = {"top": SERIES[0], "batch": SERIES[1]}
 KAGGLE_GOLD_RANK = 28
 RATING_MARKS = (1, 10, 25, 50, 100, 200)
@@ -639,6 +640,7 @@ def cross_team(teams, hist, sample, feats) -> tuple[str, str]:
     ].copy()
     cov["first_game"] = cov.first_game.astype(str).str[:10]
     cov["last_game"] = cov.last_game.astype(str).str[:10]
+    cov["group"] = cov.group.map(GROUP_NAMES)
     md += ["## Coverage", "", md_table(cov), ""]
 
     latest = current_games(teams, sample, feats)
@@ -1187,10 +1189,11 @@ def group_strip_figure(profile: pd.DataFrame, features: list[str], path) -> None
 
 def group_comparison(teams, hist, feats, latest) -> tuple[str, str]:
     """(section for summary.md, full text of groups.md)."""
-    profiles = []
+    profiles, too_few = [], []
     for _, t in teams.iterrows():
         cur = latest.get(t.team_name)
-        if cur is None or not len(cur):
+        if cur is None or len(cur) < MIN_PROFILE_GAMES:
+            too_few.append(f"{t.team_name} ({0 if cur is None else len(cur)})")
             continue
         profiles.append(team_profile(t, cur, hist))
     profile = pd.DataFrame(profiles)
@@ -1285,7 +1288,9 @@ def group_comparison(teams, hist, feats, latest) -> tuple[str, str]:
             f"a per-team median over the current submission's sampled games, compared across "
             f"teams: 'P(top > next)' is the chance that a random top-14 team's value is above a "
             f"random next-15 team's (0.5 = no separation), 'p' is the two-sided Mann-Whitney "
-            f"test. Numbers are per game unless stated."
+            f"test. Numbers are per game unless stated. Teams with fewer than "
+            f"{MIN_PROFILE_GAMES} sampled games of their current submission are left out of "
+            f"the comparison" + (f": {', '.join(too_few)}." if too_few else ".")
         ),
         "",
         "## Who is in each group",
