@@ -299,3 +299,18 @@ on the same features with a Mann-Whitney AUC and p per feature. Headline numbers
   batch teams have 200 games yet).
 The interim report uses the C0 window for both groups (`analyze.py --profile-window C0`);
 it is re-run on all current-submission games when the batch's L window lands.
+
+### Checkpoint: comparison re-run on every current-submission game
+The batch's L window landed at 12:16Z (1,305 of 1,305), so the comparison now measures all
+29 teams on every sampled game of their current submission (50-126 games each) instead of
+the first 50 only. Same picture, nearly the same numbers: distinct games at turn 400 100%
+vs 69%; first field branch on day 1 for 7 of 14 top teams vs 1 of 15 batch, on day 8 or
+later for 3 vs 11; opponent-driven branching only in the top group (Majkel1337, Orbital
+Terraformer); weed-driven for 6 batch teams; 11 of 15 batch teams on a shared line at day
+4 vs 3 of 14; melon last sale day 19 vs 11; strawberry first sale 15.5 vs 19; weed
+tile-days 10.5 vs 0; CARE 334 vs 403; FERTILIZE 154 vs 111; final money 104k vs 103k; win
+rate 84% vs 83% against opponents rated 2,453 vs 2,394; current subs head to head 60-13.
+Losses differ in kind: the top-14 lose mostly to each other (58%, median margin 4.5k),
+the batch to unstudied teams (78%, margin 2.3k). Memo findings 10-15 updated. The
+fetcher continues on the batch's F and quarter windows (about 3,200 replays, a day at
+the quota's pace); they change only the dossiers' evolution tables.

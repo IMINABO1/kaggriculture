@@ -64,8 +64,8 @@ recomputed, because one team's current submission had been mis-identified (P11 i
   returns ratings before and after each game but throttles for long stretches; the
   authenticated client is fast but returns no ratings. The crawl uses the client, joins
   ratings from the community index, and a slow refresher (`refresh_ratings.py`) fills the rest
-  from the public endpoint. Result: `data/top10/history.parquet`, 56,338 (submission, game)
-  rows, 99% of sampled games with a rating.
+  from the public endpoint. Result: `data/top10/history.parquet`, 127,435 (submission,
+  game) rows for the 29 teams, 100% of sampled games with a rating.
 - **Replays**: one 20-33 MB JSON per game, stored zstd-compressed (about 150 KB each)
   under `data/replays/`. A replay holds both seats' actions and full observations for all
   720 turns. Two sources: the official daily episode datasets
@@ -100,6 +100,19 @@ The flat table `data/top10/features.parquet` has one row per (game, seat) with a
 above as scalars, joined to the history (submission, ratings, opponent, result) and the
 window labels. The day-by-day timeline shown in each dossier is built from the trace by
 `research/narrate.py`.
+
+## 4b. How the two groups were compared
+
+`groups.md` (built by `analyze.py`) profiles each team on every sampled game of its
+current submission: the first branch cut and its dominant driver (section 5), the share of
+distinct games at turn 400, medians of the farm, market, weed, and noise features, and
+the rating path. Group medians are compared feature by feature with a Mann-Whitney test
+(`research/stats.py`): "P(top > next)" is the chance that a random top-14 team's value is
+above a random next-15 team's, 0.5 meaning no separation. It also counts, per cut, how
+many teams of each group sit on a field line byte-identical to another studied team's,
+tallies all public games between the groups, and breaks down each group's sampled losses
+by opponent group, margin, and the feature the winner differed in most (in pooled standard
+deviations). Teams with fewer than 10 sampled current-submission games are left out.
 
 ## 5. How "deterministic or adaptive" was judged
 

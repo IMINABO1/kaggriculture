@@ -90,35 +90,38 @@ economy on the board.
 Iminabo's second question: is there a reason the other gold medalists are not top-10? The
 next 15 are chunks of ranks 8-48 at the 2026-09-15T0033Z snapshot (Kaggle's medal rule puts
 gold at rank 28 for 9,066 teams, so ranks 8-23 of the batch are gold under any rule and
-29-48 only under the top-50 assumption). This section uses the current submission's first
-50 games (window C0) for every one of the 29 teams, so both groups are measured on the same
-window; the batch's later windows are still downloading and `groups.md` is re-run when they
-land. Numbers are per-team medians, and "AUC" is the chance that a random top-14 team is
-above a random next-15 team on that feature (0.5 = no separation).
+29-48 only under the top-50 assumption). This section measures every one of the 29 teams
+on every sampled game of its current submission (its first 50 plus its games among the
+team's last 50), 50 to 126 games per team. The batch's earlier history windows are still
+downloading under Kaggle's replay quota; they feed the dossiers, not this comparison.
+Numbers are per-team medians, and "AUC" is the chance that a random top-14 team is above a
+random next-15 team on that feature (0.5 = no separation). The same comparison run on the
+first-50 window alone (the interim build) gave the same picture and nearly the same numbers.
 
 **10. The next 15 are mostly one public tape family; the top 7 are all unique.** At turn 100
 (day 4), 11 of the 15 batch teams sit on a field line byte-identical to another studied
 team's. Three of the 14 top teams do: アルモンド, Thomas Tschinkel, and Catalyst, the bottom
 of the top-14, on the same line as nine batch teams. Through day 8 the largest family still
-has seven members; two batch teams (leave you, Zhenghongshuang) are identical to each other
-through turn 400. None of the top 7 shares a line with anyone from turn 24 on.
+has seven members, and at day 12 eight of the 15 batch teams are still on a line shared
+with someone (two of the 14 top teams). None of the top 7 shares a line with anyone from
+turn 24 on.
 
 **11. The batch branches late and for the weather; the leaders branch on day 1 for the
-opponent.** First field branch on day 1: 6 of 14 top teams, 1 of 15 batch; on day 8 or
-later: 5 of 14 top, 12 of 15 batch. Opponent-driven branching exists only in the top group
-(Majkel1337, Orbital Terraformer, Artem The Farmer). Weed-driven branching is the batch's
-usual mode (5 teams): a tape with weed repair. At turn 400 the median top team has 100%
-distinct games, the median batch team 74%.
+opponent.** First field branch on day 1: 7 of 14 top teams, 1 of 15 batch; on day 8 or
+later: 3 of 14 top, 11 of 15 batch. Opponent-driven branching exists only in the top group
+(Majkel1337, Orbital Terraformer). Weed-driven branching is the batch's usual mode (6
+teams, plus 4 that branch on the first shop draw): a tape with weed repair. At turn 400 the
+median top team has 100% distinct games, the median batch team 69%.
 
 **12. The economy is the same.** Nothing that measures farm size separates the groups:
 3 quadrants, first land on day 6, 12 hands, 8 cows, about 160 wheat plantings, about 1,150
-units sold, about 260 units in the last three days, final money 105k vs 103k, rating after
-25 and 50 games. The batch buys its second land two days later (day 11 vs 9.5), plants two
-more strawberry tiles (33 vs 31), buys one more sheep and one more goose, CAREs more (403
-vs 338 ops) and fertilizes less (113 vs 151).
+units sold, about 265 units in the last three days, final money 104k vs 103k, rating after
+25 and 50 games. The batch buys its second land two days later (day 11 vs 9.5), plants one
+more strawberry tile (33 vs 32), buys one more sheep, CAREs more (403 vs 334 ops) and
+fertilizes less (111 vs 154).
 
 **13. Market timing differs in the direction finding 6 already pointed.** The batch dumps
-its melons on day 11 and never sells melon again (last melon sale day 11 vs 20; AUC 0.79);
+its melons on day 11 and never sells melon again (last melon sale day 11 vs 19; AUC 0.80);
 the top sells strawberries from day 15.5 vs 19 (AUC 0.15, the strongest market separator),
 wool later (day 8.5 vs 6), and 18 melons vs 12. Units sold in the last three days do not
 differ.
@@ -130,12 +133,16 @@ per game (0.6 to 2.2 days per weed), with the same number of DIG ops (35-38). Wh
 is a deliberate saving of labour or a side effect of not being a tape is not established
 here; experiment 2 below will say whether clearing every weed is worth its actions.
 
-**15. Head to head and ratings.** All-time the top-14 beat the batch 663-439 (60%); current
-submissions against current submissions 60-13 (82%). Both groups climb identically to about
-2,850 by game 50; after game 200 the top-14 median is 3,043 and the batch's 2,882 (few batch
-teams have 200 games yet). Unknown Mother-Goose (rank 8 at snapshot, a runtime agent by
-every measure above: unique line, weed-driven branch at day 8, standing weeds tolerated) is
-the one batch team with a winning all-time record against the top-14 (150-135).
+**15. Head to head, ratings, and losses.** All-time the top-14 beat the batch 663-439 (60%);
+current submissions against current submissions 60-13 (82%). Sampled win rates are the
+same (84% vs 83%) against slightly different opposition (mean opponent rating 2,453 vs
+2,394). Both groups climb identically to about 2,850 by game 50; after game 200 the top-14
+median is 3,043 and the batch's 2,882 (few batch teams have 200 games yet). The losses
+differ in kind: the top-14 lose mostly to each other (58% of their sampled losses, median
+margin 4.5k), the batch mostly to unstudied teams (78%, median margin 2.3k). Unknown
+Mother-Goose (rank 8 at snapshot, a runtime agent by every measure above: unique line,
+weed-driven branch on day 2, standing weeds tolerated) is the one batch team with a winning
+all-time record against the top-14 (150-135).
 
 **What this changes:** nothing in the architecture, and it removes a doubt. The gap between
 gold and the prize band is not the economy, which the public plan already has right. It is
@@ -187,12 +194,10 @@ turn. Three adaptive layers are what separates the leaders from the public line:
 
 ## Limits of this study
 
-- The 75% quarter window is partial for the top-14 and the batch's F, L, and quarter
-  windows are still downloading (Kaggle rations replays to roughly 120 an hour); the group
-  comparison uses the C0 window for every team and is re-run as windows complete.
-- C0 is the ladder-entry phase: opponents average about 2,170-2,190 rating for both
-  groups and sampled win rates (97% vs 94%) say little. The head-to-head record and the
-  rating path after game 100 carry the outcome comparison.
+- The 75% quarter window is partial for the top-14 and the batch's F and quarter windows
+  are still downloading (Kaggle rations replays to roughly 120 an hour). The group
+  comparison uses only the current submissions, which are complete for all 29 teams; the
+  history windows feed the dossiers' evolution tables and complete as the fetch continues.
 - With 14 and 15 teams, a p-value near 0.05 is weak evidence; the findings above lean on
   the features where the AUC is beyond 0.75 or below 0.25 and on the family and
   head-to-head counts, which need no test.
