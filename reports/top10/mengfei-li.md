@@ -1,7 +1,7 @@
-# Mengfei Li (rank 4, score 3003.4)
+# Mengfei Li (rank 6, score 3014.0, top-14)
 
 - team id 16622349; current submission 56173067 (374 public games)
-- 77 submissions found; 9162 public games from 2026-08-02 to 2026-09-14; 4519 of them with a known rating
+- 89 submissions found; 10390 public games from 2026-08-02 to 2026-09-14; 4519 of them with a known rating
 - sampled games with a replay: 300
 
 ## Ladder record by window
@@ -199,18 +199,31 @@ What goes with being off the modal field line at turn 24 (the first cut where fe
 | opp_team_id | W | L | T |
 |---|---|---|---|
 | 16621799 | 5 | 12 | 0 |
+| 16622198 | 13 | 10 | 0 |
+| 16633100 | 1 | 0 | 0 |
+| 16637255 | 10 | 4 | 0 |
 | 16640467 | 7 | 8 | 0 |
 | 16640510 | 37 | 42 | 0 |
+| 16644724 | 26 | 11 | 0 |
 | 16675778 | 1 | 1 | 0 |
 | 16690867 | 21 | 65 | 0 |
 | 16718819 | 12 | 37 | 0 |
-| 16719123 | 6 | 8 | 0 |
+| 16719123 | 6 | 9 | 0 |
+| 16725899 | 9 | 3 | 0 |
+| 16730612 | 7 | 12 | 0 |
+| 16730761 | 4 | 2 | 0 |
 | 16732403 | 39 | 48 | 0 |
 | 16732521 | 17 | 9 | 0 |
-| 16732748 | 6 | 8 | 0 |
+| 16732748 | 7 | 9 | 0 |
+| 16758882 | 8 | 7 | 0 |
 | 16760569 | 20 | 25 | 0 |
 | 16773026 | 3 | 4 | 0 |
+| 16777134 | 0 | 3 | 0 |
+| 16778640 | 1 | 0 | 0 |
+| 16781445 | 1 | 0 | 0 |
 | 16805699 | 9 | 33 | 0 |
+| 16811307 | 2 | 5 | 0 |
+| 16845367 | 4 | 5 | 0 |
 
 ## Episodes behind each window
 

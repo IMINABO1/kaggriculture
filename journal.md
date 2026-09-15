@@ -266,3 +266,36 @@ backs off progressively (2 to 20 minutes between attempts) and resets on success
 rate the batch's current-submission windows (C0 and L, fetched first) need about 4-5 more
 hours and the full sample most of a day, so the comparison will be built first on the
 current submissions and refreshed as the history windows fill in.
+
+## 2026-09-15
+
+### Checkpoint: interim top-14 vs next-15 comparison built on the C0 windows
+All 29 teams' C0 windows (the current submission's first 50 games) are fetched, traced,
+and rated (100% rating coverage after two refreshes); the batch's L, F, and Q windows are
+still arriving at about 120 replays an hour. `reports/top10/groups.md` compares the groups
+on the same features with a Mann-Whitney AUC and p per feature. Headline numbers:
+- **Shared plans.** At turn 100 (day 4) 11 of the 15 batch teams sit on a field line
+  byte-identical to another studied team's; 3 of the 14 top teams do (アルモンド, Thomas
+  Tschinkel, Catalyst, on the same line as 9 batch teams). Through turn 200 (day 8) the
+  largest family still has 7 members; at turn 400 two batch teams are still identical.
+  None of the top 7 shares a line with anyone from turn 24.
+- **Branching.** First field branch on day 1: 6 of 14 top, 1 of 15 batch; on day 8 or
+  later: 5 of 14 top, 12 of 15 batch. Opponent-driven branching only in the top group
+  (3 teams); weed-driven branching dominates the batch (5). Median distinct games at
+  turn 400: 100% top vs 74% batch.
+- **Economy: no difference.** Quadrants, land day 1, hands, cows, wheat, units sold,
+  units in the last 3 days, final money (105k vs 103k), rating after 25 and 50 games.
+  Batch: land day 2 later (11 vs 9.5), 33 vs 31 strawberry, CARE 403 vs 338, FERTILIZE
+  113 vs 151.
+- **Market.** Batch dumps melon on day 11 and never sells melon again (last sell day 11
+  vs 20); strawberry first sold day 19 vs 15.5; wool day 6 vs 8.5; melon sold 12 vs 18.
+- **Weeds.** Sharpest separator: 12 of 15 batch teams leave 0 weed tile-days at day end
+  (same-day repair, the public tape); the top 7 leave 8-49 tile-days per game with the
+  same DIG count.
+- **Head to head.** All-time 663-439 (60%) for the top-14; current subs 60-13 (82%).
+  Unknown Mother-Goose (rank 8, a runtime agent by every measure) is 150-135 all-time
+  against the top-14, the only batch team above 50%.
+- **Ratings.** Identical to game 50 (~2,850 both); after game 200, 3,043 vs 2,882 (few
+  batch teams have 200 games yet).
+The interim report uses the C0 window for both groups (`analyze.py --profile-window C0`);
+it is re-run on all current-submission games when the batch's L window lands.

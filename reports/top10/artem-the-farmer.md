@@ -1,7 +1,7 @@
-# Artem The Farmer 🍅 (rank 8, score 2990.9)
+# Artem The Farmer 🍅 (rank 3, score 3043.9, top-14)
 
 - team id 16621799; current submission 56232364 (86 public games)
-- 13 submissions found; 1679 public games from 2026-08-19 to 2026-09-14; 84 of them with a known rating
+- 17 submissions found; 2070 public games from 2026-08-19 to 2026-09-15; 84 of them with a known rating
 - sampled games with a replay: 286
 
 ## Ladder record by window
@@ -201,19 +201,33 @@ What goes with being off the modal field line at turn 200 (the first cut where f
 
 | opp_team_id | W | L | T |
 |---|---|---|---|
+| 16622198 | 4 | 0 | 0 |
 | 16622349 | 12 | 5 | 0 |
+| 16633100 | 2 | 0 | 0 |
+| 16637255 | 2 | 1 | 0 |
 | 16640467 | 5 | 0 | 0 |
 | 16640510 | 20 | 8 | 0 |
+| 16644724 | 4 | 0 | 0 |
 | 16675778 | 8 | 2 | 0 |
 | 16690867 | 4 | 2 | 0 |
 | 16718819 | 28 | 26 | 0 |
 | 16719123 | 3 | 0 | 0 |
+| 16725899 | 3 | 0 | 0 |
+| 16730612 | 16 | 10 | 0 |
+| 16730761 | 2 | 0 | 0 |
 | 16732403 | 16 | 17 | 0 |
 | 16732521 | 11 | 1 | 0 |
 | 16732748 | 3 | 2 | 0 |
+| 16758882 | 1 | 0 | 0 |
 | 16760569 | 14 | 5 | 0 |
 | 16773026 | 4 | 1 | 0 |
+| 16777134 | 1 | 0 | 0 |
+| 16778640 | 2 | 0 | 0 |
+| 16781445 | 1 | 0 | 0 |
 | 16805699 | 12 | 8 | 0 |
+| 16811307 | 1 | 0 | 0 |
+| 16845367 | 3 | 0 | 0 |
+| 16858228 | 1 | 0 | 0 |
 
 ## Episodes behind each window
 

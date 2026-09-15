@@ -1,7 +1,7 @@
-# Orbital Terraformer (rank 5, score 3002.9)
+# Orbital Terraformer (rank 4, score 3022.2, top-14)
 
 - team id 16675778; current submission 56205640 (187 public games)
-- 6 submissions found; 1711 public games from 2026-08-28 to 2026-09-14; 216 of them with a known rating
+- 7 submissions found; 1831 public games from 2026-08-28 to 2026-09-14; 216 of them with a known rating
 - sampled games with a replay: 250
 
 ## Ladder record by window
@@ -197,18 +197,31 @@ What goes with being off the modal field line at turn 24 (the first cut where fe
 | opp_team_id | W | L | T |
 |---|---|---|---|
 | 16621799 | 2 | 8 | 0 |
+| 16622198 | 1 | 5 | 0 |
 | 16622349 | 1 | 1 | 0 |
+| 16637255 | 1 | 1 | 0 |
 | 16640467 | 4 | 5 | 0 |
 | 16640510 | 4 | 4 | 0 |
+| 16644724 | 4 | 0 | 0 |
 | 16690867 | 1 | 3 | 0 |
 | 16718819 | 0 | 7 | 0 |
 | 16719123 | 0 | 1 | 0 |
+| 16725899 | 2 | 2 | 0 |
+| 16730612 | 1 | 1 | 0 |
+| 16730761 | 2 | 1 | 0 |
 | 16732403 | 8 | 2 | 0 |
 | 16732521 | 3 | 2 | 0 |
 | 16732748 | 4 | 7 | 0 |
+| 16758882 | 1 | 1 | 0 |
 | 16760569 | 1 | 5 | 0 |
 | 16773026 | 2 | 1 | 0 |
+| 16778640 | 2 | 0 | 0 |
+| 16781445 | 2 | 0 | 0 |
 | 16805699 | 4 | 1 | 0 |
+| 16811307 | 1 | 1 | 0 |
+| 16833141 | 3 | 3 | 0 |
+| 16845367 | 5 | 0 | 0 |
+| 16858228 | 0 | 1 | 0 |
 
 ## Episodes behind each window
 

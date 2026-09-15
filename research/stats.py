@@ -6,11 +6,9 @@ import math
 
 
 def mann_whitney(a: list[float], b: list[float]) -> tuple[float, float]:
-    """(AUC, two-sided p) for "a random a exceeds a random b", normal approximation with ties.
+    """(AUC, two-sided p): AUC is the chance a random a exceeds a random b (0.5 = no separation).
 
-    AUC is U / (len(a) * len(b)): 0.5 means the groups overlap completely, 1.0 means every
-    value in a is above every value in b. The p-value uses the tie-corrected normal
-    approximation, which is adequate for groups of ten or more.
+    The p-value is the tie-corrected normal approximation, adequate for groups of ten or more.
     """
     a = [float(x) for x in a if not math.isnan(x)]
     b = [float(x) for x in b if not math.isnan(x)]

@@ -1,7 +1,7 @@
-# Thomas Tschinkel (rank 14, score 2973.1)
+# Thomas Tschinkel (rank 13, score 2970.2, top-14)
 
 - team id 16719123; current submission 56222223 (110 public games)
-- 63 submissions found; 7633 public games from 2026-08-13 to 2026-09-14; 321 of them with a known rating
+- 77 submissions found; 8950 public games from 2026-08-13 to 2026-09-15; 321 of them with a known rating
 - sampled games with a replay: 250
 
 ## Ladder record by window
@@ -195,18 +195,33 @@ What goes with being off the modal field line at turn 200 (the first cut where f
 | opp_team_id | W | L | T |
 |---|---|---|---|
 | 16621799 | 0 | 3 | 0 |
-| 16622349 | 8 | 6 | 0 |
-| 16640467 | 1 | 0 | 0 |
-| 16640510 | 3 | 3 | 0 |
-| 16675778 | 1 | 0 | 0 |
+| 16622198 | 2 | 1 | 0 |
+| 16622349 | 9 | 8 | 0 |
+| 16633100 | 11 | 2 | 0 |
+| 16637255 | 7 | 7 | 0 |
+| 16640467 | 1 | 1 | 0 |
+| 16640510 | 3 | 4 | 0 |
+| 16644724 | 10 | 8 | 0 |
+| 16675778 | 2 | 0 | 0 |
 | 16690867 | 0 | 3 | 0 |
 | 16718819 | 0 | 2 | 0 |
+| 16725899 | 2 | 2 | 0 |
+| 16730612 | 1 | 1 | 0 |
+| 16730761 | 5 | 9 | 0 |
 | 16732403 | 3 | 4 | 0 |
-| 16732521 | 1 | 7 | 0 |
+| 16732521 | 2 | 9 | 0 |
 | 16732748 | 21 | 2 | 0 |
-| 16760569 | 2 | 1 | 0 |
+| 16758882 | 5 | 3 | 0 |
+| 16760569 | 4 | 1 | 0 |
 | 16773026 | 2 | 3 | 0 |
+| 16777134 | 6 | 5 | 0 |
+| 16778640 | 2 | 0 | 0 |
+| 16781445 | 4 | 0 | 0 |
 | 16805699 | 2 | 2 | 0 |
+| 16811307 | 3 | 6 | 1 |
+| 16833141 | 2 | 2 | 0 |
+| 16845367 | 3 | 1 | 0 |
+| 16858228 | 0 | 1 | 0 |
 
 ## Episodes behind each window
 

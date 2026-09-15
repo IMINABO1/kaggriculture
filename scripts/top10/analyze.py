@@ -8,6 +8,7 @@ report is computed here from data/top10/*; nothing is typed in by hand.
 
 from __future__ import annotations
 
+import argparse
 import json
 import re
 from collections import Counter
@@ -174,6 +175,16 @@ DIFF_COLS = [
     "op_care",
     "op_fertilize",
 ]
+
+
+def line_label(i: int) -> str:
+    """A, B, ..., Z, AA, AB, ... for the i-th most common line."""
+    label = ""
+    i += 1
+    while i:
+        i, r = divmod(i - 1, 26)
+        label = chr(65 + r) + label
+    return label
 
 
 def slug(name: str, team_id=None) -> str:
@@ -619,7 +630,8 @@ def cross_team(teams, hist, sample, feats) -> tuple[str, str]:
         "",
         (
             f"Snapshot: {teams.iloc[0].get('snapshot', '')}. Teams studied: {len(teams)} "
-            f"({n_top} top-14, {n_batch} next-15)."
+            f"({n_top} top-14, {n_batch} next-15). Current-submission tables below use "
+            f"{PROFILE_SETS[profile_set]}."
         ),
         "",
     ]
@@ -678,7 +690,7 @@ def cross_team(teams, hist, sample, feats) -> tuple[str, str]:
     if fam_rows:
         fam = pd.DataFrame(fam_rows)
         for cut in ("h24", "h100", "h200", "h400", "h719"):
-            ids = {h: chr(65 + i) for i, h in enumerate(fam[cut].value_counts().index)}
+            ids = {h: line_label(i) for i, h in enumerate(fam[cut].value_counts().index)}
             fam[cut] = fam[cut].map(ids)
         md += [
             "## Shared field lines among the current submissions",
@@ -818,12 +830,26 @@ def cross_team(teams, hist, sample, feats) -> tuple[str, str]:
     return "\n".join(md) + "\n", groups_md
 
 
+PROFILE_SETS = {
+    "current": "every sampled game of the current submission (C0 plus its games in L)",
+    "C0": "the C0 window only (the current submission's first 50 games)",
+}
+profile_set = "current"
+
+
 def current_games(teams, sample, feats) -> dict[str, pd.DataFrame]:
-    """Team name -> its current submission's sampled games (one row per episode)."""
+    """Team name -> its current submission's sampled games (one row per episode).
+
+    With profile_set == "C0" only that window is kept, so every team is measured on the
+    same 50 games.
+    """
     out = {}
     for _, t in teams.iterrows():
         rows = team_windows(sample, feats, int(t.team_id))
-        out[t.team_name] = rows[rows.is_current_sub == True].drop_duplicates("episode_id")
+        rows = rows[rows.is_current_sub == True]
+        if profile_set == "C0":
+            rows = rows[rows.window == "C0"]
+        out[t.team_name] = rows.drop_duplicates("episode_id")
     return out
 
 
@@ -1014,9 +1040,8 @@ def group_losses(
 ) -> tuple[pd.DataFrame, pd.DataFrame]:
     """Losses of the current submissions per group, and which feature the winner differed in most.
 
-    Differences are measured in pooled standard deviations of each feature (over every seat
-    with features) so that a cow and a CARE op count on the same footing; the dossiers' loss
-    tables use raw differences instead.
+    Differences are in pooled standard deviations so a cow and a CARE op count on the same
+    footing (the dossiers' loss tables use raw differences).
     """
     scale = {c: max(float(feats[c].std()), 1.0) for c in DIFF_COLS if c in feats}
     top_ids = set(teams[teams.group == "top"].team_id.astype(int))
@@ -1080,6 +1105,27 @@ def group_losses(
                 }
             )
     return pd.DataFrame(summary), pd.DataFrame(top_feats)
+
+
+def line_families(teams: pd.DataFrame, latest: dict[str, pd.DataFrame]) -> pd.DataFrame:
+    """Per cut and group: how many teams sit on a field line shared with another team."""
+    modal = {}
+    for _, t in teams.iterrows():
+        cur = latest.get(t.team_name)
+        if cur is None or len(cur) < MIN_PROFILE_GAMES:
+            continue
+        modal[t.team_name] = (t.group, {c: cur[f"field_{c}"].value_counts().index[0] for c in CUTS})
+    out = []
+    for cut in ("h24", "h48", "h100", "h136", "h200", "h300", "h400"):
+        counts = Counter(v[1][cut] for v in modal.values())
+        rec = {"turn": int(cut[1:]), "day": int(cut[1:]) // 24}
+        for grp in ("top", "batch"):
+            names = [n for n, v in modal.items() if v[0] == grp]
+            shared = [n for n in names if counts[modal[n][1][cut]] > 1]
+            rec[f"{GROUP_NAMES[grp]} on a shared line"] = f"{len(shared)} of {len(names)}"
+        rec["largest family"] = max(counts.values()) if counts else 0
+        out.append(rec)
+    return pd.DataFrame(out)
 
 
 def group_rating_figure(paths: list[tuple[str, str, list[float]]], path) -> None:
@@ -1263,6 +1309,7 @@ def group_comparison(teams, hist, feats, latest) -> tuple[str, str]:
 
     overall, per_top, per_batch = group_h2h(hist, teams)
     loss_summary, loss_feats = group_losses(teams, latest, feats)
+    families = line_families(teams, latest)
 
     paths = []
     for _, t in teams.iterrows():
@@ -1272,7 +1319,12 @@ def group_comparison(teams, hist, feats, latest) -> tuple[str, str]:
     group_rating_figure(paths, REPORTS / "figs" / "group_rating.png")
     ranked = cmp.dropna(subset=["P(top > next)"]).copy()
     ranked["d"] = (ranked["P(top > next)"] - 0.5).abs()
-    strip_feats = ranked.sort_values(["d", "p"], ascending=[False, True]).feature.head(8).tolist()
+    ranked["weak"] = ranked.p >= 0.1
+    strip_feats = (
+        ranked.sort_values(["weak", "d", "p"], ascending=[True, False, True])
+        .feature.head(8)
+        .tolist()
+    )
     group_strip_figure(profile, strip_feats, REPORTS / "figs" / "group_strip.png")
 
     md = [
@@ -1285,7 +1337,7 @@ def group_comparison(teams, hist, feats, latest) -> tuple[str, str]:
             f"replays). Under Kaggle's medal rule for 9,066 teams (gold = top 10 + 0.2% = rank "
             f"{KAGGLE_GOLD_RANK}, silver = top 5%), ranks 8-23 of the batch are gold and 29-48 "
             f"silver; under the top-50 working assumption all are gold. Every number below is "
-            f"a per-team median over the current submission's sampled games, compared across "
+            f"a per-team median over {PROFILE_SETS[profile_set]}, compared across "
             f"teams: 'P(top > next)' is the chance that a random top-14 team's value is above a "
             f"random next-15 team's (0.5 = no separation), 'p' is the two-sided Mann-Whitney "
             f"test. Numbers are per game unless stated. Teams with fewer than "
@@ -1323,6 +1375,14 @@ def group_comparison(teams, hist, feats, latest) -> tuple[str, str]:
         md_table(cls),
         "",
         md_table(drv),
+        "",
+        (
+            "Teams whose modal field line (farmer and hand actions) is byte-identical to "
+            "another studied team's through the cut, i.e. members of a shared plan family, "
+            "and the size of the largest family at that cut:"
+        ),
+        "",
+        md_table(families),
         "",
         "## Feature comparison",
         "",
@@ -1412,6 +1472,18 @@ def small_multiples(curves: dict[str, list[float]], path) -> None:
 
 
 def main() -> None:
+    global profile_set
+    ap = argparse.ArgumentParser(
+        description=__doc__, formatter_class=argparse.RawDescriptionHelpFormatter
+    )
+    ap.add_argument(
+        "--profile-window",
+        default="current",
+        choices=sorted(PROFILE_SETS),
+        help="which games of the current submission feed the per-team profiles and verdicts",
+    )
+    args = ap.parse_args()
+    profile_set = args.profile_window
     teams, hist, sample, feats = load()
     REPORTS.mkdir(parents=True, exist_ok=True)
     ids = set(teams.team_id.astype(int))
@@ -1429,6 +1501,7 @@ def main() -> None:
         "batch": int((teams.group == "batch").sum()),
         "episodes_with_features": int(feats.episode_id.nunique()),
         "top_seats": int(feats.is_top10_seat.sum()),
+        "profile_window": profile_set,
     }
     (REPORTS / "build.json").write_text(json.dumps(meta, indent=1), encoding="utf-8")
     print(Counter(feats[feats.is_top10_seat].team_name).most_common())

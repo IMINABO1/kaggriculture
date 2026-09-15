@@ -1,5 +1,8 @@
 {
- "teams": 14,
- "episodes_with_features": 3520,
- "top_seats": 3745
+ "teams": 29,
+ "top": 14,
+ "batch": 15,
+ "episodes_with_features": 4512,
+ "top_seats": 4915,
+ "profile_window": "C0"
 }
