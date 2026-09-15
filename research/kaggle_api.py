@@ -191,7 +191,9 @@ def replay_path(episode_id: int) -> Path:
 
 QUOTA_GIVE_UP_S = 4 * 3600
 QUOTA_MIN_WAIT_S = 120.0
+QUOTA_MAX_WAIT_S = 1200.0
 QUOTA_FILE = EPISODE_CACHE.parent / "quota_until.txt"
+_quota_strikes = 0
 
 
 def _quota_open_at_wall() -> float:
@@ -210,12 +212,24 @@ def _wait_for_quota() -> None:
         time.sleep(wait)
 
 
-def _note_quota(retry_after: str | None) -> None:
-    """Record a 429 from the replay endpoint; Retry-After has been 1-20 minutes in practice."""
-    global _quota_open_at
-    wait = float(retry_after) if retry_after and retry_after.isdigit() else 60.0
-    wait = max(wait, QUOTA_MIN_WAIT_S)
+def _quota_reset() -> None:
+    global _quota_strikes
     with _quota_lock:
+        _quota_strikes = 0
+
+
+def _note_quota(retry_after: str | None) -> None:
+    """Record a 429 from the replay endpoint.
+
+    Retry-After understates the closure (it says 1-2 minutes while the endpoint keeps
+    refusing for an hour or more), so the wait doubles with every consecutive refusal, from
+    2 minutes up to 20, and resets on the next successful download.
+    """
+    global _quota_open_at, _quota_strikes
+    wait = float(retry_after) if retry_after and retry_after.isdigit() else 60.0
+    with _quota_lock:
+        wait = max(wait, min(QUOTA_MIN_WAIT_S * 2**_quota_strikes, QUOTA_MAX_WAIT_S))
+        _quota_strikes += 1
         _quota_open_at = max(_quota_open_at, time.monotonic() + wait + 2)
         QUOTA_FILE.parent.mkdir(parents=True, exist_ok=True)
         QUOTA_FILE.write_text(f"{time.time() + wait + 2:.0f}", encoding="utf-8")
@@ -242,6 +256,7 @@ def download_replay(episode_id: int) -> Path:
                     response = kaggle.competitions.competition_api_client.get_episode_replay(
                         request
                     )
+                _quota_reset()
                 break
             except requests.HTTPError as exc:
                 if exc.response is None or exc.response.status_code != 429:

@@ -253,3 +253,16 @@ index (`scripts/top10/daily_index.py`, 32,802 episodes over 47 days) covers only
 4,851 missing games: 184 of the top-14's Q3 backlog and about 100 batch games. The batch
 teams' games rarely score high enough to be "top episodes". The fetcher now takes indexed
 episodes from the daily datasets and everything else from the rationed endpoint.
+
+### Checkpoint: what the replay quota looks like so far
+- 00:50-01:02Z: 158 downloads, then refusals (Retry-After 1,180 s, then 45-70 s per
+  attempt for an hour while still refusing).
+- 01:44-03:09Z: no requests at all. A single probe at 03:09Z succeeded.
+- 03:09-03:20Z: 330 downloads at 83 a minute with two workers, then refusals again
+  (Retry-After 65-120 s, still refusing at 03:35Z).
+So the endpoint behaves like a bucket of roughly 300-350 downloads that refills only over a
+long quiet stretch; Retry-After does not describe the closure. The detached fetcher now
+backs off progressively (2 to 20 minutes between attempts) and resets on success. At this
+rate the batch's current-submission windows (C0 and L, fetched first) need about 4-5 more
+hours and the full sample most of a day, so the comparison will be built first on the
+current submissions and refreshed as the history windows fill in.
