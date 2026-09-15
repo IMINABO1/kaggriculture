@@ -18,6 +18,12 @@ uv run python scripts/package.py                                             # b
 kaggle competitions submit kaggriculture -f submission.tar.gz -m "..."
 ```
 
+## Top-14 study
+
+How the prize contenders play, sampled across each team's history. Method in
+`reports/top10/METHOD.md`, results in `reports/top10/summary.md` and the team dossiers,
+recommendation in `reports/top10/decision_memo.md`.
+
 ## Layout
 
 - `main.py` — submission entrypoint (`agent` must stay the last callable in the file)
