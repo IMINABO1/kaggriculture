@@ -314,3 +314,20 @@ Losses differ in kind: the top-14 lose mostly to each other (58%, median margin 
 the batch to unstudied teams (78%, margin 2.3k). Memo findings 10-15 updated. The
 fetcher continues on the batch's F and quarter windows (about 3,200 replays, a day at
 the quota's pace); they change only the dossiers' evolution tables.
+
+### Decision: zones come from the full board, and silver and bronze join the study
+Iminabo's correction (P13): gold ends at rank 28, so ranks 29-48 of the batch are silver.
+`snapshot.py --full` now downloads the whole leaderboard (9,125 teams at 2026-09-15T1342Z;
+Kaggle's rule gives gold = 28, silver = 456, bronze = 912) and labels every team with its
+zone at that snapshot. Groups for the comparison:
+- **top**: the original 14 (kept as the study's subject even though two of them, redblackbst
+  and Thomas Tschinkel, had slipped to ranks 31 and 41 by this snapshot);
+- **gold**: every other gold team the crawl can seed, ranks 6-28 (16 teams, including the
+  three of the first batch that are gold now: Unknown Mother-Goose at 3, leave you at 10,
+  kyy666 at 28);
+- **silver**: the 12 first-batch teams now in silver plus chunks 120-122, 250-252, 400-402;
+- **bronze**: chunks 470-472, 600-602, 750-752, 880-882.
+The board moved a lot in 13 hours (Unknown Mother-Goose from 8 to 3, ElephtAI from 23 to
+234), so the report states each team's rank at both snapshots. New teams get only the
+current-submission window (C0, 50 games each) because of the replay quota; the 29 teams
+already sampled keep their windows (`data/top10/sample_29teams_2026-09-15T0033Z.csv`).

@@ -177,3 +177,22 @@ entry also says why I missed it and what changes so it does not happen again.
   the quota (replays per window) and plan fetch volume against it before promising a
   schedule. The community replay dataset was checked as an alternative source and covers
   only 92 of the missing games, so the quota is the binding constraint.
+
+## 2026-09-15
+
+### P13: the "gold" batch was cut at rank 50, not at Kaggle's gold line
+- **Symptom:** the next-15 batch and the memo's group comparison were labelled "the rest
+  of the gold zone" although 7 of the 15 teams (ranks 29-48) are silver under Kaggle's
+  rule, which I had computed myself (top 10 + 0.2% of 9,066 teams = rank 28).
+- **Cause:** I followed the handoff's example chunks (11-50) instead of the rule I had
+  just verified, and softened it in the text ("gold under the top-50 assumption") instead
+  of cutting the batch at 28.
+- **Fix:** every team now carries a `zone` (gold / silver / bronze / none) computed from
+  the full leaderboard at snapshot time; the comparison is re-cut as top-14 vs the rest of
+  gold, and silver and bronze are sampled as their own groups (chunks deep in each zone,
+  current-submission windows only, because of the replay quota).
+- **Caught by:** Iminabo ("the limit for gold is 28, 29 is silver").
+- **Why I missed it:** I treated the instruction's illustrative ranks as the rule and the
+  rule as a footnote. When a rule has been checked, the checked rule wins over the example.
+- **Prevention:** medal zones come from `snapshot.py --full` (Kaggle's rule applied to the
+  live team count), never from a hand-picked cutoff, and every report table shows the zone.

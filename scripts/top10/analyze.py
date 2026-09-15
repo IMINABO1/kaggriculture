@@ -51,9 +51,9 @@ PLAN_COLS = {
     "weeds_spawned": "weeds spawned",
     "invalid_orders": "unexecutable market orders",
 }
-GROUP_NAMES = {"top": "top-14", "batch": "next-15"}
+GROUP_NAMES = {"top": "top-14", "gold": "gold", "silver": "silver", "bronze": "bronze"}
 MIN_PROFILE_GAMES = 10
-GROUP_COLORS = {"top": SERIES[0], "batch": SERIES[1]}
+GROUP_COLORS = {"top": SERIES[0], "gold": SERIES[1], "silver": SERIES[2], "bronze": SERIES[3]}
 KAGGLE_GOLD_RANK = 28
 RATING_MARKS = (1, 10, 25, 50, 100, 200)
 PROFILE_LABELS = {
@@ -202,6 +202,25 @@ def load() -> tuple[pd.DataFrame, pd.DataFrame, pd.DataFrame, pd.DataFrame]:
     teams = pd.read_csv(TOP10 / "teams.csv").sort_values("rank")
     if "group" not in teams:
         teams["group"] = "top"
+    snap = pd.read_csv(TOP10 / "snapshot_latest.csv")
+    zone = snap.set_index("team_id").get("zone")
+    teams["zone"] = teams.team_id.map(zone) if zone is not None else ""
+    first = TOP10 / "snapshot_2026-09-15T0033Z.csv"
+    teams["first_rank"] = (
+        teams.team_id.map(pd.read_csv(first).set_index("team_id")["rank"])
+        if first.exists()
+        else np.nan
+    )
+    stamp = str(teams.iloc[0].get("snapshot", ""))
+    bounds_file = TOP10 / f"zones_{stamp}.json"
+    if bounds_file.exists():
+        b = json.loads(bounds_file.read_text(encoding="utf-8"))
+        teams["zone_bounds"] = (
+            f"{b['teams']} teams; gold to rank {b['gold']}, silver to {b['silver']}, "
+            f"bronze to {b['bronze']}"
+        )
+    else:
+        teams["zone_bounds"] = ""
     hist = pd.read_parquet(TOP10 / "history.parquet")
     sample = pd.read_csv(TOP10 / "sample.csv")
     feats = pd.read_parquet(TOP10 / "features.parquet")
@@ -623,14 +642,17 @@ def team_dossier(t, hist, sample, feats, all_team_ids) -> str:
 
 
 def cross_team(teams, hist, sample, feats) -> tuple[str, str]:
-    n_top = int((teams.group == "top").sum())
-    n_batch = int((teams.group == "batch").sum())
+    counts = ", ".join(
+        f"{int((teams.group == g).sum())} {GROUP_NAMES[g]}"
+        for g in GROUP_ORDER
+        if (teams.group == g).any()
+    )
     md = [
         "# Top-10 study: summary",
         "",
         (
             f"Snapshot: {teams.iloc[0].get('snapshot', '')}. Teams studied: {len(teams)} "
-            f"({n_top} top-14, {n_batch} next-15). Current-submission tables below use "
+            f"({counts}). Current-submission tables below use "
             f"{PROFILE_SETS[profile_set]}."
         ),
         "",
@@ -639,6 +661,7 @@ def cross_team(teams, hist, sample, feats) -> tuple[str, str]:
         [
             "rank",
             "team_name",
+            "zone",
             "group",
             "score",
             "current_sub",
@@ -745,15 +768,18 @@ def cross_team(teams, hist, sample, feats) -> tuple[str, str]:
             top1 = plan.iloc[0]
             others = plan.iloc[1:]
             rest = others[others.group == GROUP_NAMES["top"]].median(numeric_only=True)
-            batch = others[others.group == GROUP_NAMES["batch"]].median(numeric_only=True)
             diff = pd.DataFrame(
                 {
                     "feature": rest.index,
                     f"#1 {top1.team}": [top1[c] for c in rest.index],
                     "median of the other top-14": rest.values,
-                    "median of the next-15": [batch.get(c, np.nan) for c in rest.index],
                 }
             )
+            for grp in GROUP_ORDER[1:]:
+                sub = others[others.group == GROUP_NAMES[grp]]
+                if len(sub):
+                    med = sub.median(numeric_only=True)
+                    diff[f"median of {GROUP_NAMES[grp]}"] = [med.get(c, np.nan) for c in rest.index]
             diff = diff[diff.feature.isin([PLAN_COLS.get(c, c) for c in plan_cols] + ["win %"])]
             md += ["## What the #1 does differently", "", md_table(diff), ""]
 
@@ -835,6 +861,29 @@ PROFILE_SETS = {
     "C0": "the C0 window only (the current submission's first 50 games)",
 }
 profile_set = "current"
+GROUP_ORDER = ["top", "gold", "silver", "bronze"]
+PAIRS = [("top", "gold"), ("gold", "silver"), ("silver", "bronze"), ("top", "bronze")]
+OVERVIEW_FEATURES = [
+    "win %",
+    "opp rating",
+    "final money",
+    "field branch turn",
+    "distinct % at 400",
+    "land day 2",
+    "CARE ops",
+    "FERTILIZE ops",
+    "strawberry planted",
+    "melon last sell day",
+    "strawberry first sell day",
+    "weed tile-days",
+    "units sold last 3 days",
+    "rating after game 50",
+    "rating after game 100",
+]
+
+
+def present_groups(profile: pd.DataFrame) -> list[str]:
+    return [g for g in GROUP_ORDER if (profile.group == g).sum() >= 3]
 
 
 def current_games(teams, sample, feats) -> dict[str, pd.DataFrame]:
@@ -902,6 +951,7 @@ def team_profile(t, cur: pd.DataFrame, hist: pd.DataFrame) -> dict:
     rec = {
         "rank": int(t["rank"]),
         "team": t.team_name,
+        "zone": t.get("zone", ""),
         "group": t.group,
         "games": len(cur),
         "win %": 100 * (res == "W").mean(),
@@ -935,21 +985,22 @@ def _rng(series: pd.Series) -> str:
     return f"{round(float(s.min()), 1):g} to {round(float(s.max()), 1):g}"
 
 
-def compare_table(profile: pd.DataFrame, labels: list[str]) -> pd.DataFrame:
-    top, batch = profile[profile.group == "top"], profile[profile.group == "batch"]
+def compare_table(profile: pd.DataFrame, labels: list[str], a: str, b: str) -> pd.DataFrame:
+    A, B = GROUP_NAMES[a], GROUP_NAMES[b]
+    pa, pb = profile[profile.group == a], profile[profile.group == b]
     out = []
     for lab in labels:
         if lab not in profile.columns:
             continue
-        auc, p = mann_whitney(top[lab].tolist(), batch[lab].tolist())
+        auc, p = mann_whitney(pa[lab].tolist(), pb[lab].tolist())
         out.append(
             {
                 "feature": lab,
-                "top-14 median": top[lab].median(),
-                "top-14 range": _rng(top[lab]),
-                "next-15 median": batch[lab].median(),
-                "next-15 range": _rng(batch[lab]),
-                "P(top > next)": auc,
+                f"{A} median": pa[lab].median(),
+                f"{A} range": _rng(pa[lab]),
+                f"{B} median": pb[lab].median(),
+                f"{B} range": _rng(pb[lab]),
+                f"P({A} > {B})": auc,
                 "p": p,
             }
         )
@@ -962,21 +1013,23 @@ def _fmt(v) -> str:
     return f"{v:.0f}" if abs(v) >= 20 or float(v).is_integer() else f"{v:.1f}"
 
 
-def separation_bullets(cmp: pd.DataFrame) -> tuple[list[str], list[str]]:
-    c = cmp.dropna(subset=["P(top > next)"]).copy()
-    c["d"] = (c["P(top > next)"] - 0.5).abs()
+def separation_bullets(cmp: pd.DataFrame, a: str, b: str) -> tuple[list[str], list[str]]:
+    A, B = GROUP_NAMES[a], GROUP_NAMES[b]
+    auc_col = f"P({A} > {B})"
+    c = cmp.dropna(subset=[auc_col]).copy()
+    c["d"] = (c[auc_col] - 0.5).abs()
     sig = c[c.p < 0.05].sort_values("d", ascending=False)
     flat = c[(c.p >= 0.2) & (c.d <= 0.15)].sort_values("d")
     sep = [
         (
-            f"**{r.feature}**: top-14 median {_fmt(r['top-14 median'])} vs next-15 "
-            f"{_fmt(r['next-15 median'])}; a random top-14 team is above a random next-15 team "
-            f"{100 * r['P(top > next)']:.0f}% of the time (p = {r.p:.3f})"
+            f"**{r.feature}**: {A} median {_fmt(r[f'{A} median'])} vs {B} "
+            f"{_fmt(r[f'{B} median'])}; a random {A} team is above a random {B} team "
+            f"{100 * r[auc_col]:.0f}% of the time (p = {r.p:.3f})"
         )
         for _, r in sig.iterrows()
     ]
     same = [
-        f"{r.feature} ({_fmt(r['top-14 median'])} vs {_fmt(r['next-15 median'])})"
+        f"{r.feature} ({_fmt(r[f'{A} median'])} vs {_fmt(r[f'{B} median'])})"
         for _, r in flat.iterrows()
     ]
     return sep, same
@@ -989,50 +1042,53 @@ def _wlt(df: pd.DataFrame, flip: bool = False) -> str:
     return f"{w}-{l}-{(df.result == 'T').sum()}"
 
 
-def group_h2h(hist: pd.DataFrame, teams: pd.DataFrame) -> tuple[str, pd.DataFrame, pd.DataFrame]:
+def group_h2h(
+    hist: pd.DataFrame, teams: pd.DataFrame, a: str, b: str
+) -> tuple[str, pd.DataFrame, pd.DataFrame]:
+    A, B = GROUP_NAMES[a], GROUP_NAMES[b]
     pub = hist[hist.type == "EPISODE_TYPE_PUBLIC"]
-    top_ids = set(teams[teams.group == "top"].team_id.astype(int))
-    batch_ids = set(teams[teams.group == "batch"].team_id.astype(int))
-    g = pub[pub.team_id.isin(top_ids) & pub.opp_team_id.isin(batch_ids)]
+    a_ids = set(teams[teams.group == a].team_id.astype(int))
+    b_ids = set(teams[teams.group == b].team_id.astype(int))
+    g = pub[pub.team_id.isin(a_ids) & pub.opp_team_id.isin(b_ids)]
     current = set(teams.current_sub.dropna().astype(int))
     gc = g[g["sub"].isin(current) & g.opp_sub.isin(current)]
     names = dict(zip(teams.team_id.astype(int), teams.team_name))
     ranks = dict(zip(teams.team_id.astype(int), teams["rank"].astype(int)))
     overall = (
-        f"All public games between the groups, seen from the top-14 side: **{_wlt(g)}** "
+        f"All public games between {A} and {B}, seen from the {A} side: **{_wlt(g)}** "
         f"({100 * (g.result == 'W').mean():.0f}% wins over {len(g)} games); current "
         f"submissions of both sides only: **{_wlt(gc)}** ({len(gc)} games)."
         if len(g)
-        else "No public games between the groups."
+        else f"No public games between {A} and {B}."
     )
-    per_top, per_batch = [], []
-    for tid in sorted(top_ids, key=lambda i: ranks[i]):
-        d = g[g.team_id == tid]
-        dc = gc[gc.team_id == tid]
-        per_top.append(
-            {
-                "rank": ranks[tid],
-                "team": names[tid],
-                "games vs next-15": len(d),
-                "W-L-T": _wlt(d),
-                "win %": 100 * (d.result == "W").mean() if len(d) else np.nan,
-                "current subs W-L-T": _wlt(dc),
-            }
-        )
-    for tid in sorted(batch_ids, key=lambda i: ranks[i]):
-        d = g[g.opp_team_id == tid]
-        dc = gc[gc.opp_team_id == tid]
-        per_batch.append(
-            {
-                "rank": ranks[tid],
-                "team": names[tid],
-                "games vs top-14": len(d),
-                "W-L-T": _wlt(d, flip=True),
-                "win %": 100 * (d.result == "L").mean() if len(d) else np.nan,
-                "current subs W-L-T": _wlt(dc, flip=True),
-            }
-        )
-    return overall, pd.DataFrame(per_top), pd.DataFrame(per_batch)
+    per_a, per_b = [], []
+    for tid in sorted(a_ids, key=lambda i: ranks[i]):
+        d, dc = g[g.team_id == tid], gc[gc.team_id == tid]
+        if len(d):
+            per_a.append(
+                {
+                    "rank": ranks[tid],
+                    "team": names[tid],
+                    f"games vs {B}": len(d),
+                    "W-L-T": _wlt(d),
+                    "win %": 100 * (d.result == "W").mean(),
+                    "current subs W-L-T": _wlt(dc),
+                }
+            )
+    for tid in sorted(b_ids, key=lambda i: ranks[i]):
+        d, dc = g[g.opp_team_id == tid], gc[gc.opp_team_id == tid]
+        if len(d):
+            per_b.append(
+                {
+                    "rank": ranks[tid],
+                    "team": names[tid],
+                    f"games vs {A}": len(d),
+                    "W-L-T": _wlt(d, flip=True),
+                    "win %": 100 * (d.result == "L").mean(),
+                    "current subs W-L-T": _wlt(dc, flip=True),
+                }
+            )
+    return overall, pd.DataFrame(per_a), pd.DataFrame(per_b)
 
 
 def group_losses(
@@ -1044,8 +1100,7 @@ def group_losses(
     footing (the dossiers' loss tables use raw differences).
     """
     scale = {c: max(float(feats[c].std()), 1.0) for c in DIFF_COLS if c in feats}
-    top_ids = set(teams[teams.group == "top"].team_id.astype(int))
-    batch_ids = set(teams[teams.group == "batch"].team_id.astype(int))
+    group_of = {int(t.team_id): t.group for _, t in teams.iterrows()}
     rows = []
     for _, t in teams.iterrows():
         cur = latest.get(t.team_name)
@@ -1066,11 +1121,7 @@ def group_losses(
                     "group": t.group,
                     "team": t.team_name,
                     "margin": r.final_money - r.o_final_money,
-                    "opp group": "top-14"
-                    if oid in top_ids
-                    else "next-15"
-                    if oid in batch_ids
-                    else "other",
+                    "opp group": GROUP_NAMES.get(group_of.get(oid), "other"),
                     "feature": PLAN_COLS.get(c, c),
                     "direction": "opponent higher" if d > 0 else "opponent lower",
                 }
@@ -1079,23 +1130,22 @@ def group_losses(
     if not len(df):
         return pd.DataFrame(), pd.DataFrame()
     summary, top_feats = [], []
-    for grp in ("top", "batch"):
+    for grp in GROUP_ORDER:
         g = df[df.group == grp]
         if not len(g):
             continue
-        summary.append(
-            {
-                "group": GROUP_NAMES[grp],
-                "losses": len(g),
-                "median margin": g.margin.median(),
-                "within 3k %": 100 * (g.margin > -3000).mean(),
-                "to top-14 %": 100 * (g["opp group"] == "top-14").mean(),
-                "to next-15 %": 100 * (g["opp group"] == "next-15").mean(),
-                "to others %": 100 * (g["opp group"] == "other").mean(),
-            }
-        )
+        rec = {
+            "group": GROUP_NAMES[grp],
+            "losses": len(g),
+            "median margin": g.margin.median(),
+            "within 3k %": 100 * (g.margin > -3000).mean(),
+        }
+        for other in GROUP_ORDER:
+            rec[f"to {GROUP_NAMES[other]} %"] = 100 * (g["opp group"] == GROUP_NAMES[other]).mean()
+        rec["to others %"] = 100 * (g["opp group"] == "other").mean()
+        summary.append(rec)
         counts = g.groupby(["feature", "direction"]).size().sort_values(ascending=False)
-        for (feat, direction), n in counts.head(4).items():
+        for (feat, direction), n in counts.head(3).items():
             top_feats.append(
                 {
                     "group": GROUP_NAMES[grp],
@@ -1115,17 +1165,43 @@ def line_families(teams: pd.DataFrame, latest: dict[str, pd.DataFrame]) -> pd.Da
         if cur is None or len(cur) < MIN_PROFILE_GAMES:
             continue
         modal[t.team_name] = (t.group, {c: cur[f"field_{c}"].value_counts().index[0] for c in CUTS})
+    groups = [g for g in GROUP_ORDER if any(v[0] == g for v in modal.values())]
     out = []
     for cut in ("h24", "h48", "h100", "h136", "h200", "h300", "h400"):
         counts = Counter(v[1][cut] for v in modal.values())
         rec = {"turn": int(cut[1:]), "day": int(cut[1:]) // 24}
-        for grp in ("top", "batch"):
+        for grp in groups:
             names = [n for n, v in modal.items() if v[0] == grp]
             shared = [n for n in names if counts[modal[n][1][cut]] > 1]
             rec[f"{GROUP_NAMES[grp]} on a shared line"] = f"{len(shared)} of {len(names)}"
         rec["largest family"] = max(counts.values()) if counts else 0
         out.append(rec)
     return pd.DataFrame(out)
+
+
+def count_table(profile: pd.DataFrame, column: str, classes: list[str], label: str) -> pd.DataFrame:
+    groups = present_groups(profile)
+    out = pd.DataFrame({label: classes})
+    for grp in groups:
+        out[f"{GROUP_NAMES[grp]} teams"] = [
+            int(((profile.group == grp) & (profile[column] == c)).sum()) for c in classes
+        ]
+    return out[out.iloc[:, 1:].sum(axis=1) > 0]
+
+
+def overview_table(profile: pd.DataFrame) -> pd.DataFrame:
+    groups = present_groups(profile)
+    out = []
+    for lab in OVERVIEW_FEATURES:
+        if lab not in profile.columns:
+            continue
+        rec = {"feature (median per team)": lab}
+        for grp in groups:
+            rec[GROUP_NAMES[grp]] = profile[profile.group == grp][lab].median()
+        out.append(rec)
+    head = {"feature (median per team)": "teams"}
+    head.update({GROUP_NAMES[g]: int((profile.group == g).sum()) for g in groups})
+    return pd.DataFrame([head] + out)
 
 
 def group_rating_figure(paths: list[tuple[str, str, list[float]]], path) -> None:
@@ -1143,12 +1219,12 @@ def group_rating_figure(paths: list[tuple[str, str, list[float]]], path) -> None
     fig.patch.set_facecolor(SURFACE)
     for _, group, vals in paths:
         v = vals[:n]
-        ax.plot(range(1, len(v) + 1), v, color=GROUP_COLORS[group], alpha=0.22, linewidth=0.8)
-    for group in ("top", "batch"):
+        ax.plot(range(1, len(v) + 1), v, color=GROUP_COLORS[group], alpha=0.18, linewidth=0.7)
+    for group in GROUP_ORDER:
         arr = [
             list(vals[:n]) + [np.nan] * (n - len(vals[:n])) for _, g, vals in paths if g == group
         ]
-        if not arr:
+        if len(arr) < 3:
             continue
         with warnings.catch_warnings():
             warnings.simplefilter("ignore", RuntimeWarning)
@@ -1182,20 +1258,23 @@ def group_strip_figure(profile: pd.DataFrame, features: list[str], path) -> None
 
     from research.report import GRID, INK, INK_2, SURFACE, style_axes
 
+    groups = present_groups(profile)
     cols = 4
     rows_n = max(math.ceil(len(features) / cols), 1)
-    fig, axes = plt.subplots(rows_n, cols, figsize=(11, 2.3 * rows_n), dpi=130)
+    fig, axes = plt.subplots(
+        rows_n, cols, figsize=(11, (1.3 + 0.55 * len(groups)) * rows_n), dpi=130
+    )
     fig.patch.set_facecolor(SURFACE)
     axes = np.array(axes).reshape(-1)
     rng = np.random.default_rng(0)
     for ax, feat in zip(axes, features):
-        for yi, group in enumerate(("top", "batch")):
+        for yi, group in enumerate(reversed(groups)):
             vals = profile[profile.group == group][feat].dropna().astype(float)
             y = yi + rng.uniform(-0.18, 0.18, len(vals))
             ax.scatter(
                 vals,
                 y,
-                s=20,
+                s=18,
                 color=GROUP_COLORS[group],
                 alpha=0.85,
                 edgecolor=SURFACE,
@@ -1213,9 +1292,9 @@ def group_strip_figure(profile: pd.DataFrame, features: list[str], path) -> None
         style_axes(ax)
         ax.yaxis.grid(False)
         ax.xaxis.grid(True, color=GRID, linewidth=0.6)
-        ax.set_yticks([0, 1])
-        ax.set_yticklabels([GROUP_NAMES["top"], GROUP_NAMES["batch"]], fontsize=7)
-        ax.set_ylim(-0.7, 1.7)
+        ax.set_yticks(range(len(groups)))
+        ax.set_yticklabels([GROUP_NAMES[g] for g in reversed(groups)], fontsize=7)
+        ax.set_ylim(-0.7, len(groups) - 0.3)
         ax.tick_params(labelsize=6)
         ax.set_title(feat, fontsize=8, loc="left", color=INK)
     for ax in axes[len(features) :]:
@@ -1243,26 +1322,30 @@ def group_comparison(teams, hist, feats, latest) -> tuple[str, str]:
             continue
         profiles.append(team_profile(t, cur, hist))
     profile = pd.DataFrame(profiles)
-    n_top = int((profile.group == "top").sum()) if len(profile) else 0
-    n_batch = int((profile.group == "batch").sum()) if len(profile) else 0
-    if n_top == 0 or n_batch == 0:
-        note = "_Group comparison needs replays for both groups; not built yet._"
-        return f"## Top-14 vs next-15\n\n{note}\n", f"# Top-14 vs next-15\n\n{note}\n"
-
-    cmp_parts = []
-    for section, labels in COMPARE_SECTIONS:
-        c = compare_table(profile, labels)
-        c.insert(0, "section", section)
-        cmp_parts.append(c)
-    cmp = pd.concat(cmp_parts, ignore_index=True)
-    sep, same = separation_bullets(cmp)
+    groups = present_groups(profile) if len(profile) else []
+    if len(groups) < 2:
+        note = "_Group comparison needs replays for at least two groups; not built yet._"
+        return f"## Groups\n\n{note}\n", f"# Groups\n\n{note}\n"
+    pairs = [(a, b) for a, b in PAIRS if a in groups and b in groups]
+    counts = ", ".join(f"{int((profile.group == g).sum())} {GROUP_NAMES[g]}" for g in groups)
 
     snapshot = teams.iloc[0].get("snapshot", "")
-    who = teams[["rank", "team_name", "group", "score", "public_games", "current_sub_games"]].copy()
+    zones = teams.iloc[0].get("zone_bounds", "")
+    who = teams[
+        [
+            "rank",
+            "first_rank",
+            "team_name",
+            "zone",
+            "group",
+            "score",
+            "public_games",
+            "current_sub_games",
+        ]
+    ].copy()
     who["group"] = who.group.map(GROUP_NAMES)
-    who["Kaggle medal zone"] = np.where(who["rank"] <= KAGGLE_GOLD_RANK, "gold", "silver")
     who["sampled current-sub games"] = [len(latest.get(n, [])) for n in teams.team_name]
-    who = who.rename(columns={"team_name": "team"})
+    who = who.rename(columns={"team_name": "team", "first_rank": "rank at first snapshot"})
 
     det = profile[
         [
@@ -1280,36 +1363,21 @@ def group_comparison(teams, hist, feats, latest) -> tuple[str, str]:
     det["group"] = det.group.map(GROUP_NAMES)
     det["field branch"] = det["field branch turn"].map(branch_class)
     det = det.sort_values("rank")
-    classes = ["day 1", "day 2", "day 4-6", "day 8-16", "end-game only", "fixed"]
-    field_class = profile["field branch turn"].map(branch_class)
-    cls = pd.DataFrame(
-        {
-            "first field branch": classes,
-            "top-14 teams": [
-                int(((profile.group == "top") & (field_class == c)).sum()) for c in classes
-            ],
-            "next-15 teams": [
-                int(((profile.group == "batch") & (field_class == c)).sum()) for c in classes
-            ],
-        }
+    profile["field branch"] = profile["field branch turn"].map(branch_class)
+    cls = count_table(
+        profile,
+        "field branch",
+        ["day 1", "day 2", "day 4-6", "day 8-16", "end-game only", "fixed"],
+        "first field branch",
     )
-    drivers = ["opponent", "weed", "seat", "shop", "none", "fixed", "n/a"]
-    drv = pd.DataFrame(
-        {
-            "dominant driver at the first branch": drivers,
-            "top-14 teams": [
-                int(((profile.group == "top") & (profile.driver == d)).sum()) for d in drivers
-            ],
-            "next-15 teams": [
-                int(((profile.group == "batch") & (profile.driver == d)).sum()) for d in drivers
-            ],
-        }
+    drv = count_table(
+        profile,
+        "driver",
+        ["opponent", "weed", "seat", "shop", "none", "fixed", "n/a"],
+        "dominant driver at the first branch",
     )
-    drv = drv[(drv["top-14 teams"] + drv["next-15 teams"]) > 0]
-
-    overall, per_top, per_batch = group_h2h(hist, teams)
-    loss_summary, loss_feats = group_losses(teams, latest, feats)
     families = line_families(teams, latest)
+    loss_summary, loss_feats = group_losses(teams, latest, feats)
 
     paths = []
     for _, t in teams.iterrows():
@@ -1317,45 +1385,72 @@ def group_comparison(teams, hist, feats, latest) -> tuple[str, str]:
             continue
         paths.append((t.team_name, t.group, list(rating_path(hist, int(t.current_sub)))))
     group_rating_figure(paths, REPORTS / "figs" / "group_rating.png")
-    ranked = cmp.dropna(subset=["P(top > next)"]).copy()
-    ranked["d"] = (ranked["P(top > next)"] - 0.5).abs()
-    ranked["weak"] = ranked.p >= 0.1
-    strip_feats = (
-        ranked.sort_values(["weak", "d", "p"], ascending=[True, False, True])
-        .feature.head(8)
-        .tolist()
-    )
-    group_strip_figure(profile, strip_feats, REPORTS / "figs" / "group_strip.png")
+
+    pair_md, pair_summary, first_sep, first_same, strip_feats = [], [], [], [], []
+    for a, b in pairs:
+        A, B = GROUP_NAMES[a], GROUP_NAMES[b]
+        parts = []
+        for section, labels in COMPARE_SECTIONS:
+            c = compare_table(profile, labels, a, b)
+            c.insert(0, "section", section)
+            parts.append(c)
+        cmp = pd.concat(parts, ignore_index=True)
+        sep, same = separation_bullets(cmp, a, b)
+        overall, per_a, per_b = group_h2h(hist, teams, a, b)
+        if not first_sep and not strip_feats:
+            first_sep, first_same = sep, same
+            auc_col = f"P({A} > {B})"
+            ranked = cmp.dropna(subset=[auc_col]).copy()
+            ranked["d"] = (ranked[auc_col] - 0.5).abs()
+            ranked["weak"] = ranked.p >= 0.1
+            strip_feats = (
+                ranked.sort_values(["weak", "d", "p"], ascending=[True, False, True])
+                .feature.head(8)
+                .tolist()
+            )
+        pair_md += [f"## {A} vs {B}", "", "Separates them (p < 0.05):", ""]
+        pair_md += [f"- {x}" for x in sep] if sep else ["- nothing at p < 0.05"]
+        pair_md += ["", "Does not separate them (p >= 0.2, AUC within 0.35-0.65):", ""]
+        pair_md += [f"- {x}" for x in same] if same else ["- (none)"]
+        pair_md += ["", overall, ""]
+        if len(per_a):
+            pair_md += [f"{A} teams against {B}:", "", md_table(per_a), ""]
+        if len(per_b):
+            pair_md += [f"{B} teams against {A}:", "", md_table(per_b), ""]
+        for section, _ in COMPARE_SECTIONS:
+            part = cmp[cmp.section == section].drop(columns=["section"])
+            if len(part):
+                pair_md += [f"**{section}**", "", md_table(part, floatfmt=".2f"), ""]
+        pair_summary.append(f"- {A} vs {B}: {overall}")
+    if strip_feats:
+        group_strip_figure(profile, strip_feats, REPORTS / "figs" / "group_strip.png")
 
     md = [
-        "# Top-14 vs next-15",
+        "# Groups: top-14, the rest of gold, silver, bronze",
         "",
         (
-            f"Snapshot {snapshot}. The top-14 are the teams that were top-10 in Iminabo's "
-            f"screenshot or on the live board on 2026-09-14; the next-15 are chunks of the "
-            f"gold zone outside them (ranks 8-48 at snapshot time, {n_batch} teams with "
-            f"replays). Under Kaggle's medal rule for 9,066 teams (gold = top 10 + 0.2% = rank "
-            f"{KAGGLE_GOLD_RANK}, silver = top 5%), ranks 8-23 of the batch are gold and 29-48 "
-            f"silver; under the top-50 working assumption all are gold. Every number below is "
-            f"a per-team median over {PROFILE_SETS[profile_set]}, compared across "
-            f"teams: 'P(top > next)' is the chance that a random top-14 team's value is above a "
-            f"random next-15 team's (0.5 = no separation), 'p' is the two-sided Mann-Whitney "
-            f"test. Numbers are per game unless stated. Teams with fewer than "
-            f"{MIN_PROFILE_GAMES} sampled games of their current submission are left out of "
-            f"the comparison" + (f": {', '.join(too_few)}." if too_few else ".")
+            f"Snapshot {snapshot} of the full leaderboard ({zones}). Medal zones follow "
+            f"Kaggle's rule for competitions with 1,000+ teams (gold = top 10 + 0.2% of teams, "
+            f"silver = top 5%, bronze = top 10%) applied to that snapshot. Groups: the "
+            f"**top-14** are the teams that were top-10 in Iminabo's screenshot or on the live "
+            f"board on 2026-09-14 (two of them had slipped into silver by this snapshot and "
+            f"stay in the top-14); **gold** is every other gold team the crawl could seed; "
+            f"**silver** and **bronze** are rank chunks inside those zones, plus the "
+            f"first-batch teams that sit there now. Teams with replays: {counts}. Every "
+            f"number is a per-team median over {PROFILE_SETS[profile_set]}, compared across "
+            f"teams: 'P(A > B)' is the chance that a random team of A is above a random team "
+            f"of B on that feature (0.5 = no separation), 'p' the two-sided Mann-Whitney "
+            f"test. Teams with fewer than {MIN_PROFILE_GAMES} sampled games are left out"
+            + (f": {', '.join(too_few)}." if too_few else ".")
         ),
         "",
         "## Who is in each group",
         "",
         md_table(who),
         "",
-        "## What separates the groups",
+        "## Overview",
         "",
-    ]
-    md += [f"- {b}" for b in sep] if sep else ["- nothing at p < 0.05"]
-    md += ["", "## What does not separate them (p >= 0.2 and P(top > next) within 0.35-0.65)", ""]
-    md += [f"- {b}" for b in same] if same else ["- (none)"]
-    md += [
+        md_table(overview_table(profile)),
         "",
         "![rating paths by group](figs/group_rating.png)",
         "",
@@ -1384,18 +1479,8 @@ def group_comparison(teams, hist, feats, latest) -> tuple[str, str]:
         "",
         md_table(families),
         "",
-        "## Feature comparison",
-        "",
     ]
-    for section, _ in COMPARE_SECTIONS:
-        part = cmp[cmp.section == section].drop(columns=["section"])
-        if len(part):
-            md += [f"**{section}**", "", md_table(part, floatfmt=".2f"), ""]
-    md += ["## Head to head between the groups", "", overall, ""]
-    if len(per_top):
-        md += ["Top-14 teams against the next-15:", "", md_table(per_top), ""]
-    if len(per_batch):
-        md += ["Next-15 teams against the top-14:", "", md_table(per_batch), ""]
+    md += pair_md
     md += ["## Losses of the current submissions", ""]
     if len(loss_summary):
         md += [
@@ -1415,27 +1500,28 @@ def group_comparison(teams, hist, feats, latest) -> tuple[str, str]:
     md += [
         "## Per-team profile",
         "",
-        md_table(profile.drop(columns=["driver gap"]).sort_values("rank")),
+        md_table(profile.drop(columns=["driver gap", "field branch"]).sort_values("rank")),
         "",
     ]
     groups_md = "\n".join(md) + "\n"
 
+    a, b = pairs[0]
     section = [
-        "## Top-14 vs next-15",
+        "## Groups: top-14, the rest of gold, silver, bronze",
         "",
         (
-            f"{n_top} top-14 teams against {n_batch} next-15 teams, per-team medians of the "
-            f"current submissions. Full tables, head-to-head, losses, and figures in "
+            f"Teams with replays: {counts}. Per-team medians of the current submissions; "
+            f"full tables, all pairwise comparisons, head-to-head, losses, and figures in "
             f"[groups.md](groups.md)."
         ),
         "",
-        "Separates the groups (p < 0.05):",
+        f"{GROUP_NAMES[a]} vs {GROUP_NAMES[b]}, separates them (p < 0.05):",
         "",
     ]
-    section += [f"- {b}" for b in sep[:8]] if sep else ["- nothing at p < 0.05"]
+    section += [f"- {x}" for x in first_sep[:8]] if first_sep else ["- nothing at p < 0.05"]
     section += ["", "Does not separate them:", ""]
-    section += [f"- {b}" for b in same[:8]] if same else ["- (none)"]
-    section += ["", overall, ""]
+    section += [f"- {x}" for x in first_same[:8]] if first_same else ["- (none)"]
+    section += ["", "Head to head:", ""] + pair_summary + [""]
     return "\n".join(section) + "\n", groups_md
 
 
@@ -1497,8 +1583,7 @@ def main() -> None:
     print("wrote summary.md and groups.md")
     meta = {
         "teams": len(teams),
-        "top": int((teams.group == "top").sum()),
-        "batch": int((teams.group == "batch").sum()),
+        "groups": {g: int((teams.group == g).sum()) for g in GROUP_ORDER},
         "episodes_with_features": int(feats.episode_id.nunique()),
         "top_seats": int(feats.is_top10_seat.sum()),
         "profile_window": profile_set,

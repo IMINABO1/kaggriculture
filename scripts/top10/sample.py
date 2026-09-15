@@ -8,10 +8,12 @@ F / Q1 / Q2 / Q3 / L; plus C0 = the first 50 games of the team's current submiss
 
     uv run python scripts/top10/sample.py --freeze data/top10/sample_top14_2026-09-14T1936Z.csv
 
-With --freeze, teams of the frozen group (default: top) keep the history windows of that
-earlier sample instead of being re-cut from the longer history; only C0 is recomputed, since
-the current submission may have been corrected. This keeps an already-studied group's
-windows fixed while a new group is added.
+With --freeze, teams of the frozen group (default: top; "all" for every team in the file)
+keep the history windows of that earlier sample instead of being re-cut from the longer
+history; only C0 is recomputed, since the current submission may have been corrected. This
+keeps already-studied teams' windows fixed while new teams are added. --new-windows C0
+gives teams absent from the frozen file only their current-submission window (the replay
+quota makes full histories for every new team unaffordable).
 """
 
 from __future__ import annotations
@@ -29,7 +31,15 @@ def main() -> None:
         description=__doc__, formatter_class=argparse.RawDescriptionHelpFormatter
     )
     ap.add_argument("--freeze", default="", help="earlier sample.csv whose windows are kept")
-    ap.add_argument("--freeze-group", default="top", help="group whose windows are frozen")
+    ap.add_argument(
+        "--freeze-group", default="top", help="group whose windows are frozen ('all' = every team)"
+    )
+    ap.add_argument(
+        "--new-windows",
+        default="all",
+        choices=["all", "C0"],
+        help="windows for teams not in the frozen file: all history windows, or C0 only",
+    )
     args = ap.parse_args()
 
     hist = pd.read_parquet(TOP10 / "history.parquet")
@@ -50,9 +60,11 @@ def main() -> None:
             .reset_index(drop=True)
         )
         old = frozen[frozen.team_id == t.team_id]
-        if t.group == args.freeze_group and len(old):
+        if (args.freeze_group == "all" or t.group == args.freeze_group) and len(old):
             rows.extend(old.to_dict("records"))
             kept += 1
+            history_windows = {}
+        elif args.freeze and args.new_windows == "C0":
             history_windows = {}
         else:
             history_windows = windows(len(h))

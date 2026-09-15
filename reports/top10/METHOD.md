@@ -19,13 +19,21 @@ once more (2026-09-15T0033Z) and chunks "8-9, 13-14, 20-23, 29-31, 38-39, 47-48"
 a chunk skips teams already in the top-14 and extends past them, because the board moves
 between reading it and snapshotting it. The **next-15** are ranks 8, 11, 17, 19, 20, 21, 22,
 23, 29, 30, 31, 38, 39, 47, and 48 at that snapshot (names in `summary.md` and `groups.md`).
-Which medal rule "gold zone" means: Kaggle's rule for competitions with 1,000+ teams is
-gold = top 10 + 0.2%, which with the 9,066 teams entered is rank 28; silver is the top 5%
-(rank 453). Iminabo's working assumption was gold = top 50. Ranks 8-23 of the batch are gold
-either way; ranks 29-48 are gold only under the top-50 assumption, and every batch team
-carries its rank so the comparison can be cut at 28 as well. One batch team (rank 8) was
-inside the top 10 at snapshot time: the groups are "the 14" and "the next 15", not "top 10
-today" and the rest. `data/top10/snapshot_latest.csv` carries a `group` column.
+That batch mixed zones: under Kaggle's rule for competitions with 1,000+ teams (gold = top
+10 + 0.2% of teams, silver = top 5%, bronze = top 10%) gold ended at rank 28, so 8 of the
+15 were gold and 7 silver (P13 in `problems_encountered.md`). The study was therefore
+re-cut by medal zone from a snapshot of the **full** leaderboard (2026-09-15T1342Z, 9,125
+teams: gold to rank 28, silver to 456, bronze to 912; `snapshot.py --full`):
+- **top-14**: the original 14, kept as the study's subject (two had slipped into silver by
+  that snapshot);
+- **gold**: every other gold team the crawl could seed, ranks 6-28 (16 teams);
+- **silver**: the first-batch teams now in silver plus rank chunks 120-122, 250-252,
+  400-402 (21 teams);
+- **bronze**: rank chunks 470-472, 600-602, 750-752, 880-882 (12 teams; one team without a
+  seed was skipped and the chunk extended).
+Ranks move by tens of places in a day at these depths, so every table shows each team's
+zone and rank at the full snapshot and, for the first 29, the rank at the first snapshot.
+`data/top10/snapshot_latest.csv` carries `zone` and `group` columns.
 
 ## 2. Which games were looked at
 
@@ -47,7 +55,11 @@ top-14's history windows are frozen at the first sample
 (`data/top10/sample_top14_2026-09-14T1936Z.csv`): the second crawl lengthened their
 histories, which would have moved every quarter-point window for no gain. Only their C0 was
 recomputed, because one team's current submission had been mis-identified (P11 in
-`problems_encountered.md`). The next-15 are cut fresh from the second snapshot.
+`problems_encountered.md`). The first batch of 15 was cut fresh from the second snapshot
+with all windows (`data/top10/sample_29teams_2026-09-15T0033Z.csv`). The 34 teams added
+for the zone comparison get only C0, the current submission's first 50 games: Kaggle
+rations replay downloads to roughly 120 an hour (P12), and the group comparison is built
+on current submissions anyway.
 
 ## 3. Where the data came from
 
