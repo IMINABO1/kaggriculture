@@ -80,6 +80,8 @@ def seat_features(trace: dict, seat: int) -> dict:
         "land_day_3": s["land_days"][2] if len(s["land_days"]) > 2 else None,
         "weeds_spawned": sum(s["weeds_spawned_by_day"]),
         "weeds_by_day": s["weeds_spawned_by_day"],
+        "weed_days": sum((d or {}).get("weed", 0) for d in s["tiles_by_day"]),
+        "weed_peak": max(((d or {}).get("weed", 0) for d in s["tiles_by_day"]), default=0),
         "shed_peak": max((sum(d.values()) for d in s["shed_by_day"] if d), default=0),
     }
     for c in CROPS:

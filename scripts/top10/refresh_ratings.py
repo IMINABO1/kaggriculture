@@ -6,6 +6,11 @@ One raw ListEpisodes call returns every game of a submission with both agents' r
 handful of calls covers the sampled submissions. The endpoint answers 429 with Retry-After
 for long stretches, so this runs slowly and stops at the time budget; rerun to continue.
 Current submissions first, then older sampled submissions with the fewest known ratings.
+
+The raw payload also carries each team's publicLeaderboardSubmissionId, which the client
+listing does not. Teams whose current submission was guessed from their latest episode
+(`current_sub_source = latest-episode` in teams.csv) are corrected from it, so run this
+before sample.py when the crawl reported such teams.
 """
 
 from __future__ import annotations
@@ -45,18 +50,27 @@ def main() -> None:
     deadline = time.time() + args.budget_min * 60
 
     hist = pd.read_parquet(TOP10 / "history.parquet")
-    sample = pd.read_csv(TOP10 / "sample.csv")
-    sampled = hist[hist.episode_id.isin(sample.episode_id)]
+    teams = pd.read_csv(TOP10 / "teams.csv")
+    sample_path = TOP10 / "sample.csv"
+    sampled = (
+        hist[hist.episode_id.isin(pd.read_csv(sample_path).episode_id)]
+        if sample_path.exists()
+        else hist[hist.is_current_sub]
+    )
     known = sampled.groupby("sub").rating_after.apply(lambda s: s.notna().mean())
     current = set(hist[hist.is_current_sub]["sub"])
-    order = sorted(known.index, key=lambda s: (s not in current, known[s]))
+    guessed = set(teams[teams.current_sub_source == "latest-episode"].current_sub.dropna())
+    for sub in guessed:
+        known[sub] = known.get(sub, 0.0)
+    order = sorted(known.index, key=lambda s: (s not in guessed, s not in current, known[s]))
 
     session = requests.Session()
     session.headers["User-Agent"] = "kaggriculture-research (IMINABO1)"
     updates = {}
+    leaderboard_sub: dict[int, int] = {}
     done = 0
     for sub in order:
-        if known[sub] >= 0.99:
+        if known[sub] >= 0.99 and sub not in guessed:
             continue
         cached = EPISODE_CACHE / f"raw_{sub}.json"
         data = (
@@ -72,11 +86,34 @@ def main() -> None:
                 sid = int(a.get("submissionId") or 0)
                 if a.get("updatedScore") is not None:
                     updates[(int(ep["id"]), sid)] = (a.get("initialScore"), a.get("updatedScore"))
+        for t in data.get("teams", []):
+            if t.get("publicLeaderboardSubmissionId"):
+                leaderboard_sub[int(t["id"])] = int(t["publicLeaderboardSubmissionId"])
         done += 1
         print(f"refreshed sub {sub}: {len(data.get('episodes', []))} episodes", flush=True)
 
+    fixed = 0
+    for i, r in teams.iterrows():
+        real = leaderboard_sub.get(int(r.team_id))
+        if r.current_sub_source == "leaderboard" or real is None:
+            continue
+        if real != int(r.current_sub):
+            print(f"current submission of {r.team_name}: {int(r.current_sub)} -> {real}")
+            fixed += 1
+        teams.loc[i, "current_sub"] = real
+        teams.loc[i, "current_sub_source"] = "leaderboard"
+        h = hist[(hist.team_id == r.team_id) & (hist.type == "EPISODE_TYPE_PUBLIC")]
+        teams.loc[i, "current_sub_games"] = int((h["sub"] == real).sum())
+    if leaderboard_sub:
+        teams.to_csv(TOP10 / "teams.csv", index=False)
+        current_of = dict(zip(teams.team_id, teams.current_sub))
+        hist["is_current_sub"] = [s == current_of.get(t) for t, s in zip(hist.team_id, hist["sub"])]
+        print(f"teams.csv: {fixed} current submissions corrected")
+
     if not updates:
-        print("no updates")
+        if leaderboard_sub:
+            hist.to_parquet(TOP10 / "history.parquet", index=False)
+        print("no rating updates")
         return
     before = [updates.get((e, s), (None, None))[0] for e, s in zip(hist.episode_id, hist["sub"])]
     after = [updates.get((e, s), (None, None))[1] for e, s in zip(hist.episode_id, hist["sub"])]
@@ -93,7 +130,7 @@ def main() -> None:
         hist.opp_rating_after
     )
     hist.to_parquet(TOP10 / "history.parquet", index=False)
-    covered = hist[hist.episode_id.isin(sample.episode_id)].rating_after.notna().mean()
+    covered = hist[hist.episode_id.isin(sampled.episode_id)].rating_after.notna().mean()
     print(f"history.parquet updated; sampled games with a rating: {covered:.0%}")
 
 

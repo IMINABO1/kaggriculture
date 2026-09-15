@@ -180,3 +180,53 @@ Every current top-10 submission is 0-6 days old (all created 2026-09-08 to 09-14
 board's tenth place flipped between two reads an hour apart. The community index has only
 0-2 stored games for these subs, so their games must be fetched directly. Team histories are
 long though: Mengfei Li has 70+ submissions since 2026-08-02, Thomas Tschinkel 49+ since 08-14.
+
+### Milestone: second batch started (the gold zone outside the 14)
+Iminabo's ask: repeat the study for about 15 teams that were not among the 14, drawn from the
+gold-medal zone in contiguous chunks with gaps, then compare the two groups on the same
+features to see what separates the top 10 from the rest of gold. Snapshot 2026-09-15T0033Z
+(19:33 local on 09-14). The board had moved since the 19:36Z read: DSM and Artem The Farmer
+are now 2 and 3, and two teams outside the 14 (Unknown Mother-Goose, tetsuya & yuanzhe &
+guoqi) had rotated into the top 10. The 14 now occupy ranks 1-7, 9-10, 13-16, and 18.
+
+### Decision: which medal rule, and which chunks
+`kaggle competitions list` reports 9,066 teams. Kaggle's rule for competitions with 1,000+
+teams is gold = top 10 + 0.2% (rank 28 here), silver = top 5% (rank 453), bronze = top 10%
+(rank 907). Iminabo's working assumption was gold = top 50. The batch spans both: ranks 8-23
+are gold under Kaggle's rule, ranks 29-48 are silver under Kaggle's rule and gold under the
+top-50 assumption. Each batch team carries its rank so the comparison can be cut either way.
+Chunks were specified as "8-9,13-14,20-23,29-31,38-39,47-48"; a chunk fills forward past
+teams already in the top group (the board moves between reading it and snapshotting it,
+and the first attempt landed three chunk ranks on studied teams). Result, 15 teams:
+- 8 Unknown Mother-Goose, 11 leave you (chunk from 8)
+- 17 𝕯𝖊𝖔𝖉𝖎𝖒𝖘 & 𝕮𝖔, 19 Zhenghongshuang (chunk from 13; ranks 13-16 and 18 are studied teams)
+- 20 kyy666, 21 Kilupy, 22 elmo, 23 ElephtAI
+- 29 Emile Andrieu, 30 mtmr_s1, 31 Kaggriculture Agent
+- 38 THUNDER THUNDER, 39 yomogii
+- 47 doubao, 48 Tom&Jerry
+Unknown Mother-Goose is in the top 10 at snapshot time and is kept in the batch: the groups
+are "the 14" versus "the next 15", not "top 10 today" versus the rest, and the memo says so.
+`snapshot_latest.csv` now carries a `group` column (top / batch) that every later stage reads.
+
+### Note: two batch teams are missing from the community index
+𝕯𝖊𝖔𝖉𝖎𝖒𝖘 & 𝕮𝖔 and Kilupy have no submission in `georgymamarin/kaggriculture-episodes`, and
+Kaggle's episode endpoint only filters by submission id (a `teamId` filter returns 400). Both
+appear as opponents in the 364 listings already cached from the first crawl (4 submissions
+each), so `crawl.py` now seeds from its own cache as well as from the index.
+
+### Decision: the top-14's windows are frozen at the first sample
+The crawl of the batch also grew the top-14's histories (new opponents revealed new
+submissions; Mengfei Li went from 9,162 to 10,390 games), which moved their quarter-point
+windows and made their "last 50" a different 50. Re-cutting them would have cost about
+1,900 replays for windows that shift by a few percent. `sample.py --freeze` now keeps the
+top-14's F/Q1/Q2/Q3/L rows from the committed first sample
+(`data/top10/sample_top14_2026-09-14T1936Z.csv`) and recomputes only C0, because
+アルモンド's current submission was corrected (P11). The batch is cut fresh from the
+2026-09-15T0033Z snapshot. Remaining to fetch after the freeze: 4,851 replays (4,284 for
+the batch, 523 for the top-14's Q3 backlog, 44 for アルモンド's C0).
+
+### Surprise: Kaggle rations replay downloads
+About 160 replays into the batch, the replay endpoint began answering 429 with a
+Retry-After near 20 minutes (P12). The community replay dataset holds only 92 of the
+missing games, so the fetch is quota-bound and runs as one long background job with a
+shared wait gate. Throughput per quota window is measured below once the window reopens.

@@ -8,7 +8,10 @@ returns the same episodes and agents but no ratings, and the cached payload is m
 later refresh can fill them in.
 
 Replays come through the authenticated Python client (the old public CDN path 404s) and are
-stored zstd-compressed, which shrinks a 30 MB replay to roughly 150 KB.
+stored zstd-compressed, which shrinks a 30 MB replay to roughly 150 KB. The client sends its
+requests with no timeout and streams file chunks with a 300 s timeout and five retries, so a
+connection Kaggle drops silently can hold a worker for half an hour; every session send gets
+a default timeout here and replays are streamed with a 90 s chunk timeout and two retries.
 """
 
 from __future__ import annotations
@@ -35,6 +38,8 @@ _session.headers["User-Agent"] = "kaggriculture-research (IMINABO1)"
 _lock = threading.Lock()
 _last_call = 0.0
 _local = threading.local()
+_quota_lock = threading.Lock()
+_quota_open_at = 0.0
 
 
 def _throttle() -> None:
@@ -46,12 +51,31 @@ def _throttle() -> None:
         _last_call = time.monotonic()
 
 
+DEFAULT_TIMEOUT = (30, 90)
+
+
+def _install_default_timeout() -> None:
+    """Give every requests.Session send a (connect, read) timeout unless one was passed."""
+    if getattr(requests.Session, "_kaggriculture_timeout", False):
+        return
+    original = requests.Session.send
+
+    def send(self, request, **kwargs):
+        if kwargs.get("timeout") is None:
+            kwargs["timeout"] = DEFAULT_TIMEOUT
+        return original(self, request, **kwargs)
+
+    requests.Session.send = send
+    requests.Session._kaggriculture_timeout = True
+
+
 def _kaggle():
     """One authenticated client per thread; the client's HTTP session is not shared."""
     api = getattr(_local, "api", None)
     if api is None:
         from kaggle.api.kaggle_api_extended import KaggleApi
 
+        _install_default_timeout()
         api = KaggleApi()
         api.authenticate()
         _local.api = api
@@ -165,17 +189,58 @@ def replay_path(episode_id: int) -> Path:
     return REPLAYS / f"{episode_id}.json.zst"
 
 
+QUOTA_ATTEMPTS = 4
+
+
+def _wait_for_quota() -> None:
+    """Block while the replay endpoint is known to be refusing (shared by all workers)."""
+    with _quota_lock:
+        wait = _quota_open_at - time.monotonic()
+    if wait > 0:
+        time.sleep(wait)
+
+
+def _note_quota(retry_after: str | None) -> None:
+    """Record a 429 from the replay endpoint; Retry-After has been ~20 minutes in practice."""
+    global _quota_open_at
+    wait = float(retry_after) if retry_after and retry_after.isdigit() else 60.0
+    with _quota_lock:
+        _quota_open_at = max(_quota_open_at, time.monotonic() + wait + 2)
+    print(f"replay quota hit: waiting {wait:.0f}s", flush=True)
+
+
 def download_replay(episode_id: int) -> Path:
     """Fetch one replay through the authenticated client and store it compressed."""
     out = replay_path(episode_id)
     if out.exists():
         return out
+    from kaggle.api.kaggle_api_extended import ApiGetEpisodeReplayRequest
+
+    api = _kaggle()
     with tempfile.TemporaryDirectory() as tmp:
-        _kaggle().competition_episode_replay(int(episode_id), path=tmp, quiet=True)
-        files = list(Path(tmp).glob("*.json"))
-        if not files:
+        for attempt in range(QUOTA_ATTEMPTS):
+            _wait_for_quota()
+            try:
+                with api.build_kaggle_client() as kaggle:
+                    request = ApiGetEpisodeReplayRequest()
+                    request.episode_id = int(episode_id)
+                    response = kaggle.competitions.competition_api_client.get_episode_replay(
+                        request
+                    )
+                break
+            except requests.HTTPError as exc:
+                if exc.response is None or exc.response.status_code != 429:
+                    raise
+                _note_quota(exc.response.headers.get("Retry-After"))
+        else:
+            raise RuntimeError(f"replay endpoint kept throttling for episode {episode_id}")
+        outfile = Path(tmp) / f"episode-{episode_id}-replay.json"
+        api.download_file(
+            response, str(outfile), kaggle.http_client(), quiet=True, max_retries=2, timeout=90
+        )
+        if not outfile.exists():
             raise FileNotFoundError(f"no replay file returned for episode {episode_id}")
-        raw = files[0].read_bytes()
+        raw = outfile.read_bytes()
     head, tail = raw[:64].lstrip(), raw[-64:].rstrip()
     if not (head.startswith(b"{") and tail.endswith(b"}") and b'"steps"' in raw):
         raise ValueError(f"replay {episode_id} does not look like a replay document")

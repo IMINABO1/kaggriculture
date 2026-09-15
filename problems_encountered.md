@@ -128,3 +128,52 @@ entry also says why I missed it and what changes so it does not happen again.
 - **Caught by:** me, reading the final summary table (a day-0 melon sale is impossible).
 - **Lesson:** when a derived record can legitimately be empty, exclude it from "first" and
   "last" statistics explicitly; sums forgive zeros, extrema do not.
+
+### P11: "latest episode" picked the wrong current submission for four teams
+- **Symptom:** after the second crawl, seven teams had `current_sub_source = latest-episode`
+  (the client listing carries no team block, so `crawl.py` falls back to the submission of
+  the team's most recent public game). Fetching the raw endpoint's team block showed four of
+  the seven were wrong: アルモンド (56230634 → 56233099), 𝕯𝖊𝖔𝖉𝖎𝖒𝖘 & 𝕮𝖔, elmo, and doubao.
+  アルモンド was in the first study, so its published dossier's "current submission"
+  section (C0 window, rating path, determinism verdict) described the team's *other* active
+  submission.
+- **Cause:** every team keeps two active submissions and both play constantly, so the most
+  recently played one is the leaderboard submission only half the time. I treated
+  "latest episode" as a safe approximation without checking it against the one endpoint
+  that states the leaderboard submission.
+- **Fix:** `refresh_ratings.py` now reads `publicLeaderboardSubmissionId` from the raw
+  payload's team block, corrects `teams.csv` and `history.parquet` for guessed teams, and
+  fetches those teams' submissions first; it runs before `sample.py`. Catalyst, the other
+  first-study team with a guessed submission, was confirmed correct.
+- **Caught by:** me, only because I questioned the fallback while reviewing the crawl
+  output for the new batch. The verifier did not flag it and neither did I in the first pass.
+- **Why I missed it:** the first crawl had two guessed teams out of 14 and I read the
+  fallback as harmless; a 50/50 guess on the thing the C0 window is defined by is not.
+- **Prevention:** a derived label that a downstream window depends on must be either
+  verified against its source of truth or marked as a guess in the report. The rebuilt
+  report regenerates アルモンド's dossier from the right submission.
+
+### P12: replay downloads stalled, then Kaggle started rationing them
+- **Symptom:** the first fetch chunk for the batch stored 158 replays in 12 minutes and
+  then nothing for 20 minutes. The process held two established connections to Kaggle,
+  no failure was logged, no temp file was being written. Killing it and probing by hand
+  returned `429 Too many requests` with `Retry-After: 1180` (about 20 minutes), and the
+  value grew with each probe.
+- **Cause:** two layers. The client sends its metadata request with no timeout and
+  streams replay chunks with a 300 s timeout and five retries, so a connection Kaggle
+  stops serving parks a worker for up to half an hour with no error. Underneath, the
+  replay endpoint now enforces a quota (the first study's unfinished Q3 window, "the API
+  started dropping connections", was very likely the same quota showing up as hangs).
+- **Fix:** `research/kaggle_api.py` installs a (30 s connect, 90 s read) default timeout on
+  every `requests` session send, streams replays itself with a 90 s chunk timeout and two
+  retries, and keeps a quota gate shared by all workers: a 429 parks every worker until
+  `Retry-After` has elapsed instead of burning the retry budget of each episode. The fetch
+  now runs as one long background job; it is resumable, so a kill costs one file.
+- **Caught by:** me, from the replay count not moving while the job looked alive.
+- **Why I missed it:** the first study's download rate (65 a minute for an hour) made me
+  treat the endpoint as unlimited, and I piped the fetch through `tail`, which hid its
+  progress lines until exit. Progress that cannot be seen cannot be judged.
+- **Prevention:** every network worker needs a timeout and a visible heartbeat; measure
+  the quota (replays per window) and plan fetch volume against it before promising a
+  schedule. The community replay dataset was checked as an alternative source and covers
+  only 92 of the missing games, so the quota is the binding constraint.

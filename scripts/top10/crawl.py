@@ -2,9 +2,11 @@
 
     uv run python scripts/top10/crawl.py
 
-For each team: seed its submission ids from the community index (data/community/agents.csv),
-list every episode of every known submission, and expand the submission set from what those
-listings reveal until nothing new appears. Only submissions of snapshot teams are listed.
+For each team: seed its submission ids from the community index (data/community/agents.csv)
+and from every listing already cached under data/top10/episodes/ (a team absent from the
+index usually appears there as an opponent of an already-crawled team), list every episode of
+every known submission, and expand the submission set from what those listings reveal until
+nothing new appears. Only submissions of snapshot teams are listed.
 
 Listings go through the authenticated Kaggle client (fast, never throttled so far). It does
 not return ratings, so ratings are joined from the community index (episodes.csv, which
@@ -18,12 +20,34 @@ Outputs:
 
 from __future__ import annotations
 
+import json
 from collections import defaultdict
 
 import pandas as pd
 
 from research.kaggle_api import list_episodes
-from research.paths import COMMUNITY, TOP10
+from research.paths import COMMUNITY, EPISODE_CACHE, TOP10
+
+
+def cached_seeds(targets: dict[int, str]) -> set[tuple[int, int]]:
+    """(team, submission) pairs of target teams found in any cached listing."""
+    keys = [str(t) for t in targets]
+    found: set[tuple[int, int]] = set()
+    for path in EPISODE_CACHE.glob("*.json"):
+        text = path.read_text(encoding="utf-8")
+        if not any(k in text for k in keys):
+            continue
+        data = json.loads(text)
+        for s in data.get("submissions", []):
+            team_id = int(s.get("teamId") or 0)
+            if team_id in targets and s.get("id"):
+                found.add((team_id, int(s["id"])))
+        for ep in data.get("episodes", []):
+            for a in ep.get("agents", []):
+                team_id = int(a.get("teamId") or 0)
+                if team_id in targets and a.get("submissionId"):
+                    found.add((team_id, int(a["submissionId"])))
+    return found
 
 
 def main() -> None:
@@ -35,6 +59,11 @@ def main() -> None:
     seeds = agents[agents.team_id.isin(targets)][["team_id", "submission_id"]]
     for team_id, sub in seeds.itertuples(index=False):
         known[int(team_id)].add(int(sub))
+    for team_id, sub in cached_seeds(targets):
+        known[team_id].add(sub)
+    unseeded = [n for t, n in targets.items() if not known[t]]
+    if unseeded:
+        print(f"warning: no seed submission for {unseeded}; their history will be empty")
 
     team_info: dict[int, dict] = {}
     listed: dict[int, dict] = {}
@@ -161,6 +190,7 @@ def main() -> None:
                 "team_name": r.team_name,
                 "score": r.score,
                 "snapshot": r.get("snapshot"),
+                "group": r.get("group", "top"),
                 "current_sub": current.get(t),
                 "current_sub_source": current_source.get(t),
                 "subs_found": len(known[t]),

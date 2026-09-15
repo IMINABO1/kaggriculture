@@ -1,15 +1,31 @@
-# How the top-14 observation study was done
+# How the top-14 and next-15 observation study was done
 
-This is the plain-language description of the study whose results live in `summary.md`, the
-team dossiers, and `decision_memo.md`. It says what was observed, how, and how to rerun it.
+This is the plain-language description of the study whose results live in `summary.md`,
+`groups.md`, the team dossiers, and `decision_memo.md`. It says what was observed, how, and
+how to rerun it.
 
-## 1. Who was studied, and why 14 rather than 10
+## 1. Who was studied: the top-14, then the next-15
 
 The leaderboard's ranks 5 to 15 sit inside the rating noise the former #1 documented on the
 forum (about ±50 points), and the tenth place changed hands three times in the hour the study
 was set up. So "the top 10" was taken as a band: every team that was top-10 either in
-Iminabo's screenshot or on the live board when the pipeline snapshotted it. That gave 14
-teams. Each is tagged with its live rank at snapshot time (`data/top10/snapshot_latest.csv`).
+Iminabo's screenshot or on the live board when the pipeline snapshotted it (2026-09-14T1936Z).
+That gave 14 teams, the **top-14** group.
+
+The second group answers a different question: is there something the rest of the gold zone
+does not do that the top 10 do? Iminabo's rule was contiguous chunks of ranks with gaps
+between them, across the gold zone outside the 14, about 15 teams. The board was snapshotted
+once more (2026-09-15T0033Z) and chunks "8-9, 13-14, 20-23, 29-31, 38-39, 47-48" were taken;
+a chunk skips teams already in the top-14 and extends past them, because the board moves
+between reading it and snapshotting it. The **next-15** are ranks 8, 11, 17, 19, 20, 21, 22,
+23, 29, 30, 31, 38, 39, 47, and 48 at that snapshot (names in `summary.md` and `groups.md`).
+Which medal rule "gold zone" means: Kaggle's rule for competitions with 1,000+ teams is
+gold = top 10 + 0.2%, which with the 9,066 teams entered is rank 28; silver is the top 5%
+(rank 453). Iminabo's working assumption was gold = top 50. Ranks 8-23 of the batch are gold
+either way; ranks 29-48 are gold only under the top-50 assumption, and every batch team
+carries its rank so the comparison can be cut at 28 as well. One batch team (rank 8) was
+inside the top 10 at snapshot time: the groups are "the 14" and "the next 15", not "top 10
+today" and the rest. `data/top10/snapshot_latest.csv` carries a `group` column.
 
 ## 2. Which games were looked at
 
@@ -26,15 +42,24 @@ apply:
 | L | last 50 |
 | C0 | first 50 of the team's *current* submission (its ladder-entry phase) |
 
-The rule is `research/sampling.py`; the resulting list is `data/top10/sample.csv` (4,043
-unique games). F, Q1, Q2, L, and C0 are complete for all 14 teams; Q3 is partial because
-Kaggle's API began dropping connections at the end of the download.
+The rule is `research/sampling.py`; the resulting list is `data/top10/sample.csv`. The
+top-14's history windows are frozen at the first sample
+(`data/top10/sample_top14_2026-09-14T1936Z.csv`): the second crawl lengthened their
+histories, which would have moved every quarter-point window for no gain. Only their C0 was
+recomputed, because one team's current submission had been mis-identified (P11 in
+`problems_encountered.md`). The next-15 are cut fresh from the second snapshot.
 
 ## 3. Where the data came from
 
 - **Which submissions belong to a team**: seeded from `georgymamarin/kaggriculture-episodes`
-  (a community index of 145k games, Apache-2.0) and expanded by following every listed game's
-  participants until no new submission of a studied team appeared. 364 submissions in total.
+  (a community index of 145k games, Apache-2.0) and from the listings already cached (two
+  batch teams are absent from the index but appear as opponents of studied teams), then
+  expanded by following every listed game's participants until no new submission of a
+  studied team appeared. 843 submissions in total for the 29 teams.
+- **Which submission is a team's current one**: the public endpoint's team block names the
+  leaderboard submission. The client listing does not, and "the submission of the latest
+  game" is wrong half the time because both active submissions play constantly, so the
+  ratings refresher reads the team block and corrects `teams.csv` before sampling.
 - **Every game of every submission**: Kaggle's episode listing. The public JSON endpoint
   returns ratings before and after each game but throttles for long stretches; the
   authenticated client is fast but returns no ratings. The crawl uses the client, joins
@@ -42,8 +67,10 @@ Kaggle's API began dropping connections at the end of the download.
   from the public endpoint. Result: `data/top10/history.parquet`, 56,338 (submission, game)
   rows, 99% of sampled games with a rating.
 - **Replays**: downloaded through the authenticated client, one 20-33 MB JSON per game,
-  stored zstd-compressed (about 150 KB each) under `data/replays/`. 3,769 replays, 546 MB.
-  A replay holds both seats' actions and full observations for all 720 turns.
+  stored zstd-compressed (about 150 KB each) under `data/replays/`. A replay holds both
+  seats' actions and full observations for all 720 turns. Kaggle rations this endpoint
+  (429 with a Retry-After near 20 minutes once a quota is spent), so the fetcher waits the
+  quota out with one shared gate and runs for hours; see section 8 for the counts.
 
 ## 4. What was extracted from each game
 
@@ -105,6 +132,7 @@ between the studied teams over their whole histories, and the episode ids behind
 | what | where |
 |---|---|
 | summary tables and figures | `reports/top10/summary.md`, `reports/top10/figs/` |
+| top-14 vs next-15 comparison | `reports/top10/groups.md` |
 | one dossier per team | `reports/top10/<team>.md` |
 | the recommendation | `reports/top10/decision_memo.md` |
 | histories, sample, teams, features | `data/top10/` (tracked) |
@@ -116,18 +144,18 @@ between the studied teams over their whole histories, and the episode ids behind
 ## 8. Rerunning or extending it
 
 ```bash
-uv run python scripts/top10/snapshot.py --top 10 --include "Team A,Team B"   # pick the teams
+uv run python scripts/top10/snapshot.py --top 0 --include "Team A,Team B" --ranks "8-9,13-14"  # top group by name, batch by rank chunks
 uv run python scripts/top10/crawl.py                                          # histories
-uv run python scripts/top10/sample.py                                         # windows
-uv run python scripts/top10/fetch.py --jobs 2 --limit 300                     # replays, in chunks
+uv run python scripts/top10/refresh_ratings.py --budget-min 8                 # ratings; fixes guessed current submissions
+uv run python scripts/top10/sample.py --freeze data/top10/sample_top14_2026-09-14T1936Z.csv   # windows (top-14 frozen)
+uv run python scripts/top10/fetch.py --jobs 3                                 # replays; waits out the quota, hours
 uv run python scripts/top10/extract.py --traces-only --jobs 2 --limit 700     # traces, in chunks
-uv run python scripts/top10/refresh_ratings.py --budget-min 8                 # ratings
 uv run python scripts/top10/extract.py --jobs 2                               # feature table
-uv run python scripts/top10/analyze.py                                        # report
+uv run python scripts/top10/analyze.py                                        # summary, groups, dossiers
 uv run python scripts/top10/export_tapes.py --window L --per-team 5           # arena opponents
 ```
 
 Every stage is resumable per file. Keep the fetch and the crawl from running at the same
-time (they share Kaggle's rate limit), keep worker counts at two on this machine (the harness
-kills background jobs when free memory is low), and finish the Q3 window with one more
-`fetch.py` run when convenient.
+time (they share Kaggle's rate limit), keep extraction at two workers on this machine (the
+harness kills background jobs when free memory is low), and expect the replay fetch to be
+quota-bound: it downloads a burst, then waits about 20 minutes, and repeats.

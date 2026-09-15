@@ -72,11 +72,10 @@ def main() -> None:
         .tolist()
     )
     todo = [e for e in order if not replay_path(e).exists()]
+    stored = len(order) - len(todo)
     if args.limit:
         todo = todo[: args.limit]
-    print(
-        f"{len(order)} episodes in scope, {len(order) - len(todo)} already stored, {len(todo)} to fetch"
-    )
+    print(f"{len(order)} episodes in scope, {stored} already stored, {len(todo)} to fetch now")
 
     failures = []
     done = 0
