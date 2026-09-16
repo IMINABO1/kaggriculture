@@ -379,3 +379,11 @@ numbers, all per-team medians of the current submission:
   60-13 looked lopsided because that batch was mostly silver.
 Memo findings 16-19 added. The fetcher continues on the F window (about 190 replays);
 milestone B closes the fetch. Thorough analysis follows in a fresh session per Iminabo.
+
+### Checkpoint: fetch closed, final rebuild
+The fetcher finished the C0 and F windows at 04:57Z (446 of 446 in its last run, 0
+failures) and exited. Final counts: 63 teams, 2,189 submissions, 309,306 history rows;
+7,692 replays and traces on disk, 7,394 in the sample, features for 14,788 (game, seat)
+rows. Coverage by group: top-14 every window; first batch of 15 C0, L and F; the 34 zone
+teams C0. The report, dossiers, groups.md and memo are rebuilt from this state. The
+thorough analysis of the zone comparison starts in a fresh session.

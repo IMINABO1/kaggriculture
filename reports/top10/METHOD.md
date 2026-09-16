@@ -85,7 +85,11 @@ on current submissions anyway.
   individual files, indexed by `scripts/top10/daily_index.py`, no quota) for the games
   they hold, and the authenticated client's replay endpoint for the rest. Kaggle rations
   that endpoint (429 with a Retry-After near 20 minutes once a quota is spent), so the
-  fetcher waits it out with one shared gate and runs for hours; see section 8 for counts.
+  fetcher waits it out with one shared gate and runs for hours. Final state on
+  2026-09-16: 7,692 replays and traces on disk (about 1.2 GB), 7,394 of them in the
+  sample, features for 14,788 (game, seat) rows; the top-14 have every window, the first
+  batch of 15 has C0, L and F (Q1-Q3 dropped by decision, see the journal), the 34 zone
+  teams have C0.
 
 ## 4. What was extracted from each game
 
@@ -188,4 +192,6 @@ uv run python scripts/top10/export_tapes.py --window L --per-team 5           # 
 Every stage is resumable per file. Keep the fetch and the crawl from running at the same
 time (they share Kaggle's rate limit), keep extraction at two workers on this machine (the
 harness kills background jobs when free memory is low), and expect the replay fetch to be
-quota-bound: it downloads a burst, then waits about 20 minutes, and repeats.
+quota-bound: a burst of about 300, then a trickle of 2-4 a minute. `fetch.py --windows
+C0,F` limits a run to the windows that carry findings; the quarter-point windows for the
+second batch were left unfetched for that reason.
