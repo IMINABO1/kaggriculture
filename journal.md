@@ -1284,3 +1284,38 @@ to our runtime agent at `plan.TAPE_DAYS`), and both paths are measured with the 
 yardsticks: `TAPE_DAYS = 0` is our executor alone, 16-24 the hybrid, 29 the tape alone. The
 hybrid is also the instrument for the executor work, because with identical farms until
 the switch its margin against v41 measures our play after that day against the tape's.
+
+### Checkpoint: both paths measured; the hybrid wins, and the later the switch the better
+Decoupled shops, seeds 0-9 both seats, the packaged hybrid with the switch day varied:
+
+| tape for days | vs v41: our bank, v41's, margin | vs v5: our bank, v5's, margin | basket vs v41 |
+|---|---|---|---|
+| 0 (our executor) | 85,762 / 111,560 / -25,798 | 86,858 / 110,881 / -24,022 | 96,761 |
+| 16 | 85,652 / 101,808 / -16,156 | 86,667 / 99,586 / -12,918 | 98,406 |
+| 20 | 88,411 / 100,597 / -12,185 | 90,018 / 98,278 / -8,260 | 99,037 |
+| 24 | 91,073 / 99,052 / -7,979 | 92,990 / 96,688 / -3,698 | 102,531 |
+
+Production against pass at switch day 16: bank 156,798, basket 98,236. Gauntlet at switch
+day 16, recorded towns: 22-58 (28%; 13-67 for our executor alone): Majkel1337 9-1 (our
+130.6k against its recording's 41.4k) and DSM 8-2 (130.7k against 37.9k), whose recorded
+plans collapse against the tape's sales; Unknown Mother-Goose 2-8 (104.3k against 104.3k),
+SpaTaro 3-7; Artem, carbonapi, Ebi and HowardLeeTW 0-10 at 87-89k against 108-112k.
+Reading: our executor is behind the tape's play in every stretch after day 16, by about
+4k for days 16-20, 4k for days 20-24 and 8k for days 24-29 against v41. The package now
+ships with `TAPE_DAYS = 24`, the best measured, and the executor work targets the end game
+first.
+
+### Surprise: the end game is carrots and a last-day wheat dump
+Switch day 24 on seed 1 (town SMOOTHIE, YARN, BRUNCH, BRUNCH, SMOOTHIE, PET_CAFE x3),
+identical farms through day 23 ($84,603 at day 24 hour 0), then ours 101,893 against
+v41's 107,740. From day 24 the tape plants carrots on 4, 18, 29, 24 and 12 tiles (days
+25-29 census) and stops planting wheat, so it sells 74 carrots at $55 on day 29 and winds
+its wheat down on days 27-28 (54 and 34 units at $30 and $24); ours plants 3, 11, 19, 18, 8
+carrots (E3 keeps them to the freed strawberry tiles), plants 17 wheat on day 27, and dumps
+89 wheat at $21 on day 29 (v41: 64), with 6 empty tiles and 3 weeds on days 25-26 (v41: 0).
+Whole-game sales from the same day-24 farm: carrots 49 against 94 (-2.5k), strawberries
+238 against 248 (-1.5k), wheat 376 against 401 (-0.8k). A carrot planted on day 24-26
+yields 3 units by day 27-29 ($165 with a Pet Cafe, about $75 without) against a wheat
+planted on day 27 yielding 2 units ($42), so E4 next: carrots on every free tile on days
+24-26 when the town has a carrot shop (Pet Cafe or Farmers Market), measured at switch
+day 24 against v41 and v5.
