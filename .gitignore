@@ -248,3 +248,8 @@ data/top10/l_ids.txt
 data/top10/watch.out
 data/top10/crawl.log
 data/top10/f_ids.txt
+data/top10/market_prices.parquet
+data/top10/line_labels_h136.parquet
+data/top10/retrace.log
+data/top10/market_extract.log
+data/top10/weed_tiles.log

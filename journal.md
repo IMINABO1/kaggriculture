@@ -541,3 +541,28 @@ $161 for Majkel's opponents) and win by receiving more themselves ($164 a strawb
 milk, $154 a wool against the family's $132 / $118 / $147). The two axes are therefore
 "sell before the family's dump" (starve) and "sell where the family is not selling" (out-
 earn); the exact days come from the per-day series once the rebuild finishes.
+
+### Checkpoint: labour per unit of work is the same in every zone; only fertilizer differs
+Dividing ops by what they act on (day-end farm censuses from the traces): CARE per animal-day
+0.86 / 0.88 / 0.98 / 1.01 by zone, FEED per animal-day 0.80-0.84, WATER per crop tile-day 0.86-
+0.87, HARVEST per crop tile-day 0.37 everywhere, movement 49% of every unit-turn everywhere,
+PASS 7% everywhere. The one gradient is FERTILIZE per crop tile-day: 0.115 / 0.089 / 0.087 /
+0.079. So "labour discipline" in the memo reduces to one lever: the leaders fertilize about
+30% more per tile and care for animals every day only when a yield day is coming (the family
+cares every animal every day; care banked on non-yield days is wasted on cows and sheep
+once the max_held cap is hit). Two more code signatures fell out: Majkel1337, DSM and
+Orbital Terraformer never PASS (0.8% of unit-turns against 5-16% for everyone else) and
+issue more WATER ops than they have crop tile-days (1.04-1.08, i.e. redundant waterings),
+which marks them as one code base with an "always act" executor; HowardLeeTW spends 8.3k on
+hands against 4.5-5k for the rest and gets the lowest CARE per animal-day (0.72).
+
+### Checkpoint: the plateau is one point with a halo, not a continuum (PCA preview)
+PCA over the current-submission games on 21 farm and ops features (no sales, which await
+the rebuilt traces): PC1 (18%) runs from "fertilize, tomatoes, melon, geese" to "late land,
+much wheat, much CARE"; PC2 (16%) is the always-act signature (PLANT and WATER ops, no PASS).
+Every family team sits at PC1 = 0.8-1.5 with a within-team spread of 0.5-0.7; the leaders
+scatter at -0.2 to -4.9 with spreads of 0.9-1.5 (their games vary more because they follow
+the shop draw). Silver and bronze centroids are indistinguishable from gold's family members
+(1.0 / 1.2 vs 0.8). So the zones are not strategies: there is one dense public point, and
+around it a halo of hand-built agents, each in its own place. Sales features are added to
+the PCA and the k-means run once the rebuild lands.
