@@ -1193,3 +1193,14 @@ Reading: the second half is a labour-scheduling gap (wheat cycle, care, fertiliz
 one plan choice (carrots: the route plants 29 on the freed tiles and keeps them coming; our
 E3 rule plants fewer). Two single changes follow: CARE at a value-based priority, and a
 late-hour harvest of ready wheat.
+
+### Decision: C1 (CARE at priority 2.0) rejected, and what it showed about sale hours
+Production basket 96,358 (S 95,566) and bank 151,796 (148,836), strawberries 234 (220),
+eggs 95 (89); but competition margin -27,216 (-24,516) with our mean bank unchanged
+(86,665 against 86,667) and v5's up 2.7k (113,880 against 111,183). With the towns fixed
+and weeds negligible, a change in our own priorities can move v5's bank only through the
+market, and the plausible route is timing: caring before collecting delays our milk and
+wool into the shed, so they sell after v5's hour-1 lots (its day-end drop) instead of
+alongside them, and v5 takes the higher price on the same units. Reverted. The converse is
+the next single change after W1: collect animal products late in the day so the free
+day-end drop sells them at hour 1 in the same turn as the line's (A2).
