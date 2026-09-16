@@ -43,18 +43,21 @@ movement ignored) shows where each current submission's games stop being identic
 | day 5-6 (turn 136) | Mengfei Li, Artem The Farmer, Thomas Tschinkel |
 | day 16 (turn 400) | every game of every team is distinct |
 
-**4. What the branching tracks differs by team.** Measured at each team's first branch point
-(dossiers, "What goes with being off the modal field line"):
-- Majkel1337 and Orbital Terraformer leave their usual day-1 opening when the opponent's
-  opening is unusual (70% vs 16% for the #1; 60% vs 14% for Orbital). They read the first
-  hours of the opponent's farm and change their own day.
-- HowardLeeTW's day-2 plan is decided by the seat (100% off the modal line in seat 1, 11% in
-  seat 0).
-- The fixed-opening teams (Mengfei Li, Artem, Thomas Tschinkel) leave their line by day 5-8;
-  a weed before then moves 100% of those games off it, and an unusual first shop is the
-  other trigger.
-- From mid-game the drivers pile up (weeds, shop draws, prices, the opponent's sales) and
-  every game is unique for everyone.
+**4. What the branching tracks: the shop draw, not the opponent.** (Rewritten 2026-09-16
+after reading the branches, `analysis.md` sections 1 and 3, P17.) The earlier version of this
+finding said Majkel1337 and Orbital Terraformer "read the first hours of the opponent's farm
+and change their own day" because their off-line rate on day 1 tracked the opponent's. The
+day-1 lines are one purchase list each; they differ only in the last one to three wheat
+seeds the budget allows, which the wheat price (moved a dollar by the opponent's turn-0
+trades) decides. Nobody on the plateau changes its day-1 plan for the opponent. What every
+studied team, from the #1 to the last bronze team, does react to is the town's shop draw:
+a Yarn Store among the first three unlocks means 10-14 sheep instead of 4-6, a milk shop
+8-9 cows instead of 5-7. The leaders react to more products (carrots 50-95 with a Pet Cafe
+or Farmers Market against the family's fixed 31; tomatoes 8-12 with a milk shop against
+none) and by more (SpaTaro 20 sheep, 13 cows). The "reactivity gradient" across the zones is
+the breadth of that response: top-14 follow 4.5 of 5 products (median), gold 3.5, silver 2,
+bronze 1 (the Yarn Store alone). HowardLeeTW's seat-dependent day 2 stands. From mid-game
+every game is unique for everyone.
 
 **5. Weeds are coupled to the opponent through the random stream.** Majkel1337's recorded
 game reproduces exactly against its original opponent and collapses from 113k to 52k against
@@ -126,12 +129,20 @@ the top sells strawberries from day 15.5 vs 19 (AUC 0.15, the strongest market s
 wool later (day 8.5 vs 6), and 18 melons vs 12. Units sold in the last three days do not
 differ.
 
-**14. Weed handling is the sharpest single separator, in a surprising direction.** The
-public tape clears every weed the day it appears: 12 of the 15 batch teams end every day
-with zero weed tiles standing. The top 7 tolerate standing weeds, 8 to 49 weed tile-days
-per game (0.6 to 2.2 days per weed), with the same number of DIG ops (35-38). Whether that
-is a deliberate saving of labour or a side effect of not being a tape is not established
-here; experiment 2 below will say whether clearing every weed is worth its actions.
+**14. "Standing weeds" are exhausted strawberries, not a labour strategy.** (Rewritten
+2026-09-16 from the tile-level pass, `analysis.md` section 2.) The engine rolls the weed
+chance only on empty unlocked tiles, and the plateau farm keeps every tile occupied from day
+8, so weeds that spawn are rare (0.1-2 a game). What the feature table counted as weed
+tile-days is plants that finished their life and decayed in place, 74-100% of them
+strawberries after the fourth yield. The public line digs every one within about 0.6 days;
+the leaders leave 5-27% of the mid-game ones standing for a day or two while they have
+spare empty tiles, and most of the ones that decay in the last three days forever. An
+exhausted plant costs one DIG either way, which is why the DIG counts match. The labour
+signal that does separate the zones is the end game: the leaders stop caring for and
+feeding animals whose next yield cannot be sold before day 29 (CARE per animal 0.56 / 0.27 /
+0 on days 27-29 against 0.94 / 0.88 / 0 for the family) and fertilize about 30% more per
+crop tile-day (0.115 against 0.079-0.089); every other op per unit of work is the same in
+every zone.
 
 **15. Head to head, ratings, and losses.** All-time the top-14 beat the batch 663-439 (60%);
 current submissions against current submissions 60-13 (82%). Sampled win rates are the
@@ -186,13 +197,14 @@ weaker opponents and its rating stops near 2,620: a zone is decided by who a tea
 not by the size of its farm. The first batch's 60-13 record against the top-14 looked lopsided
 because that batch was mostly silver.
 
-**What this changes:** the same three layers separate every zone from the one above, in the
-same order. Reactivity (a day-1 opening read and per-game branching) is most of what
-separates the top-14 from the rest of gold; labour and market discipline (fewer CARE ops,
-more fertilizer, weeds tolerated, melon sold across days 11-19, strawberries sold earlier)
-separate gold from silver; below that the tape family runs unchanged and the rating simply
-plateaus lower. The build order in "First three experiments" already matches this: economy,
-then execution discipline, then the market and opponent layers.
+**What this changes:** (revised 2026-09-16) the zones are graded by how much of the town's
+demand a team's plan follows and by how it plays the market against the public line, not by
+the farm. Breadth of shop response goes 4.5 / 3.5 / 2 / 1 products down the zones (finding
+4); the leaders fertilize more and stop paying for animals in the last days (finding 14);
+and every zone's margin over the current public line tells the same story: the top-14 beat
+it 89% of the time by 7k, gold 88% by 4k, silver 80% by 2k, bronze 58% by nothing
+(`analysis.md` section 9b). Below gold the public agent runs with fewer of its switches on
+and the rating plateaus where its margin over its own copies runs out.
 
 ## The answer
 

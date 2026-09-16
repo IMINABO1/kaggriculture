@@ -582,3 +582,11 @@ two days, which costs nothing once no further sale is possible). "Labour discipl
 an end-game rule: stop paying for yields that cannot be sold before the season ends, and put
 those hands on harvest and hauling instead. The mid-game dip (days 17-26) is unexplained yet
 and may be prioritisation of harvest over care when both compete for a hand.
+
+### Note: memo findings 4 and 14 rewritten; the rest waits for the corrected sales
+`decision_memo.md` findings 4 (the "day-1 opponent read" is the wheat-seed budget; the
+real reactive layer is the shop draw, graded by breadth down the zones) and 14 ("standing
+weeds" are exhausted strawberries; the labour signal is the end-game taper and fertilizer)
+now carry the mechanisms, each marked "rewritten 2026-09-16" with a pointer to
+`analysis.md`. Findings 6, 7, 13 and 18 (sales), "The answer" and the architecture are
+rewritten once the rebuilt traces have gone through features, `groups.md` and `deep.py`.
