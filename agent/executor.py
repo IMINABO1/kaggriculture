@@ -341,8 +341,11 @@ def act_units(obs, day, hour, state):
         need_from_shed[item] -= carried[item]
     pending_inputs = {item for item in INPUTS if any(j.need and j.need[0] == item for j in jobs)}
 
+    # the melon dump: every unit takes one melon tile first thing and walks its load straight
+    # back, so the whole crop sells before the opponent's; the herd is fed afterwards
+    melon_rush = any(j.prio == HARVEST_PRIO["MELON"] for j in jobs)
     if state.get("day") != day:
-        unfed = sum(1 for j in jobs if j.kind == "FEED")
+        unfed = 0 if melon_rush else sum(1 for j in jobs if j.kind == "FEED")
         n_feeders = min(max(0, len(positions) - 1), -(-unfed // FEEDER_LOAD))
         state.update(day=day, feeders=set(range(1, 1 + n_feeders)))
     if state["feeders"] and not any(j.kind in ("FEED", "CARE") for j in jobs):
@@ -357,12 +360,15 @@ def act_units(obs, day, hour, state):
     for ui, pos in enumerate(positions):
         inv = invs[ui]
         feeder = ui in feeders
+        haul_now = melon_rush and inv.get("MELON", 0) > 0
         for ji, j in enumerate(jobs):
             if j.need and inv.get(j.need[0], 0) < j.need[1]:
                 continue
             if feeder and not is_animal_job(j):
                 continue
             d = dist(pos, j.pos)
+            if haul_now and d > 0:
+                continue
             score = j.prio + ON_TILE_BONUS if d == 0 else d + j.prio
             if j.kind == "FEED" or (j.kind == "WATER" and j.arg == "must"):
                 score -= URGENCY_PER_HOUR * max(0, hour - URGENCY_FROM_HOUR)
@@ -385,7 +391,7 @@ def act_units(obs, day, hour, state):
         # while the bank is nearly empty every collected fertilizer is the next feed purchase
         deposit_value = min(DEPOSIT_VALUE, max(50, money))
         if value > 0 or (liquidating and any(inv.get(p, 0) > 0 for p in PRODUCE)):
-            if value >= DEPOSIT_URGENT_VALUE or liquidating:
+            if value >= DEPOSIT_URGENT_VALUE or liquidating or haul_now:
                 prio = URGENT
             elif value >= deposit_value or hour >= 21:
                 prio = 1.0

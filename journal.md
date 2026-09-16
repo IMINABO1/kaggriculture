@@ -915,3 +915,21 @@ of 12 on every day. A priority of -6 beats FEED (0) and COLLECT (5) from up to t
 away, so the herd waited and the fertilizer that funds the land stayed on the pasture.
 Reverted. Next: B (a melon-day crew: no morning feeders that day, and a unit carrying
 melons walks straight to the shed), then A again at the WATER_MUST level.
+
+### Checkpoint: change B (melon-day crew) accepted
+On melon day (any melon-ready watering or harvest job present) no hand is a morning feeder,
+and a unit carrying melons takes no job off its own tile until it has dropped them, with the
+deposit at URGENT priority. Wide yardstick: production 141,490 (from 137,622), competition
+0-20, mean bank 69,209 vs 95,781, margin -26,572 (from -28,861; v5's mean fell 3.3k, mine
+1k, both within the shop-draw noise of P22). Seed 1 hour table: first melon sales at hour 9
+(6 units at $266, the same turn as v5's 6) and hour 10 (15 at $247) instead of hours 12-13,
+but 27 of 64 still went on day 11 at $128; the turn view of that day is next. The melon
+waterings on days 7-9 are unchanged (8, 11, 9 of 12).
+
+### Note: the production yardstick is half shop luck
+Seed 5 against pass banks 99-104k because the town drew three Yarn Stores and no milk shop:
+wool sold at $248 (153 units, 38.0k) and milk at $50 (179 units, 9.0k), against $137 milk
+on seed 1. The eight-seed spread against pass is 99k to 177k for one executor. So
+`scripts/arena.py` now records, per game, the shop list and the units harvested by product
+(counted from HARVEST actions in the replay), which do not depend on prices; production
+changes are judged on those columns as well as on the bank.
