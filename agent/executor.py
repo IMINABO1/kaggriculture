@@ -237,7 +237,7 @@ def build_jobs(me, day, hour, shed, seeds, carried, prices) -> list:
                 if crop_harvestable(tile, day, hour, target_crop(x, y, day), seeds):
                     jobs.append(Job("HARVEST", x, y, prio=HARVEST_PRIO.get(tile["crop"], PRIO["HARVEST"])))
                 elif crop_exhausted(tile, day):
-                    jobs.append(Job("DIG", x, y))
+                    jobs.append(Job("DIG", x, y, prio=PRIO["PLANT"]))  # the tile is a planting
                 age = day - tile["planted_day"]
                 if tile.get("fertilized_until_day", -1) < day and FERTILIZE_FROM_DAY <= day < 29:
                     # one fertilizer doubles two strawberry yields (about $200) but adds two

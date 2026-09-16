@@ -1044,3 +1044,10 @@ had been selling below their basket price. Competition margin -25,644 (-26,270),
 85,726 vs 111,370. Both gates pass; kept. The executor now plants carrots on days 24-26 on
 the strawberry tiles only, which is the plan `agent/plan.py` documents and what v5's tape
 does (31 carrots, 27-38 wheat tiles to day 27).
+
+### Checkpoint: E1 accepted (an exhausted strawberry is dug at planting priority)
+Production basket 95,002 (E3 94,896), bank 147,474 (147,416), wheat 413 (408); competition
+basket 95,672 (95,352), margin -25,291 (-25,644), mean bank 86,038 vs 111,329. Both gates
+pass by small amounts; kept. Standing weeds late in the game were exhausted strawberries
+waiting for a DIG that ranked below everything else (priority 3.5); the tile is a wheat
+planting, so the dig now ranks with a planting (1.0).
