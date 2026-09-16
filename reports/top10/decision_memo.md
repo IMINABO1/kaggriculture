@@ -292,6 +292,46 @@ the public line are not the three named before.
    that a recording derails once the weeds differ (METHOD.md section 6), so the gauntlet is
    a floor. The early entry before 2026-09-23 is cancelled; the entry deadline still binds.
 
+## Amendments from the second build session (2026-09-16, evening)
+
+1. **The yardstick is decoupled from our own farm.** The engine draws each day's shop from
+   the generator that has just spawned the weeds, one draw per empty tile on both farms, so
+   a fixed seed's town moved with every executor change (P22). `scripts/eval.sh` now runs
+   the arena with `--decouple-shops` and reports a price-independent harvest basket next to
+   the bank; the gauntlet scripts each recording's own town. Every number below is on that
+   footing and is not comparable with the morning's.
+2. **The plateau is the multi-route family, not one plan.** The V41/EXP260 build
+   (flexonafft's notebook, 93 votes; two byte-identical republications) shares the G11 line
+   through day 5 and then picks one of 28 searched routes from the first two shops; its
+   route tapes match 3,365 of the 14,788 sampled seat rows exactly through turn 300 (951
+   teams) and 967 through turn 400. Section 3's "the family follows only the Yarn Store"
+   holds for v5's router, not for the ladder's majority. It is `line:v41` in the arena and
+   the competition yardstick reports against it and v5.
+3. **Phase 1 status.** Executor after B2, A', E3, E1, S, W1: production basket 96,041,
+   competition 0-20 against v5 (margin -24,022) and 0-20 against v41 (-25,930 before W1).
+   The gauntlet in recorded towns is 13-67 (16%). Phase 1's acceptance is not met.
+4. **Where the gap is.** Hybrids that play v41's tape for the first N days and our agent
+   after: our bank is 85.4-85.8k for every N from 0 to 16 while v41's falls from 111.3k
+   to 101.5k; with identical farms through day 16 the tape banks 101.5k and our second
+   half 85.6k. The opening and the melon day are at parity; the whole gap is days 16-29:
+   the wheat cycle (idle tiles, wheat left past age 4), fewer carrots than the route on
+   Pet Cafe towns, fewer CARE and FERTILIZE ops, and sale hours (our milk and wool reach
+   the shed after the line's hour-1 lots).
+5. **Phase 2c, measured.** Opponent-aware metering (sell only into the room the town's
+   drain leaves after the opponent's measured rate) earns 1.1k against pass and loses
+   1.3-1.4k of margin against v5 and v41: holding hands a daily dumper a recovered price.
+   It stays off against the line; Artem's "denial" is a production mix (fewer strawberry
+   tiles, a steady 7-12 a day), not a holding rule.
+6. **Recommendation for the next session, flagged as a change to this plan.** Two paths,
+   both measurable in the arena: (a) keep closing the second half of our executor by
+   single changes (the four losses above are named and each is a constant or rule); (b)
+   adopt v41's tape for days 0-16 as the opening skeleton, under its Apache-2.0 licence as
+   the whole plateau does, and keep our runtime executor and market for days 16-29, where
+   re-planning from the observation is what the later layers need. Path (b) is already a
+   10k gain in margin against v41 (-15.9k against -25.9k) with no other change, and (a)
+   stacks on it. Path (b) is not in the plan Iminabo saw and is not taken until Iminabo
+   says so.
+
 ## Limits of this study
 
 - The 75% quarter window is partial for the top-14 and the batch's F and quarter windows
