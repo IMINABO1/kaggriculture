@@ -321,3 +321,25 @@ entry also says why I missed it and what changes so it does not happen again.
   that shows it, and quote the count. Any statement of coverage ("reconciles for 99%")
   names the denominator and the excluded rows. Applies to every remaining session on this
   project.
+
+### P20: the breadth-of-response table in analysis.md scored every team 1
+- **Symptom:** `analysis.md` section 3 showed "breadth (0-5)" = 1 for all 59 teams and zone
+  medians 1 / 1 / 1 / 1 with AUC 0.50 (p=1.00) in every row, while the journal, the memo
+  (finding 4, "What this changes") and the handoff quoted medians 4.5 / 3.5 / 2 / 1 and AUC
+  0.86 / 0.72 / 0.67. Both builds of the report (commits d7feffc and 09b6857) carried the
+  wrong table.
+- **Cause:** `deep.py` computed the score as `(d_sheep > 3) + (d_cows > 1.5) + ...` on numpy
+  floats; numpy booleans add as logical OR (`np.True_ + np.True_ == np.True_`), so any team
+  that passed one threshold scored 1. The 4.5 / 3.5 / 2 / 1 figures came from the earlier
+  ad-hoc script, which used Python floats, and were never re-checked against the report.
+- **Fix:** the score now sums `int(bool(x))` per threshold; the rebuilt table gives medians
+  4.5 / 3.5 / 2 / 1, means 4.14 / 3.43 / 2.48 / 1.30, AUC top-14 over gold 0.67 (p=0.11),
+  gold over silver 0.73 (p=0.02), silver over bronze 0.86 (p=0.00), which matches the memo
+  within rounding (0.72 there for gold over silver).
+- **Caught by:** me, reading analysis.md in full at the start of the build phase.
+- **Why I missed it (previous session):** the report was regenerated after the ad-hoc check
+  and the table was not re-read; a number quoted from one script was assumed to be what the
+  other script printed. Same family as P19: a figure written into the record from a source
+  other than the artifact that is supposed to carry it.
+- **Prevention:** after any rebuild, diff the regenerated report against the numbers the
+  memo and journal quote from it, and quote from the report, not from the scratch script.

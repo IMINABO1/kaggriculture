@@ -265,7 +265,7 @@ def section_shops(d: dict) -> str:
             return (a.mean() - b.mean()) if len(a) >= 3 and len(b) >= 3 else np.nan
 
         ds = {"sheep": diff("yarn_early", "bought_sheep"), "cows": diff("milk_early", "bought_cow"), "geese": diff("egg_early", "bought_goose"), "carrots": diff("carrot_early", "plants_carrot"), "tomatoes": diff("tomato_early", "plants_tomato")}
-        score = int((ds["sheep"] > 3) + (ds["cows"] > 1.5) + (ds["geese"] > 1) + (ds["carrots"] > 10) + (ds["tomatoes"] > 3))
+        score = sum(int(bool(x)) for x in (ds["sheep"] > 3, ds["cows"] > 1.5, ds["geese"] > 1, ds["carrots"] > 10, ds["tomatoes"] > 3))
         breadth_rows.append({"rank": int(g["rank"].iloc[0]), "team": team, "group": g.group.iloc[0], **{f"d {k}": round(v, 1) for k, v in ds.items()}, "breadth (0-5)": score})
     br = pd.DataFrame(breadth_rows).sort_values("rank")
     br_group = br.groupby("group")["breadth (0-5)"].agg(["median", "mean"]).reindex(GROUPS).reset_index()

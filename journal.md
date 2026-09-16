@@ -639,3 +639,14 @@ current engine all sit at the last executed step, where the recording shows a sh
 units removed before that step's sales were priced; bounded at $466, left as a known gap.
 Current-submission medians in `groups.md` did not move (one range edge, 185 to 184).
 Tests: 13 passed.
+
+### Checkpoint: build phase opened; breadth table repaired (P20)
+Session "phase 1" (Iminabo's name for it). Read in order: CLAUDE.md, METHOD.md, analysis.md
+(all 11 sections), decision_memo.md, groups.md's headline, the 2026-09-16 journal and
+P17-P19, then the engine source (`kaggriculture.py`, 1,086 lines), its README and AGENTS.md.
+Verifier-facing checks confirmed by reading the artifacts, not the record: `research/
+features.py` is imported and applied in `analyze.py` (line 227) and `deep.py` (line 56);
+Thomas Tschinkel's F window and Mengfei Li's Q1 window show blank sales cells in their
+dossiers; the breadth-table bug found on the way is P20 (numpy booleans add as OR, every
+team scored 1). `deep.py` rebuilt: medians 4.5 / 3.5 / 2 / 1, AUC 0.67 / 0.73 / 0.86, the
+memo's numbers within rounding. Nothing else in analysis.md moved.
