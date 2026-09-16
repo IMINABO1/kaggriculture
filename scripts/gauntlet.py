@@ -3,10 +3,10 @@
     uv run python scripts/gauntlet.py --tapes "opponents/gauntlet/*.json" --jobs 3
 
 A recording in seat 0 draws its weeds before our farm does, so it plays exactly as it was
-recorded whatever we do (journal 2026-09-16). The town is not protected: each day's shop is
-drawn after both farms' weed draws, one per empty tile, so the shops diverge from the recorded
-game as soon as our empty-tile count differs from the recorded opponent's (P22). Each game
-records its shop list and whether it matched the recording's (from the episode's trace).
+recorded whatever we do (journal 2026-09-16). The town is not protected by that: each day's
+shop is drawn after both farms' weed draws, one per empty tile (P22), so the gauntlet scripts
+each tape's recorded shop sequence from its trace (`arena.patch_town`) and records whether
+the game's town matched it.
 Each tape's file name starts with the team slug, so the summary is per team. Results append
 to results/gauntlet.csv.
 """
@@ -34,10 +34,10 @@ from research.store import load_trace, trace_path  # noqa: E402
 RESULTS = ROOT / "results" / "gauntlet.csv"
 
 
-def recorded_shops(episode_id: int) -> str | None:
+def recorded_shops(episode_id: int) -> list[str] | None:
     if not trace_path(episode_id).exists():
         return None
-    return " ".join(u["shop"][:6] for u in load_trace(episode_id)["shops"])
+    return [u["shop"] for u in load_trace(episode_id)["shops"]]
 
 
 def main() -> None:
@@ -59,6 +59,7 @@ def main() -> None:
         tasks.append({"a": str(ROOT / args.a), "b": str(path), "b_kind": "tape", "seed": tape["seed"],
                       "seat": 1, "steps": args.steps, "tape_seat": 0, "team": path.stem.rsplit("_", 1)[0],
                       "recorded_shops": recorded_shops(int(tape["episode_id"]))})
+        tasks[-1]["shops"] = tasks[-1]["recorded_shops"]  # the tape plays in its recorded town
     if args.jobs > 1:
         with ProcessPoolExecutor(max_workers=args.jobs) as pool:
             rows = list(pool.map(play, tasks))
@@ -74,7 +75,8 @@ def main() -> None:
         if new_file:
             writer.writeheader()
         for task, row in zip(tasks, rows):
-            row["shops_as_recorded"] = "" if task["recorded_shops"] is None else int(task["recorded_shops"] == row["shops"])
+            recorded = task["recorded_shops"]
+            row["shops_as_recorded"] = "" if recorded is None else int(" ".join(x[:6] for x in recorded) == row["shops"])
             writer.writerow({"ts": ts, "a": args.a, "team": task["team"], "tape": Path(task["b"]).name, "seed": row["seed"],
                              "me": row["me"], "opp": row["opp"], "result": row["result"], "ref_me": row["ref_me"],
                              "ref_opp": row["ref_opp"], "me_status": row["me_status"], "opp_status": row["opp_status"],

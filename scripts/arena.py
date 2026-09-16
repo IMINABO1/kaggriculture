@@ -118,7 +118,8 @@ def build_tasks(args) -> list[dict]:
     b = resolve(args.b)
     seats = (0,) if args.one_seat else (0, 1)
     return [
-        {"a": a, "b": b, "b_kind": "agent", "seed": seed, "seat": seat, "steps": args.steps}
+        {"a": a, "b": b, "b_kind": "agent", "seed": seed, "seat": seat, "steps": args.steps,
+         "decouple_shops": args.decouple_shops}
         for seed in parse_seeds(args.seeds)
         for seat in seats
     ]
@@ -154,11 +155,52 @@ def basket(text: str) -> float:
     return sum(n * BASKET_PRICES.get(k, 0) for k, n in parse_harvest(text).items())
 
 
+def patch_town(seed: int, scripted: list[str] | None = None) -> None:
+    """Make the town's shop draw depend on the seed alone (or follow a scripted list).
+
+    The engine draws each day's shop from the per-day generator that has just spawned the
+    weeds, one draw per empty tile on both farms, so the shops of a "fixed" seed move with
+    either farm's empty-tile count (P22). For A/B runs the shop is drawn here from a
+    generator keyed by seed and day only; the gauntlet scripts a recording's own town. The
+    weeds keep the engine's draw. This patches the engine module in this process only.
+    """
+    import random
+
+    from kaggle_environments.envs.kaggriculture import kaggriculture as mod
+
+    orig = mod._end_of_day
+
+    def end_of_day(state, env, day):
+        cap = mod.MAX_SHOP_INSTANCES
+        mod.MAX_SHOP_INSTANCES = 0  # the original then skips its own draw
+        try:
+            orig(state, env, day)
+        finally:
+            mod.MAX_SHOP_INSTANCES = cap
+        town = state[0].observation.town
+        next_day = day + 1
+        interval = max(1, int(mod.get(env.configuration, "townShopUnlockInterval", 3)))
+        if next_day > 0 and next_day % interval == 0 and len(town["unlocked_shops"]) < cap:
+            if scripted is not None:
+                idx = len(town["unlocked_shops"])
+                if idx < len(scripted):
+                    town["unlocked_shops"].append(scripted[idx])
+            else:
+                rng = random.Random((seed * 1_000_003) ^ (next_day * 7919) ^ 0x5EED)
+                town["unlocked_shops"].append(rng.choice(sorted(mod.SHOPS)))
+
+    mod._end_of_day = end_of_day
+
+
 def play(task: dict) -> dict:
     from kenv import import_ke
 
     ke = import_ke()
     seat, seed, steps = task["seat"], task["seed"], task["steps"]
+    if task.get("shops") is not None:
+        patch_town(seed, list(task["shops"]))
+    elif task.get("decouple_shops"):
+        patch_town(seed)
     ref_me = ref_opp = None
     if task["b_kind"] == "tape":
         from agent.tape import Tape
@@ -210,6 +252,10 @@ def main() -> None:
     ap.add_argument("--one-seat", action="store_true", help="only play A in seat 0")
     ap.add_argument(
         "--tape-both-seats", action="store_true", help="also play tapes from the other seat"
+    )
+    ap.add_argument(
+        "--decouple-shops", action="store_true",
+        help="draw each day's shop from the seed alone, not the engine's weed stream (P22)",
     )
     args = ap.parse_args()
 
