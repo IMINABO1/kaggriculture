@@ -739,3 +739,29 @@ From here every change is applied alone to the committed executor and measured o
 both seats against v5), both deterministic, and kept only if production does not fall and
 the competition margin does not worsen. Scratch bisect script: applies each variant to
 `git show HEAD:agent/executor.py` and runs the production arena.
+
+### Surprise: the public family agent does read the opponent, mid-game, by farm layout
+Read in aurax7's v5 code (`_r37_similarity`, lines 1749-1763 of the code part of
+`data/notebooks/kaggriculture-shop-router-reactive-v5/output/main.py`; `_r44_before`,
+1820-1833): it compares the two farms tile by tile (crop and animal on each occupied tile,
+after checking the unlocked quadrants are equal) and, between steps 336 and 648, probes
+whether the rival's money moves within 5% of its own after an all-sale turn; a similarity of
+0.90 or more with a matching probe marks the rival as a mirror and switches the agent's
+sale ordering (`_R37_ADAPTIVE`). Against my layout-identical clone on seed 1 it also bought
+the SE quadrant and planted ten tomatoes (80 sold at $169, $13.5k) and hired for $6.8k,
+none of which it does against the pass agent on the same seed. So analysis.md section 1
+stands (no day-1 read) but the family's runtime layers include a mid-game mirror detector,
+and any clone that copies the line's tile layout meets a stronger v5 than a non-copy does.
+Moving the SW strawberries to different rows did not change the margin (-25.6k against
+-24.7k) and cost 12k of production from the longer walks, so it was reverted; whether the
+detector fired in those games was not checked.
+
+### Checkpoint: where Phase 1 stands
+`scripts/eval.sh`, executor = commit 4b5c6ad plus opportunistic deposits: production
+against pass 158.2k (v5: 165.9k on the same seeds); competition against v5 0-10, mean bank
+69.4k against 94.1k, margin -24.7k. The production gap is 5%; the competition gap is three
+times that, and the hour-by-hour sales (`scratch hours_diag.py`) show why: my melon dump
+lands at hours 12-21 after v5's at 9-15 ($181 against $225 a unit), my strawberries sell the
+next morning at hour 1 while v5 sells the same day's harvest at hours 13-23, and in the
+shared glut of a seed without strawberry or milk shops both farms sell at $1-20 from day 21.
+Phase 1's acceptance (parity with the line in mirror matches) is not met.

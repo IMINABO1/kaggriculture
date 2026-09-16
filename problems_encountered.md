@@ -343,3 +343,16 @@ entry also says why I missed it and what changes so it does not happen again.
   other than the artifact that is supposed to carry it.
 - **Prevention:** after any rebuild, diff the regenerated report against the numbers the
   memo and journal quote from it, and quote from the report, not from the scratch script.
+
+### P21: a scratch file named bisect.py shadowed the standard library and re-ran the arena
+- **Symptom:** a diagnostic that imported kaggle-environments failed with "cannot import name
+  'bisect' from 'bisect'", and its output began with the lines of an earlier bisect run,
+  after a delay of several minutes.
+- **Cause:** the scratchpad directory holds the script being run, so it is first on
+  `sys.path`; `random` imports `bisect`, which resolved to my `bisect.py`, whose top-level
+  code ran five arena games and rewrote `agent/executor.py` before failing.
+- **Fix:** renamed to `ab_bisect.py`; the executor was restored by the script's own final
+  step (verified by grep for the opportunistic-deposit line).
+- **Caught by:** me, from the traceback.
+- **Prevention:** scratch scripts never take a standard-library module's name, and a script
+  that rewrites project files does its work under `if __name__ == "__main__"`.
