@@ -1219,3 +1219,49 @@ after v5's daytime lots of the same day, not beside its hour-1 lot. Together wit
 (caring before collecting, v5 +2.7k), both changes that put our animal products into the
 market later raised v5's bank, so the mirror rule is tested next as A3: collect milk, wool
 and eggs first thing in the morning, before feeding and caring.
+
+### Decision: A3 (animal products collected first thing in the morning) rejected
+Production basket 95,228 (W1 96,041), bank 148,743 (149,710); competition margin -25,784
+(-24,022), our mean bank 85,567, v5's 111,352, wheat 400 against 439: collecting before
+feeding displaced the morning's feed and field work. Reverted. So a priority change on the
+collection hour fails the gates in both directions, and what raised v5's bank under C1
+and A2 (2.7k and 3.6k with our own bank nearly unchanged) is not explained by "our animal
+products later"; it stays an open question for a per-hour sales comparison of those two
+runs, not a finding.
+
+### Checkpoint: end of the second build session
+State at commit: executor with B2 (melon carriers haul straight home), A' (melon-window
+watering at the must level), E3 (carrots only on freed strawberry tiles), E1 (exhausted
+strawberries dug at planting priority), S (sticky walking targets, -1.5) and W1 (ready
+wheat harvested from hour 18); E2, C1, A2 and A3 rejected; the opponent-aware metering
+built in `agent/market.py` and off. Yardstick (`scripts/eval.sh`, decoupled shops,
+harvest basket): production basket 96,041, bank 149,710 on seeds 1-8; competition against
+v5 0-20, mean bank 86,858 vs 110,881, margin -24,022 (the session's decoupled baseline was
+-27,442). Against v41: 0-20, -25,930, measured at S and not re-run after W1. Gauntlet in
+recorded towns: 13-67 (16%) at S. 13 tests pass; `scripts/package.py` builds and
+self-plays the bundle. Harness: `--decouple-shops`, per-game shop list and harvested units,
+the basket, `line:v41`, scripted towns in the gauntlet. Phase 1's acceptance (parity with
+the line) is not met, and no submission has been made.
+
+What the day established, in order of weight: (1) the town's shop draw is coupled to both
+farms' empty tiles (P22), so the earlier yardstick was noisy by about 10k a seed; (2) the
+plateau is the multi-route family, whose route tapes match 3,365 sampled seats through
+turn 300; (3) our opening and melon day are at parity with the searched tapes and the
+whole gap to the line sits in days 16-29 (hybrid curve: our bank 85.4-85.8k for every N,
+the tape's 101.5k from the same day-16 farm); (4) the second half loses on the wheat
+cycle, the carrot count, CARE and FERTILIZE counts, and sale hours; (5) holding stock
+against a daily dumper loses margin, so metering is off against the line.
+
+Next, in order: (1) Iminabo's decision on the skeleton (memo amendment 6: path (a) keep
+closing the second half of our executor, path (b) v41's tape for days 0-16 and our agent
+after, which is -15.9k against v41 today); (2) under either path, the second half: carrots
+sized to the town's carrot drain (Pet Cafe, Farmers Market) on the freed tiles, FERTILIZE
+coverage of every strawberry production age (85 against the tape's 101 from day 16), the
+idle tiles at hour 0 (seed purchases stop at hour 20 and planting at 21), and the per-hour
+sales comparison behind C1 and A2; (3) after each accepted layer, eval.sh against v5, the
+v41 run, and the gauntlet; (4) Phase 2a's Yarn Store and tomato routes, gated against v41
+on the seeds that draw those shops; (5) the notebook watch every few days; (6) still not
+verified: the competition rules page (last read 2026-09-14), the 31 last-step money
+mismatches, the leaders' CARE dip on days 17-26, v41's runtime layers against a recorded
+game (only its tapes are hash-verified), and no game against a live adaptive opponent
+other than v5 and v41.
