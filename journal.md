@@ -977,3 +977,26 @@ on seed 1 it sells all 64 melons on day 10 (6 at $266 in v5's turn at hour 9, 15
 against 11,593 before, v5's 15,084 against 16,196, a 2.2k swing on that seed. The two
 late batches (hours 13 and 16) are the far tiles; the eight missing units are the days 7-9
 waterings, which A' addresses next.
+
+### Checkpoint: the three new high-vote agents are one family, and the shop draw is decoupled for A/B runs
+Pulled under `data/notebooks/` (gitignored): tetsutani "Market-Smart Farming" (95 votes),
+flexonafft "Multi-Route Farming Agent" (93), reyhanksatria "Dynamic Route Agent" (85). The
+last two are byte-identical (`main.py` 329,112 bytes, md5 266b8f0e, 3,496 lines; one is the
+other's archive republished), and tetsutani's is the same code plus a 73-line mirror-reorder
+wrapper (329,591 bytes). All three carry the lineage markers "V41" and "EXP260"; v5 is
+"EXP257", v6 "V44/V45". So the candidates for the next public line are a sibling generation
+of the family, not a new agent; arena aliases follow once they have been replayed against a
+recorded game for fidelity, as v5 and v6 were.
+
+A' (melon-window watering at the WATER_MUST level) on coupled shops: basket 95,266 (B2
+94,609), melon 72 (67), milk 218 (229), wheat 377 (362); competition margin -27,879 (B2
+-25,893). Every one of those differences is inside the P22 noise, so the harness changes
+first: `scripts/arena.py --decouple-shops` patches the engine's `_end_of_day` in the arena
+process so each day's shop comes from a generator keyed by seed and day only (the weed draw
+is untouched; the engine's own draw is suppressed by setting its shop cap to zero for the
+call). `eval.sh` uses it for both yardsticks, so a rerun of the same seed now meets the same
+town whatever the farm does; the ladder keeps the coupled draw, which is a random effect
+there. The gauntlet scripts each tape's recorded shop sequence from its trace instead, so a
+seat-0 recording now plays in its recorded weeds and its recorded town. **Decision:** B2 and
+A' are re-measured under the decoupled draw before anything else is judged; the numbers
+above are the last on the coupled draw.
