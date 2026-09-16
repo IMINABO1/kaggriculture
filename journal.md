@@ -694,3 +694,38 @@ Phase 1's intent, so the work proceeds and the change is flagged in the handoff.
 `runTimeout` on its first game; the rerun took 5-11 s a game. It coincided with `deep.py`
 and three other `uv` processes running at once, so it is filed as memory pressure on this
 machine, not a router property. Keep arena batches to a few processes.
+
+### Checkpoint: runtime skeleton built; production is the gap, measured against pass
+The runtime agent exists (`agent/plan.py` targets and layout read off Shop Router 0909's
+plan 0 and Catalyst's game 108947518; `agent/executor.py` builds a job list from the
+observation every turn and assigns units to jobs cheapest (unit, job) pair first;
+`agent/market.py` follows the line's purchase schedule and sells what reaches the shed).
+Measured on fixed seeds, both seats, deterministic on both sides so every rerun is an A/B:
+- against the pass agent (no competing sales), seed 1: 123.6k-128.9k; v5 makes 151.1k
+  there. The per-product census (`research/market_replay.py` on the local replay) puts the
+  gap in production, not prices: wheat 352-405 harvested against 519 (plantings 123-125
+  against 162), strawberries 207-213 against 249 (83 of 131 yields doubled by fertilizer
+  against 119 of 130), carrots 34-43 against 104, milk 208-229 against 245, fertilizer
+  collected 310 against 372, and animals bought as replacements after escapes (cows 11
+  bought against 8, sheep 8 against 6);
+- against v5 on the non-Yarn-Store seeds 0, 1, 2, 4, 5, both seats: 0-10, mean bank
+  64-77k against 88-120k, margin -24k to -48k depending on the build; on seed 3 v5 plays a
+  17-sheep, four-quadrant Yarn Store route and makes $90k on wool alone, which is the Phase
+  2 shop response, not a Phase 1 defect.
+What the day tables and turn views found, in order: animals picked up but never placed;
+the hire orders pushed past the ten-order cap by the sells; melons harvested at age 12
+instead of 10; a 14th pasture missing; on-tile jobs losing to a neighbouring tile when a
+priority went negative (units oscillated for two days and the field weeded); the fertilizer
+reserve starving the early cash flow; every dollar spent on seeds so the feed wheat could
+not be bought and the herd escaped on days 1 and 10; fertilizer collected on day 1 held in
+inventories all day because the haul threshold was above its value. Each was fixed from the
+turn view, and each fix is one constant or rule in the executor, so the next session can read
+them from `git log -p agent/`.
+
+### Decision: no submission; the gate is many rounds against the top 5 and three gold teams
+Iminabo, mid-session: do not submit when the model is made; play it against the top five and
+against three randomly chosen gold teams outside the top ten, for multiple rounds, and see
+whether it stands a chance. The only local form of those teams is their recorded games
+(`scripts/top10/export_tapes.py`, `scripts/arena.py --b tape:...`), which derail once the
+weeds differ (METHOD.md section 6), so that gauntlet is a floor, not a forecast, and it runs
+once the agent is at parity with the public routers. Phase 3's early submission is cancelled.
