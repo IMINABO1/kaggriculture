@@ -779,3 +779,30 @@ seat-0 recordings of each team's current submission, with our agent in seat 1; a
 tape-vs-tape rerun of each recording first confirms it reproduces both banks (the
 `tests/test_research.py` check). Not verified yet: how many of each team's C0 games are
 seat-0 recordings; the listing is being produced now.
+
+### Checkpoint: first gauntlet, 26-54 against the top five and three gold recordings
+`scripts/gauntlet.py` on 80 seat-0 recordings of current submissions (ten each, exported
+with `export_tapes.py --window C0 --seat 0 --out gauntlet`; three of them replayed tape
+against tape reproduce both recorded banks to the dollar), our agent in seat 1, executor at
+commit b76f4fd:
+
+| team | W-L | our bank | their bank | their bank when recorded |
+|---|---|---|---|---|
+| Artem The Farmer | 0-10 | 88.7k | 119.9k | 107.9k |
+| Majkel1337 | 4-6 | 96.3k | 93.5k | 112.9k |
+| Unknown Mother-Goose | 1-9 | 90.6k | 109.3k | 119.8k |
+| DSM | 8-2 | 92.9k | 79.0k | 99.6k |
+| SpaTaro | 9-1 | 107.9k | 82.0k | 94.8k |
+| HowardLeeTW (rank 13) | 1-9 | 89.3k | 104.6k | 102.0k |
+| carbonapi (rank 19) | 1-9 | 76.1k | 105.5k | 104.3k |
+| Ebi (rank 21) | 2-8 | 89.0k | 99.1k | 105.1k |
+
+The three gold teams were drawn with `random_state=20260916` from the 16 gold teams
+ranked 11-28 that have at least ten seat-0 recordings (现实是个乐子, drawn first, has no
+crawled current-submission game and was replaced by the second draw). Reading: our bank
+against these recordings (76-108k) is where the ladder's ordinary opponents sit, and the
+recordings of DSM and SpaTaro make 13-20k less against us than they did when recorded (our
+sales press their prices), while Artem's makes 12k more than it did. A recording cannot
+front-run, meter or switch the way the live agents do (v5's mirror detector, journal above),
+so 32% here is a ceiling for the live result, not a floor. The answer to "do we stand a
+chance" is: not yet, and not against the top three.

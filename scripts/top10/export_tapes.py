@@ -31,6 +31,9 @@ def main() -> None:
     ap.add_argument("--window", default="L", help="which window to export from (L = latest games)")
     ap.add_argument("--per-team", type=int, default=10)
     ap.add_argument("--team", default="", help="substring filter on team name")
+    ap.add_argument("--team-id", default="", help="comma-separated team ids")
+    ap.add_argument("--seat", type=int, default=None, help="only recordings of this seat (0 stays faithful, see journal 2026-09-16)")
+    ap.add_argument("--out", default="", help="output folder under opponents/ (default top10)")
     args = ap.parse_args()
 
     sample = pd.read_csv(TOP10 / "sample.csv")
@@ -40,7 +43,11 @@ def main() -> None:
     )
     if args.team:
         rows = rows[rows.team_name.str.contains(args.team, case=False, regex=False)]
-    out_dir = OPPONENTS / "top10"
+    if args.team_id:
+        rows = rows[rows.team_id.isin([int(t) for t in args.team_id.split(",")])]
+    if args.seat is not None:
+        rows = rows[rows.seat == args.seat]
+    out_dir = OPPONENTS / (args.out or "top10")
     out_dir.mkdir(parents=True, exist_ok=True)
 
     written = 0

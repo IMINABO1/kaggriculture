@@ -256,3 +256,4 @@ data/top10/weed_tiles.log
 
 # third-party public notebooks pulled from Kaggle for local arena use (re-pull with kaggle kernels pull/output)
 data/notebooks/
+opponents/gauntlet/
