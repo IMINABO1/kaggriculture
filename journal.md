@@ -1326,3 +1326,27 @@ carrots 80 (38), wheat 481 (533), basket 101,843 (102,531). The extra carrots di
 for the wheat they displaced, so the tape's end-game edge is not the carrot count alone;
 the idle tiles on days 25-26, the last-day wheat dump and the strawberry tail remain the
 candidates, each to be measured at switch day 24 where the farms are identical until then.
+
+### Checkpoint: gauntlet at switch day 24, and the state that ships
+Recorded towns, 80 games: 29-51 (36%). DSM 10-0 (our 138.5k against its recording's 37.3k),
+Majkel1337 10-0 (137.3k against 40.8k): both recorded plans sell into the tape's schedule
+and collapse. Unknown Mother-Goose 4-6 (109.6k against 102.5k), SpaTaro 4-6 (93.4k against
+89.2k), Ebi 1-9 (95.1k against 105.7k); Artem 0-10 (90.1k against 107.7k), carbonapi and
+HowardLeeTW 0-10 (91.5k against 104-106k). The progression today: 13-67 with our executor
+alone, 22-58 with the tape for 16 days, 29-51 with the tape for 24. Against a recording of
+the #1 we are still 17.6k short in every game.
+
+State at commit: `main.py` is the hybrid, `TAPE_DAYS = 24` (v41's tape and layers for days
+0-23, our runtime agent from day 24), tests 13 of 13, package 148 KiB. Yardstick at this
+setting: against v41 0-20, margin -7,979 (our bank 91,073 against 99,052); against v5
+0-20, -3,698 (92,990 against 96,688); gauntlet 29-51. No submission has been made.
+
+Next, in order: (1) the end game at switch day 24 is the cleanest gate (identical farms
+until then): the idle tiles on days 25-26, the last-day wheat dump against a wheat cut-off
+at day 25, the strawberry tail, and the liquidation hour, one change at a time, each
+measured against v41 and v5 at switch day 24; (2) once our day-24-onwards play beats the
+tape's, move the switch earlier (20, then 16) and repeat with the losses named for those
+stretches; (3) the market layer on top of the tape's opening, where the tape's own sale
+hours are now ours to change from the switch day; (4) Phase 2a on top of the tape's
+routes; (5) the notebook watch, since the tape we bundle is the plateau's current
+generation and will be replaced.
