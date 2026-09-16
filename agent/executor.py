@@ -46,6 +46,7 @@ FEED_DEADLINE_HOUR = 16     # from here an unfed animal outranks everything but 
 FEEDER_LOAD = 3             # animals one morning feeder takes on (feed, care, collect, harvest)
 SPARE_WATER_HOUR = 17       # from here a plant not yet watered is worth a walk
 LAST_ACT_HOUR = 22          # step 718 is the last executed action
+STICKY_BONUS = -1.5         # a unit keeps the job it set out for unless another beats it by this
 
 # priority weights added to walking distance; lower wins
 PRIO = {
@@ -370,7 +371,10 @@ def act_units(obs, day, hour, state):
     def input_needed_by(inv, item):
         return item in pending_inputs and inv.get(item, 0) > 0
 
-    # candidate (score, unit, job) pairs
+    # candidate (score, unit, job) pairs; a unit's walking target of the previous turn is
+    # remembered by (kind, tile) and favoured so units stop re-targeting each other's jobs
+    step = day * 24 + hour
+    previous = state.get("targets", {}) if state.get("target_step") == step - 1 else {}
     pairs = []
     for ui, pos in enumerate(positions):
         inv = invs[ui]
@@ -383,6 +387,8 @@ def act_units(obs, day, hour, state):
                 continue
             d = dist(pos, j.pos)
             score = j.prio + ON_TILE_BONUS if d == 0 else d + j.prio
+            if d > 0 and previous.get(ui) == (j.kind, j.x, j.y):
+                score += STICKY_BONUS
             if j.kind == "FEED" or (j.kind == "WATER" and j.arg == "must"):
                 score -= URGENCY_PER_HOUR * max(0, hour - URGENCY_FROM_HOUR)
                 if hour >= FEED_DEADLINE_HOUR:
@@ -444,6 +450,10 @@ def act_units(obs, day, hour, state):
             plant_left[j.arg] -= 1
         j.taken = True
         assigned[ui] = ("JOB", j, 0, j.pos)
+
+    state["targets"] = {ui: (a[1].kind, a[1].x, a[1].y) for ui, a in enumerate(assigned)
+                        if a is not None and a[0] == "JOB" and a[3] != positions[ui]}
+    state["target_step"] = step
 
     actions = []
     for ui, pos in enumerate(positions):

@@ -1078,3 +1078,11 @@ fixed the competition move is the change itself, not the draw: a plant set at ho
 its watering at 23 from a unit that is often elsewhere, and a missed one weeds the tile.
 Reverted; the executor stays at E1. Next: S (a unit keeps its walking target unless another
 job beats it by 1.5), then the successor line as a second competition opponent.
+
+### Checkpoint: S accepted (a unit keeps its walking target unless another job beats it by 1.5)
+Production basket 95,566 (E1 95,002), bank 148,836 (147,474); competition basket 96,754
+(95,672), margin -24,516 (-25,291), mean bank 86,667 vs 111,183. Both gates pass; kept. The
+previous session removed a sticky-target hook that had only ever been tried at zero; at
+-1.5 it stops units re-targeting each other's jobs every turn. A stronger value is a later
+single change. Executor queue done for now: B2, A', E3, E1, S kept; E2 rejected. Baseline
+for what follows: production basket 95,566, competition margin -24,516 against v5.
