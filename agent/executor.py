@@ -29,30 +29,37 @@ PASTURE_TILES = P.PASTURES_NW + P.PASTURES_NE
 STRUCTURE_TILES = set(PASTURE_TILES) | set(P.COOPS_NW)
 # ages at which one FERTILIZE (3 days) doubles the most yield: strawberry productions land at
 # ages 10, 12, 14, 16 (end of days 9, 11, 13, 15), wheat's bonus window is ages 2-4
-FERTILIZE_BEST = {"STRAWBERRY": (9, 13), "WHEAT": (2,)}
-FERTILIZE_ANY = {"STRAWBERRY": range(9, 16)}
+# strawberries: every production age not already covered (a shot at 9 covers 9 and 11); wheat
+# and carrots at the start of their bonus window
+FERTILIZE_BEST = {"STRAWBERRY": (9, 11, 13, 15), "WHEAT": (2,), "CARROT": (2,)}
+FERTILIZE_ANY = {}
+FERTILIZE_PRIO = {"STRAWBERRY": 0.5, "WHEAT": 3.5, "CARROT": 4.0}
 PICKUP_CAP = {"WHEAT": 6, "FERTILIZER": 4, "COW": 1, "SHEEP": 1, "GOOSE": 1}
 LAST_PLANT_HOUR = 21
 LIQUIDATION_HOUR = 14
-DEPOSIT_VALUE = 200         # carried produce worth this much walks to the shed when nothing is nearer
-DEPOSIT_URGENT_VALUE = 600  # worth this much, the walk comes before any other job
+DEPOSIT_VALUE = 400         # carried produce worth this much walks to the shed when nothing is nearer
+DEPOSIT_URGENT_VALUE = 1500  # worth this much, the walk comes before any other job
+STICKY_BONUS = 0.0         # a unit keeps the job it set out for unless something urgent appears
 URGENCY_FROM_HOUR = 13      # feeding and must-watering climb over other work from this hour
 URGENCY_PER_HOUR = 0.75
 ON_TILE_BONUS = -10.0       # a job under the unit's feet comes before walking to an ordinary one
 FEED_DEADLINE_HOUR = 16     # from here an unfed animal outranks everything but the last melons
-FEEDER_LOAD = 6             # animals one morning feeder takes on
+FEEDER_LOAD = 3             # animals one morning feeder takes on (feed, care, collect, harvest)
+SPARE_WATER_HOUR = 17       # from here a plant not yet watered is worth a walk
 LAST_ACT_HOUR = 22          # step 718 is the last executed action
 
 # priority weights added to walking distance; lower wins
 PRIO = {
-    "FEED": 0.0, "PLACE": 0.5, "PLANT": 1.0, "BUILD": 1.0, "WATER": 2.0, "HARVEST": 2.5,
+    "FEED": 0.0, "PLACE": -3.0, "PLANT": 1.0, "BUILD": -2.0, "WATER": 2.0, "HARVEST": 2.5,
     "FERTILIZE": 3.0, "DIG": 3.5, "CARE": 4.0, "COLLECT": 5.0, "WATER_SPARE": 7.0,
+    "WATER_MUST": 0.5,
 }
 FERTILIZE_FROM_DAY = 12     # earlier, every fertilizer sold at $90-100 is what buys the herd
 # a melon dump that lands before the opponent's is worth more than any other job that day;
 # strawberries are worth hauling ahead of wheat
 URGENT = -20.0              # beats a job under another unit's feet from ten tiles away
 HARVEST_PRIO = {"MELON": URGENT, "STRAWBERRY": 1.0}
+PLANT_PRIO = {"MELON": -1.0, "STRAWBERRY": 0.0, "CARROT": 1.0, "WHEAT": 1.5}
 
 
 def dist(a, b) -> int:
@@ -97,39 +104,35 @@ class Job:
         return [self.kind]
 
 
-def crop_harvestable(tile, day) -> bool:
+def crop_harvestable(tile, day, hour=0, wanted=None, seeds=None) -> bool:
     if tile.get("yield_units", 0) <= 0:
         return False
     cd = CROPS[tile["crop"]]
     age = day - tile["planted_day"]
     if age < cd["first"]:
         return False
-    if cd["ongoing"] or day >= 29:
+    if cd["ongoing"]:
         return True
+    if day >= 29:
+        # water first while a watering still adds a unit, unless the day is running out
+        window_start = (cd["max_day"] + 1) // 2
+        adds = window_start <= age <= cd["max_day"] and tile["yield_units"] < cd["max_yield"]
+        return tile["watered_today"] or not adds or hour >= FEED_DEADLINE_HOUR
+    if tile["crop"] == "WHEAT" and wanted and wanted != "WHEAT" and seeds and seeds.get(wanted, 0) > 0:
+        return True  # a wheat filler making way for the crop the tile is meant for
     if tile["yield_units"] >= cd["max_yield"] or age > cd["max_day"]:
         return True
     return age >= cd["ready"] and tile["watered_today"]
 
 
 def needs_water(tile, day) -> tuple:
-    """(needed, must): water when the plant would weed tonight, or when watering adds yield.
-
-    A plant weeds after two consecutive unwatered days, so every other day keeps it alive;
-    one-time crops gain a unit per watered day in their bonus window, ongoing crops only
-    turn a fertilized production day into two units."""
+    """(needed, must): every unwatered plant is watered every day, as the line does; "must"
+    marks the ones that would weed tonight (two consecutive unwatered days) and so come first.
+    Skipping the off days would save nothing: the line's water count equals ours, and a
+    missed must-day kills the plant."""
     if tile["watered_today"]:
         return False, False
-    if tile.get("consecutive_unwatered", 0) >= 1:
-        return True, True
-    cd = CROPS[tile["crop"]]
-    age = day - tile["planted_day"]
-    if not cd["ongoing"]:
-        window_start = (cd["max_day"] + 1) // 2
-        return (window_start <= age <= cd["max_day"] and tile["yield_units"] < cd["max_yield"]), False
-    since = day + 1 - tile["planted_day"] - cd["first"]
-    production_today = (since >= 0 and since % cd["interval"] == 0
-                        and since // cd["interval"] + 1 <= cd["max_yield"])
-    return (production_today and tile.get("fertilized_until_day", -1) >= day), False
+    return True, tile.get("consecutive_unwatered", 0) >= 1
 
 
 def crop_exhausted(tile, day) -> bool:
@@ -142,22 +145,31 @@ def crop_exhausted(tile, day) -> bool:
     return age >= last_age
 
 
-def crop_for_empty_tile(x, y, day):
-    """Which crop the plan wants on an empty unlocked tile today, or None to leave it."""
+def target_crop(x, y, day):
+    """The crop the plan wants on a tile today: the line's layout by tile and date."""
     if (x, y) in STRUCTURE_TILES:
         return "MELON" if day == P.MELON_DAY and (x, y) in P.MELONS_NW else None
     if day == P.MELON_DAY and (x, y) in P.MELONS_NW:
         return "MELON"
-    if (x, y) in STRAWBERRY_TILES:
-        if P.STRAWBERRY_FIRST_DAY <= day <= P.STRAWBERRY_LAST_DAY:
-            return "STRAWBERRY"
-        if P.STRAWBERRY_FIRST_DAY - 4 <= day < P.STRAWBERRY_FIRST_DAY:
-            return None
+    if (x, y) in STRAWBERRY_TILES and P.STRAWBERRY_FIRST_DAY <= day <= P.STRAWBERRY_LAST_DAY:
+        return "STRAWBERRY"
     if P.CARROT_FIRST_DAY <= day <= P.CARROT_LAST_DAY:
-        return "CARROT"
+        return "CARROT"  # the line puts carrots on freed strawberry tiles and wheat tiles alike
     if day <= P.WHEAT_LAST_DAY:
         return "WHEAT"
     return None
+
+
+def crop_for_empty_tile(x, y, day, seeds=None):
+    """What to plant on an empty tile now: the target crop when its seed is in hand, else
+    wheat as a filler (the line does this while strawberry seeds are still unaffordable,
+    and takes the filler out at age 2-3 when the strawberry arrives)."""
+    crop = target_crop(x, y, day)
+    if crop is None:
+        return None
+    if seeds is not None and crop != "WHEAT" and seeds.get(crop, 0) <= 0 and day <= P.WHEAT_LAST_DAY:
+        return "WHEAT"
+    return crop
 
 
 ANIMALS = {
@@ -201,23 +213,27 @@ def build_jobs(me, day, hour, shed, seeds, carried, prices) -> list:
             elif kind == "PLANT":
                 needed, must = needs_water(tile, day)
                 if needed:
-                    prio = PRIO["WATER"]
+                    prio = PRIO["WATER_MUST"] if must else PRIO["WATER"]
                     if tile["crop"] == "MELON" and day - tile["planted_day"] >= CROPS["MELON"]["ready"]:
                         prio = HARVEST_PRIO["MELON"]  # the watering that makes the melon ready
                     jobs.append(Job("WATER", x, y, arg="must" if must else None, prio=prio))
                 elif not tile["watered_today"]:
-                    # not needed today, but a spare unit watering it buys a day of slack
-                    jobs.append(Job("WATER", x, y, prio=PRIO["WATER_SPARE"]))
-                if crop_harvestable(tile, day):
+                    # not needed today, but a unit with time watering it buys a day of slack
+                    spare = PRIO["WATER_SPARE"] if hour < SPARE_WATER_HOUR else PRIO["WATER"]
+                    jobs.append(Job("WATER", x, y, prio=spare))
+                if crop_harvestable(tile, day, hour, target_crop(x, y, day), seeds):
                     jobs.append(Job("HARVEST", x, y, prio=HARVEST_PRIO.get(tile["crop"], PRIO["HARVEST"])))
                 elif crop_exhausted(tile, day):
                     jobs.append(Job("DIG", x, y))
                 age = day - tile["planted_day"]
                 if tile.get("fertilized_until_day", -1) < day and FERTILIZE_FROM_DAY <= day < 29:
+                    # one fertilizer doubles two strawberry yields (about $200) but adds two
+                    # wheat (about $80) or one carrot, so strawberries come first
+                    base = FERTILIZE_PRIO.get(tile["crop"], PRIO["FERTILIZE"])
                     if age in FERTILIZE_BEST.get(tile["crop"], ()):
-                        jobs.append(Job("FERTILIZE", x, y, need=("FERTILIZER", 1)))
+                        jobs.append(Job("FERTILIZE", x, y, need=("FERTILIZER", 1), prio=base))
                     elif age in FERTILIZE_ANY.get(tile["crop"], ()):
-                        jobs.append(Job("FERTILIZE", x, y, need=("FERTILIZER", 1), prio=PRIO["FERTILIZE"] + 1.0))
+                        jobs.append(Job("FERTILIZE", x, y, need=("FERTILIZER", 1), prio=base + 1.0))
             elif "animal" in tile:
                 if kind == "PASTURE":
                     pastures += 1
@@ -270,10 +286,10 @@ def build_jobs(me, day, hour, shed, seeds, carried, prices) -> list:
             for x, tile in enumerate(row):
                 if tile is not None or (x, y) in build_targets:
                     continue
-                crop = crop_for_empty_tile(x, y, day)
+                crop = crop_for_empty_tile(x, y, day, seeds)
                 if crop and budget.get(crop, 0) > 0:
                     budget[crop] -= 1
-                    jobs.append(Job("PLANT", x, y, arg=crop))
+                    jobs.append(Job("PLANT", x, y, arg=crop, prio=PLANT_PRIO.get(crop, PRIO["PLANT"])))
     return jobs
 
 
@@ -284,7 +300,7 @@ def is_animal_job(j) -> bool:
     return j.kind in ANIMAL_JOBS or (j.kind == "HARVEST" and j.arg == "animal")
 
 
-def act_units(obs, day, hour, state):
+def act_units(obs, day, hour, state, step=0):
     """Return (unit actions, summary) for this turn.
 
     Jobs are assigned globally, cheapest (unit, job) pair first, so the nearest unit takes
@@ -299,6 +315,7 @@ def act_units(obs, day, hour, state):
     shed = private["shed"]
     seeds = private["seeds"]
     prices = obs["market"]["prices"]
+    money = me["money"]
     positions = [tuple(me["farmer"])] + [tuple(h) for h in me["hands"]]
     invs = [dict(inv) for inv in private["inventories"]]
     while len(invs) < len(positions):
@@ -337,7 +354,9 @@ def act_units(obs, day, hour, state):
     def input_needed_by(inv, item):
         return item in pending_inputs and inv.get(item, 0) > 0
 
-    # candidate (score, unit, job) pairs
+    # candidate (score, unit, job) pairs; a unit's previous walking target is remembered by
+    # (kind, tile) and favoured so units stop re-targeting each other's jobs every turn
+    previous = state.get("targets", {}) if state.get("target_step") == step - 1 else {}
     pairs = []
     for ui, pos in enumerate(positions):
         inv = invs[ui]
@@ -349,6 +368,8 @@ def act_units(obs, day, hour, state):
                 continue
             d = dist(pos, j.pos)
             score = j.prio + ON_TILE_BONUS if d == 0 else d + j.prio
+            if d > 0 and previous.get(ui) == (j.kind, j.x, j.y):
+                score += STICKY_BONUS
             if j.kind == "FEED" or (j.kind == "WATER" and j.arg == "must"):
                 score -= URGENCY_PER_HOUR * max(0, hour - URGENCY_FROM_HOUR)
                 if hour >= FEED_DEADLINE_HOUR:
@@ -367,10 +388,12 @@ def act_units(obs, day, hour, state):
             score = d_shed + 1 + min(dist(shed_tile, j.pos) for j in targets) + PRIO[targets[0].kind]
             pairs.append((score, ui, ("PICKUP", item, shed_tile)))
         value = sum(inv.get(p, 0) * prices.get(p, 0) for p in PRODUCE if not input_needed_by(inv, p))
+        # while the bank is nearly empty every collected fertilizer is the next feed purchase
+        deposit_value = min(DEPOSIT_VALUE, max(50, money))
         if value > 0 or (liquidating and any(inv.get(p, 0) > 0 for p in PRODUCE)):
             if value >= DEPOSIT_URGENT_VALUE or liquidating:
                 prio = URGENT
-            elif value >= DEPOSIT_VALUE or hour >= 21:
+            elif value >= deposit_value or hour >= 21:
                 prio = 1.0
             else:
                 prio = 6.0
@@ -406,6 +429,13 @@ def act_units(obs, day, hour, state):
             plant_left[j.arg] -= 1
         j.taken = True
         assigned[ui] = ("JOB", j, 0, j.pos)
+
+    targets = {}
+    for ui, a in enumerate(assigned):
+        if a is not None and a[0] == "JOB" and a[3] != positions[ui]:
+            targets[ui] = (a[1].kind, a[1].x, a[1].y)
+    state["targets"] = targets
+    state["target_step"] = step
 
     actions = []
     for ui, pos in enumerate(positions):
