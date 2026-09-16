@@ -765,3 +765,17 @@ lands at hours 12-21 after v5's at 9-15 ($181 against $225 a unit), my strawberr
 next morning at hour 1 while v5 sells the same day's harvest at hours 13-23, and in the
 shared glut of a seed without strawberry or milk shops both farms sell at $1-20 from day 21.
 Phase 1's acceptance (parity with the line in mirror matches) is not met.
+
+### Decision: the gauntlet plays each recording in seat 0 and our agent in seat 1
+The engine draws the day's weeds from one random stream, farm 0 first
+(`_end_of_day` in kaggriculture.py: `_spawn_weeds` runs for player 0, then player 1, on
+the same `rng`), and each empty tile consumes one draw. A recording in seat 1 therefore
+derails as soon as our seat-0 farm has a different number of empty tiles than the farm it
+was recorded against; a recording in seat 0 draws first and sees exactly the weeds it saw
+when it was recorded, whatever we do in seat 1. Its actions do not react to us, so the only
+coupling left is the market, which is the coupling we want to measure. Iminabo's gauntlet
+(the top five and three random gold teams outside the top ten, many rounds) will use
+seat-0 recordings of each team's current submission, with our agent in seat 1; a
+tape-vs-tape rerun of each recording first confirms it reproduces both banks (the
+`tests/test_research.py` check). Not verified yet: how many of each team's C0 games are
+seat-0 recordings; the listing is being produced now.
