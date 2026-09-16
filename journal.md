@@ -1070,3 +1070,11 @@ majority. The exact matches through turn 400 on hundreds of seats are a stronger
 check of the route tapes than one replay; the runtime layers on top are the same lineage
 as v5's. `scripts/arena.py` gains `line:v41` (flexonafft's `main.py`), and the competition
 yardstick will report against v5 and v41 both once the executor queue is through.
+
+### Decision: E2 (planting until hour 22) rejected
+Production basket 95,162 (E1 95,002) and bank 147,586 (147,474), but competition basket
+95,260 (95,672) and margin -26,448 (-25,291), mean bank 85,130 vs 111,578. With the towns
+fixed the competition move is the change itself, not the draw: a plant set at hour 22 needs
+its watering at 23 from a unit that is often elsewhere, and a missed one weeds the tile.
+Reverted; the executor stays at E1. Next: S (a unit keeps its walking target unless another
+job beats it by 1.5), then the successor line as a second competition opponent.
