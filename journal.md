@@ -1175,3 +1175,21 @@ its harvest basket is 2k higher than our own agent's. So the opening and the mel
 at parity with the searched tapes, and about 16k, the whole of the remaining gap, is lost
 in days 16-29: the strawberry season, the wheat cycles, carrots and the end game, and the
 prices they fetch. The single game that follows says which.
+
+### Checkpoint: what the second half loses, on one seed
+Hybrid-16 against v41 on seed 1 (decoupled town SMOOTHIE, YARN, BRUNCH, BRUNCH, SMOOTHIE,
+PET_CAFE x3; both farms on the sheep route): identical banks through day 15 ($25,367 at
+day 15 hour 0), then ours 97,274 against v41's 110,669. Executed sales, whole game, ours
+against v41: strawberry 232 at $191 against 248 at $194 (-3.6k), wheat 315 against 416
+(-4.2k), carrot 48 against 96 (-2.6k), milk 174 against 183 and wool 228 against 236
+(-1.7k together), fertilizer 288 against 348 (v41 buys fertilizer, so that column is
+inflated), egg +0.7k; gross 127.1k against 138.2k. The tile census from day 16: ours shows
+1-8 empty tiles at hour 0 on most days, 1-3 standing weeds from day 23, and wheat left past
+age 4 (a ready wheat is harvested only once watered that day, and the watering often comes
+too late for the harvest to follow); v41 shows no empty tiles, no late wheat, and a
+steady pipeline of 6-8 young and 17-19 window-age wheat tiles. Ops from day 16: our CARE
+344 against 398, FERTILIZE 85 against 101, PASS 419 against 606, moves 3,360 against 3,104.
+Reading: the second half is a labour-scheduling gap (wheat cycle, care, fertilizing) plus
+one plan choice (carrots: the route plants 29 on the freed tiles and keeps them coming; our
+E3 rule plants fewer). Two single changes follow: CARE at a value-based priority, and a
+late-hour harvest of ready wheat.
