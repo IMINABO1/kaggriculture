@@ -268,17 +268,29 @@ the public line are not the three named before.
   support.
 - Every layer switchable, so the arena can measure each one's contribution.
 
-## First three experiments
+## The build plan (rewritten 2026-09-16, amended the same day by Iminabo)
 
-1. **Skeleton only**: reproduce the median top-10 economy as a runtime agent and match its
-   median bank (100-110k) against `pass` and `starter` with weeds on, 20 seeds, both seats.
-   Until this holds nothing else matters.
-2. **Execution robustness**: the same agent against the exported tapes of all 14 teams
-   (`opponents/top10/`, recorded seat and seed) and the MIT reference agents. Tapes of
-   reactive teams understate them (finding 5), so the target is "never lose to a tape by
-   execution failure", not a win rate.
-3. **Market layer**: add liquidation and premium pacing and measure paired-seat win rate
-   against the skeleton-only agent and the tapes; then the opponent read.
+1. **Yardstick and floor (Phase 1).** The public line's own code is the arena opponent:
+   yhay81's Shop Router 0909 and aurax7's reactive v5 and v6, pulled from Kaggle under
+   `data/notebooks/` and run as `scripts/arena.py --b line:v5` (journal 2026-09-16). A
+   runtime clone of the line's economy (`agent/`) is the skeleton every later layer needs,
+   because a tape cannot follow the town, taper the end game, or meter and deny. Acceptance:
+   production against the pass agent within a few percent of v5's, and a paired-seat record
+   near even against v5 on fixed seeds, both seats. Gates: `scripts/eval.sh`; every executor
+   change is bisected alone (journal 2026-09-16).
+2. **The three layers (Phase 2), one at a time,** each gated by paired-seat win rate and
+   margin against v5 and v6 on fixed seeds: (a) follow the town beyond the Yarn Store
+   (carrots, tomatoes, geese at the leaders' breadth); (b) the end game and fertilizer
+   (taper CARE and FEED from day 27, let the herd escape, fertilize about 30% more per crop
+   tile-day); (c) the market: sell premium goods first each day from the previous day's
+   harvest, meter at the town's drain rate in small orders, keep selling every premium
+   product daily once the opponent's bulk sales start, dump melon on day 10, let staples
+   carry the last ten days. Whether metering and denial combine is an arena question.
+3. **No submission until the gauntlet says we stand a chance (Iminabo, 2026-09-16).** Many
+   rounds against the top five and against three randomly chosen gold teams outside the top
+   ten, through their recorded games (`scripts/top10/export_tapes.py`, `--b tape:`), knowing
+   that a recording derails once the weeds differ (METHOD.md section 6), so the gauntlet is
+   a floor. The early entry before 2026-09-23 is cancelled; the entry deadline still binds.
 
 ## Limits of this study
 
