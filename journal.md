@@ -933,3 +933,16 @@ on seed 1. The eight-seed spread against pass is 99k to 177k for one executor. S
 `scripts/arena.py` now records, per game, the shop list and the units harvested by product
 (counted from HARVEST actions in the replay), which do not depend on prices; production
 changes are judged on those columns as well as on the bank.
+
+### Surprise: the melon haul stopped at every pasture on the way home
+Turn view of day 10 on seed 1 with change B: the twelve units fanned out one per melon tile
+by hour 4 and the first four loads sold at hours 9-10, but units 7, 8 and 10 spent hours
+10-13 doing CARE, COLLECT and an animal HARVEST on the pastures at (4,2), (3,3), (2,4) and
+(4,3) that lie between the melon field and the shed (an on-tile job costs no walk, so it
+beat the deposit), and once the last melon tile was harvested the "melon rush" flag went
+off, so a hand holding six melons ($1,140, under the URGENT deposit threshold) watered wheat
+around NW until the day-end drop put its load into the shed for the hour-1 sale on day 11
+(27 of 64 units at $128). B2: a unit carrying melons takes no job at all, on-tile or not,
+until it has dropped them, on any day. `scripts/arena.py` now also records each game's shop
+list and the units harvested by product; `results/arena.csv` restarts with the new header
+(the old log is `results/arena_to_2026-09-16.csv`).
