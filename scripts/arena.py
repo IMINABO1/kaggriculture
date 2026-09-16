@@ -159,13 +159,11 @@ def basket(text: str) -> float:
 
 
 def patch_town(seed: int, scripted: list[str] | None = None) -> None:
-    """Make the town's shop draw depend on the seed alone (or follow a scripted list).
+    """Draw the town's shops from the seed alone, or follow a scripted list.
 
-    The engine draws each day's shop from the per-day generator that has just spawned the
-    weeds, one draw per empty tile on both farms, so the shops of a "fixed" seed move with
-    either farm's empty-tile count (P22). For A/B runs the shop is drawn here from a
-    generator keyed by seed and day only; the gauntlet scripts a recording's own town. The
-    weeds keep the engine's draw. This patches the engine module in this process only.
+    The engine draws each day's shop from the generator that has just spawned the weeds, one
+    draw per empty tile on both farms, so a "fixed" seed's town moves with either farm (P22).
+    The weeds keep the engine's draw; the patch lives in this process only.
     """
     import random
 
