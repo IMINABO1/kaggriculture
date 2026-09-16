@@ -1000,3 +1000,21 @@ there. The gauntlet scripts each tape's recorded shop sequence from its trace in
 seat-0 recording now plays in its recorded weeds and its recorded town. **Decision:** B2 and
 A' are re-measured under the decoupled draw before anything else is judged; the numbers
 above are the last on the coupled draw.
+
+### Surprise: the successor line routes on the first two shops with 28 searched tapes
+Read in the V41/EXP260 `main.py` (flexonafft's, byte-identical to reyhanksatria's):
+`_router` fires at step 144 (day 6) on the first two shops. Without a Yarn Store among them it
+uses a table of 64 shop pairs mapping to 28 routes (ids 101-128; 21 pairs share route 105,
+the rest are 1-5 pairs each; `_R108_DATA` decodes to 41 route tapes); with a Yarn Store it
+falls back to the older V39 table (route 0 or 3). It keeps v5's V219 tomato route (three
+Pizza Shop or Farmers Market instances, day 18) and V233 sheep route (two Yarn Stores, day
+12), and adds layers R70-R148, a "RACE" layer that detects a rival dropping the same
+product into the market without a sale of its own and quotes at the drop for the rest of
+the game, and a turn-0 wheat round trip changed to one large order so a rival's round trip
+cannot leave it a melon seed short. So the plateau's next generation carries a searched
+plan for every first-two-shop draw, which is the breadth of shop response the study found
+only among the leaders (analysis.md section 3). Consequences: (1) the competition yardstick
+should add this router (alias `line:v41`) once its fidelity against a recorded game is
+checked as v5's was; (2) Phase 2a's "follow the town" has to be at least as broad as this
+table to matter against the line the final tournament will meet. Not measured yet against
+our agent (the arena is running the decoupled re-baseline).
