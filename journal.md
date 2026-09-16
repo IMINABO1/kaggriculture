@@ -1155,3 +1155,23 @@ this result, so the experiment that answers the skeleton question is a hybrid: v
 and layers for the first N days, then our runtime executor and market from hour 0 of day
 N. The margin against plain v41 as N grows shows where our executor falls behind the
 searched tapes; N = 6, 10, 13, 16 are run next.
+
+### Surprise: the whole gap to the line sits in the second half of the game
+Hybrid agents (v41's tape and layers for the first N days, then `agent.policy.act`) against
+plain v41, seeds 0-9 both seats, decoupled shops:
+
+| tape for days | our bank | v41's bank | margin | our basket |
+|---|---|---|---|---|
+| 0 (our agent) | 85,410 | 111,340 | -25,930 | 96,616 |
+| 6 | 85,845 | 110,035 | -24,190 | 97,372 |
+| 10 | 85,764 | 107,548 | -21,784 | 97,130 |
+| 13 | 85,540 | 102,763 | -17,223 | 98,382 |
+| 16 | 85,644 | 101,543 | -15,899 | 98,653 |
+
+Our bank does not move with N (85.4-85.8k); v41's falls as our seat's sales coincide with
+its own for longer. With the farms identical through day 16, the one that keeps the tape
+banks 101.5k and the one that switches to our executor and market banks 85.6k, although
+its harvest basket is 2k higher than our own agent's. So the opening and the melon day are
+at parity with the searched tapes, and about 16k, the whole of the remaining gap, is lost
+in days 16-29: the strawberry season, the wheat cycles, carrots and the end game, and the
+prices they fetch. The single game that follows says which.
