@@ -1319,3 +1319,10 @@ yields 3 units by day 27-29 ($165 with a Pet Cafe, about $75 without) against a 
 planted on day 27 yielding 2 units ($42), so E4 next: carrots on every free tile on days
 24-26 when the town has a carrot shop (Pet Cafe or Farmers Market), measured at switch
 day 24 against v41 and v5.
+
+### Decision: E4 (carrots on every free tile on days 24-26 in carrot towns) rejected
+Switch day 24: against v41 margin -8,118 (-7,979 without), against v5 -4,356 (-3,698);
+carrots 80 (38), wheat 481 (533), basket 101,843 (102,531). The extra carrots did not pay
+for the wheat they displaced, so the tape's end-game edge is not the carrot count alone;
+the idle tiles on days 25-26, the last-day wheat dump and the strawberry tail remain the
+candidates, each to be measured at switch day 24 where the farms are identical until then.
