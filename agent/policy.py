@@ -21,5 +21,5 @@ def act(obs):
     return {
         "farmer": units[0],
         "hands": units[1:],
-        "market": market_orders(obs, day, hour, summary),
+        "market": market_orders(obs, day, hour, summary, state),
     }

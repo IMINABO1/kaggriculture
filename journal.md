@@ -806,3 +806,21 @@ sales press their prices), while Artem's makes 12k more than it did. A recording
 front-run, meter or switch the way the live agents do (v5's mirror detector, journal above),
 so 32% here is a ceiling for the live result, not a floor. The answer to "do we stand a
 chance" is: not yet, and not against the top three.
+
+### Checkpoint: end of the first build session
+State at commit time: `agent/` is a runtime clone of the public line's economy (plan 0 of
+Shop Router 0909) with a global nearest-pair executor; `scripts/eval.sh` gives production
+158.2k against pass (v5: 165.9k, seeds 1, 2, 4) and competition 0-10 against v5 with a mean
+margin of -24.7k (seeds 0, 1, 2, 4, 5, both seats); the gauntlet is 26-54 against seat-0
+recordings of the top five and three gold teams; 13 tests pass; `scripts/package.py` builds
+and self-plays the bundle. A metering layer exists in `agent/market.py` behind `METER`
+(off): sold at the town's drain rate it made no difference against a daily dumper.
+What the next session should do, in order: (1) the market timing that costs the 25k in
+competition, starting from `scratch hours_diag.py`: melons harvested and hauled to sell by
+hour 8 of day 10 (v5 sells at 9-15), the day's premium harvest sold the same day rather than
+at hour 1 next morning, and the denial rule of the memo (every premium product every day
+once the opponent's bulk sales start); (2) the labour efficiency that still costs 5% of
+production (3,500 moves a game against the line's 2,900; zone-based routing rather than
+greedy nearest-pair); (3) then Phase 2a, the Yarn Store plan (6 cows, 10-11 sheep, 0 geese)
+and the leaders' carrots and tomatoes, since v5 already switches to a yarn route and made
+$90k on wool alone in seed 3. Every change through `eval.sh`, one at a time.

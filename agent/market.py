@@ -12,6 +12,20 @@ from agent import plan as P
 from agent.executor import PRODUCE, target_crop
 
 MAX_ORDERS = 10
+# metering (memo, "The answer" 2): sell each premium product at about the town's drain rate
+# in small orders across the day and hold the rest, instead of dumping what reaches the shed
+METER = False               # off: against a daily dumper the held stock sold at the same floor (journal 2026-09-16)
+METERED = ("STRAWBERRY", "MILK", "WOOL", "EGG", "CARROT", "TOMATO")
+METER_K = 1.3               # sell this multiple of the drain so the stock still clears
+METER_MIN_DRAIN = 6         # units a day the town must take before metering is worth it
+METER_STOCK_CAP = 40        # shed stock above this is sold whatever the drain
+DUMP_FROM_DAY = 28          # everything goes from here
+SHOPS = {
+    "BAKERY": ("EGG", "WHEAT"), "PIZZA_SHOP": ("MILK", "TOMATO", "WHEAT"),
+    "BRUNCH_SPOT": ("EGG", "WHEAT", "STRAWBERRY"), "YARN_STORE": ("WOOL",),
+    "ICE_CREAM_SHOP": ("STRAWBERRY", "MILK", "WHEAT"), "PET_CAFE": ("CARROT",),
+    "SMOOTHIE_SHOP": ("STRAWBERRY", "MILK"), "FARMERS_MARKET": ("WHEAT", "CARROT", "TOMATO", "STRAWBERRY"),
+}
 MIN_SELL_PRICE = 2
 FEED_BUY_HOUR = 22
 FERTILIZER_RESERVE_CAP = 24
@@ -56,7 +70,18 @@ def tiles_wanting(me, day, crop) -> int:
     return n
 
 
-def market_orders(obs, day, hour, summary) -> list:
+def town_drain_per_day(obs) -> dict:
+    """Units of each product the town removes a day: every shop instance takes one of each of
+    its products every four turns (two for a single-product shop), the town centre one a day."""
+    drain = {item: 1.0 for item in PRODUCE if item != "FERTILIZER"}
+    for shop in obs["town"].get("unlocked_shops", []):
+        products = SHOPS.get(shop, ())
+        for item in products:
+            drain[item] = drain.get(item, 0.0) + (12.0 if len(products) == 1 else 6.0)
+    return drain
+
+
+def market_orders(obs, day, hour, summary, state=None) -> list:
     me = obs["farms"][obs["player"]]
     private = obs["private"]
     shed = private["shed"]
@@ -74,15 +99,27 @@ def market_orders(obs, day, hour, summary) -> list:
         FERTILIZER_RESERVE_CAP, summary.get("fertilize_pending", 0) + summary.get("fertilize_taken", 0)
     )
     expected = 0.0
+    drain = town_drain_per_day(obs) if METER else {}
+    budget = state.setdefault("meter", {}) if state is not None else {}
     for item in PRODUCE:
         have = shed.get(item, 0)
         if item == "WHEAT":
             have -= feed_reserve
         elif item == "FERTILIZER":
             have -= fert_reserve
-        if have > 0 and prices.get(item, 0) >= MIN_SELL_PRICE:
-            orders.append(["SELL", item, int(have)])
-            expected += 0.8 * have * prices[item]
+        if have <= 0 or prices.get(item, 0) < MIN_SELL_PRICE:
+            continue
+        n = have
+        if METER and item in METERED and day < DUMP_FROM_DAY and drain.get(item, 0) >= METER_MIN_DRAIN:
+            budget[item] = budget.get(item, 0.0) + drain[item] * METER_K / 24.0
+            n = min(have, int(budget[item]))
+            if have > METER_STOCK_CAP:
+                n = max(n, have - METER_STOCK_CAP)
+            if n <= 0:
+                continue
+            budget[item] -= n
+        orders.append(["SELL", item, int(n)])
+        expected += 0.8 * n * prices[item]
     cash = money + expected
 
     # 2. hands for the day, ahead of the sells so the order cap never drops them
