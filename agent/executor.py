@@ -59,6 +59,9 @@ FERTILIZE_FROM_DAY = 12     # earlier, every fertilizer sold at $90-100 is what 
 URGENT = -20.0              # beats a job under another unit's feet from ten tiles away
 HARVEST_PRIO = {"MELON": URGENT, "STRAWBERRY": 1.0}
 PLANT_PRIO = {"MELON": -1.0, "STRAWBERRY": 0.0, "CARROT": 1.0, "WHEAT": 1.5}
+# a watering that adds a unit to a one-time crop is worth the unit ($225 for a melon), so it
+# ranks with a must-watering; higher than that and it starves the herd (journal 2026-09-16)
+WATER_YIELD_PRIO = {"MELON": PRIO["WATER_MUST"]}
 
 
 def dist(a, b) -> int:
@@ -131,6 +134,16 @@ def needs_water(tile, day) -> tuple:
     if tile["watered_today"]:
         return False, False
     return True, tile.get("consecutive_unwatered", 0) >= 1
+
+
+def water_adds_unit(tile, day) -> bool:
+    """A one-time crop gains a unit from each watering in its yield window (the engine's
+    WATER rule: ages from half the max day to the max day, up to the max yield)."""
+    cd = CROPS[tile["crop"]]
+    if cd["ongoing"] or tile["yield_units"] >= cd["max_yield"]:
+        return False
+    age = day - tile["planted_day"]
+    return (cd["max_day"] + 1) // 2 <= age <= cd["max_day"]
 
 
 def crop_exhausted(tile, day) -> bool:
@@ -212,6 +225,8 @@ def build_jobs(me, day, hour, shed, seeds, carried, prices) -> list:
                 needed, must = needs_water(tile, day)
                 if needed:
                     prio = PRIO["WATER_MUST"] if must else PRIO["WATER"]
+                    if water_adds_unit(tile, day):
+                        prio = min(prio, WATER_YIELD_PRIO.get(tile["crop"], prio))
                     if tile["crop"] == "MELON" and day - tile["planted_day"] >= CROPS["MELON"]["ready"]:
                         prio = HARVEST_PRIO["MELON"]  # the watering that makes the melon ready
                     jobs.append(Job("WATER", x, y, arg="must" if must else None, prio=prio))

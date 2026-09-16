@@ -1018,3 +1018,21 @@ should add this router (alias `line:v41`) once its fidelity against a recorded g
 checked as v5's was; (2) Phase 2a's "follow the town" has to be at least as broad as this
 table to matter against the line the final tournament will meet. Not measured yet against
 our agent (the arena is running the decoupled re-baseline).
+
+### Checkpoint: decoupled baseline, and A' accepted
+Under `--decouple-shops` a seed's town is the same for every executor (checked on seed 1:
+both executors met SMOOTHIE, YARN, BRUNCH, BRUNCH, SMOOTHIE, PET_CAFE x3). The numbers
+below are the new baseline and the first change judged on it:
+
+| executor | production basket | production bank | competition basket | mean bank vs v5 | margin |
+|---|---|---|---|---|---|
+| B2 (committed) | 92,896 | 144,546 | 94,531 | 84,688 vs 112,130 | -27,442 |
+| A' (melon-window watering at the must level) | 94,713 | 146,208 | 95,276 | 85,076 vs 111,346 | -26,270 |
+
+A' harvests 72 melons in both yardsticks (68 and 66 before), 5 more strawberries and 11 more
+wheat against pass, 3 fewer milk; both gates pass, so it is kept. The decoupled towns on
+seeds 0-9 are richer than the coupled ones were (both banks about 12k higher), so the
+margin, not the bank, is comparable with earlier entries. Next, one at a time on this
+baseline: E3 (carrots only on the freed strawberry tiles, wheat elsewhere to day 27), E1
+(exhausted strawberries dug at planting priority), E2 (planting until hour 22), S (a unit
+keeps its walking target unless another job beats it by 1.5).
