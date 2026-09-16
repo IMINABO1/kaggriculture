@@ -1275,3 +1275,12 @@ results, and a full `eval.sh` (28 games) takes 44 s at six. `eval.sh` now uses `
 The previous session's 1,200-second timeout came with `deep.py` and three other processes
 running at once; six arena workers alone are within memory. The four-to-five-minute waits
 recorded during today's evals were the background-task plumbing, not the games.
+
+### Decision (Iminabo): run both paths and see which works
+Iminabo, on the memo's amendment 6: "can't we do both and see which works". So the hybrid
+becomes a real agent in the package (v41's `main.py` bundled verbatim as
+`agent/line_v41.py` under its Apache-2.0 notices, `agent/hybrid.py` switching from the tape
+to our runtime agent at `plan.TAPE_DAYS`), and both paths are measured with the same
+yardsticks: `TAPE_DAYS = 0` is our executor alone, 16-24 the hybrid, 29 the tape alone. The
+hybrid is also the instrument for the executor work, because with identical farms until
+the switch its margin against v41 measures our play after that day against the tape's.
