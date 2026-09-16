@@ -35,13 +35,13 @@ game 1: 707, game 10: 1549, game 25: 2449, game 50: 2713, game 100: 2911, game l
 | melon planted | 12 |
 | FERTILIZE ops | 114 |
 | CARE ops | 417 |
-| melon sold | 12 |
-| strawberry sold | 125 |
-| milk sold | 107 |
-| wool sold | 72 |
-| wheat sold | 327 |
-| fertilizer sold | 280 |
-| units sold last 3 days | 262.5 |
+| melon sold | 72 |
+| strawberry sold | 247 |
+| milk sold | 191 |
+| wool sold | 126 |
+| wheat sold | 366.5 |
+| fertilizer sold | 339 |
+| units sold last 3 days | 391.5 |
 | shed peak | 45 |
 | weeds spawned | 20 |
 | unexecutable market orders | 1 |
@@ -99,17 +99,17 @@ What goes with being off the modal field line at turn 200 (the first cut where f
 
 | window | games | win % | median bank | hands | cows | sheep | geese | quadrants | land day 1 | strawberry | wheat | melon | melon sold | milk sold | wool sold | field lines @400 | market lines @400 |
 |---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|
-| C0 | 50 | 90 | 105971 | 12 | 6 | 6 | 3 | 3 | 6 | 33 | 163 | 12 | 12 | 107 | 72 | 38 | 43 |
+| C0 | 50 | 90 | 105971 | 12 | 6 | 6 | 3 | 3 | 6 | 33 | 163 | 12 | 72 | 191 | 126 | 38 | 43 |
 
 ## Losses in the first and last windows
 
 | window | episode | opponent | opp rating | my bank | opp bank | margin | opp opening | biggest differences (opponent vs me) |
 |---|---|---|---|---|---|---|---|---|
-| C0 | 109008665 | l'rug | 2293.5 | 129554 | 133075 | -3521 | 9b0c82fd | milk sold: they 176 vs me 122; wool sold: they 90 vs me 56; FERTILIZE ops: they 99 vs me 115 |
-| C0 | 109019131 | Blu3s | 2615.4 | 76489 | 76604 | -115 | 9b0c82fd | strawberry sold: they 119 vs me 139; FERTILIZE ops: they 102 vs me 122; milk sold: they 137 vs me 128 |
-| C0 | 109020166 | Ruslan Akhmetov | 2590.2 | 101081 | 102575 | -1494 | 9b0c82fd | milk sold: they 125 vs me 102; strawberry sold: they 134 vs me 122; FERTILIZE ops: they 100 vs me 109 |
-| C0 | 109026600 | 失忆的海_ | 2648.2 | 113224 | 118189 | -4965 | 9b0c82fd | milk sold: they 110 vs me 86; strawberry sold: they 140 vs me 117; units sold last 3 days: they 277 vs me 269 |
-| C0 | 109028487 | parv goyal2 | 2637.2 | 72412 | 76590 | -4178 | 422a8637 | CARE ops: they 279 vs me 415; units sold last 3 days: they 346 vs me 261; strawberry sold: they 205 vs me 132 |
+| C0 | 109008665 | l'rug | 2293.5 | 129554 | 133075 | -3521 | 9b0c82fd | milk sold: they 266 vs me 212; wool sold: they 139 vs me 99; FERTILIZE ops: they 99 vs me 115 |
+| C0 | 109019131 | Blu3s | 2615.4 | 76489 | 76604 | -115 | 9b0c82fd | FERTILIZE ops: they 102 vs me 122; units sold last 3 days: they 389 vs me 399; milk sold: they 235 vs me 234 |
+| C0 | 109020166 | Ruslan Akhmetov | 2590.2 | 101081 | 102575 | -1494 | 9b0c82fd | milk sold: they 208 vs me 182; FERTILIZE ops: they 100 vs me 109; strawberry sold: they 249 vs me 241 |
+| C0 | 109026600 | 失忆的海_ | 2648.2 | 113224 | 118189 | -4965 | 9b0c82fd | milk sold: they 191 vs me 158; wool sold: they 262 vs me 240; units sold last 3 days: they 397 vs me 386 |
+| C0 | 109028487 | parv goyal2 | 2637.2 | 72412 | 76590 | -4178 | 422a8637 | CARE ops: they 279 vs me 415; units sold last 3 days: they 346 vs me 390; strawberry sold: they 205 vs me 247 |
 
 ## Head to head with the other studied teams (all games, not only sampled)
 

@@ -35,13 +35,13 @@ game 1: 736, game 10: 1597, game 25: 2633, game 50: 2820, game 100: 2908, game l
 | melon planted | 12 |
 | FERTILIZE ops | 124.5 |
 | CARE ops | 400 |
-| melon sold | 12 |
-| strawberry sold | 119 |
-| milk sold | 146.5 |
-| wool sold | 103.5 |
-| wheat sold | 386.5 |
-| fertilizer sold | 325 |
-| units sold last 3 days | 292.5 |
+| melon sold | 72 |
+| strawberry sold | 249 |
+| milk sold | 189.5 |
+| wool sold | 144 |
+| wheat sold | 566.5 |
+| fertilizer sold | 345.5 |
+| units sold last 3 days | 403 |
 | shed peak | 60 |
 | weeds spawned | 21.5 |
 | unexecutable market orders | 0 |
@@ -99,17 +99,17 @@ What goes with being off the modal field line at turn 200 (the first cut where f
 
 | window | games | win % | median bank | hands | cows | sheep | geese | quadrants | land day 1 | strawberry | wheat | melon | melon sold | milk sold | wool sold | field lines @400 | market lines @400 |
 |---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|
-| C0 | 50 | 88 | 103596.5 | 12 | 7.5 | 7.5 | 3 | 3 | 6 | 33 | 154.5 | 12 | 12 | 146.5 | 103.5 | 44 | 50 |
+| C0 | 50 | 88 | 103596.5 | 12 | 7.5 | 7.5 | 3 | 3 | 6 | 33 | 154.5 | 12 | 72 | 189.5 | 144 | 44 | 50 |
 
 ## Losses in the first and last windows
 
 | window | episode | opponent | opp rating | my bank | opp bank | margin | opp opening | biggest differences (opponent vs me) |
 |---|---|---|---|---|---|---|---|---|
-| C0 | 109019097 | HireMe | 2709.9 | 91121 | 91287 | -166 | 9b0c82fd | strawberry sold: they 132 vs me 85; units sold last 3 days: they 250 vs me 289; milk sold: they 164 vs me 194 |
-| C0 | 109023344 | MMN0222 | 2790.4 | 133707 | 137076 | -3369 | 9b0c82fd | units sold last 3 days: they 270 vs me 306; milk sold: they 135 vs me 160; FERTILIZE ops: they 94 vs me 119 |
-| C0 | 109025314 | monsaraida | 2718.7 | 103281 | 109007 | -5726 | 9b0c82fd | strawberry sold: they 140 vs me 70; wool sold: they 191 vs me 244; FERTILIZE ops: they 61 vs me 113 |
-| C0 | 109027411 | TheMightiestMan | 2704.5 | 72945 | 74971 | -2026 | 9b0c82fd | milk sold: they 92 vs me 118; wheat planted: they 162 vs me 146; wool sold: they 92 vs me 105 |
-| C0 | 109031548 | Otter Vibe | 2794.1 | 75688 | 77801 | -2113 | a4e9ba8d | FERTILIZE ops: they 273 vs me 92; CARE ops: they 263 vs me 400; wool sold: they 14 vs me 125 |
+| C0 | 109019097 | HireMe | 2709.9 | 91121 | 91287 | -166 | 9b0c82fd | strawberry sold: they 245 vs me 185; milk sold: they 239 vs me 275; units sold last 3 days: they 423 vs me 397 |
+| C0 | 109023344 | MMN0222 | 2790.4 | 133707 | 137076 | -3369 | 9b0c82fd | units sold last 3 days: they 379 vs me 408; FERTILIZE ops: they 94 vs me 119; strawberry sold: they 245 vs me 228 |
+| C0 | 109025314 | monsaraida | 2718.7 | 103281 | 109007 | -5726 | 9b0c82fd | strawberry sold: they 249 vs me 147; wool sold: they 381 vs me 309; FERTILIZE ops: they 61 vs me 113 |
+| C0 | 109027411 | TheMightiestMan | 2704.5 | 72945 | 74971 | -2026 | 9b0c82fd | units sold last 3 days: they 396 vs me 369; milk sold: they 159 vs me 140; wheat planted: they 162 vs me 146 |
+| C0 | 109031548 | Otter Vibe | 2794.1 | 75688 | 77801 | -2113 | a4e9ba8d | FERTILIZE ops: they 273 vs me 92; CARE ops: they 263 vs me 400; strawberry sold: they 120 vs me 249 |
 
 ## Head to head with the other studied teams (all games, not only sampled)
 

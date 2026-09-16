@@ -35,13 +35,13 @@ game 1: 802, game 10: 1695, game 25: 2753, game 50: 2928, game 100: 2951, game 2
 | melon planted | 12 |
 | FERTILIZE ops | 106 |
 | CARE ops | 416 |
-| melon sold | 12 |
-| strawberry sold | 141 |
-| milk sold | 130.5 |
-| wool sold | 84.5 |
-| wheat sold | 352.5 |
-| fertilizer sold | 291 |
-| units sold last 3 days | 274.5 |
+| melon sold | 72 |
+| strawberry sold | 251 |
+| milk sold | 206 |
+| wool sold | 138.5 |
+| wheat sold | 407 |
+| fertilizer sold | 351 |
+| units sold last 3 days | 396.5 |
 | shed peak | 59 |
 | weeds spawned | 18 |
 | unexecutable market orders | 4 |
@@ -99,17 +99,17 @@ What goes with being off the modal field line at turn 200 (the first cut where f
 
 | window | games | win % | median bank | hands | cows | sheep | geese | quadrants | land day 1 | strawberry | wheat | melon | melon sold | milk sold | wool sold | field lines @400 | market lines @400 |
 |---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|
-| C0 | 50 | 90 | 110421.5 | 12 | 8 | 6 | 3 | 3 | 6 | 33 | 162 | 12 | 12 | 130.5 | 84.5 | 30 | 49 |
+| C0 | 50 | 90 | 110421.5 | 12 | 8 | 6 | 3 | 3 | 6 | 33 | 162 | 12 | 72 | 206 | 138.5 | 30 | 49 |
 
 ## Losses in the first and last windows
 
 | window | episode | opponent | opp rating | my bank | opp bank | margin | opp opening | biggest differences (opponent vs me) |
 |---|---|---|---|---|---|---|---|---|
-| C0 | 108862372 | Subramanya N | 2904.5 | 99404 | 99927 | -523 | 9b0c82fd | wool sold: they 109 vs me 56; strawberry sold: they 162 vs me 144; FERTILIZE ops: they 103 vs me 120 |
-| C0 | 108864419 | Ebi | 2785.8 | 158017 | 169627 | -11610 | 61137e61 | units sold last 3 days: they 866 vs me 282; strawberry sold: they 249 vs me 174; wheat planted: they 93 vs me 162 |
-| C0 | 108868631 | yuto083 | 2857.4 | 154337 | 160092 | -5755 | 9b0c82fd | wool sold: they 90 vs me 44; milk sold: they 211 vs me 179; strawberry sold: they 132 vs me 148 |
-| C0 | 108874844 | yfy | 2863.0 | 112214 | 112455 | -241 | 3bc18d7a | milk sold: they 203 vs me 182; strawberry sold: they 156 vs me 136; wool sold: they 63 vs me 71 |
-| C0 | 108875870 | WeAreFarmers | 2893.0 | 102011 | 104312 | -2301 | 9b0c82fd | milk sold: they 73 vs me 105; FERTILIZE ops: they 122 vs me 106; units sold last 3 days: they 269 vs me 255 |
+| C0 | 108862372 | Subramanya N | 2904.5 | 99404 | 99927 | -523 | 9b0c82fd | wool sold: they 156 vs me 99; milk sold: they 165 vs me 192; FERTILIZE ops: they 103 vs me 120 |
+| C0 | 108864419 | Ebi | 2785.8 | 158017 | 169627 | -11610 | 61137e61 | units sold last 3 days: they 1158 vs me 396; milk sold: they 373 vs me 266; strawberry sold: they 339 vs me 249 |
+| C0 | 108868631 | yuto083 | 2857.4 | 154337 | 160092 | -5755 | 9b0c82fd | milk sold: they 321 vs me 266; wool sold: they 139 vs me 87; FERTILIZE ops: they 106 vs me 114 |
+| C0 | 108874844 | yfy | 2863.0 | 112214 | 112455 | -241 | 3bc18d7a | milk sold: they 285 vs me 266; wool sold: they 106 vs me 120; units sold last 3 days: they 410 vs me 403 |
+| C0 | 108875870 | WeAreFarmers | 2893.0 | 102011 | 104312 | -2301 | 9b0c82fd | milk sold: they 144 vs me 184; units sold last 3 days: they 440 vs me 423; FERTILIZE ops: they 122 vs me 106 |
 
 ## Head to head with the other studied teams (all games, not only sampled)
 

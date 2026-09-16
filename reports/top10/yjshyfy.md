@@ -35,13 +35,13 @@ game 1: 698, game 10: 1618, game 25: 2546, game 50: 2833, game 100: 2917, game l
 | melon planted | 12 |
 | FERTILIZE ops | 101 |
 | CARE ops | 358.5 |
-| melon sold | 12 |
-| strawberry sold | 154.5 |
-| milk sold | 135 |
-| wool sold | 75 |
-| wheat sold | 341 |
-| fertilizer sold | 289 |
-| units sold last 3 days | 268 |
+| melon sold | 72 |
+| strawberry sold | 246 |
+| milk sold | 195 |
+| wool sold | 118.5 |
+| wheat sold | 375.5 |
+| fertilizer sold | 357.5 |
+| units sold last 3 days | 403 |
 | shed peak | 56 |
 | weeds spawned | 21 |
 | unexecutable market orders | 0 |
@@ -99,15 +99,15 @@ What goes with being off the modal field line at turn 200 (the first cut where f
 
 | window | games | win % | median bank | hands | cows | sheep | geese | quadrants | land day 1 | strawberry | wheat | melon | melon sold | milk sold | wool sold | field lines @400 | market lines @400 |
 |---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|
-| C0 | 50 | 94 | 100857 | 12 | 8 | 6 | 3 | 3 | 6 | 33 | 163 | 12 | 12 | 135 | 75 | 45 | 50 |
+| C0 | 50 | 94 | 100857 | 12 | 8 | 6 | 3 | 3 | 6 | 33 | 163 | 12 | 72 | 195 | 118.5 | 45 | 50 |
 
 ## Losses in the first and last windows
 
 | window | episode | opponent | opp rating | my bank | opp bank | margin | opp opening | biggest differences (opponent vs me) |
 |---|---|---|---|---|---|---|---|---|
-| C0 | 108977881 | JeremiahMannings | 2715.0 | 144803 | 145854 | -1051 | 9b0c82fd | wool sold: they 157 vs me 190; milk sold: they 110 vs me 135; FERTILIZE ops: they 106 vs me 99 |
-| C0 | 108986172 | DSM | 2812.2 | 112273 | 120928 | -8655 | 422a8637 | strawberry sold: they 309 vs me 156; units sold last 3 days: they 367 vs me 253; milk sold: they 277 vs me 182 |
-| C0 | 108990365 | quantara.cv | 2760.3 | 123750 | 124187 | -437 | 9b0c82fd | milk sold: they 152 vs me 236; strawberry sold: they 135 vs me 156; CARE ops: they 417 vs me 398 |
+| C0 | 108977881 | JeremiahMannings | 2715.0 | 144803 | 145854 | -1051 | 9b0c82fd | FERTILIZE ops: they 106 vs me 99; wool sold: they 273 vs me 278; CARE ops: they 397 vs me 393 |
+| C0 | 108986172 | DSM | 2812.2 | 112273 | 120928 | -8655 | 422a8637 | FERTILIZE ops: they 164 vs me 86; strawberry sold: they 309 vs me 249; CARE ops: they 301 vs me 359 |
+| C0 | 108990365 | quantara.cv | 2760.3 | 123750 | 124187 | -437 | 9b0c82fd | milk sold: they 245 vs me 320; wool sold: they 161 vs me 139; units sold last 3 days: they 392 vs me 411 |
 
 ## Head to head with the other studied teams (all games, not only sampled)
 

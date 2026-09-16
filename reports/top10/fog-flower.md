@@ -35,13 +35,13 @@ game 1: 736, game 10: 1757, game 25: 2640, game 50: 2880, game 100: 2933, game l
 | melon planted | 12 |
 | FERTILIZE ops | 105 |
 | CARE ops | 362.5 |
-| melon sold | 12 |
-| strawberry sold | 152 |
-| milk sold | 129 |
-| wool sold | 68 |
-| wheat sold | 346.5 |
-| fertilizer sold | 287 |
-| units sold last 3 days | 270 |
+| melon sold | 72 |
+| strawberry sold | 249 |
+| milk sold | 205 |
+| wool sold | 106 |
+| wheat sold | 382.5 |
+| fertilizer sold | 352 |
+| units sold last 3 days | 407.5 |
 | shed peak | 56 |
 | weeds spawned | 20 |
 | unexecutable market orders | 0 |
@@ -99,15 +99,15 @@ What goes with being off the modal field line at turn 200 (the first cut where f
 
 | window | games | win % | median bank | hands | cows | sheep | geese | quadrants | land day 1 | strawberry | wheat | melon | melon sold | milk sold | wool sold | field lines @400 | market lines @400 |
 |---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|
-| C0 | 50 | 94 | 109297 | 12 | 8 | 6 | 3 | 3 | 6 | 33 | 163 | 12 | 12 | 129 | 68 | 31 | 44 |
+| C0 | 50 | 94 | 109297 | 12 | 8 | 6 | 3 | 3 | 6 | 33 | 163 | 12 | 72 | 205 | 106 | 31 | 44 |
 
 ## Losses in the first and last windows
 
 | window | episode | opponent | opp rating | my bank | opp bank | margin | opp opening | biggest differences (opponent vs me) |
 |---|---|---|---|---|---|---|---|---|
-| C0 | 109119003 | Yuvraj Bhati | 2704.1 | 73781 | 76411 | -2630 | 9b0c82fd | milk sold: they 103 vs me 171; CARE ops: they 405 vs me 357; strawberry sold: they 130 vs me 152 |
-| C0 | 109133784 | Munal Singh | 2889.2 | 56554 | 57303 | -749 | 9b0c82fd | CARE ops: they 405 vs me 332; wool sold: they 100 vs me 75; milk sold: they 72 vs me 92 |
-| C0 | 109134855 | AI是我的豆包 | 2890.3 | 101201 | 103393 | -2192 | 3bc18d7a | milk sold: they 82 vs me 109; CARE ops: they 330 vs me 320; units sold last 3 days: they 274 vs me 270 |
+| C0 | 109119003 | Yuvraj Bhati | 2704.1 | 73781 | 76411 | -2630 | 9b0c82fd | milk sold: they 198 vs me 256; CARE ops: they 405 vs me 357; wool sold: they 150 vs me 114 |
+| C0 | 109133784 | Munal Singh | 2889.2 | 56554 | 57303 | -749 | 9b0c82fd | CARE ops: they 405 vs me 332; wool sold: they 157 vs me 106; FERTILIZE ops: they 117 vs me 103 |
+| C0 | 109134855 | AI是我的豆包 | 2890.3 | 101201 | 103393 | -2192 | 3bc18d7a | milk sold: they 145 vs me 186; CARE ops: they 330 vs me 320; units sold last 3 days: they 403 vs me 398 |
 
 ## Head to head with the other studied teams (all games, not only sampled)
 

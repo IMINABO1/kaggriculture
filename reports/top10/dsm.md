@@ -39,13 +39,13 @@ game 1: 697, game 10: 1479, game 25: 2522, game 50: 2865, game 100: 3036, game l
 | melon planted | 19 | 12 | 12 | 14 | 14 |
 | FERTILIZE ops | 72 | 66 | 62 | 153.5 | 157 |
 | CARE ops | 967 | 320 | 333 | 334 | 349.5 |
-| melon sold | 12 | 12 | 12 | 63.5 | 64 |
-| strawberry sold | 249 | 181.5 | 173 | 208.5 | 224.5 |
-| milk sold | 134 | 203 | 218.5 | 173 | 188.5 |
-| wool sold | 107 | 113.5 | 115 | 92.5 | 107.5 |
-| wheat sold | 331 | 574.5 | 330.5 | 472.5 | 469.5 |
-| fertilizer sold | 189 | 231 | 257 | 199.5 | 210.5 |
-| units sold last 3 days | 199 | 266 | 292.5 | 361.5 | 361 |
+| melon sold | 102 | 72 | 72 | 72 | 72 |
+| strawberry sold | 286 | 262.5 | 262 | 216.5 | 226.5 |
+| milk sold | 215 | 239.5 | 266 | 183 | 198.5 |
+| wool sold | 132 | 136 | 138 | 107.5 | 122.5 |
+| wheat sold | 428 | 589.5 | 368 | 473 | 468 |
+| fertilizer sold | 215 | 246 | 328 | 199.5 | 210.5 |
+| units sold last 3 days | 338 | 325 | 345 | 366.5 | 366.5 |
 | shed peak | 70 | 25.5 | 73 | 45 | 45.5 |
 | weeds spawned | 14 | 31 | 39 | 19.5 | 19 |
 | unexecutable market orders | 0 | 0 | 0 | 0 | 0 |
@@ -58,36 +58,36 @@ Episode 108992987 (the median-bank game of the latest window): seat 1, bank 9950
 
 | day | money | hands | quads | bought | built | planted | care/fert | harvest | sold | revenue | farm at day end | new weeds | shop unlock |
 |---|---|---|---|---|---|---|---|---|---|---|---|---|---|
-| 0 | 3000 | 4 | 1 | cow2 sheep3 \| W10 M6 | pasture 5  | W11 M8 | 3/0 | 0 | W6 | 167 | cow2 sheep3; W9 M6 |  |  |
-| 1 | 5 | 4 | 1 | M5 |  | M4 | 5/0 | 0 | F5 | 497 | cow2 sheep3; W9 M10 |  |  |
-| 2 | 60 | 6 | 1 | S6 M2 |  | S2 M2 | 5/0 | 4 | F5 | 489 | cow2 sheep3; W6 S2 M12 |  |  |
+| 0 | 3000 | 4 | 1 | cow2 sheep3 \| W9 M6 | pasture 5  | W11 M8 | 3/0 | 0 | W5 | 139 | cow2 sheep3; W9 M6 |  |  |
+| 1 | 5 | 4 | 1 | M4 |  | M4 | 5/0 | 0 | F5 | 497 | cow2 sheep3; W9 M10 |  |  |
+| 2 | 60 | 6 | 1 | S2 M2 |  | S2 M2 | 5/0 | 4 | F5 | 489 | cow2 sheep3; W6 S2 M12 |  |  |
 | 3 | 19 | 6 | 1 | S4 |  | S3 | 5/0 | 3 | W1 F5 | 510 | cow2 sheep3; W3 S5 M12 |  | Bakery |
 | 4 | 109 | 6 | 1 | S3 |  | S3 | 6/0 | 3 | W1 F5 | 500 | cow2 sheep3; S8 M12 |  |  |
 | 5 | 289 | 6 | 1 |  |  |  | 5/0 | 0 | F5 | 459 | cow2 sheep3; S8 M12 |  |  |
-| 6 | 728 | 8 | 2 | goose2 cow4 \| W1 S12 | pasture 4 coop 2 | W1 S13 | 11/0 | 3 | W4 Wl12 F4 | 2866 | goose2 cow6 sheep3; W1 S21 M12 |  | Smoothie |
-| 7 | 107 | 9 | 2 | W2 S3 |  | W1 S3 | 14/0 | 0 | F11 | 953 | goose2 cow6 sheep3; W2 S24 M12 |  |  |
-| 8 | 222 | 9 | 2 | cow1 \| W1 | pasture 1  | W1 | 12/0 | 3 | Mk6 F11 | 2018 | goose2 cow7 sheep3; W2 S24 M12 |  |  |
-| 9 | 1957 | 10 | 3 | cow3 \| W17 T1 | pasture 3  | W15 T1 | 15/0 | 4 | Wl3 F8 | 1100 | goose2 cow10 sheep3; W16 T1 S24 M12 |  | Pizza |
-| 10 | 777 | 11 | 3 | W9 |  | W10 | 16/0 | 11 | W54 M22 Mk2 F11 | 8561 | goose2 cow10 sheep3; W25 T1 S24 M6 |  |  |
-| 11 | 7394 | 11 | 3 | W11 T1 |  | W12 T1 | 15/2 | 11 | W17 M16 E7 F9 | 4391 | goose2 cow10 sheep3; W30 T2 S24 M2 |  |  |
-| 12 | 11289 | 11 | 3 | W12 T1 |  | W8 T1 | 14/4 | 17 | W8 Mk4 Wl6 F18 | 2970 | goose2 cow10 sheep3; W32 T3 S24 |  | Pet Cafe |
-| 13 | 13755 | 11 | 3 | W13 |  | W14 | 15/4 | 17 | W5 S6 E9 Mk1 F6 | 2369 | goose2 cow10 sheep3; W32 T3 S24 |  |  |
-| 14 | 15752 | 11 | 3 | W9 T3 |  | W10 | 14/10 | 23 | W27 S4 Mk21 Wl1 F11 | 6621 | goose2 cow10 sheep3; W32 T3 S24 |  |  |
-| 15 | 21833 | 11 | 3 | W7 T1 |  | W10 T1 | 15/13 | 17 | W18 S10 E5 Mk4 Wl2 F5 | 3797 | goose2 cow10 sheep3; W30 T4 S24 |  | Ice Cream |
-| 16 | 25251 | 11 | 3 | W9 T3 |  | W7 T2 | 13/10 | 36 | W28 S18 M1 E4 Mk24 F3 | 8320 | goose2 cow10 sheep3; W27 T6 S24; weeds 1 | 1 |  |
-| 17 | 33157 | 11 | 3 | W9 T2 |  | W4 T6 | 15/11 | 21 | W15 S24 M1 Mk17 F1 | 6810 | goose2 cow10 sheep3; W20 T12 S24; weeds 2 | 2 |  |
-| 18 | 39547 | 11 | 3 | cow1 \| W9 T3 | pasture 1  | W8 T3 | 11/7 | 34 | W24 S28 M22 E6 Mk12 Wl1 F6 | 9587 | goose2 cow11 sheep3; W20 T15 S22; weeds 1 | 1 | Smoothie |
-| 19 | 47744 | 11 | 3 | W12 |  | W10 | 16/10 | 18 | W11 T2 S17 Mk10 Wl1 F6 | 3221 | goose2 cow11 sheep3; W22 T15 S19; weeds 1 | 1 |  |
-| 20 | 50414 | 11 | 3 | W10 C6 |  | W5 C7 | 14/10 | 34 | W14 T4 S15 E3 Mk13 Wl4 F6 | 3492 | goose2 cow11 sheep3; W21 C6 T15 S14; weeds 1 |  |  |
-| 21 | 53270 | 11 | 3 | W11 |  | W14 | 16/11 | 18 | W6 T5 S17 E4 Mk17 Wl2 F5 | 3370 | goose2 cow11 sheep3; W26 C6 T14 S12 | 1 | Pizza |
-| 22 | 55964 | 11 | 3 | W11 C6 |  | W13 C6 | 13/6 | 33 | W33 T4 S4 E2 Mk17 Wl4 F7 | 4068 | goose2 cow11 sheep3; W32 C8 T13 S5 |  |  |
-| 23 | 59618 | 11 | 3 | W9 C6 |  | W9 C6 | 15/10 | 17 | W11 C8 T4 S7 M2 E4 Mk14 Wl2 F7 | 3497 | goose2 cow11 sheep3; W32 C11 T13; weeds 1 | 4 |  |
-| 24 | 62136 | 11 | 3 | W10 C6 |  | W8 C7 | 13/10 | 25 | W40 C5 T4 S4 E2 Mk15 F6 | 4623 | goose2 cow11 sheep3; W29 C14 T12; weeds 1 | 1 | Ice Cream |
-| 25 | 66531 | 11 | 3 | W7 C12 |  | W6 C8 | 16/13 | 25 | W9 C8 S4 E4 Mk15 F5 | 3765 | goose2 cow11 sheep3; W25 C18 T12; weeds 1 | 1 |  |
-| 26 | 69711 | 11 | 3 | W4 C11 |  | W4 C11 | 13/11 | 34 | W28 C10 T16 S6 E3 Mk19 F3 | 6509 | goose2 cow11 sheep3; W21 C22 T12; weeds 2 | 1 |  |
-| 27 | 75692 | 11 | 3 | W1 |  | W9 C5 | 13/14 | 27 | W39 C15 T23 S4 E4 Mk17 Wl2 F3 | 7670 | goose2 cow11 sheep3; W21 C17 T11; weeds 6 | 5 |  |
-| 28 | 83078 | 10 | 3 |  |  | W8 | 2/7 | 38 | W37 C28 T22 S4 E3 Mk7 F6 | 6232 | goose2 cow11; W21 C7 T9; weeds 8 empty pens 3 | 2 |  |
-| 29 | 89185 | 10 | 3 |  |  |  | 0/0 | 31 | W50 C27 T23 S5 E5 Mk27 Wl4 F13 | 10597 | goose2 cow11; W9 C1 T3; weeds 15 empty pens 3 | 7 |  |
+| 6 | 728 | 8 | 2 | goose2 cow4 \| W1 S12 | pasture 4 coop 2 | W1 S13 | 11/0 | 3 | W4 Wl18 F4 | 4034 | goose2 cow6 sheep3; W1 S21 M12 |  | Smoothie |
+| 7 | 107 | 9 | 2 | W2 S3 |  | W1 S3 | 14/0 | 0 | F11 | 952 | goose2 cow6 sheep3; W2 S24 M12 |  |  |
+| 8 | 222 | 9 | 2 | cow1 \| W1 | pasture 1  | W1 | 12/0 | 3 | Mk12 F11 | 3131 | goose2 cow7 sheep3; W2 S24 M12 |  |  |
+| 9 | 1957 | 10 | 3 | cow3 \| W17 T1 | pasture 3  | W15 T1 | 15/0 | 4 | Wl12 F8 | 2568 | goose2 cow10 sheep3; W16 T1 S24 M12 |  | Pizza |
+| 10 | 777 | 11 | 3 | W9 |  | W10 | 16/0 | 11 | W54 M30 Mk6 F11 | 11080 | goose2 cow10 sheep3; W25 T1 S24 M6 |  |  |
+| 11 | 7394 | 11 | 3 | W11 T1 |  | W12 T1 | 15/2 | 11 | W17 M16 E7 F9 | 4287 | goose2 cow10 sheep3; W30 T2 S24 M2 |  |  |
+| 12 | 11289 | 11 | 3 | W12 T1 |  | W8 T1 | 14/4 | 17 | W8 Mk4 Wl6 F18 | 2868 | goose2 cow10 sheep3; W32 T3 S24 |  | Pet Cafe |
+| 13 | 13755 | 11 | 3 | W13 |  | W14 | 15/4 | 17 | W5 S6 E9 Mk1 F6 | 2359 | goose2 cow10 sheep3; W32 T3 S24 |  |  |
+| 14 | 15752 | 11 | 3 | W9 T3 |  | W10 | 14/10 | 23 | W27 S4 Mk21 Wl1 F11 | 6553 | goose2 cow10 sheep3; W32 T3 S24 |  |  |
+| 15 | 21833 | 11 | 3 | W7 T1 |  | W10 T1 | 15/13 | 17 | W18 S10 E5 Mk4 Wl2 F5 | 3770 | goose2 cow10 sheep3; W30 T4 S24 |  | Ice Cream |
+| 16 | 25251 | 11 | 3 | W9 T3 |  | W7 T2 | 13/10 | 36 | W28 S18 M1 E8 Mk24 F3 | 8378 | goose2 cow10 sheep3; W27 T6 S24; weeds 1 | 1 |  |
+| 17 | 33157 | 11 | 3 | W9 T2 |  | W4 T6 | 15/11 | 21 | W15 T2 S24 M1 Mk17 F1 | 6812 | goose2 cow10 sheep3; W20 T12 S24; weeds 2 | 2 |  |
+| 18 | 39547 | 11 | 3 | cow1 \| W9 T3 | pasture 1  | W8 T3 | 11/7 | 34 | W24 S28 M22 E8 Mk12 Wl1 F6 | 9069 | goose2 cow11 sheep3; W20 T15 S22; weeds 1 | 1 | Smoothie |
+| 19 | 47744 | 11 | 3 | W12 |  | W10 | 16/10 | 18 | W11 T2 S17 Mk10 Wl1 F6 | 3022 | goose2 cow11 sheep3; W22 T15 S19; weeds 1 | 1 |  |
+| 20 | 50414 | 11 | 3 | W10 C6 |  | W5 C7 | 14/10 | 34 | W14 T4 S15 E4 Mk13 Wl4 F6 | 3308 | goose2 cow11 sheep3; W21 C6 T15 S14; weeds 1 |  |  |
+| 21 | 53270 | 11 | 3 | W11 |  | W14 | 16/11 | 18 | W6 T5 S17 E4 Mk17 Wl2 F5 | 3036 | goose2 cow11 sheep3; W26 C6 T14 S12 | 1 | Pizza |
+| 22 | 55964 | 11 | 3 | W11 C6 |  | W13 C6 | 13/6 | 33 | W33 T4 S4 E4 Mk17 Wl4 F7 | 4116 | goose2 cow11 sheep3; W32 C8 T13 S5 |  |  |
+| 23 | 59618 | 11 | 3 | W9 C6 |  | W9 C6 | 15/10 | 17 | W11 C8 T4 S7 M2 E4 Mk14 Wl2 F7 | 3467 | goose2 cow11 sheep3; W32 C11 T13; weeds 1 | 4 |  |
+| 24 | 62136 | 11 | 3 | W10 C6 |  | W8 C7 | 13/10 | 25 | W40 C5 T6 S4 E4 Mk15 F6 | 4847 | goose2 cow11 sheep3; W29 C14 T12; weeds 1 | 1 | Ice Cream |
+| 25 | 66531 | 11 | 3 | W7 C12 |  | W6 C8 | 16/13 | 25 | W9 C8 S4 E4 Mk15 F5 | 3722 | goose2 cow11 sheep3; W25 C18 T12; weeds 1 | 1 |  |
+| 26 | 69711 | 11 | 3 | W4 C11 |  | W4 C11 | 13/11 | 34 | W28 C10 T16 S6 E4 Mk19 F3 | 6473 | goose2 cow11 sheep3; W21 C22 T12; weeds 2 | 1 |  |
+| 27 | 75692 | 11 | 3 | W1 |  | W9 C5 | 13/14 | 27 | W39 C15 T23 S4 E4 Mk17 Wl2 F3 | 7628 | goose2 cow11 sheep3; W21 C17 T11; weeds 6 | 5 |  |
+| 28 | 83078 | 10 | 3 |  |  | W8 | 2/7 | 38 | W37 C28 T22 S4 E4 Mk7 F6 | 6250 | goose2 cow11; W21 C7 T9; weeds 8 empty pens 3 | 2 |  |
+| 29 | 89185 | 10 | 3 |  |  |  | 0/0 | 31 | W50 C27 T23 S5 E5 Mk27 Wl4 F13 | 10460 | goose2 cow11; W9 C1 T3; weeds 15 empty pens 3 | 7 |  |
 
 ## Determinism
 
@@ -151,25 +151,25 @@ What goes with being off the modal field line at turn 24 (the first cut where fe
 
 | window | games | win % | median bank | hands | cows | sheep | geese | quadrants | land day 1 | strawberry | wheat | melon | melon sold | milk sold | wool sold | field lines @400 | market lines @400 |
 |---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|
-| F | 50 | 86 | 103782 | 14 | 8 | 4 | 0 | 3 | 6 | 37 | 143 | 19 | 12 | 134 | 107 | 16 | 3 |
-| Q1 | 50 | 30 | 84702 | 12 | 9 | 5 | 0 | 3 | 6 | 42 | 126 | 12 | 12 | 203 | 113.5 | 25 | 41 |
-| Q2 | 50 | 80 | 94450 | 12 | 9 | 5 | 0 | 3 | 6 | 38 | 187 | 12 | 12 | 218.5 | 115 | 7 | 50 |
-| L | 50 | 96 | 100325 | 11 | 8 | 4 | 2 | 3 | 6 | 30 | 187.5 | 14 | 63.5 | 173 | 92.5 | 50 | 50 |
-| C0 | 50 | 100 | 109152 | 11 | 9 | 5 | 2 | 3 | 6 | 30 | 187 | 14 | 64 | 188.5 | 107.5 | 50 | 50 |
+| F | 50 | 86 | 103782 | 14 | 8 | 4 | 0 | 3 | 6 | 37 | 143 | 19 | 102 | 215 | 132 | 16 | 3 |
+| Q1 | 50 | 30 | 84702 | 12 | 9 | 5 | 0 | 3 | 6 | 42 | 126 | 12 | 72 | 239.5 | 136 | 25 | 41 |
+| Q2 | 50 | 80 | 94450 | 12 | 9 | 5 | 0 | 3 | 6 | 38 | 187 | 12 | 72 | 266 | 138 | 7 | 50 |
+| L | 50 | 96 | 100325 | 11 | 8 | 4 | 2 | 3 | 6 | 30 | 187.5 | 14 | 72 | 183 | 107.5 | 50 | 50 |
+| C0 | 50 | 100 | 109152 | 11 | 9 | 5 | 2 | 3 | 6 | 30 | 187 | 14 | 72 | 198.5 | 122.5 | 50 | 50 |
 
 ## Losses in the first and last windows
 
 | window | episode | opponent | opp rating | my bank | opp bank | margin | opp opening | biggest differences (opponent vs me) |
 |---|---|---|---|---|---|---|---|---|
-| F | 92815904 | NCK | 1790.7 | 105590 | 111130 | -5540 | 65da1d57 | CARE ops: they 318 vs me 967; milk sold: they 228 vs me 134; strawberry sold: they 151 vs me 241 |
-| F | 92817784 | Thomas Tschinkel | 1739.5 | 120532 | 130144 | -9612 | 65da1d57 | CARE ops: they 318 vs me 967; strawberry sold: they 151 vs me 249; milk sold: they 228 vs me 134 |
-| F | 92822703 | Dean0016 | 1882.2 | 58156 | 63729 | -5573 | 65da1d57 | CARE ops: they 318 vs me 967; strawberry sold: they 142 vs me 249; milk sold: they 228 vs me 134 |
-| F | 92829042 | Excluding | 2148.7 | 118702 | 124530 | -5828 | 6335be65 | CARE ops: they 321 vs me 967; milk sold: they 276 vs me 134; melon sold: they 96 vs me 12 |
-| F | 92837364 | Kostiantyn Isaienkov | 2025.5 | 121118 | 128252 | -7134 | 65da1d57 | CARE ops: they 318 vs me 967; strawberry sold: they 151 vs me 249; milk sold: they 228 vs me 134 |
-| F | 92841162 | Emre Bayram | 2147.6 | 139172 | 139891 | -719 | 190cec70 | CARE ops: they 285 vs me 963; wool sold: they 52 vs me 103; milk sold: they 95 vs me 127 |
-| F | 92844910 | JeremiahMannings | 2083.1 | 58209 | 59074 | -865 | 190cec70 | CARE ops: they 285 vs me 963; wool sold: they 52 vs me 103; milk sold: they 95 vs me 126 |
-| L | 108994489 | Lucas Boesen | 2881.4 | 116179 | 116312 | -133 | 9b0c82fd | strawberry sold: they 120 vs me 323; CARE ops: they 410 vs me 296; units sold last 3 days: they 261 vs me 330 |
-| L | 109011117 | Orbital Terraformer | 2998.6 | 97200 | 97312 | -112 | a87c2093 | wheat planted: they 179 vs me 147; strawberry sold: they 261 vs me 291; milk sold: they 126 vs me 100 |
+| F | 92815904 | NCK | 1790.7 | 105590 | 111130 | -5540 | 65da1d57 | CARE ops: they 318 vs me 967; milk sold: they 279 vs me 215; strawberry sold: they 252 vs me 278 |
+| F | 92817784 | Thomas Tschinkel | 1739.5 | 120532 | 130144 | -9612 | 65da1d57 | CARE ops: they 318 vs me 967; milk sold: they 279 vs me 215; strawberry sold: they 254 vs me 286 |
+| F | 92822703 | Dean0016 | 1882.2 | 58156 | 63729 | -5573 | 65da1d57 | CARE ops: they 318 vs me 967; milk sold: they 279 vs me 215; strawberry sold: they 245 vs me 286 |
+| F | 92829042 | Excluding | 2148.7 | 118702 | 124530 | -5828 | 6335be65 | CARE ops: they 321 vs me 967; wheat planted: they 63 vs me 143; milk sold: they 291 vs me 215 |
+| F | 92837364 | Kostiantyn Isaienkov | 2025.5 | 121118 | 128252 | -7134 | 65da1d57 | CARE ops: they 318 vs me 967; milk sold: they 279 vs me 215; strawberry sold: they 252 vs me 286 |
+| F | 92841162 | Emre Bayram | 2147.6 | 139172 | 139891 | -719 | 190cec70 | CARE ops: they 285 vs me 963; units sold last 3 days: they 366 vs me 338; melon sold: they 108 vs me 90 |
+| F | 92844910 | JeremiahMannings | 2083.1 | 58209 | 59074 | -865 | 190cec70 | CARE ops: they 285 vs me 963; units sold last 3 days: they 359 vs me 328; melon sold: they 108 vs me 84 |
+| L | 108994489 | Lucas Boesen | 2881.4 | 116179 | 116312 | -133 | 9b0c82fd | CARE ops: they 410 vs me 296; strawberry sold: they 249 vs me 323; FERTILIZE ops: they 90 vs me 152 |
+| L | 109011117 | Orbital Terraformer | 2998.6 | 97200 | 97312 | -112 | a87c2093 | wheat planted: they 179 vs me 147; strawberry sold: they 261 vs me 291; wool sold: they 101 vs me 127 |
 
 ## Head to head with the other studied teams (all games, not only sampled)
 

@@ -35,13 +35,13 @@ game 1: 750, game 10: 1664, game 25: 2287, game 50: 2468, game 100: 2574, game 2
 | melon planted | 12 |
 | FERTILIZE ops | 105.5 |
 | CARE ops | 417 |
-| melon sold | 12 |
-| strawberry sold | 133 |
-| milk sold | 123 |
-| wool sold | 67.5 |
-| wheat sold | 325.5 |
-| fertilizer sold | 291 |
-| units sold last 3 days | 268 |
+| melon sold | 72 |
+| strawberry sold | 247 |
+| milk sold | 205.5 |
+| wool sold | 115.5 |
+| wheat sold | 375.5 |
+| fertilizer sold | 351.5 |
+| units sold last 3 days | 392.5 |
 | shed peak | 45 |
 | weeds spawned | 19 |
 | unexecutable market orders | 1 |
@@ -99,21 +99,21 @@ What goes with being off the modal field line at turn 200 (the first cut where f
 
 | window | games | win % | median bank | hands | cows | sheep | geese | quadrants | land day 1 | strawberry | wheat | melon | melon sold | milk sold | wool sold | field lines @400 | market lines @400 |
 |---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|
-| C0 | 50 | 80 | 101990.5 | 12 | 8 | 6 | 3 | 3 | 6 | 33 | 162 | 12 | 12 | 123 | 67.5 | 40 | 28 |
+| C0 | 50 | 80 | 101990.5 | 12 | 8 | 6 | 3 | 3 | 6 | 33 | 162 | 12 | 72 | 205.5 | 115.5 | 40 | 28 |
 
 ## Losses in the first and last windows
 
 | window | episode | opponent | opp rating | my bank | opp bank | margin | opp opening | biggest differences (opponent vs me) |
 |---|---|---|---|---|---|---|---|---|
-| C0 | 108887985 | daulettoibazar | 2083.6 | 93168 | 94326 | -1158 | 9b0c82fd | wool sold: they 107 vs me 112; strawberry sold: they 137 vs me 141; milk sold: they 152 vs me 155 |
-| C0 | 108890776 | Gigrise | 2287.2 | 110650 | 110911 | -261 | 9b0c82fd | milk sold: they 155 vs me 89; FERTILIZE ops: they 100 vs me 120; strawberry sold: they 150 vs me 133 |
-| C0 | 108897051 | cm391 | 2306.8 | 110106 | 111426 | -1320 | 9b0c82fd | weeds spawned: they 19 vs me 20 |
-| C0 | 108900199 | yt0914 | 2233.8 | 73631 | 77329 | -3698 | d6b925bb | strawberry sold: they 134 vs me 138; milk sold: they 106 vs me 109; wool sold: they 143 vs me 144 |
+| C0 | 108887985 | daulettoibazar | 2083.6 | 93168 | 94326 | -1158 | 9b0c82fd | weeds spawned: they 19 vs me 20 |
+| C0 | 108890776 | Gigrise | 2287.2 | 110650 | 110911 | -261 | 9b0c82fd | milk sold: they 245 vs me 160; FERTILIZE ops: they 100 vs me 120; CARE ops: they 400 vs me 417 |
+| C0 | 108897051 | cm391 | 2306.8 | 110106 | 111426 | -1320 | 9b0c82fd | melon sold: they 72 vs me 66; weeds spawned: they 19 vs me 20 |
+| C0 | 108900199 | yt0914 | 2233.8 | 73631 | 77329 | -3698 | d6b925bb | wool sold: they 240 vs me 242; wheat planted: they 161 vs me 162; weeds spawned: they 20 vs me 19 |
 | C0 | 108900468 | yt0914 | 2243.7 | 95079 | 95247 | -168 | d6b925bb | wheat planted: they 161 vs me 162; weeds spawned: they 20 vs me 19 |
-| C0 | 108904402 | Sadettin Şamil Verdil | 2392.6 | 102086 | 103977 | -1891 | 9b0c82fd | CARE ops: they 366 vs me 417; units sold last 3 days: they 238 vs me 264; wool sold: they 37 vs me 56 |
-| C0 | 108904415 | hidenov | 2323.8 | 120064 | 124700 | -4636 | 9b0c82fd | CARE ops: they 400 vs me 417; milk sold: they 164 vs me 176; strawberry sold: they 122 vs me 133 |
-| C0 | 108914845 | BOB | 2409.7 | 70961 | 71636 | -675 | 9b0c82fd | FERTILIZE ops: they 63 vs me 106; units sold last 3 days: they 241 vs me 276; milk sold: they 107 vs me 81 |
-| C0 | 108917819 | CrazyML | 2428.4 | 64669 | 66559 | -1890 | 9b0c82fd | strawberry sold: they 138 vs me 136; units sold last 3 days: they 267 vs me 269; milk sold: they 110 vs me 109 |
+| C0 | 108904402 | Sadettin Şamil Verdil | 2392.6 | 102086 | 103977 | -1891 | 9b0c82fd | CARE ops: they 366 vs me 417; units sold last 3 days: they 408 vs me 388; wool sold: they 87 vs me 99 |
+| C0 | 108904415 | hidenov | 2323.8 | 120064 | 124700 | -4636 | 9b0c82fd | units sold last 3 days: they 390 vs me 410; CARE ops: they 400 vs me 417; FERTILIZE ops: they 119 vs me 112 |
+| C0 | 108914845 | BOB | 2409.7 | 70961 | 71636 | -675 | 9b0c82fd | FERTILIZE ops: they 63 vs me 106; milk sold: they 191 vs me 154; units sold last 3 days: they 352 vs me 388 |
+| C0 | 108917819 | CrazyML | 2428.4 | 64669 | 66559 | -1890 | 9b0c82fd | units sold last 3 days: they 379 vs me 386; strawberry sold: they 249 vs me 247; milk sold: they 186 vs me 185 |
 
 ## Head to head with the other studied teams (all games, not only sampled)
 

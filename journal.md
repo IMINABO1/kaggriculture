@@ -590,3 +590,34 @@ weeds" are exhausted strawberries; the labour signal is the end-game taper and f
 now carry the mechanisms, each marked "rewritten 2026-09-16" with a pointer to
 `analysis.md`. Findings 6, 7, 13 and 18 (sales), "The answer" and the architecture are
 rewritten once the rebuilt traces have gone through features, `groups.md` and `deep.py`.
+
+### Milestone: traces, features, reports and the analysis rebuilt on engine-faithful sales
+All 7,394 sampled traces rebuilt (trace version 2, 0 failures, 202 a minute with five
+workers), `features.parquet` (14,788 seat rows, new `revenue_*`, `price_*`,
+`money_check_*` columns), `market.parquet`, `groups.md`, `summary.md`, the 63 dossiers and
+`reports/top10/analysis.md` (11 sections) regenerated. Money reconciles in every turn for
+99% of current-submission seats. What P18 changed in the published numbers: units sold
+in the last three days 393-399 in every zone (was 265-269); melon sold 72-75 everywhere
+(was 12-18); strawberry 222 / 248 / 249 / 248 by zone (was 172 / 152 / 129 / 133); milk
+182 / 191 / 192 / 205 (was 129 / 125 / 110 / 126); first strawberry sale day 14.5-15
+everywhere (was 15.5 / 16 / 19 / 18); first milk sale day 8 and first wool sale day 6
+everywhere. `bought_*` now counts executed purchases, which moved a few herd medians by
+one (Majkel1337's first window: 7 cows and 5 sheep, not 8 and 7).
+
+### Decision: the market layer is two rules read from the corrected per-day curves
+The top-14 sell fewer premium units than the family at higher prices for the same bank;
+the edge is relative (the opponent's bank). Two mechanisms, both now in `analysis.md`
+section 7 and the memo's "The answer": (1) metering, Majkel1337's, premium goods sold in
+two-unit orders across the day at about the town's drain rate (strawberry 7 a day before
+day 18 and 22-36 after, milk 14, wool 12, wheat 32, melon 1, medians from inventory
+changes), holding the rest in the shed, so it keeps $144-170 a strawberry through day 28
+while the line's dump of 20-29 a day fetches $67-75; (2) denial, Artem's and ymg_aq's, 23-29%
+of strawberries sold at hour 0 from the previous day's harvest before the line's evening
+orders, every premium product sold every day to the end so the price never recovers, staples
+(carrots, tomatoes, eggs, 1,270 wheat for ymg_aq) carrying the last ten days. Melon timing
+earns nothing (no shop buys melon; the town removes one a day), so the day-10 dump stays.
+The memo's architecture drops the opponent classifier for a shop-increment table and gives
+the market module the two rules; findings 6, 7, 13 and 18 rewritten with the corrected
+numbers. Structure (PCA + k-means over 36 features): 44 of 59 teams on one public point,
+two leader clusters (the 2c3s code base and relatives; the goose-and-tomato agents); zones
+differ only in how many leaders they hold.

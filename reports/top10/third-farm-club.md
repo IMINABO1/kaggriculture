@@ -26,7 +26,7 @@ game 1: 699, game 10: 1370, game 25: 2136, game 50: 2434, game 100: 2688, game 2
 | land day 2 | 9 |
 | cows bought | 10 |
 | sheep bought | 4 |
-| geese bought | 6 |
+| geese bought | 5.5 |
 | first cow day | 0 |
 | wheat planted | 133.5 |
 | carrot planted | 45.5 |
@@ -35,13 +35,13 @@ game 1: 699, game 10: 1370, game 25: 2136, game 50: 2434, game 100: 2688, game 2
 | melon planted | 15 |
 | FERTILIZE ops | 184.5 |
 | CARE ops | 324 |
-| melon sold | 48.5 |
-| strawberry sold | 200 |
-| milk sold | 161.5 |
-| wool sold | 45 |
-| wheat sold | 202 |
-| fertilizer sold | 160 |
-| units sold last 3 days | 275.5 |
+| melon sold | 87 |
+| strawberry sold | 206.5 |
+| milk sold | 176.5 |
+| wool sold | 64 |
+| wheat sold | 285 |
+| fertilizer sold | 246.5 |
+| units sold last 3 days | 448 |
 | shed peak | 14 |
 | weeds spawned | 14.5 |
 | unexecutable market orders | 0 |
@@ -99,14 +99,14 @@ What goes with being off the modal field line at turn 200 (the first cut where f
 
 | window | games | win % | median bank | hands | cows | sheep | geese | quadrants | land day 1 | strawberry | wheat | melon | melon sold | milk sold | wool sold | field lines @400 | market lines @400 |
 |---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|
-| C0 | 50 | 96 | 117769 | 13 | 10 | 4 | 6 | 3 | 6 | 32.5 | 133.5 | 15 | 48.5 | 161.5 | 45 | 50 | 50 |
+| C0 | 50 | 96 | 117769 | 13 | 10 | 4 | 5.5 | 3 | 6 | 32.5 | 133.5 | 15 | 87 | 176.5 | 64 | 50 | 50 |
 
 ## Losses in the first and last windows
 
 | window | episode | opponent | opp rating | my bank | opp bank | margin | opp opening | biggest differences (opponent vs me) |
 |---|---|---|---|---|---|---|---|---|
-| C0 | 108718850 | Hikari_30 | 1592.7 | 89216 | 93923 | -4707 | 9b0c82fd | CARE ops: they 417 vs me 327; milk sold: they 154 vs me 217; FERTILIZE ops: they 121 vs me 172 |
-| C0 | 108740575 | elmo | 2371.7 | 95339 | 95758 | -419 | 9b0c82fd | milk sold: they 163 vs me 241; FERTILIZE ops: they 114 vs me 180; wool sold: they 82 vs me 140 |
+| C0 | 108718850 | Hikari_30 | 1592.7 | 89216 | 93923 | -4707 | 9b0c82fd | strawberry sold: they 246 vs me 144; CARE ops: they 417 vs me 327; wool sold: they 125 vs me 58 |
+| C0 | 108740575 | elmo | 2371.7 | 95339 | 95758 | -419 | 9b0c82fd | strawberry sold: they 250 vs me 143; FERTILIZE ops: they 114 vs me 180; CARE ops: they 405 vs me 361 |
 
 ## Head to head with the other studied teams (all games, not only sampled)
 

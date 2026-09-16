@@ -35,13 +35,13 @@ game 1: 730, game 10: 1620, game 25: 2211, game 50: 2410, game 100: 2536, game l
 | melon planted | 12 |
 | FERTILIZE ops | 102.5 |
 | CARE ops | 417 |
-| melon sold | 12 |
-| strawberry sold | 133.5 |
-| milk sold | 126 |
-| wool sold | 82 |
-| wheat sold | 324.5 |
-| fertilizer sold | 291 |
-| units sold last 3 days | 268 |
+| melon sold | 72 |
+| strawberry sold | 247 |
+| milk sold | 197 |
+| wool sold | 130 |
+| wheat sold | 373 |
+| fertilizer sold | 350 |
+| units sold last 3 days | 395.5 |
 | shed peak | 45 |
 | weeds spawned | 19 |
 | unexecutable market orders | 1 |
@@ -99,16 +99,16 @@ What goes with being off the modal field line at turn 200 (the first cut where f
 
 | window | games | win % | median bank | hands | cows | sheep | geese | quadrants | land day 1 | strawberry | wheat | melon | melon sold | milk sold | wool sold | field lines @400 | market lines @400 |
 |---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|
-| C0 | 50 | 86 | 105322.5 | 12 | 8 | 6 | 3 | 3 | 6 | 33 | 162 | 12 | 12 | 126 | 82 | 38 | 26 |
+| C0 | 50 | 86 | 105322.5 | 12 | 8 | 6 | 3 | 3 | 6 | 33 | 162 | 12 | 72 | 197 | 130 | 38 | 26 |
 
 ## Losses in the first and last windows
 
 | window | episode | opponent | opp rating | my bank | opp bank | margin | opp opening | biggest differences (opponent vs me) |
 |---|---|---|---|---|---|---|---|---|
-| C0 | 108893823 | Snorlax | 1637.1 | 105770 | 106308 | -538 | cfefcbaa | milk sold: they 210 vs me 122; strawberry sold: they 187 vs me 131; units sold last 3 days: they 307 vs me 262 |
-| C0 | 108910591 | parv goyal2 | 2280.3 | 83628 | 87673 | -4045 | 422a8637 | CARE ops: they 267 vs me 417; strawberry sold: they 233 vs me 134; units sold last 3 days: they 346 vs me 262 |
-| C0 | 108916853 | Eesh saxena | 2344.8 | 115821 | 119071 | -3250 | 9b0c82fd | wool sold: they 160 vs me 148; units sold last 3 days: they 284 vs me 275; FERTILIZE ops: they 100 vs me 92 |
-| C0 | 108925173 | Tavuk Master | 2476.4 | 110854 | 112994 | -2140 | 9b0c82fd | CARE ops: they 405 vs me 417; milk sold: they 140 vs me 151; FERTILIZE ops: they 124 vs me 115 |
+| C0 | 108893823 | Snorlax | 1637.1 | 105770 | 106308 | -538 | cfefcbaa | milk sold: they 263 vs me 205; wool sold: they 139 vs me 102; CARE ops: they 399 vs me 417 |
+| C0 | 108910591 | parv goyal2 | 2280.3 | 83628 | 87673 | -4045 | 422a8637 | CARE ops: they 267 vs me 417; FERTILIZE ops: they 147 vs me 83; wool sold: they 75 vs me 129 |
+| C0 | 108916853 | Eesh saxena | 2344.8 | 115821 | 119071 | -3250 | 9b0c82fd | wool sold: they 272 vs me 254; FERTILIZE ops: they 100 vs me 92; units sold last 3 days: they 393 vs me 390 |
+| C0 | 108925173 | Tavuk Master | 2476.4 | 110854 | 112994 | -2140 | 9b0c82fd | CARE ops: they 405 vs me 417; FERTILIZE ops: they 124 vs me 115; units sold last 3 days: they 386 vs me 388 |
 
 ## Head to head with the other studied teams (all games, not only sampled)
 

@@ -35,13 +35,13 @@ game 1: 712, game 10: 1656, game 25: 2561, game 50: 2832, game 100: 2929, game l
 | melon planted | 12 |
 | FERTILIZE ops | 116.5 |
 | CARE ops | 405 |
-| melon sold | 12 |
-| strawberry sold | 126 |
-| milk sold | 95 |
-| wool sold | 65.5 |
-| wheat sold | 341.5 |
-| fertilizer sold | 285 |
-| units sold last 3 days | 252 |
+| melon sold | 72 |
+| strawberry sold | 249 |
+| milk sold | 191.5 |
+| wool sold | 125.5 |
+| wheat sold | 401 |
+| fertilizer sold | 338 |
+| units sold last 3 days | 380.5 |
 | shed peak | 45 |
 | weeds spawned | 20 |
 | unexecutable market orders | 1 |
@@ -99,15 +99,15 @@ What goes with being off the modal field line at turn 200 (the first cut where f
 
 | window | games | win % | median bank | hands | cows | sheep | geese | quadrants | land day 1 | strawberry | wheat | melon | melon sold | milk sold | wool sold | field lines @400 | market lines @400 |
 |---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|
-| C0 | 50 | 94 | 102002 | 12 | 6.5 | 6 | 3 | 3 | 6 | 33 | 163 | 12 | 12 | 95 | 65.5 | 36 | 45 |
+| C0 | 50 | 94 | 102002 | 12 | 6.5 | 6 | 3 | 3 | 6 | 33 | 163 | 12 | 72 | 191.5 | 125.5 | 36 | 45 |
 
 ## Losses in the first and last windows
 
 | window | episode | opponent | opp rating | my bank | opp bank | margin | opp opening | biggest differences (opponent vs me) |
 |---|---|---|---|---|---|---|---|---|
-| C0 | 109022223 | forever young | 2604.2 | 101698 | 101765 | -67 | 0fbf44b1 | units sold last 3 days: they 262 vs me 241; strawberry sold: they 103 vs me 120; wool sold: they 142 vs me 126 |
-| C0 | 109027389 | Roman Svet | 2643.3 | 105809 | 113266 | -7457 | 74cb8b5b | milk sold: they 338 vs me 157; melon sold: they 102 vs me 12; units sold last 3 days: they 324 vs me 248 |
-| C0 | 109038773 | yuto083 | 2794.9 | 94203 | 96055 | -1852 | 9b0c82fd | wool sold: they 114 vs me 54; milk sold: they 121 vs me 75; wheat planted: they 152 vs me 163 |
+| C0 | 109022223 | forever young | 2604.2 | 101698 | 101765 | -67 | 0fbf44b1 | FERTILIZE ops: they 76 vs me 61; CARE ops: they 502 vs me 510; units sold last 3 days: they 395 vs me 390 |
+| C0 | 109027389 | Roman Svet | 2643.3 | 105809 | 113266 | -7457 | 74cb8b5b | strawberry sold: they 172 vs me 251; CARE ops: they 330 vs me 406; milk sold: they 341 vs me 266 |
+| C0 | 109038773 | yuto083 | 2794.9 | 94203 | 96055 | -1852 | 9b0c82fd | wool sold: they 162 vs me 99; milk sold: they 191 vs me 159; units sold last 3 days: they 410 vs me 378 |
 
 ## Head to head with the other studied teams (all games, not only sampled)
 

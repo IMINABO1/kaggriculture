@@ -131,64 +131,64 @@ branch driver in `groups.md` was measuring. The leaders differ in the breadth of
 
 | rank | team | group | games | sheep: shop / none | cows: shop / none | geese: shop / none | carrot plantings: shop / none | tomato plantings: shop / none |
 |---|---|---|---|---|---|---|---|---|
-| 1 | Artem The Farmer 🍅 | top-14 | 88 | 14.1 / 4.8 | 8.6 / 5.0 | 2.7 / 1.6 | 65.0 / 22.0 | 11.8 / 10.8 |
-| 2 | Majkel1337 | top-14 | 103 | 12.4 / 3.8 | 9.3 / 5.6 | 2.3 / 1.1 | 71.3 / 24.6 | 9.1 / 7.3 |
-| 3 | Unknown Mother-Goose | gold | 82 | 13.6 / 4.7 | 8.2 / 4.7 | 4.4 / 1.8 | 48.1 / 25.6 | 9.7 / 8.2 |
-| 4 | DSM | top-14 | 82 | 12.6 / 3.6 | 9.7 / 5.7 | 2.2 / 1.0 | 76.2 / 34.4 | 9.3 / 7.2 |
-| 5 | SpaTaro | top-14 | 93 | 20.0 / 6.2 | 13.3 / 5.1 | 0.1 / 0.1 | 95.0 / 23.5 | 0.0 / 0.0 |
-| 6 | THIRD FARM CLUB | gold | 55 | 14.1 / 5.4 | 11.6 / 7.9 | 7.3 / 5.3 | 62.9 / 29.6 | 10.7 / 10.1 |
-| 7 | Orbital Terraformer | top-14 | 79 | 13.3 / 4.3 | 8.7 / 5.2 | 1.9 / 0.6 | 81.3 / 33.0 | 8.3 / 9.7 |
+| 1 | Artem The Farmer 🍅 | top-14 | 88 | 12.9 / 4.8 | 8.5 / 5.0 | 2.6 / 1.4 | 65.0 / 22.0 | 11.8 / 10.8 |
+| 2 | Majkel1337 | top-14 | 103 | 11.5 / 3.8 | 9.2 / 5.6 | 2.3 / 1.1 | 71.3 / 24.6 | 9.1 / 7.3 |
+| 3 | Unknown Mother-Goose | gold | 82 | 11.4 / 4.7 | 8.1 / 4.7 | 4.4 / 1.8 | 48.1 / 25.6 | 9.7 / 8.2 |
+| 4 | DSM | top-14 | 82 | 11.6 / 3.6 | 9.5 / 5.7 | 2.2 / 1.0 | 76.2 / 34.4 | 9.3 / 7.2 |
+| 5 | SpaTaro | top-14 | 93 | 11.9 / 4.7 | 9.4 / 4.3 | 0.0 / 0.1 | 95.0 / 23.5 | 0.0 / 0.0 |
+| 6 | THIRD FARM CLUB | gold | 55 | 13.9 / 5.4 | 11.2 / 7.7 | 6.9 / 4.9 | 62.9 / 29.6 | 10.7 / 10.1 |
+| 7 | Orbital Terraformer | top-14 | 79 | 12.0 / 4.2 | 8.7 / 5.2 | 1.9 / 0.6 | 81.3 / 33.0 | 8.3 / 9.7 |
 | 8 | Sida Zuo | gold | 51 | 12.6 / 3.8 | 7.0 / 5.5 | 5.4 / 2.5 | 75.3 / 19.1 | 9.1 / 7.0 |
 | 9 | ymg_aq | top-14 | 77 | 10.3 / 4.4 | 8.6 / 5.4 | 1.3 / 0.2 | 58.5 / 19.4 | 8.3 / 6.4 |
 | 10 | leave you | gold | 85 | 12.5 / 5.2 | 8.6 / 7.5 | 2.9 / 1.2 | 36.5 / 30.7 | 2.4 / 3.2 |
-| 12 | Mengfei Li | top-14 | 85 | 12.9 / 5.1 | 8.3 / 6.6 | 2.3 / 1.8 | 69.7 / 19.4 | 7.7 / 6.5 |
+| 12 | Mengfei Li | top-14 | 85 | 12.5 / 5.1 | 8.2 / 6.6 | 2.3 / 1.8 | 69.7 / 19.4 | 7.7 / 6.5 |
 | 13 | HowardLeeTW | top-14 | 81 | 11.5 / 3.9 | 7.5 / 5.0 | 2.3 / 1.0 | 54.5 / 34.0 | 9.4 / 8.7 |
-| 14 | Catalyst | top-14 | 86 | 10.6 / 5.7 | 7.7 / 7.1 | 2.3 / 2.1 | 30.8 / 30.8 | 2.6 / 0.6 |
-| 15 | feel the agi | top-14 | 88 | 14.0 / 3.8 | 10.1 / 4.1 | 7.5 / 4.3 | 55.7 / 3.4 | 2.1 / 0.4 |
-| 16 | local | gold | 52 | 11.4 / 5.8 | 7.6 / 6.0 | 3.6 / 1.4 | 40.4 / 30.7 | 1.0 / 0.8 |
-| 17 | lumen | gold | 50 | 12.2 / 5.6 | 8.4 / 5.6 | 2.9 / 2.2 | 38.0 / 30.5 | 1.9 / 2.0 |
-| 19 | carbonapi | gold | 53 | 12.1 / 6.6 | 8.0 / 5.7 | 2.8 / 1.6 | 41.7 / 31.3 | 3.7 / 4.5 |
-| 20 | Cow Boy | gold | 71 | 10.8 / 5.7 | 7.7 / 7.5 | 2.6 / 1.8 | 34.6 / 30.9 | 1.3 / 2.4 |
-| 21 | Ebi | gold | 55 | 14.3 / 4.3 | 8.4 / 4.3 | 5.4 / 2.2 | 43.6 / 15.6 | 5.8 / 6.8 |
-| 22 | アルモンド | top-14 | 87 | 11.1 / 5.6 | 7.8 / 5.2 | 2.7 / 2.3 | 54.1 / 35.9 | 3.7 / 4.8 |
+| 14 | Catalyst | top-14 | 86 | 10.5 / 5.7 | 7.7 / 7.1 | 2.3 / 2.1 | 30.8 / 30.8 | 2.6 / 0.6 |
+| 15 | feel the agi | top-14 | 88 | 13.3 / 3.8 | 9.9 / 4.1 | 7.5 / 4.3 | 55.7 / 3.4 | 2.1 / 0.4 |
+| 16 | local | gold | 52 | 11.2 / 5.8 | 7.6 / 6.0 | 3.6 / 1.4 | 40.4 / 30.7 | 1.0 / 0.8 |
+| 17 | lumen | gold | 50 | 12.1 / 5.6 | 8.4 / 5.5 | 2.9 / 2.2 | 38.0 / 30.5 | 1.9 / 2.0 |
+| 19 | carbonapi | gold | 53 | 12.1 / 6.5 | 8.0 / 5.7 | 2.8 / 1.6 | 41.7 / 31.3 | 3.7 / 4.5 |
+| 20 | Cow Boy | gold | 71 | 10.7 / 5.7 | 7.7 / 7.5 | 2.6 / 1.8 | 34.6 / 30.9 | 1.3 / 2.4 |
+| 21 | Ebi | gold | 55 | 14.1 / 4.2 | 8.4 / 4.3 | 5.3 / 2.1 | 43.6 / 15.6 | 5.8 / 6.8 |
+| 22 | アルモンド | top-14 | 87 | 11.0 / 5.6 | 7.8 / 5.2 | 2.7 / 2.3 | 54.1 / 35.9 | 3.7 / 4.8 |
 | 23 | AI是我的豆包 | gold | 50 | 11.1 / 3.2 | 9.2 / 3.4 | 3.8 / 1.6 | 43.1 / 5.7 | 7.9 / 7.7 |
 | 24 | fog flower | gold | 51 | 12.5 / 5.3 | 8.8 / 6.9 | 3.3 / 1.4 | 38.7 / 30.6 | 4.3 / 2.9 |
 | 25 | Otter Vibe | top-14 | 162 | 11.6 / 4.1 | 8.5 / 3.9 | 7.1 / 4.3 | 50.8 / 24.6 | 18.6 / 18.9 |
-| 26 | nilochan | gold | 56 | 10.8 / 5.8 | 7.5 / 6.1 | 3.1 / 2.1 | 30.9 / 30.7 | 1.1 / 1.7 |
-| 27 | yjshyfy | gold | 57 | 13.1 / 5.3 | 8.1 / 6.9 | 3.2 / 1.4 | 35.0 / 30.0 | 5.7 / 2.7 |
+| 26 | nilochan | gold | 56 | 10.7 / 5.8 | 7.5 / 6.1 | 3.1 / 2.1 | 30.9 / 30.7 | 1.1 / 1.7 |
+| 27 | yjshyfy | gold | 57 | 12.9 / 5.3 | 8.1 / 6.9 | 3.2 / 1.4 | 35.0 / 30.0 | 5.7 / 2.7 |
 | 28 | kyy666 | gold | 86 | 11.4 / 5.6 | 7.7 / 6.2 | 2.8 / 2.1 | 31.1 / 30.8 | 1.2 / 0.9 |
-| 29 | 𝕯𝖊𝖔𝖉𝖎𝖒𝖘 & 𝕮𝖔 | silver | 76 | 9.8 / 5.7 | 7.7 / 6.3 | 2.8 / 2.6 | 31.4 / 30.8 | 2.4 / 0.0 |
+| 29 | 𝕯𝖊𝖔𝖉𝖎𝖒𝖘 & 𝕮𝖔 | silver | 76 | 9.8 / 5.6 | 7.6 / 6.3 | 2.8 / 2.6 | 31.4 / 30.8 | 2.4 / 0.0 |
 | 31 | redblackbst | top-14 | 104 | 12.1 / 4.2 | 8.2 / 4.1 | 4.7 / 1.5 | 47.9 / 42.1 | 4.0 / 5.5 |
-| 32 | Kilupy | silver | 77 | 10.9 / 5.6 | 7.6 / 6.4 | 2.7 / 1.8 | 31.3 / 30.7 | 1.4 / 0.0 |
-| 35 | Kaggriculture Agent | silver | 71 | 12.5 / 5.4 | 7.9 / 5.6 | 3.2 / 2.1 | 46.0 / 19.7 | 1.7 / 0.8 |
-| 36 | Zhenghongshuang | silver | 80 | 11.8 / 5.5 | 8.0 / 6.7 | 3.0 / 1.8 | 38.0 / 31.8 | 2.9 / 3.5 |
+| 32 | Kilupy | silver | 77 | 10.8 / 5.6 | 7.6 / 6.4 | 2.7 / 1.8 | 31.3 / 30.7 | 1.4 / 0.0 |
+| 35 | Kaggriculture Agent | silver | 71 | 12.3 / 5.4 | 7.9 / 5.6 | 3.2 / 2.1 | 46.0 / 19.7 | 1.7 / 0.8 |
+| 36 | Zhenghongshuang | silver | 80 | 11.7 / 5.5 | 8.0 / 6.7 | 3.0 / 1.8 | 38.0 / 31.8 | 2.9 / 3.5 |
 | 38 | elmo | silver | 73 | 11.5 / 5.5 | 7.8 / 6.0 | 2.6 / 2.0 | 51.5 / 36.9 | 1.6 / 2.4 |
 | 41 | Thomas Tschinkel | top-14 | 78 | 11.3 / 5.7 | 8.0 / 6.3 | 2.9 / 1.8 | 32.2 / 30.1 | 1.5 / 2.9 |
-| 45 | mtmr_s1 | silver | 74 | 12.7 / 5.4 | 8.8 / 6.6 | 2.8 / 1.9 | 53.4 / 26.5 | 1.5 / 0.9 |
+| 45 | mtmr_s1 | silver | 74 | 12.6 / 5.4 | 8.8 / 6.6 | 2.8 / 1.9 | 53.4 / 26.5 | 1.5 / 0.9 |
 | 46 | Emile Andrieu | silver | 69 | 11.1 / 5.1 | 8.1 / 6.3 | 2.6 / 2.5 | 37.7 / 25.1 | 1.3 / 0.7 |
 | 49 | THUNDER THUNDER | silver | 75 | 11.1 / 5.0 | 9.5 / 4.9 | 3.1 / 2.2 | 58.0 / 15.8 | 5.3 / 3.2 |
 | 72 | doubao | silver | 77 | 11.1 / 5.7 | 7.7 / 6.2 | 2.7 / 1.9 | 31.0 / 31.0 | 1.0 / 2.4 |
-| 74 | yomogii | silver | 78 | 10.9 / 5.6 | 7.8 / 6.0 | 3.1 / 2.4 | 30.7 / 30.2 | 3.0 / 2.8 |
-| 75 | Tom&Jerry | silver | 79 | 11.8 / 5.8 | 7.5 / 5.8 | 3.1 / 2.4 | 31.1 / 30.7 | 2.0 / 0.6 |
+| 74 | yomogii | silver | 78 | 10.8 / 5.6 | 7.8 / 6.0 | 3.1 / 2.4 | 30.7 / 30.2 | 3.0 / 2.8 |
+| 75 | Tom&Jerry | silver | 79 | 11.6 / 5.8 | 7.5 / 5.8 | 3.1 / 2.4 | 31.1 / 30.7 | 2.0 / 0.6 |
 | 120 | Navier-stokes | silver | 50 | 10.2 / 5.7 | 7.9 / 6.4 | 3.5 / 2.5 | 30.9 / 31.0 | 1.9 / 2.2 |
-| 121 | Pai | silver | 53 | 12.3 / 5.7 | 7.9 / 5.8 | 3.2 / 2.9 | 31.2 / 30.7 | 1.4 / 3.0 |
-| 122 | Munal Singh | silver | 55 | 10.8 / 5.5 | 7.8 / 5.8 | 3.0 / 1.9 | 30.9 / 30.5 | 1.6 / 0.0 |
-| 227 | ElephtAI | silver | 76 | 12.0 / 5.7 | 7.9 / 6.6 | 2.0 / 1.9 | 30.9 / 30.8 | 1.6 / 1.4 |
+| 121 | Pai | silver | 53 | 12.1 / 5.7 | 7.9 / 5.8 | 3.2 / 2.9 | 31.2 / 30.7 | 1.4 / 3.0 |
+| 122 | Munal Singh | silver | 55 | 10.7 / 5.5 | 7.8 / 5.8 | 3.0 / 1.9 | 30.9 / 30.5 | 1.6 / 0.0 |
+| 227 | ElephtAI | silver | 76 | 11.9 / 5.7 | 7.9 / 6.6 | 2.0 / 1.9 | 30.9 / 30.8 | 1.6 / 1.4 |
 | 250 | Bldr2 | silver | 53 | 10.1 / 5.7 | 7.8 / 6.4 | 2.9 / 2.9 | 31.4 / 30.8 | 1.8 / 0.0 |
 | 251 | let cats farm | silver | 51 | 10.5 / 5.9 | 8.1 / 7.1 | 1.9 / 1.5 | 30.8 / 30.8 | 2.6 / 1.5 |
-| 252 | kevin park | silver | 50 | 10.6 / 5.7 | 7.5 / 6.0 | 3.1 / 2.1 | 30.9 / 30.7 | 2.1 / 0.0 |
-| 400 | peppersaltman | silver | 50 | 11.2 / 5.7 | 7.7 / 7.0 | 2.3 / 1.9 | 30.9 / 30.5 | 2.1 / 1.7 |
+| 252 | kevin park | silver | 50 | 10.5 / 5.7 | 7.5 / 6.0 | 3.1 / 2.1 | 30.9 / 30.7 | 2.1 / 0.0 |
+| 400 | peppersaltman | silver | 50 | 11.1 / 5.7 | 7.7 / 7.0 | 2.3 / 1.9 | 30.9 / 30.5 | 2.1 / 1.7 |
 | 401 | Win Suthar | silver | 51 | 10.5 / 5.7 | 7.7 / 7.8 | 2.4 / 1.8 | 31.0 / 30.2 | 1.5 / 4.5 |
-| 402 | spencersi123 | silver | 50 | 12.1 / 5.7 | 7.3 / 5.8 | 3.1 / 2.0 | 31.3 / 30.7 | 1.3 / 0.9 |
-| 470 | Naru041104 | bronze | 51 | 9.6 / 4.4 | 8.7 / 6.1 | 2.5 / 2.1 | 30.9 / 30.9 | 1.9 / 1.1 |
-| 473 | Jacky Chan | bronze | 52 | 10.6 / 5.6 | 7.7 / 6.0 | 3.1 / 2.3 | 31.5 / 30.6 | 1.0 / 1.8 |
-| 600 | 最强扫地僧 | bronze | 50 | 10.6 / 5.7 | 7.9 / 7.0 | 2.1 / 2.3 | 30.9 / 30.7 | 1.4 / 0.0 |
-| 601 | Cyrus | bronze | 50 | 12.2 / 5.7 | 8.0 / 6.7 | 2.3 / 2.2 | 30.9 / 30.8 | 1.1 / 2.1 |
+| 402 | spencersi123 | silver | 50 | 11.9 / 5.6 | 7.3 / 5.8 | 3.1 / 2.0 | 31.3 / 30.7 | 1.3 / 0.9 |
+| 470 | Naru041104 | bronze | 51 | 9.5 / 4.4 | 8.7 / 6.1 | 2.5 / 2.1 | 30.9 / 30.9 | 1.9 / 1.1 |
+| 473 | Jacky Chan | bronze | 52 | 10.4 / 5.6 | 7.7 / 6.0 | 3.1 / 2.3 | 31.5 / 30.6 | 1.0 / 1.8 |
+| 600 | 最强扫地僧 | bronze | 50 | 10.5 / 5.6 | 7.8 / 7.0 | 2.1 / 2.3 | 30.9 / 30.7 | 1.4 / 0.0 |
+| 601 | Cyrus | bronze | 50 | 12.1 / 5.7 | 8.0 / 6.7 | 2.3 / 2.2 | 30.9 / 30.8 | 1.1 / 2.1 |
 | 602 | matcha110 | bronze | 50 | 11.0 / 5.8 | 7.5 / 6.9 | 1.8 / 2.4 | 30.9 / 30.3 | 1.7 / 0.0 |
 | 750 | Daiki Takahashi | bronze | 51 | 9.8 / 5.6 | 7.9 / 6.7 | 2.4 / 1.8 | 30.9 / 30.9 | 1.5 / 0.9 |
-| 751 | ansheng jhang | bronze | 50 | 12.1 / 5.7 | 7.6 / 7.1 | 2.2 / 1.9 | 30.8 / 30.6 | 0.9 / 0.0 |
+| 751 | ansheng jhang | bronze | 50 | 11.9 / 5.7 | 7.6 / 7.1 | 2.2 / 1.9 | 30.8 / 30.6 | 0.9 / 0.0 |
 | 752 | CaliforniaDog | bronze | 50 | 10.7 / 5.7 | 8.0 / 7.6 | 2.7 / 2.3 | 31.0 / 30.7 | 1.8 / 1.0 |
-| 881 | Toru59er | bronze | 50 | 10.1 / 5.7 | 7.9 / 7.1 | 2.2 / 2.4 | 31.0 / 30.6 | 2.1 / 0.0 |
+| 881 | Toru59er | bronze | 50 | 10.0 / 5.7 | 7.9 / 7.1 | 2.2 / 2.4 | 31.0 / 30.6 | 2.1 / 0.0 |
 | 882 | broccoli | bronze | 51 | 10.0 / 5.7 | 8.1 / 7.6 | 2.5 / 2.8 | 30.9 / 30.6 | 1.1 / 2.9 |
 
 Carrots and tomatoes are where the leaders react and the family does not (the family plants
@@ -208,37 +208,37 @@ tomatoes between games with and without the shop by day 9):
 
 | rank | team | group | d sheep | d cows | d geese | d carrots | d tomatoes | breadth (0-5) |
 |---|---|---|---|---|---|---|---|---|
-| 1 | Artem The Farmer 🍅 | top-14 | 9.30 | 3.60 | 1.10 | 43 | 7.30 | 1 |
-| 2 | Majkel1337 | top-14 | 8.60 | 3.70 | 1.20 | 46.70 | 7.50 | 1 |
-| 3 | Unknown Mother-Goose | gold | 8.90 | 3.50 | 2.60 | 22.50 | 5.20 | 1 |
-| 4 | DSM | top-14 | 8.90 | 3.90 | 1.10 | 41.80 | 7.30 | 1 |
-| 5 | SpaTaro | top-14 | 13.80 | 8.20 | 0 | 71.50 | 0 | 1 |
-| 6 | THIRD FARM CLUB | gold | 8.70 | 3.80 | 2 | 33.30 | 3.90 | 1 |
-| 7 | Orbital Terraformer | top-14 | 9 | 3.50 | 1.20 | 48.30 | 0.40 | 1 |
+| 1 | Artem The Farmer 🍅 | top-14 | 8.10 | 3.50 | 1.20 | 43 | 7.30 | 1 |
+| 2 | Majkel1337 | top-14 | 7.70 | 3.60 | 1.20 | 46.70 | 7.50 | 1 |
+| 3 | Unknown Mother-Goose | gold | 6.60 | 3.40 | 2.60 | 22.50 | 5.20 | 1 |
+| 4 | DSM | top-14 | 8 | 3.80 | 1.10 | 41.80 | 7.30 | 1 |
+| 5 | SpaTaro | top-14 | 7.30 | 5.10 | -0.10 | 71.50 | 0 | 1 |
+| 6 | THIRD FARM CLUB | gold | 8.60 | 3.50 | 1.90 | 33.30 | 3.90 | 1 |
+| 7 | Orbital Terraformer | top-14 | 7.80 | 3.50 | 1.20 | 48.30 | 0.40 | 1 |
 | 8 | Sida Zuo | gold | 8.80 | 1.50 | 2.90 | 56.30 | 10.50 | 1 |
 | 9 | ymg_aq | top-14 | 5.90 | 3.20 | 1.10 | 39.10 | 7 | 1 |
 | 10 | leave you | gold | 7.30 | 1.20 | 1.70 | 5.80 | 4.40 | 1 |
-| 12 | Mengfei Li | top-14 | 7.90 | 1.70 | 0.50 | 50.20 | 9.90 | 1 |
+| 12 | Mengfei Li | top-14 | 7.40 | 1.60 | 0.50 | 50.20 | 9.90 | 1 |
 | 13 | HowardLeeTW | top-14 | 7.60 | 2.50 | 1.30 | 20.50 | 8.30 | 1 |
-| 14 | Catalyst | top-14 | 4.90 | 0.60 | 0.10 | 0 | 3.30 | 1 |
-| 15 | feel the agi | top-14 | 10.20 | 5.90 | 3.20 | 52.30 | 3.10 | 1 |
-| 16 | local | gold | 5.70 | 1.60 | 2.30 | 9.70 | 1.80 | 1 |
-| 17 | lumen | gold | 6.60 | 2.80 | 0.70 | 7.50 | 3.30 | 1 |
-| 19 | carbonapi | gold | 5.50 | 2.30 | 1.30 | 10.40 | 2 | 1 |
-| 20 | Cow Boy | gold | 5 | 0.20 | 0.80 | 3.70 | 2.80 | 1 |
-| 21 | Ebi | gold | 10 | 4.10 | 3.20 | 28 | 8.70 | 1 |
-| 22 | アルモンド | top-14 | 5.50 | 2.60 | 0.40 | 18.20 | 6.20 | 1 |
+| 14 | Catalyst | top-14 | 4.80 | 0.60 | 0.10 | 0 | 3.30 | 1 |
+| 15 | feel the agi | top-14 | 9.60 | 5.80 | 3.20 | 52.30 | 3.10 | 1 |
+| 16 | local | gold | 5.50 | 1.60 | 2.30 | 9.70 | 1.80 | 1 |
+| 17 | lumen | gold | 6.50 | 2.80 | 0.70 | 7.50 | 3.30 | 1 |
+| 19 | carbonapi | gold | 5.60 | 2.30 | 1.30 | 10.40 | 2 | 1 |
+| 20 | Cow Boy | gold | 4.90 | 0.20 | 0.80 | 3.70 | 2.80 | 1 |
+| 21 | Ebi | gold | 9.80 | 4.10 | 3.20 | 28 | 8.70 | 1 |
+| 22 | アルモンド | top-14 | 5.40 | 2.60 | 0.40 | 18.20 | 6.20 | 1 |
 | 23 | AI是我的豆包 | gold | 7.90 | 5.90 | 2.10 | 37.40 | 1.60 | 1 |
-| 24 | fog flower | gold | 7.30 | 2 | 1.90 | 8.10 | 7.10 | 1 |
+| 24 | fog flower | gold | 7.20 | 2 | 1.90 | 8.10 | 7.10 | 1 |
 | 25 | Otter Vibe | top-14 | 7.50 | 4.60 | 2.80 | 26.30 | 11.30 | 1 |
-| 26 | nilochan | gold | 5 | 1.40 | 1 | 0.20 | 1.90 | 1 |
-| 27 | yjshyfy | gold | 7.80 | 1.20 | 1.80 | 5.10 | 5.80 | 1 |
+| 26 | nilochan | gold | 4.90 | 1.40 | 1 | 0.20 | 1.90 | 1 |
+| 27 | yjshyfy | gold | 7.70 | 1.20 | 1.80 | 5.10 | 5.80 | 1 |
 | 28 | kyy666 | gold | 5.80 | 1.60 | 0.70 | 0.30 | 2.40 | 1 |
-| 29 | 𝕯𝖊𝖔𝖉𝖎𝖒𝖘 & 𝕮𝖔 | silver | 4.10 | 1.40 | 0.30 | 0.60 | 3.70 | 1 |
+| 29 | 𝕯𝖊𝖔𝖉𝖎𝖒𝖘 & 𝕮𝖔 | silver | 4.20 | 1.30 | 0.30 | 0.60 | 3.70 | 1 |
 | 31 | redblackbst | top-14 | 7.90 | 4.10 | 3.20 | 5.80 | 2.40 | 1 |
 | 32 | Kilupy | silver | 5.20 | 1.20 | 0.90 | 0.60 | 2 | 1 |
-| 35 | Kaggriculture Agent | silver | 7.10 | 2.30 | 1.10 | 26.20 | 2.50 | 1 |
-| 36 | Zhenghongshuang | silver | 6.30 | 1.30 | 1.10 | 6.10 | 4.70 | 1 |
+| 35 | Kaggriculture Agent | silver | 6.90 | 2.30 | 1.10 | 26.20 | 2.50 | 1 |
+| 36 | Zhenghongshuang | silver | 6.20 | 1.30 | 1.10 | 6.10 | 4.70 | 1 |
 | 38 | elmo | silver | 5.90 | 1.80 | 0.70 | 14.60 | 3.50 | 1 |
 | 41 | Thomas Tschinkel | top-14 | 5.60 | 1.70 | 1.10 | 2.10 | 2.70 | 1 |
 | 45 | mtmr_s1 | silver | 7.30 | 2.20 | 0.90 | 26.90 | 2.10 | 1 |
@@ -246,26 +246,26 @@ tomatoes between games with and without the shop by day 9):
 | 49 | THUNDER THUNDER | silver | 6.20 | 4.60 | 0.80 | 42.20 | 7.20 | 1 |
 | 72 | doubao | silver | 5.50 | 1.50 | 0.80 | 0 | 2.20 | 1 |
 | 74 | yomogii | silver | 5.20 | 1.90 | 0.70 | 0.50 | 3.70 | 1 |
-| 75 | Tom&Jerry | silver | 6 | 1.70 | 0.70 | 0.40 | 2.70 | 1 |
-| 120 | Navier-stokes | silver | 4.50 | 1.40 | 0.90 | -0.10 | 3.10 | 1 |
-| 121 | Pai | silver | 6.60 | 2.10 | 0.30 | 0.50 | 3.10 | 1 |
-| 122 | Munal Singh | silver | 5.30 | 2 | 1.10 | 0.40 | 2.80 | 1 |
+| 75 | Tom&Jerry | silver | 5.80 | 1.70 | 0.70 | 0.40 | 2.70 | 1 |
+| 120 | Navier-stokes | silver | 4.40 | 1.40 | 0.90 | -0.10 | 3.10 | 1 |
+| 121 | Pai | silver | 6.40 | 2.10 | 0.30 | 0.50 | 3.10 | 1 |
+| 122 | Munal Singh | silver | 5.20 | 2 | 1.10 | 0.40 | 2.80 | 1 |
 | 227 | ElephtAI | silver | 6.30 | 1.40 | 0.10 | 0.10 | 3.20 | 1 |
 | 250 | Bldr2 | silver | 4.40 | 1.40 | 0 | 0.60 | 3 | 1 |
 | 251 | let cats farm | silver | 4.60 | 1 | 0.30 | 0 | 3.70 | 1 |
-| 252 | kevin park | silver | 4.90 | 1.50 | 1 | 0.20 | 3.50 | 1 |
-| 400 | peppersaltman | silver | 5.50 | 0.70 | 0.40 | 0.40 | 3.30 | 1 |
+| 252 | kevin park | silver | 4.80 | 1.50 | 1 | 0.20 | 3.50 | 1 |
+| 400 | peppersaltman | silver | 5.40 | 0.70 | 0.40 | 0.40 | 3.30 | 1 |
 | 401 | Win Suthar | silver | 4.80 | -0.20 | 0.60 | 0.80 | 3.10 | 1 |
-| 402 | spencersi123 | silver | 6.40 | 1.50 | 1.10 | 0.70 | 2.40 | 1 |
+| 402 | spencersi123 | silver | 6.30 | 1.50 | 1.10 | 0.70 | 2.40 | 1 |
 | 470 | Naru041104 | bronze | 5.20 | 2.60 | 0.40 | 0.10 | 3.20 | 1 |
-| 473 | Jacky Chan | bronze | 5 | 1.70 | 0.80 | 0.90 | 1.90 | 1 |
-| 600 | 最强扫地僧 | bronze | 4.90 | 0.90 | -0.20 | 0.20 | 2.20 | 1 |
-| 601 | Cyrus | bronze | 6.50 | 1.30 | 0.10 | 0.10 | 2.60 | 1 |
+| 473 | Jacky Chan | bronze | 4.80 | 1.70 | 0.80 | 0.90 | 1.90 | 1 |
+| 600 | 最强扫地僧 | bronze | 4.80 | 0.80 | -0.20 | 0.20 | 2.20 | 1 |
+| 601 | Cyrus | bronze | 6.40 | 1.30 | 0.10 | 0.10 | 2.60 | 1 |
 | 602 | matcha110 | bronze | 5.20 | 0.60 | -0.70 | 0.50 | 2.90 | 1 |
-| 750 | Daiki Takahashi | bronze | 4.30 | 1.20 | 0.50 | 0 | 2.50 | 1 |
-| 751 | ansheng jhang | bronze | 6.40 | 0.50 | 0.30 | 0.10 | 1.40 | 1 |
+| 750 | Daiki Takahashi | bronze | 4.20 | 1.20 | 0.50 | 0 | 2.50 | 1 |
+| 751 | ansheng jhang | bronze | 6.20 | 0.50 | 0.30 | 0.10 | 1.40 | 1 |
 | 752 | CaliforniaDog | bronze | 5 | 0.40 | 0.40 | 0.30 | 2.70 | 1 |
-| 881 | Toru59er | bronze | 4.40 | 0.80 | -0.10 | 0.40 | 2.40 | 1 |
+| 881 | Toru59er | bronze | 4.30 | 0.80 | -0.10 | 0.40 | 2.40 | 1 |
 | 882 | broccoli | bronze | 4.30 | 0.50 | -0.40 | 0.30 | 2.80 | 1 |
 
 Every bronze team follows the Yarn Store and nothing else; the family agent ships with
@@ -289,12 +289,12 @@ farmer-and-hand action line through day 5 (`field_h136`) and keeping the lines w
 | 258 | 103 | 08-23 | 09-15 | 15 | 11 | 4 | 0 | 41 | 134 | 11 | 20 | 0 | 343 | 80 | 86494 | G7 |  |
 | 190 | 85 | 08-30 | 09-14 | 12 | 9 | 5 | 0 | 38 | 187 | 12 | 6 | 0 | 333 | 62 | 88170 | G8 |  |
 | 111 | 79 | 09-01 | 09-15 | 12 | 9 | 5 | 0 | 38 | 185 | 12 | 9 | 0 | 351 | 62 | 90946 | G9 |  |
-| 822 | 335 | 09-02 | 09-15 | 12 | 9 | 7 | 1 | 33 | 185 | 12 | 9 | 0 | 381 | 92 | 93177 | G10 | feel the agi |
+| 822 | 335 | 09-02 | 09-15 | 12 | 9 | 6 | 1 | 33 | 185 | 12 | 9 | 0 | 381 | 92 | 93177 | G10 | feel the agi |
 | 4895 | 1088 | 09-09 | 09-15 | 12 | 8 | 6 | 3 | 33 | 163 | 12 | 31 | 0 | 415 | 106 | 98859 | G11 | Thomas Tschinkel, Tom&Jerry, Catalyst, 𝕯𝖊𝖔𝖉𝖎𝖒𝖘 & 𝕮𝖔, mtmr_s1, アルモンド (+27) |
 | 342 | 17 | 09-10 | 09-15 | 12 | 8 | 6 | 3 | 33 | 163 | 12 | 31 | 0 | 367 | 104 | 101258 | G12 | leave you, Zhenghongshuang, yjshyfy, fog flower |
 | 112 | 8 | 09-11 | 09-14 | 11 | 8 | 5 | 3 | 32 | 163 | 12.50 | 41 | 0 | 347 | 84 | 99896 | G13 | redblackbst |
 | 196 | 2 | 09-11 | 09-15 | 13 | 7 | 6 | 2 | 26.50 | 145 | 13 | 37 | 9 | 307 | 149 | 101040 | G14 | Artem The Farmer 🍅 |
-| 187 | 166 | 09-12 | 09-15 | 12 | 8 | 6 | 3 | 33 | 163 | 12 | 31 | 0 | 414 | 87 | 90672 | G15 | spencersi123 |
+| 187 | 166 | 09-12 | 09-15 | 12 | 6 | 5 | 3 | 33 | 163 | 12 | 31 | 0 | 414 | 87 | 90672 | G15 | spencersi123 |
 | 158 | 19 | 09-13 | 09-15 | 12 | 8 | 6 | 3 | 33 | 163 | 12 | 31 | 0 | 400 | 117 | 103788 | G16 | doubao |
 
 Share of sampled seats on each line by game date (percent; the sample over-weights the
@@ -763,25 +763,208 @@ current-submission games among these teams the median bank margin is 4113, a qua
 are within 1883. There is no seat effect: seat 0 wins 60.9% and seat 1 60.8%
 of the studied teams' 309,306 games.
 
-## 7. Market
+## 7. The market, measured correctly
 
-Corrected sales columns are missing; rebuild traces, features and market.parquet first.
+Every number here comes from the rebuilt traces (P18): executed units and revenue per sale as
+the engine computed them, reconciled against the recorded money in every turn of every game
+(`money_check_turns` is 0 for 99% of current-submission seats). Medians of per-team
+medians by group, with the chance that a random top-14 team is above a random gold team:
 
-## 8. Labour
+| median of per-team medians | top-14 | gold | silver | bronze | P(top-14 > gold) | P(gold > silver) |
+|---|---|---|---|---|---|---|
+| teams | 14 | 14 | 21 | 10 |  |  |
+| final_money | 104086 | 104942 | 101994 | 105365 | 0.42 (p=0.46) | 0.73 (p=0.02) |
+| revenue_total | 133096 | 134650 | 136489 | 135617 | 0.39 (p=0.33) | 0.48 (p=0.84) |
+| revenue_premium | 86035 | 88526 | 86390 | 92414 | 0.34 (p=0.15) | 0.57 (p=0.48) |
+| revenue_staple | 43656 | 41642 | 41587 | 40095 | 0.64 (p=0.20) | 0.55 (p=0.59) |
+| revenue_last_3_days | 21624 | 21134 | 21345 | 21454 | 0.52 (p=0.85) | 0.53 (p=0.79) |
+| last3_share_pct | 16.33 | 15.98 | 15.70 | 16.05 | 0.56 (p=0.61) | 0.65 (p=0.13) |
+| hire_spend | 4929 | 4605 | 4496 | 4663 | 0.65 (p=0.17) | 0.65 (p=0.15) |
+| sold_melon | 75 | 72 | 72 | 72 | 0.64 (p=0.18) | 0.52 (p=0.76) |
+| price_melon | 185 | 198 | 198 | 198 | 0.30 (p=0.06) | 0.38 (p=0.12) |
+| sold_strawberry | 222 | 248 | 249 | 248 | 0.25 (p=0.02) | 0.40 (p=0.29) |
+| price_strawberry | 125 | 116 | 113 | 118 | 0.70 (p=0.07) | 0.58 (p=0.42) |
+| sold_milk | 182 | 191 | 192 | 205 | 0.35 (p=0.19) | 0.31 (p=0.06) |
+| price_milk | 92.92 | 84.13 | 80.23 | 85.49 | 0.62 (p=0.27) | 0.59 (p=0.36) |
+| sold_wool | 113 | 126 | 130 | 138 | 0.44 (p=0.57) | 0.39 (p=0.26) |
+| price_wool | 117 | 105 | 99.34 | 111 | 0.71 (p=0.06) | 0.58 (p=0.42) |
+| sold_egg | 77 | 83.50 | 82 | 72.50 | 0.36 (p=0.21) | 0.61 (p=0.28) |
+| sold_wheat | 434 | 382 | 394 | 375 | 0.68 (p=0.10) | 0.39 (p=0.28) |
+| price_wheat | 38.84 | 39.37 | 39.14 | 39.26 | 0.34 (p=0.15) | 0.51 (p=0.95) |
+| sold_carrot | 96.75 | 91.50 | 94 | 88 | 0.64 (p=0.21) | 0.39 (p=0.28) |
+| sold_tomato | 39 | 0 | 0 | 0 | 0.61 (p=0.31) | 0.70 (p=0.01) |
+| sold_fertilizer | 218 | 342 | 342 | 352 | 0.19 (p=0.01) | 0.45 (p=0.64) |
+| premium_cheap_pct | 28.28 | 34.28 | 35.13 | 33.27 | 0.36 (p=0.21) | 0.34 (p=0.11) |
 
-Missing market.parquet or corrected feature columns.
+Per team, ranks 1-31:
 
-## 9. Structure: one continuum with a few outliers, not discrete strategies
+| rank | team | group | final_money | revenue_premium | revenue_staple | revenue_last_3_days | sold_melon | price_melon | sold_strawberry | price_strawberry | sold_milk | price_milk | sold_wool | price_wool | sold_egg | sold_carrot | sold_tomato | premium_cheap_pct |
+|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|
+| 1 | Artem The Farmer 🍅 | top-14 | 101286 | 82766 | 43294 | 21292 | 78 | 186 | 196 | 123 | 190 | 80.70 | 123 | 98.31 | 63 | 98.50 | 65.50 | 32.85 |
+| 2 | Majkel1337 | top-14 | 113359 | 95073 | 43052 | 24261 | 72 | 184 | 218 | 169 | 180 | 99.97 | 109 | 132 | 74 | 92 | 47 | 20.74 |
+| 3 | Unknown Mother-Goose | gold | 117671 | 95461 | 45640 | 23931 | 83 | 189 | 204 | 125 | 178 | 108 | 150 | 136 | 112 | 81.50 | 57.50 | 22.56 |
+| 4 | DSM | top-14 | 104556 | 85110 | 45298 | 21363 | 72 | 179 | 226 | 130 | 188 | 93.34 | 106 | 130 | 80 | 102 | 52 | 24.07 |
+| 5 | SpaTaro | top-14 | 96835 | 80609 | 45551 | 14761 | 60 | 204 | 183 | 143 | 174 | 92.51 | 122 | 139 | 0 | 159 | 0 | 24.39 |
+| 6 | THIRD FARM CLUB | gold | 115275 | 88911 | 47761 | 30785 | 87 | 167 | 206 | 148 | 175 | 94 | 65 | 131 | 168 | 147 | 69 | 25.81 |
+| 7 | Orbital Terraformer | top-14 | 103874 | 87353 | 42824 | 18613 | 72 | 178 | 214 | 130 | 170 | 94.95 | 102 | 116 | 62 | 76 | 34 | 29.79 |
+| 8 | Sida Zuo | gold | 106280 | 79050 | 47123 | 18618 | 48 | 219 | 207 | 132 | 167 | 83.80 | 82 | 104 | 149 | 201 | 88 | 26.01 |
+| 9 | ymg_aq | top-14 | 105855 | 86548 | 71000 | 23872 | 84 | 165 | 237 | 118 | 189 | 94.33 | 87 | 114 | 0 | 93 | 44 | 29.66 |
+| 10 | leave you | gold | 101830 | 82984 | 39995 | 19495 | 72 | 198 | 249 | 114 | 213 | 84.46 | 103 | 80.01 | 77 | 89 | 0 | 36.38 |
+| 12 | Mengfei Li | top-14 | 104299 | 85771 | 45738 | 21720 | 78 | 191 | 215 | 128 | 167 | 82.15 | 98 | 108 | 99 | 90 | 48 | 25.98 |
+| 13 | HowardLeeTW | top-14 | 107917 | 88396 | 41211 | 21782 | 78 | 162 | 245 | 125 | 171 | 103 | 88 | 124 | 36 | 128 | 63 | 25.58 |
+| 14 | Catalyst | top-14 | 102193 | 87900 | 43186 | 21528 | 72 | 203 | 249 | 120 | 201 | 78.37 | 141 | 109 | 74 | 95 | 0 | 37.06 |
+| 15 | feel the agi | top-14 | 112062 | 88539 | 54124 | 25616 | 72 | 196 | 217 | 137 | 184 | 78.62 | 86.50 | 118 | 171 | 24.50 | 0 | 26.90 |
+| 16 | local | gold | 105971 | 87103 | 40731 | 19981 | 72 | 198 | 247 | 117 | 191 | 79.33 | 126 | 77.16 | 86 | 93.50 | 0 | 35.97 |
+| 17 | lumen | gold | 102415 | 84887 | 43514 | 21618 | 72 | 198 | 250 | 95.07 | 191 | 69.62 | 126 | 112 | 87 | 91 | 0 | 34.68 |
+| 19 | carbonapi | gold | 103912 | 91771 | 47456 | 22107 | 72 | 198 | 249 | 133 | 199 | 88.30 | 142 | 82.08 | 74 | 123 | 0 | 33.38 |
+| 20 | Cow Boy | gold | 100465 | 89566 | 41032 | 20889 | 72 | 198 | 251 | 114 | 203 | 81.32 | 139 | 105 | 78 | 91 | 0 | 36.59 |
+| 21 | Ebi | gold | 106031 | 92191 | 238857 | 56314 | 84 | 160 | 248 | 121 | 182 | 91.97 | 96 | 102 | 134 | 72 | 28 | 28.94 |
+| 22 | アルモンド | top-14 | 101116 | 85390 | 43170 | 21448 | 90 | 174 | 250 | 124 | 226 | 68.40 | 143 | 88.19 | 89 | 140 | 0 | 39.20 |
+| 23 | AI是我的豆包 | gold | 107738 | 81174 | 42253 | 25018 | 71 | 187 | 256 | 107 | 160 | 85.95 | 98 | 108 | 80 | 57.50 | 47.50 | 25.29 |
+| 24 | fog flower | gold | 109250 | 90234 | 40796 | 21379 | 72 | 198 | 249 | 109 | 203 | 65 | 106 | 80.57 | 78 | 94 | 0 | 33.91 |
+| 25 | Otter Vibe | top-14 | 104610 | 82920 | 58357 | 23716 | 90 | 152 | 185 | 125 | 166 | 104 | 132 | 128 | 230 | 101 | 134 | 25.76 |
+| 26 | nilochan | gold | 100990 | 87160 | 40882 | 20154 | 72 | 198 | 249 | 103 | 191 | 82.49 | 136 | 107 | 81 | 93.50 | 0 | 36.46 |
+| 27 | yjshyfy | gold | 101704 | 88969 | 40038 | 19828 | 72 | 198 | 246 | 116 | 191 | 63.58 | 130 | 91.44 | 78 | 88 | 4 | 36.66 |
+| 28 | kyy666 | gold | 103610 | 88140 | 40350 | 19805 | 72 | 198 | 248 | 120 | 191 | 85.98 | 139 | 115 | 87 | 92 | 0 | 34.65 |
+| 29 | 𝕯𝖊𝖔𝖉𝖎𝖒𝖘 & 𝕮𝖔 | silver | 103297 | 92352 | 42956 | 21070 | 72 | 203 | 250 | 96.31 | 203 | 93.81 | 123 | 87.68 | 82 | 94 | 0 | 33.04 |
+| 31 | redblackbst | top-14 | 102460 | 86298 | 44018 | 23218 | 78 | 196 | 235 | 110 | 172 | 93.38 | 117 | 121 | 99 | 122 | 6 | 30.88 |
 
-PCA over 4020 current-submission games of 59 teams on 29 standardised features
+![units sold per day](figs/an_sales_by_day.png)
+
+Median units sold per day by group (solid), with Majkel1337 (dashed) and Artem The Farmer
+(dotted). Revenue conditional on the shops unlocked by day 9 (medians, "with / without"):
+
+| who | games | wool revenue: Yarn Store early / not | milk revenue: milk shop early / not | egg revenue: egg shop early / not | carrot revenue: carrot shop early / not | bank: Yarn Store early / not |
+|---|---|---|---|---|---|---|
+| top-14 | 1293 | 37,320 / 6,543 | 21,755 / 5,378 | 4,960 / 2,815 | 7,595 / 2,909 | 110,000 / 101,527 |
+| gold | 854 | 41,980 / 6,396 | 22,934 / 5,309 | 4,847 / 3,406 | 6,392 / 2,988 | 111,145 / 102,866 |
+| silver | 1368 | 37,419 / 6,495 | 21,318 / 5,970 | 4,538 / 3,655 | 5,888 / 3,318 | 110,226 / 98,954 |
+| bronze | 505 | 38,004 / 6,346 | 25,761 / 6,212 | 4,135 / 3,453 | 5,468 / 3,262 | 114,292 / 103,527 |
+| #1 Artem The Farmer 🍅 | 88 | 31,493 / 6,396 | 19,025 / 6,723 | 3,980 / 1,948 | 8,172 / 1,798 | 105,559 / 98,992 |
+| #2 Majkel1337 | 103 | 40,649 / 9,084 | 22,982 / 4,788 | 4,572 / 0 | 7,723 / 877 | 122,248 / 112,076 |
+| #3 Unknown Mother-Goose | 82 | 39,518 / 8,986 | 23,634 / 6,078 | 8,213 / 1,614 | 7,830 / 1,956 | 127,244 / 114,726 |
+| #4 DSM | 82 | 46,477 / 6,763 | 25,825 / 4,711 | 4,447 / 0 | 7,103 / 2,828 | 109,241 / 104,515 |
+| #5 SpaTaro | 93 | 37,696 / 6,174 | 23,129 / 5,394 | 0 / 0 | 10,680 / 381 | 105,550 / 93,166 |
+| #6 THIRD FARM CLUB | 55 | 30,862 / 6,265 | 21,328 / 4,291 | 10,762 / 6,282 | 9,934 / 2,657 | 132,220 / 107,211 |
+| #7 Orbital Terraformer | 79 | 35,071 / 8,285 | 21,544 / 7,114 | 4,309 / 0 | 7,127 / 1,759 | 110,808 / 100,361 |
+| #8 Sida Zuo | 51 | 46,326 / 5,886 | 16,400 / 5,188 | 10,437 / 3,584 | 11,767 / 0 | 111,745 / 104,890 |
+| #9 ymg_aq | 77 | 37,902 / 7,390 | 23,300 / 5,060 | 1,764 / 0 | 10,583 / 1,574 | 105,050 / 105,855 |
+| #10 leave you | 85 | 34,961 / 6,015 | 25,706 / 5,384 | 4,302 / 0 | 6,372 / 3,261 | 104,710 / 99,935 |
+
+**What the corrected numbers say.** The zones do not differ in what they sell or in what
+they bank: total revenue is 133-136k and the final bank 102-105k in every group, and the
+top-14 sell *fewer* premium units than the family (strawberry 222 against 248, milk 182
+against 191, wool 113 against 126, melon 75 against 72) at higher prices (strawberry $125
+against $116, milk $93 against $84, wool $117 against $105). The family sells 342 fertilizer
+a game against the leaders' 218, because the leaders spread it on the fields. Every earlier
+"the #1 sells four times the melon" statement was the P18 undercount. The leaders' edge is
+relative, and section 9b shows where it comes from; the per-day tables behind the figure
+(mean units and revenue per day, computed from `market.parquet`) give the mechanism:
+
+- **The public line's clock is fixed.** Melon: 60 units on day 10 and the last 12 on day 11.
+  No shop demands melon, so the town removes one a day and a 72-melon dump takes the price
+  from $250 to about $200 (the glut curve is quadratic, 3.6 times base over 300 units); two
+  farms dumping in the same hours take it near the floor. Strawberries: days 15-29 with the
+  bulk on days 20-24 at 20-29 a day, sold late in the day (hours 13 and 19-23) in orders of
+  six. Milk about 10 a day from day 8; wool 8-16 every third day from day 6; wheat rising
+  to 61 on day 29; fertilizer 10-20 a day all season.
+- **The town's drain sets the price-holding rate.** Median units removed per day across the
+  sampled games: strawberry 7 before the shops accumulate and 22-36 from day 18; milk 14;
+  wool 12; carrot 13; egg 7; tomato 7; wheat 32; melon 1. Strawberry's price falls by 1.6
+  times base for every 100 units above the anchor and milk's by the same for every 122, so
+  whoever sells faster than the drain crashes the price for both farms.
+- **Out-earning = metering.** Majkel1337 sells strawberries in orders of two spread over the
+  day (67 orders a game against the line's 40 of six): 18-21 a day on days 16-18 at about
+  $190 like everyone, then 9-10 a day from day 20 while the line sells 20-29. It holds
+  $144-170 a unit through day 28 while the line's own units fetch $67-75 on days 22-24, and
+  sells its last 20 at $150 on day 29. Milk goes out in bursts of 18-19 on days 14 and 16,
+  ahead of the line's day-15 burst. Result: $169 a strawberry, $100 a milk, $132 a wool on
+  fewer units, and a bank of 113k against the family's 101-105k.
+- **Starving = selling first and selling every day.** 29% of Artem's strawberries and 23% of
+  ymg_aq's leave at hour 0, from the previous day's harvest, before the line's evening
+  orders; both then sell every premium product every day to the end (Artem 10-14 milk,
+  6-9 wool, 7-12 strawberries a day through day 29) so the price never recovers, and they
+  replace the late premium income with staples (Artem 44k, ymg_aq 71k, of which 48k is
+  1,270 wheat at $38: wheat's glut curve is logarithmic and 400 units cost $5). The line's
+  late dump then meets a loaded market: its strawberry price falls to $93 against Artem and
+  $77 against ymg_aq (reference $110), its milk to $70 and $69 (reference $82).
+- **Melon timing is worthless.** Spreading melon (Majkel1337 29 on day 10 and a trickle to
+  day 22; ymg_aq days 16-19) earns 13.9k against the dump's 14.6k, because the glut never
+  clears. The "melon last sell day 20 against 11" separator in `groups.md` is real and means
+  nothing for the bank.
+
+## 8. Labour: what an action buys
+
+Yields per animal-day and per planting, and ops per unit of work, from the corrected sales
+and the day-end farm censuses. An animal-day is one animal present at one day end; a
+cow yields base 1 milk every second day plus its banked CARE days, a sheep 1 wool every third
+day plus CARE, a goose 1 egg a day plus CARE (all capped by `max_held`).
+
+| median of per-team medians | top-14 | gold | silver | bronze | P(top-14 > gold) |
+|---|---|---|---|---|---|
+| teams | 14 | 14 | 21 | 10 |  |
+| milk_per_cow_day | 1.01 | 1.04 | 1.05 | 1.08 | 0.41 (p=0.43) |
+| wool_per_sheep_day | 0.98 | 0.96 | 0.96 | 1.01 | 0.59 (p=0.41) |
+| egg_per_goose_day | 1.58 | 1.47 | 1.37 | 1.27 | 0.70 (p=0.07) |
+| care_per_animal_day | 0.86 | 0.88 | 0.98 | 1.01 | 0.41 (p=0.42) |
+| feed_per_animal_day | 0.84 | 0.80 | 0.81 | 0.81 | 0.74 (p=0.03) |
+| fert_per_strawberry | 5.06 | 3.52 | 3.36 | 3.12 | 0.69 (p=0.08) |
+| strawberry_per_planting | 7.43 | 7.55 | 7.55 | 7.52 | 0.31 (p=0.09) |
+| wheat_per_planting | 2.79 | 2.37 | 2.43 | 2.31 | 0.75 (p=0.02) |
+| melon_per_planting | 6 | 6 | 6 | 6 | 0.48 (p=0.77) |
+| revenue_per_hand_day | 477 | 484 | 485 | 492 | 0.41 (p=0.43) |
+| water_per_tile_day | 0.99 | 0.94 | 0.93 | 0.93 | 0.68 (p=0.10) |
+| dig_ops | 36 | 35.50 | 37 | 36 | 0.45 (p=0.65) |
+| pass_ops | 536 | 528 | 496 | 484 | 0.39 (p=0.33) |
+| hire_spend | 4929 | 4605 | 4496 | 4663 | 0.65 (p=0.17) |
+
+Per team, ranks 1-31:
+
+| rank | team | group | milk_per_cow_day | wool_per_sheep_day | egg_per_goose_day | care_per_animal_day | feed_per_animal_day | fert_per_strawberry | strawberry_per_planting | wheat_per_planting | melon_per_planting | revenue_per_hand_day | water_per_tile_day | dig_ops | pass_ops | hire_spend |
+|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|
+| 1 | Artem The Farmer 🍅 | top-14 | 1.01 | 1.01 | 1.58 | 0.83 | 0.80 | 5.59 | 7.38 | 2.70 | 6 | 447 | 1.14 | 37 | 656 | 5650 |
+| 2 | Majkel1337 | top-14 | 1.00 | 1.02 | 1.67 | 0.87 | 0.85 | 5.11 | 6.94 | 2.50 | 5.14 | 492 | 1.23 | 36 | 61 | 4929 |
+| 3 | Unknown Mother-Goose | gold | 1.04 | 0.99 | 1.65 | 0.80 | 0.82 | 6.28 | 7.15 | 2.87 | 5.93 | 512 | 0.94 | 37 | 817 | 4769 |
+| 4 | DSM | top-14 | 0.98 | 0.98 | 1.67 | 0.87 | 0.86 | 5.13 | 7.19 | 2.48 | 5.14 | 455 | 1.24 | 35 | 58 | 4929 |
+| 5 | SpaTaro | top-14 | 0.96 | 0.89 |  | 0.83 | 0.82 | 3.35 | 7.12 | 3.86 | 6 | 465 | 1.07 | 24 | 920 | 3905 |
+| 6 | THIRD FARM CLUB | gold | 0.95 | 0.84 | 1.57 | 0.73 | 0.80 | 5.49 | 6.40 | 2.21 | 5.82 | 523 | 1.07 | 46 | 995 | 5039 |
+| 7 | Orbital Terraformer | top-14 | 1 | 0.99 | 1.62 | 0.90 | 0.88 | 5 | 7.04 | 2.54 | 5.14 | 450 | 1.26 | 35 | 69 | 4929 |
+| 8 | Sida Zuo | gold | 0.97 | 1.02 | 1.69 | 0.80 | 0.81 | 5.27 | 7.81 | 2.38 | 6 | 445 | 1.03 | 40 | 711 | 4934 |
+| 9 | ymg_aq | top-14 | 1 | 0.91 | 1.63 | 0.72 | 0.76 | 4.24 | 7.47 | 7.80 | 6 | 585 | 1.08 | 37 | 351 | 6345 |
+| 10 | leave you | gold | 1.10 | 0.84 | 1.32 | 0.88 | 0.78 | 3.30 | 7.55 | 2.34 | 6 | 470 | 0.93 | 35 | 535 | 4274 |
+| 12 | Mengfei Li | top-14 | 0.95 | 0.81 | 1.70 | 0.77 | 0.78 | 5.40 | 6.76 | 3.57 | 6 | 495 | 0.95 | 33 | 672 | 4646 |
+| 13 | HowardLeeTW | top-14 | 0.97 | 0.92 | 1.55 | 0.72 | 0.81 | 5.50 | 7.66 | 2.71 | 6 | 420 | 0.92 | 38 | 1311 | 8277 |
+| 14 | Catalyst | top-14 | 1.07 | 0.98 | 1.29 | 0.94 | 0.79 | 3.59 | 7.55 | 2.88 | 6 | 483 | 0.95 | 36 | 425 | 4562 |
+| 15 | feel the agi | top-14 | 1.07 | 1.06 | 1.53 | 0.84 | 0.89 | 5.75 | 7.48 | 3.90 | 6 | 516 | 0.88 | 24 | 648 | 7052 |
+| 16 | local | gold | 1.03 | 0.90 | 1.46 | 1.01 | 0.79 | 3.45 | 7.48 | 2.35 | 6 | 486 | 0.93 | 36 | 488 | 4541 |
+| 17 | lumen | gold | 0.99 | 0.96 | 1.51 | 0.93 | 0.79 | 3.53 | 7.58 | 2.75 | 6 | 469 | 0.92 | 35 | 508 | 5189 |
+| 19 | carbonapi | gold | 1.04 | 0.98 | 1.26 | 0.98 | 0.80 | 3.88 | 7.50 | 3.49 | 6 | 505 | 0.99 | 40 | 354 | 4559 |
+| 20 | Cow Boy | gold | 1.08 | 0.96 | 1.32 | 1.01 | 0.78 | 3.12 | 7.61 | 2.54 | 6 | 472 | 0.94 | 35 | 449 | 4533 |
+| 21 | Ebi | gold | 1.06 | 0.93 | 1.66 | 0.80 | 0.84 | 4.85 | 7.72 | 43.43 | 6 | 1206 | 0.86 | 35 | 784 | 5361 |
+| 22 | アルモンド | top-14 | 1.15 | 1.05 | 1.51 | 1.00 | 0.86 | 4.35 | 7.55 | 2.90 | 6 | 470 | 0.95 | 35 | 586 | 5371 |
+| 23 | AI是我的豆包 | gold | 1.01 | 0.98 | 1.59 | 0.81 | 0.81 | 4.56 | 7.40 | 1.99 | 5.92 | 453 | 1.11 | 32.50 | 734 | 4929 |
+| 24 | fog flower | gold | 1.04 | 0.90 | 1.32 | 0.88 | 0.78 | 3.18 | 7.55 | 2.36 | 6 | 506 | 0.94 | 35 | 522 | 4418 |
+| 25 | Otter Vibe | top-14 | 1.02 | 0.90 | 1.72 | 0.82 | 0.90 | 7.63 | 7.88 | 3.93 | 6 | 507 | 1.02 | 46 | 615 | 10308 |
+| 26 | nilochan | gold | 1.07 | 0.98 | 1.37 | 0.98 | 0.81 | 3.52 | 7.55 | 2.44 | 6 | 482 | 0.93 | 37 | 509 | 4452 |
+| 27 | yjshyfy | gold | 1.06 | 0.93 | 1.32 | 0.87 | 0.78 | 3 | 7.55 | 2.31 | 6 | 480 | 0.95 | 35 | 552 | 4651 |
+| 28 | kyy666 | gold | 1.08 | 1.00 | 1.47 | 0.96 | 0.81 | 3.39 | 7.52 | 2.34 | 6 | 503 | 0.93 | 37 | 484 | 4444 |
+| 29 | 𝕯𝖊𝖔𝖉𝖎𝖒𝖘 & 𝕮𝖔 | silver | 1.09 | 0.89 | 1.39 | 0.98 | 0.81 | 3.36 | 7.56 | 2.66 | 6 | 508 | 0.93 | 37 | 490 | 4424 |
+| 31 | redblackbst | top-14 | 1.11 | 1.03 | 1.53 | 0.89 | 0.86 | 2.83 | 7.38 | 2.22 | 6 | 511 | 0.97 | 36 | 437 | 3342 |
+
+## 9. Structure: one dense public point and two leader clusters
+
+PCA over 4020 current-submission games of 59 teams on 36 standardised features
 (farm plan, ops, corrected sales and prices). The first three components carry
-45% of the variance:
+41% of the variance. PC1 runs from the family's signature (fertilizer sold rather
+than used, CARE every day, land bought late, wool) to the leaders' (fertilizer used, tomatoes
+and eggs, geese); PC2 separates the two leader groups (cows, strawberries and milk against
+sheep, carrots and wool):
 
 | component | variance % | negative end | positive end |
 |---|---|---|---|
-| PC1 | 19.70 | sold_fertilizer (-0.35), op_care (-0.29), land_day_2 (-0.25), land_day_1 (-0.22), plants_wheat (-0.20) | op_fertilize (0.33), sold_tomato (0.31), plants_tomato (0.28), sold_egg (0.22), plants_melon (0.20) |
-| PC2 | 14.30 | peak_hands (-0.24), land_day_2 (-0.22), bought_goose (-0.20), op_dig (-0.18), sold_egg (-0.18) | op_plant (0.39), op_water (0.37), sold_melon (0.32), plants_wheat (0.26), sold_milk (0.25) |
-| PC3 | 10.40 | plants_strawberry (-0.35), bought_cow (-0.32), sold_milk (-0.31), sold_strawberry (-0.27), bought_goose (-0.16) | bought_sheep (0.44), sold_wool (0.35), plants_carrot (0.20), sold_carrot (0.19), peak_hands (0.17) |
+| PC1 | 17.80 | sold_fertilizer (-0.27), op_care (-0.25), price_melon (-0.23), land_day_2 (-0.20), sold_wool (-0.18) | op_fertilize (0.28), sold_tomato (0.27), plants_tomato (0.27), sold_egg (0.25), bought_goose (0.21) |
+| PC2 | 12 | sold_milk (-0.30), sold_strawberry (-0.29), bought_cow (-0.27), plants_strawberry (-0.27), price_strawberry (-0.23) | op_plant (0.31), plants_carrot (0.25), sold_wool (0.24), bought_sheep (0.23), sold_carrot (0.22) |
+| PC3 | 11.30 | op_water (-0.31), op_plant (-0.30), plants_wheat (-0.20), land_day_1 (-0.17), price_melon (-0.17) | bought_sheep (0.34), sold_wool (0.33), peak_hands (0.29), price_wool (0.25), op_pass (0.22) |
 
 ![pca](figs/an_pca.png)
 
@@ -789,30 +972,39 @@ Group medians of the team centroids:
 
 | group | PC1 | PC2 | PC3 |
 |---|---|---|---|
-| top-14 | 1.88 | 0.29 | -0.07 |
-| gold | -1.06 | -0.27 | -0.54 |
-| silver | -1.17 | -0.56 | -0.61 |
-| bronze | -1.54 | -0.28 | -0.67 |
+| top-14 | 1.32 | 0.19 | -0.68 |
+| gold | -0.99 | -0.21 | -0.62 |
+| silver | -1.17 | -0.21 | -0.51 |
+| bronze | -1.55 | -0.34 | -0.54 |
 
 k-means on the 59 team medians (standardised the same way), for k = 2 to 5, with the zone
 make-up of each cluster:
 
 | k | cluster | teams | top-14 | gold | silver | bronze | who (by rank) |
 |---|---|---|---|---|---|---|---|
-| 2 | 0 | 15 | 9 | 5 | 1 | 0 | Artem The Farmer 🍅, Majkel1337, Unknown Mother-Goose, DSM, SpaTaro, THIRD FARM CLUB, Orbital Terraformer, Sida Zuo ... |
-| 2 | 1 | 44 | 5 | 9 | 20 | 10 | leave you, Catalyst, feel the agi, local, lumen, carbonapi, Cow Boy, アルモンド ... |
-| 3 | 0 | 43 | 4 | 9 | 20 | 10 | leave you, Catalyst, local, lumen, carbonapi, Cow Boy, アルモンド, fog flower ... |
-| 3 | 1 | 11 | 6 | 4 | 1 | 0 | Artem The Farmer 🍅, Unknown Mother-Goose, SpaTaro, THIRD FARM CLUB, Sida Zuo, Mengfei Li, HowardLeeTW, feel the agi ... |
-| 3 | 2 | 5 | 4 | 1 | 0 | 0 | Majkel1337, DSM, Orbital Terraformer, ymg_aq, AI是我的豆包 |
-| 4 | 0 | 43 | 4 | 9 | 20 | 10 | leave you, Catalyst, local, lumen, carbonapi, Cow Boy, アルモンド, fog flower ... |
-| 4 | 1 | 4 | 4 | 0 | 0 | 0 | Majkel1337, DSM, SpaTaro, Orbital Terraformer |
-| 4 | 2 | 2 | 1 | 1 | 0 | 0 | Unknown Mother-Goose, Otter Vibe |
-| 4 | 3 | 10 | 5 | 4 | 1 | 0 | Artem The Farmer 🍅, THIRD FARM CLUB, Sida Zuo, ymg_aq, Mengfei Li, HowardLeeTW, feel the agi, Ebi ... |
-| 5 | 0 | 40 | 4 | 9 | 18 | 9 | leave you, Catalyst, local, lumen, carbonapi, Cow Boy, アルモンド, fog flower ... |
-| 5 | 1 | 2 | 1 | 0 | 1 | 0 | SpaTaro, let cats farm |
-| 5 | 2 | 10 | 5 | 4 | 1 | 0 | Artem The Farmer 🍅, Unknown Mother-Goose, THIRD FARM CLUB, Sida Zuo, Mengfei Li, HowardLeeTW, feel the agi, Ebi ... |
-| 5 | 3 | 2 | 0 | 0 | 1 | 1 | Kaggriculture Agent, Naru041104 |
-| 5 | 4 | 5 | 4 | 1 | 0 | 0 | Majkel1337, DSM, Orbital Terraformer, ymg_aq, AI是我的豆包 |
+| 2 | 0 | 44 | 5 | 9 | 20 | 10 | leave you, Catalyst, feel the agi, local, lumen, carbonapi, Cow Boy, アルモンド ... |
+| 2 | 1 | 15 | 9 | 5 | 1 | 0 | Artem The Farmer 🍅, Majkel1337, Unknown Mother-Goose, DSM, SpaTaro, THIRD FARM CLUB, Orbital Terraformer, Sida Zuo ... |
+| 3 | 0 | 7 | 3 | 3 | 1 | 0 | Unknown Mother-Goose, THIRD FARM CLUB, Mengfei Li, HowardLeeTW, Ebi, Otter Vibe, THUNDER THUNDER |
+| 3 | 1 | 44 | 5 | 9 | 20 | 10 | leave you, Catalyst, feel the agi, local, lumen, carbonapi, Cow Boy, アルモンド ... |
+| 3 | 2 | 8 | 6 | 2 | 0 | 0 | Artem The Farmer 🍅, Majkel1337, DSM, SpaTaro, Orbital Terraformer, Sida Zuo, ymg_aq, AI是我的豆包 |
+| 4 | 0 | 7 | 5 | 2 | 0 | 0 | Artem The Farmer 🍅, Majkel1337, DSM, SpaTaro, Orbital Terraformer, Sida Zuo, AI是我的豆包 |
+| 4 | 1 | 7 | 4 | 2 | 1 | 0 | Unknown Mother-Goose, THIRD FARM CLUB, ymg_aq, Mengfei Li, HowardLeeTW, Otter Vibe, THUNDER THUNDER |
+| 4 | 2 | 2 | 0 | 1 | 1 | 0 | Ebi, Kaggriculture Agent |
+| 4 | 3 | 43 | 5 | 9 | 19 | 10 | leave you, Catalyst, feel the agi, local, lumen, carbonapi, Cow Boy, アルモンド ... |
+| 5 | 0 | 7 | 6 | 1 | 0 | 0 | Artem The Farmer 🍅, Majkel1337, DSM, SpaTaro, Orbital Terraformer, ymg_aq, AI是我的豆包 |
+| 5 | 1 | 6 | 3 | 2 | 1 | 0 | Unknown Mother-Goose, THIRD FARM CLUB, Mengfei Li, HowardLeeTW, Otter Vibe, THUNDER THUNDER |
+| 5 | 2 | 2 | 0 | 1 | 1 | 0 | Ebi, Kaggriculture Agent |
+| 5 | 3 | 1 | 0 | 1 | 0 | 0 | Sida Zuo |
+| 5 | 4 | 43 | 5 | 9 | 19 | 10 | leave you, Catalyst, feel the agi, local, lumen, carbonapi, Cow Boy, アルモンド ... |
+
+The picture is not a continuum: 44 of the 59 teams form one tight cluster (every silver and
+bronze team, nine of the fourteen gold, and the five family members of the top-14) with a
+within-team spread of about 0.5 on PC1; the other 15 teams split into two stable groups, the
+2-cow-3-sheep code base and its relatives (Majkel1337, DSM, Orbital Terraformer, SpaTaro,
+Artem The Farmer, ymg_aq, Sida Zuo) and the goose-and-tomato agents (Unknown Mother-Goose,
+THIRD FARM CLUB, Mengfei Li, HowardLeeTW, Otter Vibe, THUNDER THUNDER). The zone medians of
+PC1 differ only because the zones contain different numbers of leaders: a silver team is
+not "between" gold and bronze, it is on the public point like most of gold.
 
 ## 9b. Two ways to beat the plateau: out-earn it, or starve it
 
@@ -847,6 +1039,30 @@ Farmer, ymg_aq and Mengfei Li **starve** it: their own banks are ordinary (95-98
 opponent's falls to 82-88k. The memo's "the #1 wins on the market" was half right in the
 wrong way: the top of the ladder is a market-denial contest, and Artem is #1 (19-11 over
 Majkel1337) because denial also hurts the out-earners, whose banks rest on premium prices.
+Section 7 names the two mechanisms: metering premium sales at the town's drain rate in small
+orders across the day (out-earn), and selling first each day from the previous day's
+harvest, every product, every day to the end, with staples covering the late income
+(starve).
+
+What the line's opponent receives per unit when it plays each leader, against what a seat on
+the line receives against non-family opponents ("ref"), corrected sales:
+
+| rank | team | n | opp strawberry $ / ref | opp melon $ / ref | opp milk $ / ref | opp wool $ / ref | opp wheat $ / ref | opp carrot $ / ref | opp tomato $ / ref | opp egg $ / ref | opp premium revenue / ref | own premium revenue | own staple revenue |
+|---|---|---|---|---|---|---|---|---|---|---|---|---|---|
+| 1 | Artem The Farmer 🍅 | 54 | 93 / 110 | 202 / 200 | 70 / 82 | 89 / 93 | 38 / 39 | 46 / 49 | 87 / 143 | 54 / 54 | 77k / 88k | 80k | 44k |
+| 2 | Majkel1337 | 30 | 132 / 110 | 227 / 200 | 87 / 82 | 86 / 93 | 39 / 39 | 48 / 49 | 122 / 143 | 52 / 54 | 90k / 88k | 94k | 42k |
+| 3 | Unknown Mother-Goose | 32 | 118 / 110 | 198 / 200 | 83 / 82 | 125 / 93 | 39 / 39 | 43 / 49 | 102 / 143 | 52 / 54 | 93k / 88k | 93k | 47k |
+| 4 | DSM | 51 | 84 / 110 | 226 / 200 | 89 / 82 | 104 / 93 | 37 / 39 | 45 / 49 | 110 / 143 | 52 / 54 | 82k / 88k | 86k | 44k |
+| 5 | SpaTaro | 11 | 88 / 110 | 218 / 200 | 42 / 82 | 110 / 93 | 37 / 39 | 48 / 49 | 314 / 143 | 56 / 54 | 73k / 88k | 76k | 48k |
+| 6 | THIRD FARM CLUB | 30 | 113 / 110 | 219 / 200 | 94 / 82 | 86 / 93 | 41 / 39 | 47 / 49 | 120 / 143 | 47 / 54 | 86k / 88k | 86k | 50k |
+| 7 | Orbital Terraformer | 37 | 96 / 110 | 227 / 200 | 82 / 82 | 84 / 93 | 38 / 39 | 47 / 49 | 208 / 143 | 54 / 54 | 86k / 88k | 88k | 42k |
+| 8 | Sida Zuo | 36 | 108 / 110 | 216 / 200 | 74 / 82 | 106 / 93 | 40 / 39 | 43 / 49 | 127 / 143 | 51 / 54 | 85k / 88k | 77k | 46k |
+| 9 | ymg_aq | 28 | 77 / 110 | 239 / 200 | 69 / 82 | 87 / 93 | 38 / 39 | 45 / 49 | 123 / 143 | 56 / 54 | 76k / 88k | 80k | 73k |
+| 10 | leave you | 50 | 118 / 110 | 198 / 200 | 99 / 82 | 71 / 93 | 38 / 39 | 49 / 49 | 155 / 143 | 55 / 54 | 84k / 88k | 84k | 39k |
+| 12 | Mengfei Li | 37 | 114 / 110 | 198 / 200 | 58 / 82 | 70 / 93 | 39 / 39 | 47 / 49 | 83 / 143 | 54 / 54 | 77k / 88k | 76k | 49k |
+| 13 | HowardLeeTW | 47 | 114 / 110 | 242 / 200 | 84 / 82 | 99 / 93 | 35 / 39 | 50 / 49 | 98 / 143 | 53 / 54 | 92k / 88k | 85k | 41k |
+| 14 | Catalyst | 37 | 103 / 110 | 212 / 200 | 70 / 82 | 99 / 93 | 38 / 39 | 55 / 49 | 169 / 143 | 51 / 54 | 82k / 88k | 88k | 44k |
+| 15 | feel the agi | 36 | 142 / 110 | 200 / 200 | 79 / 82 | 132 / 93 | 39 / 39 | 45 / 49 | 114 / 143 | 47 / 54 | 96k / 88k | 92k | 53k |
 
 ## 10. What the data cannot answer, and what it would cost
 
@@ -872,3 +1088,52 @@ Majkel1337) because denial also hurts the out-earners, whose banks rest on premi
 - **Whether the leaders' extra carrots and tomatoes pay.** Section 7 shows the conditional
   revenue, not the counterfactual. That is an arena question (plant the family's 31 carrots
   vs 60 when a Pet Cafe unlocks, same seeds), not a data question.
+
+## 11. What to clone, what to hybridise, and how to judge it
+
+Layer by layer, which studied version is best and whether they combine:
+
+- **Economy (clone the public line, then Artem's variant of it).** The current public line
+  (33 strawberry, 163 wheat, 12 melon, 31 carrot, 8 cows, 6 sheep, 3 geese, land on days 6
+  and 11, 12 hands) banks 99-101k against ordinary opponents and is what four fifths of the
+  medal plateau runs; matching it is the floor. Artem The Farmer's skeleton differs in the
+  second land purchase (day 8, three days earlier), fewer strawberries (24-29), more carrots
+  and tomatoes, and 13 hands, and is the only leader line that other teams have copied
+  (section 4). The two farms are compatible: same quadrants, same herd order, same melon
+  cash-in on day 10-11.
+- **Opening (clone the family's or the 2c3s list; no opponent read).** Both day-1 lists
+  spend the $3,000 to the last dollar on animals, pastures, melon and wheat and hire 4-5
+  hands. Nothing on day 1 depends on the opponent (section 1), so the opening is a fixed
+  list with a budget loop for the last wheat seeds.
+- **Shop response (clone the leaders' breadth).** Every zone follows the Yarn Store; the
+  leaders also follow milk shops (cows and tomatoes), egg shops (geese) and carrot shops
+  (carrots) and they follow them further (section 3). This is a table of per-shop
+  increments applied when a shop unlocks on days 3, 6 and 9, not a strategy switch, and it
+  is the one reactive layer with evidence behind it. The increments are read off the
+  conditional means in section 3.
+- **Labour (clone the leaders' end game, keep the family's mid game).** Ops per unit of work
+  are identical across the zones (section 8) except fertilizer, where the leaders spend 30%
+  more per crop tile-day. The leaders' CARE and FEED taper from day 27 and their herds are
+  allowed to escape once no yield can be sold: do that, and fertilize more.
+- **Market (hybridise Artem's denial with Majkel1337's metering).** Two things beat the
+  public line (section 9b): out-earning it (Majkel1337, THIRD FARM CLUB, Unknown
+  Mother-Goose finish 108-115k while the opponent keeps its usual 98-108k) and starving it
+  (Artem, ymg_aq, Mengfei Li bank an ordinary 95-98k while the opponent falls to 82-88k).
+  Artem is #1 and 19-11 over Majkel1337 because denial also works on the out-earners. The
+  concrete rules (section 7): sell premium goods first thing each day from the previous
+  day's harvest; meter each product at about the town's drain rate (strawberry 7 a day
+  before day 18 and 22-36 after, milk 14, wool 12, split with the opponent) in small orders
+  across the day, holding the rest in the shed; never let a premium price recover once the
+  opponent's bulk sales start (days 20-24 for the current line); dump melon on day 10 with
+  everyone else, since no shop buys it and timing earns nothing; and let staples (tomatoes,
+  carrots, eggs, and wheat, whose glut curve is flat) carry the last ten days. Whether
+  metering and denial combine against a line that also adapts is an arena question.
+- **Noise (skip).** SpaTaro's unexecutable orders protect it from cloning and cost nothing,
+  but they are not why it wins and it is 5th, not 1st.
+
+**The yardstick.** Everything above is measured against the current public line; the line
+changes every seven to ten days (section 4), so the local gate should be paired-seat games on
+fixed seeds against (a) the current public line's recorded games (`export_tapes.py` on the
+family's C0 windows, both seats), (b) Artem's and Majkel1337's recordings, and (c) whatever
+line is public two weeks from now, re-exported then. Win rate is the score; the median margin
+over the line (7k for the top-14, 4k for gold, 2k for silver) is the diagnostic.

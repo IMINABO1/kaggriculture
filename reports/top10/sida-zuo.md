@@ -35,13 +35,13 @@ game 1: 667, game 10: 1534, game 25: 2330, game 50: 2671, game 100: 2823, game l
 | melon planted | 8 |
 | FERTILIZE ops | 150 |
 | CARE ops | 317 |
-| melon sold | 0 |
-| strawberry sold | 191 |
-| milk sold | 112.5 |
-| wool sold | 47 |
-| wheat sold | 212 |
-| fertilizer sold | 111 |
-| units sold last 3 days | 242 |
+| melon sold | 48 |
+| strawberry sold | 206.5 |
+| milk sold | 169 |
+| wool sold | 82 |
+| wheat sold | 297.5 |
+| fertilizer sold | 206 |
+| units sold last 3 days | 384 |
 | shed peak | 47 |
 | weeds spawned | 13.5 |
 | unexecutable market orders | 0 |
@@ -98,16 +98,16 @@ What goes with being off the modal field line at turn 24 (the first cut where fe
 
 | window | games | win % | median bank | hands | cows | sheep | geese | quadrants | land day 1 | strawberry | wheat | melon | melon sold | milk sold | wool sold | field lines @400 | market lines @400 |
 |---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|
-| C0 | 50 | 92 | 107532.5 | 11 | 7 | 4 | 4 | 3 | 6 | 26 | 129 | 8 | 0 | 112.5 | 47 | 50 | 50 |
+| C0 | 50 | 92 | 107532.5 | 11 | 7 | 4 | 4 | 3 | 6 | 26 | 129 | 8 | 48 | 169 | 82 | 50 | 50 |
 
 ## Losses in the first and last windows
 
 | window | episode | opponent | opp rating | my bank | opp bank | margin | opp opening | biggest differences (opponent vs me) |
 |---|---|---|---|---|---|---|---|---|
 | C0 | 108991067 | torvile | 2387.6 | 89459 | 98623 | -9164 | 9b0c82fd | CARE ops: they 417 vs me 332; FERTILIZE ops: they 83 vs me 153; wheat planted: they 163 vs me 103 |
-| C0 | 108993143 | Sho Saga | 2144.1 | 111745 | 112911 | -1166 | 9b0c82fd | FERTILIZE ops: they 61 vs me 137; wool sold: they 150 vs me 102; strawberry sold: they 151 vs me 193 |
-| C0 | 108995246 | Octavi Grau | 2167.8 | 117981 | 119138 | -1157 | 9b0c82fd | strawberry sold: they 138 vs me 233; FERTILIZE ops: they 86 vs me 173; CARE ops: they 417 vs me 335 |
-| C0 | 109015072 | xiao xiongwei | 2651.7 | 117188 | 117315 | -127 | 9b0c82fd | CARE ops: they 505 vs me 427; FERTILIZE ops: they 61 vs me 131; wheat planted: they 163 vs me 122 |
+| C0 | 108993143 | Sho Saga | 2144.1 | 111745 | 112911 | -1166 | 9b0c82fd | FERTILIZE ops: they 61 vs me 137; wool sold: they 251 vs me 209; wheat planted: they 163 vs me 122 |
+| C0 | 108995246 | Octavi Grau | 2167.8 | 117981 | 119138 | -1157 | 9b0c82fd | FERTILIZE ops: they 86 vs me 173; CARE ops: they 417 vs me 335; milk sold: they 266 vs me 221 |
+| C0 | 109015072 | xiao xiongwei | 2651.7 | 117188 | 117315 | -127 | 9b0c82fd | strawberry sold: they 249 vs me 118; CARE ops: they 505 vs me 427; FERTILIZE ops: they 61 vs me 131 |
 
 ## Head to head with the other studied teams (all games, not only sampled)
 

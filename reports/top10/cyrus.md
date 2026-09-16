@@ -35,13 +35,13 @@ game 1: 708, game 10: 1654, game 25: 2464, game 50: 2661, game 100: 2694, game l
 | melon planted | 12 |
 | FERTILIZE ops | 104.5 |
 | CARE ops | 417 |
-| melon sold | 12 |
-| strawberry sold | 134 |
-| milk sold | 126.5 |
-| wool sold | 88.5 |
-| wheat sold | 330 |
-| fertilizer sold | 291 |
-| units sold last 3 days | 268.5 |
+| melon sold | 72 |
+| strawberry sold | 247.5 |
+| milk sold | 205.5 |
+| wool sold | 137.5 |
+| wheat sold | 379 |
+| fertilizer sold | 352 |
+| units sold last 3 days | 398 |
 | shed peak | 45 |
 | weeds spawned | 19 |
 | unexecutable market orders | 1 |
@@ -99,18 +99,18 @@ What goes with being off the modal field line at turn 200 (the first cut where f
 
 | window | games | win % | median bank | hands | cows | sheep | geese | quadrants | land day 1 | strawberry | wheat | melon | melon sold | milk sold | wool sold | field lines @400 | market lines @400 |
 |---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|
-| C0 | 50 | 86 | 112238.5 | 12 | 8 | 6 | 3 | 3 | 6 | 33 | 162 | 12 | 12 | 126.5 | 88.5 | 38 | 28 |
+| C0 | 50 | 86 | 112238.5 | 12 | 8 | 6 | 3 | 3 | 6 | 33 | 162 | 12 | 72 | 205.5 | 137.5 | 38 | 28 |
 
 ## Losses in the first and last windows
 
 | window | episode | opponent | opp rating | my bank | opp bank | margin | opp opening | biggest differences (opponent vs me) |
 |---|---|---|---|---|---|---|---|---|
 | C0 | 108857582 | iring58 | 1802.1 | 150820 | 150821 | -1 | 9b0c82fd |  |
-| C0 | 108875786 | Kifine | 2584.5 | 71303 | 74676 | -3373 | a6a57513 | wool sold: they 102 vs me 56; strawberry sold: they 120 vs me 132; CARE ops: they 410 vs me 417 |
-| C0 | 108877881 | Shuwen(Shawn) Ge | 2697.7 | 114869 | 116051 | -1182 | 9b0c82fd | CARE ops: they 494 vs me 506 |
-| C0 | 108879862 | Le Trong Hieu | 2661.4 | 110841 | 111800 | -959 | 9b0c82fd | milk sold: they 122 vs me 123; units sold last 3 days: they 277 vs me 276 |
-| C0 | 108880995 | mogura2.0 | 2652.3 | 115557 | 118242 | -2685 | 9b0c82fd | units sold last 3 days: they 316 vs me 274; FERTILIZE ops: they 93 vs me 119; milk sold: they 155 vs me 152 |
-| C0 | 108887225 | StephaneB7899 | 2765.1 | 76558 | 80786 | -4228 | 9b0c82fd | wool sold: they 169 vs me 129; milk sold: they 113 vs me 93; units sold last 3 days: they 266 vs me 277 |
+| C0 | 108875786 | Kifine | 2584.5 | 71303 | 74676 | -3373 | a6a57513 | wool sold: they 161 vs me 99; units sold last 3 days: they 392 vs me 378; CARE ops: they 410 vs me 417 |
+| C0 | 108877881 | Shuwen(Shawn) Ge | 2697.7 | 114869 | 116051 | -1182 | 9b0c82fd | units sold last 3 days: they 382 vs me 394; CARE ops: they 494 vs me 506 |
+| C0 | 108879862 | Le Trong Hieu | 2661.4 | 110841 | 111800 | -959 | 9b0c82fd |  |
+| C0 | 108880995 | mogura2.0 | 2652.3 | 115557 | 118242 | -2685 | 9b0c82fd | units sold last 3 days: they 443 vs me 403; FERTILIZE ops: they 93 vs me 119; milk sold: they 245 vs me 242 |
+| C0 | 108887225 | StephaneB7899 | 2765.1 | 76558 | 80786 | -4228 | 9b0c82fd | wool sold: they 272 vs me 238; milk sold: they 191 vs me 167; units sold last 3 days: they 367 vs me 388 |
 
 ## Head to head with the other studied teams (all games, not only sampled)
 

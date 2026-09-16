@@ -35,13 +35,13 @@ game 1: 729, game 10: 1527, game 25: 2479, game 50: 2672, game 100: 2734, game l
 | melon planted | 12 |
 | FERTILIZE ops | 110 |
 | CARE ops | 405 |
-| melon sold | 12 |
-| strawberry sold | 129 |
-| milk sold | 110 |
-| wool sold | 81 |
-| wheat sold | 329 |
-| fertilizer sold | 286 |
-| units sold last 3 days | 268 |
+| melon sold | 72 |
+| strawberry sold | 249 |
+| milk sold | 191 |
+| wool sold | 137.5 |
+| wheat sold | 377.5 |
+| fertilizer sold | 342 |
+| units sold last 3 days | 393 |
 | shed peak | 45 |
 | weeds spawned | 20 |
 | unexecutable market orders | 1 |
@@ -99,19 +99,19 @@ What goes with being off the modal field line at turn 200 (the first cut where f
 
 | window | games | win % | median bank | hands | cows | sheep | geese | quadrants | land day 1 | strawberry | wheat | melon | melon sold | milk sold | wool sold | field lines @400 | market lines @400 |
 |---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|
-| C0 | 50 | 82 | 106474 | 12 | 6 | 6 | 3 | 3 | 6 | 33 | 163 | 12 | 12 | 110 | 81 | 40 | 40 |
+| C0 | 50 | 82 | 106474 | 12 | 6 | 6 | 3 | 3 | 6 | 33 | 163 | 12 | 72 | 191 | 137.5 | 40 | 40 |
 
 ## Losses in the first and last windows
 
 | window | episode | opponent | opp rating | my bank | opp bank | margin | opp opening | biggest differences (opponent vs me) |
 |---|---|---|---|---|---|---|---|---|
-| C0 | 109009708 | Bruce | 2359.7 | 88745 | 115567 | -26822 | 9b0c82fd | milk sold: they 176 vs me 101; strawberry sold: they 144 vs me 100; wool sold: they 77 vs me 57 |
-| C0 | 109018054 | Zenith Ye | 2584.7 | 109784 | 110727 | -943 | 9b0c82fd | strawberry sold: they 120 vs me 129; milk sold: they 111 vs me 117; CARE ops: they 410 vs me 405 |
+| C0 | 109009708 | Bruce | 2359.7 | 88745 | 115567 | -26822 | 9b0c82fd | milk sold: they 266 vs me 164; strawberry sold: they 249 vs me 192; wool sold: they 126 vs me 102 |
+| C0 | 109018054 | Zenith Ye | 2584.7 | 109784 | 110727 | -943 | 9b0c82fd | units sold last 3 days: they 395 vs me 388; CARE ops: they 410 vs me 405; weeds spawned: they 21 vs me 20 |
 | C0 | 109025342 | Raef Guizani | 2665.5 | 96806 | 96856 | -50 | 9b0c82fd | wheat planted: they 162 vs me 163; weeds spawned: they 19 vs me 20 |
-| C0 | 109027611 | DeeSaa | 2683.8 | 100331 | 103824 | -3493 | 9b0c82fd | wool sold: they 178 vs me 188; units sold last 3 days: they 247 vs me 252; wheat planted: they 160 vs me 163 |
-| C0 | 109027929 | Maximo Uribarri | 2724.2 | 75567 | 79266 | -3699 | 9b0c82fd | CARE ops: they 344 vs me 397; milk sold: they 64 vs me 86; strawberry sold: they 127 vs me 137 |
-| C0 | 109031567 | Rudra | 2694.6 | 113467 | 120591 | -7124 | 9b0c82fd | FERTILIZE ops: they 101 vs me 122; wool sold: they 83 vs me 66; units sold last 3 days: they 279 vs me 262 |
-| C0 | 109032614 | lumen | 2684.8 | 92475 | 95113 | -2638 | 9b0c82fd | strawberry sold: they 80 vs me 137; wool sold: they 93 vs me 121; milk sold: they 61 vs me 86 |
+| C0 | 109027611 | DeeSaa | 2683.8 | 100331 | 103824 | -3493 | 9b0c82fd | units sold last 3 days: they 401 vs me 394; wheat planted: they 160 vs me 163; weeds spawned: they 21 vs me 22 |
+| C0 | 109027929 | Maximo Uribarri | 2724.2 | 75567 | 79266 | -3699 | 9b0c82fd | CARE ops: they 344 vs me 397; units sold last 3 days: they 351 vs me 378; milk sold: they 134 vs me 149 |
+| C0 | 109031567 | Rudra | 2694.6 | 113467 | 120591 | -7124 | 9b0c82fd | wool sold: they 141 vs me 120; units sold last 3 days: they 454 vs me 433; FERTILIZE ops: they 101 vs me 122 |
+| C0 | 109032614 | lumen | 2684.8 | 92475 | 95113 | -2638 | 9b0c82fd | milk sold: they 122 vs me 158; units sold last 3 days: they 373 vs me 395; CARE ops: they 387 vs me 397 |
 
 ## Head to head with the other studied teams (all games, not only sampled)
 

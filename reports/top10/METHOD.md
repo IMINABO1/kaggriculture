@@ -99,9 +99,16 @@ with, per seat:
 - the full action stream (so the game can be replayed or used as an arena opponent);
 - per-day series: money at day start, hands, unlocked quadrants, farm composition at day
   end, shed contents, new weeds;
-- events: land purchases, animal and seed purchases, plantings by crop and day, sells by
-  product with the price at that step and the **executed** units (capped by what the shed
-  held before the turn, because some agents request thousands of units every turn);
+- events: land purchases, animal and seed purchases, plantings by crop and day, and every
+  market order **as the engine executed it**: `research/market_replay.py` replays each
+  turn's market from the recorded observation (both seats' DROP, PLACE and PICKUP applied
+  to the sheds first, then both order queues in the engine's per-unit lockstep against the
+  shared inventory, each unit quoted at the live price), so a sale carries its executed
+  units and the revenue received, a purchase its executed units and spend. The simulated
+  end-of-turn money is checked against the recorded money for both seats in every turn and
+  the mismatch count is stored per seat (`money_check`; zero for 99% of seats). Traces
+  carry `trace_version` 2; the earlier version capped sales by the shed as observed before
+  the turn's unit actions and undercounted most teams' sales by 35-50% (P18);
 - counts of every unit op (CARE, FERTILIZE, HARVEST, DIG, ...);
 - three fingerprints at turns 24, 48, 100, 136, 200, 300, 400, 719:
   - the exact action-stream hash in the community's convention (comparable with their
@@ -164,9 +171,11 @@ between the studied teams over their whole histories, and the episode ids behind
 | what | where |
 |---|---|
 | summary tables and figures | `reports/top10/summary.md`, `reports/top10/figs/` |
-| top-14 vs next-15 comparison | `reports/top10/groups.md` |
+| four-group comparison | `reports/top10/groups.md` |
+| the thorough analysis (mechanisms, corrected market, structure, what to clone) | `reports/top10/analysis.md` (built by `scripts/top10/deep.py`) |
 | one dossier per team | `reports/top10/<team>.md` |
 | the recommendation | `reports/top10/decision_memo.md` |
+| per-seat market and labour table, tile-level weed events | `data/top10/market.parquet` (`market_extract.py`), `data/top10/weed_events.parquet` (`weed_tiles.py`) |
 | histories, sample, teams, features | `data/top10/` (tracked) |
 | replays and traces | `data/replays/`, `data/traces/` (local only, regenerable) |
 | arena opponents from the latest games | `opponents/top10/` (local only) |
@@ -184,8 +193,12 @@ uv run python scripts/top10/daily_index.py                                    # 
 uv run python scripts/top10/fetch.py --jobs 2 --source daily                  # replays held by the daily datasets, no quota
 uv run python scripts/top10/fetch.py --jobs 2 --source endpoint               # the rest; waits out the quota, hours
 uv run python scripts/top10/extract.py --traces-only --jobs 2 --limit 700     # traces, in chunks
+uv run python scripts/top10/extract.py --upgrade --traces-only --jobs 5       # rebuild traces written by an older tracer
 uv run python scripts/top10/extract.py --jobs 2                               # feature table
+uv run python scripts/top10/market_extract.py 4                               # per-seat market and labour table
+uv run python scripts/top10/weed_tiles.py --per-team 8 --jobs 2               # tile-level weed events (opens replays)
 uv run python scripts/top10/analyze.py                                        # summary, groups, dossiers
+uv run python scripts/top10/deep.py                                           # analysis.md and its figures
 uv run python scripts/top10/export_tapes.py --window L --per-team 5           # arena opponents
 ```
 

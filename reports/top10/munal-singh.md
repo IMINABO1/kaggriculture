@@ -35,13 +35,13 @@ game 1: 701, game 10: 1561, game 25: 2695, game 50: 2880, game 100: 2885, game 2
 | melon planted | 12 |
 | FERTILIZE ops | 110 |
 | CARE ops | 405 |
-| melon sold | 12 |
-| strawberry sold | 128 |
-| milk sold | 107 |
-| wool sold | 75.5 |
-| wheat sold | 336 |
-| fertilizer sold | 283 |
-| units sold last 3 days | 268.5 |
+| melon sold | 72 |
+| strawberry sold | 249 |
+| milk sold | 192.5 |
+| wool sold | 135.5 |
+| wheat sold | 386.5 |
+| fertilizer sold | 337 |
+| units sold last 3 days | 385.5 |
 | shed peak | 45 |
 | weeds spawned | 19 |
 | unexecutable market orders | 1 |
@@ -99,20 +99,20 @@ What goes with being off the modal field line at turn 200 (the first cut where f
 
 | window | games | win % | median bank | hands | cows | sheep | geese | quadrants | land day 1 | strawberry | wheat | melon | melon sold | milk sold | wool sold | field lines @400 | market lines @400 |
 |---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|
-| C0 | 50 | 84 | 96852.5 | 12 | 8 | 6 | 3 | 3 | 6 | 33 | 162 | 12 | 12 | 107 | 75.5 | 39 | 40 |
+| C0 | 50 | 84 | 96852.5 | 12 | 8 | 6 | 3 | 3 | 6 | 33 | 162 | 12 | 72 | 192.5 | 135.5 | 39 | 40 |
 
 ## Losses in the first and last windows
 
 | window | episode | opponent | opp rating | my bank | opp bank | margin | opp opening | biggest differences (opponent vs me) |
 |---|---|---|---|---|---|---|---|---|
-| C0 | 108834849 | Knight of Favonius | 2889.1 | 96769 | 98820 | -2051 | 9b0c82fd | strawberry sold: they 99 vs me 132; wool sold: they 140 vs me 150; milk sold: they 103 vs me 106 |
-| C0 | 108836912 | THIRD FARM CLUB | 2896.0 | 74713 | 91149 | -16436 | 7cb9b079 | CARE ops: they 279 vs me 398; FERTILIZE ops: they 201 vs me 94; wool sold: they 209 vs me 112 |
-| C0 | 108838388 | morality0707 | 2892.9 | 59749 | 59998 | -249 | 791b6988 | CARE ops: they 274 vs me 410; melon sold: they 59 vs me 12; strawberry sold: they 100 vs me 120 |
-| C0 | 108840031 | Zhenghongshuang | 2944.6 | 61861 | 65544 | -3683 | 3bc18d7a | CARE ops: they 345 vs me 398; strawberry sold: they 139 vs me 118; wheat planted: they 157 vs me 165 |
-| C0 | 108841311 | JezzLynn | 2931.5 | 72545 | 73146 | -601 | 9b0c82fd | wool sold: they 96 vs me 103; strawberry sold: they 126 vs me 129; weeds spawned: they 19 vs me 20 |
-| C0 | 108845172 | Phoenix750 | 2888.8 | 77629 | 79009 | -1380 | 9b0c82fd | milk sold: they 141 vs me 123; strawberry sold: they 118 vs me 135; units sold last 3 days: they 257 vs me 273 |
-| C0 | 108846218 | Unknown Mother-Goose | 2873.1 | 135599 | 143088 | -7489 | cfefcbaa | FERTILIZE ops: they 176 vs me 93; strawberry sold: they 175 vs me 102; wool sold: they 137 vs me 191 |
-| C0 | 108846410 | Tom&Jerry | 2877.9 | 112112 | 112179 | -67 | 9b0c82fd | milk sold: they 87 vs me 98; units sold last 3 days: they 270 vs me 273 |
+| C0 | 108834849 | Knight of Favonius | 2889.1 | 96769 | 98820 | -2051 | 9b0c82fd | units sold last 3 days: they 392 vs me 385; wheat planted: they 163 vs me 162; CARE ops: they 397 vs me 398 |
+| C0 | 108836912 | THIRD FARM CLUB | 2896.0 | 74713 | 91149 | -16436 | 7cb9b079 | CARE ops: they 279 vs me 398; FERTILIZE ops: they 201 vs me 94; units sold last 3 days: they 446 vs me 365 |
+| C0 | 108838388 | morality0707 | 2892.9 | 59749 | 59998 | -249 | 791b6988 | strawberry sold: they 100 vs me 249; CARE ops: they 274 vs me 410; wool sold: they 42 vs me 105 |
+| C0 | 108840031 | Zhenghongshuang | 2944.6 | 61861 | 65544 | -3683 | 3bc18d7a | CARE ops: they 345 vs me 398; wool sold: they 267 vs me 252; units sold last 3 days: they 398 vs me 387 |
+| C0 | 108841311 | JezzLynn | 2931.5 | 72545 | 73146 | -601 | 9b0c82fd | units sold last 3 days: they 395 vs me 389; weeds spawned: they 19 vs me 20 |
+| C0 | 108845172 | Phoenix750 | 2888.8 | 77629 | 79009 | -1380 | 9b0c82fd | CARE ops: they 413 vs me 405; wheat planted: they 156 vs me 160; units sold last 3 days: they 428 vs me 430 |
+| C0 | 108846218 | Unknown Mother-Goose | 2873.1 | 135599 | 143088 | -7489 | cfefcbaa | FERTILIZE ops: they 176 vs me 93; wool sold: they 212 vs me 264; CARE ops: they 351 vs me 398 |
+| C0 | 108846410 | Tom&Jerry | 2877.9 | 112112 | 112179 | -67 | 9b0c82fd | milk sold: they 181 vs me 195; units sold last 3 days: they 386 vs me 385 |
 
 ## Head to head with the other studied teams (all games, not only sampled)
 

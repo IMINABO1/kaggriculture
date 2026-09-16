@@ -35,13 +35,13 @@ game 1: 675, game 10: 1572, game 25: 2626, game 50: 2924, game 100: 2956, game l
 | melon planted | 12 |
 | FERTILIZE ops | 116.5 |
 | CARE ops | 382 |
-| melon sold | 12 |
-| strawberry sold | 119 |
-| milk sold | 103 |
-| wool sold | 73.5 |
-| wheat sold | 361.5 |
-| fertilizer sold | 292 |
-| units sold last 3 days | 258 |
+| melon sold | 72 |
+| strawberry sold | 250 |
+| milk sold | 191 |
+| wool sold | 126 |
+| wheat sold | 426.5 |
+| fertilizer sold | 346 |
+| units sold last 3 days | 392.5 |
 | shed peak | 58.5 |
 | weeds spawned | 21 |
 | unexecutable market orders | 45 |
@@ -99,14 +99,14 @@ What goes with being off the modal field line at turn 200 (the first cut where f
 
 | window | games | win % | median bank | hands | cows | sheep | geese | quadrants | land day 1 | strawberry | wheat | melon | melon sold | milk sold | wool sold | field lines @400 | market lines @400 |
 |---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|
-| C0 | 50 | 96 | 102415 | 12 | 8 | 6 | 3 | 3 | 6 | 33 | 163 | 12 | 12 | 103 | 73.5 | 46 | 50 |
+| C0 | 50 | 96 | 102415 | 12 | 8 | 6 | 3 | 3 | 6 | 33 | 163 | 12 | 72 | 191 | 126 | 46 | 50 |
 
 ## Losses in the first and last windows
 
 | window | episode | opponent | opp rating | my bank | opp bank | margin | opp opening | biggest differences (opponent vs me) |
 |---|---|---|---|---|---|---|---|---|
-| C0 | 109133627 | THUNDER THUNDER | 2739.7 | 92690 | 94256 | -1566 | 24a0cda8 | units sold last 3 days: they 162 vs me 280; CARE ops: they 281 vs me 376; strawberry sold: they 180 vs me 121 |
-| C0 | 109151473 | Crop Dustas | 2897.1 | 81653 | 86317 | -4664 | 9b0c82fd | milk sold: they 133 vs me 106; CARE ops: they 396 vs me 383; FERTILIZE ops: they 107 vs me 119 |
+| C0 | 109133627 | THUNDER THUNDER | 2739.7 | 92690 | 94256 | -1566 | 24a0cda8 | CARE ops: they 281 vs me 376; strawberry sold: they 186 vs me 249; units sold last 3 days: they 351 vs me 406 |
+| C0 | 109151473 | Crop Dustas | 2897.1 | 81653 | 86317 | -4664 | 9b0c82fd | milk sold: they 245 vs me 196; units sold last 3 days: they 400 vs me 384; CARE ops: they 396 vs me 383 |
 
 ## Head to head with the other studied teams (all games, not only sampled)
 

@@ -84,10 +84,10 @@ Snapshot 2026-09-15T1342Z of the full leaderboard (9125 teams; gold to rank 28, 
 | CARE ops | 334.2 | 363.2 | 405 | 417 |
 | FERTILIZE ops | 154 | 116.5 | 111 | 103 |
 | strawberry planted | 31.5 | 33 | 33 | 33 |
-| melon last sell day | 19 | 11 | 11 | 11 |
-| strawberry first sell day | 15.5 | 16 | 19 | 18 |
+| melon last sell day | 20 | 11 | 11 | 11 |
+| strawberry first sell day | 14.5 | 15 | 15 | 15 |
 | weed tile-days | 10.5 | 0.2 | 0 | 0 |
-| units sold last 3 days | 265.5 | 269 | 266.5 | 268.2 |
+| units sold last 3 days | 393.2 | 398.8 | 393 | 392.8 |
 | rating after game 50 | 2859.6 | 2826.0 | 2801.2 | 2621.6 |
 | rating after game 100 | 2967.1 | 2922.3 | 2887.6 | 2622.1 |
 
@@ -196,6 +196,7 @@ Separates them (p < 0.05):
 - **win %**: top-14 median 84 vs gold 91; a random top-14 team is above a random gold team 19% of the time (p = 0.005)
 - **field branch turn**: top-14 median 36 vs gold 200; a random top-14 team is above a random gold team 21% of the time (p = 0.005)
 - **rating after game 100**: top-14 median 2967 vs gold 2922; a random top-14 team is above a random gold team 76% of the time (p = 0.019)
+- **strawberry sold**: top-14 median 222 vs gold 248; a random top-14 team is above a random gold team 26% of the time (p = 0.029)
 - **distinct % at 400**: top-14 median 100 vs gold 89; a random top-14 team is above a random gold team 73% of the time (p = 0.028)
 - **weed tile-days**: top-14 median 10.5 vs gold 0.2; a random top-14 team is above a random gold team 72% of the time (p = 0.040)
 - **strawberry planted**: top-14 median 32 vs gold 33; a random top-14 team is above a random gold team 28% of the time (p = 0.037)
@@ -205,24 +206,26 @@ Separates them (p < 0.05):
 Does not separate them (p >= 0.2, AUC within 0.35-0.65):
 
 - quadrants (3 vs 3)
-- wool sold (64 vs 70)
+- wool first sell day (6 vs 6)
+- milk first sell day (8 vs 8)
+- melon first sell day (10 vs 10)
 - hands (peak) (12 vs 12)
 - wheat planted (157 vs 163)
-- units sold last 3 days (266 vs 269)
-- units sold total (1162 vs 1148)
-- milk first sell day (11 vs 11)
+- units sold total (1572 vs 1601)
 - weeds spawned (19.2 vs 20)
-- milk sold (129 vs 125)
+- wool sold (116 vs 122)
 - DIG ops (36 vs 36)
 - rating after game 25 (2551 vs 2548)
+- cows bought (8 vs 7.8)
+- strawberry first sell day (14.5 vs 15)
 - land day 1 (6 vs 6)
 - unexecutable market orders (0 vs 0)
-- cows bought (8 vs 7.8)
-- sheep bought (5 vs 6)
 - rating after game 50 (2860 vs 2826)
 - games to 2900 (58 vs 74)
-- strawberry sold (172 vs 152)
 - final money (103828 vs 106149)
+- units sold last 3 days (393 vs 399)
+- sheep bought (5 vs 6)
+- milk sold (180 vs 191)
 
 All public games between top-14 and gold, seen from the top-14 side: **1053-858-4** (55% wins over 1915 games); current submissions of both sides only: **99-89-0** (188 games).
 
@@ -290,9 +293,9 @@ gold teams against top-14:
 | quadrants | 3 | 3 to 3 | 3 | 3 to 3 | 0.50 | 1 |
 | land day 1 | 6 | 3 to 6 | 6 | 5 to 6 | 0.43 | 0.27 |
 | land day 2 | 9.50 | 8 to 11 | 11 | 8 to 11 | 0.36 | 0.17 |
-| cows bought | 8 | 6 to 11.5 | 7.75 | 6 to 10 | 0.58 | 0.46 |
-| sheep bought | 5 | 3 to 8.5 | 6 | 3 to 7.5 | 0.40 | 0.33 |
-| geese bought | 2.50 | 0 to 6 | 3 | 2 to 6 | 0.30 | 0.05 |
+| cows bought | 8 | 6 to 9 | 7.75 | 6 to 10 | 0.56 | 0.58 |
+| sheep bought | 5 | 3 to 7 | 6 | 3 to 7.5 | 0.37 | 0.21 |
+| geese bought | 2.50 | 0 to 6 | 3 | 2 to 5.5 | 0.31 | 0.06 |
 | strawberry planted | 31.50 | 24 to 33 | 33 | 26 to 34 | 0.28 | 0.04 |
 | wheat planted | 157 | 104.5 to 192 | 163 | 101 to 172 | 0.48 | 0.87 |
 | melon planted | 13 | 11 to 15 | 12 | 8 to 15 | 0.71 | 0.04 |
@@ -303,17 +306,17 @@ gold teams against top-14:
 
 | feature | top-14 median | top-14 range | gold median | gold range | P(top-14 > gold) | p |
 |---|---|---|---|---|---|---|
-| melon sold | 18 | 0 to 72 | 12 | 0 to 48.5 | 0.64 | 0.20 |
-| strawberry sold | 172.50 | 42 to 224 | 151.50 | 119 to 240.5 | 0.62 | 0.29 |
-| milk sold | 129.25 | 29 to 180.5 | 125 | 62.5 to 161.5 | 0.54 | 0.71 |
-| wool sold | 64 | 20.5 to 109 | 70 | 38 to 103.5 | 0.50 | 0.98 |
-| units sold last 3 days | 265.50 | 198.5 to 368 | 269 | 238 to 794.5 | 0.48 | 0.87 |
-| units sold total | 1162.25 | 754.5 to 1612 | 1147.75 | 1014.5 to 4912 | 0.52 | 0.85 |
-| melon first sell day | 11 | 10 to 22 | 11 | 11 to 15 | 0.37 | 0.15 |
-| melon last sell day | 19 | 11 to 28 | 11 | 11 to 27 | 0.67 | 0.10 |
-| strawberry first sell day | 15.50 | 13 to 19 | 16 | 12 to 19 | 0.34 | 0.13 |
-| milk first sell day | 11 | 8 to 14 | 11 | 8 to 14 | 0.48 | 0.84 |
-| wool first sell day | 8.50 | 6 to 16 | 6 | 6 to 13 | 0.69 | 0.07 |
+| melon sold | 75 | 60 to 90 | 72 | 48 to 87 | 0.64 | 0.18 |
+| strawberry sold | 221.50 | 185 to 253 | 248.50 | 205 to 256 | 0.26 | 0.03 |
+| milk sold | 180.25 | 157.5 to 232 | 191 | 159.5 to 213 | 0.36 | 0.22 |
+| wool sold | 116 | 84 to 145 | 122 | 64 to 150 | 0.45 | 0.65 |
+| units sold last 3 days | 393.25 | 310.5 to 448 | 398.75 | 369.5 to 1060.5 | 0.37 | 0.25 |
+| units sold total | 1572.50 | 1495 to 2259 | 1601 | 1418 to 5781.5 | 0.47 | 0.82 |
+| melon first sell day | 10 | 10 to 11 | 10 | 10 to 14.5 | 0.50 | 0.96 |
+| melon last sell day | 20 | 11 to 28 | 11 | 10 to 28.5 | 0.69 | 0.07 |
+| strawberry first sell day | 14.50 | 13 to 16 | 15 | 12 to 16 | 0.43 | 0.50 |
+| milk first sell day | 8 | 8 to 8 | 8 | 8 to 8 | 0.50 | 1 |
+| wool first sell day | 6 | 6 to 6 | 6 | 6 to 6 | 0.50 | 1 |
 
 **Weeds and repair**
 
@@ -351,33 +354,36 @@ Separates them (p < 0.05):
 - **win %**: gold median 91 vs silver 84; a random gold team is above a random silver team 85% of the time (p = 0.001)
 - **final money**: gold median 106149 vs silver 102162; a random gold team is above a random silver team 77% of the time (p = 0.008)
 - **CARE ops**: gold median 363 vs silver 405; a random gold team is above a random silver team 24% of the time (p = 0.008)
-- **strawberry first sell day**: gold median 16 vs silver 19; a random gold team is above a random silver team 25% of the time (p = 0.008)
-- **milk first sell day**: gold median 11 vs silver 12; a random gold team is above a random silver team 26% of the time (p = 0.013)
-- **weed tile-days per weed**: gold median 0.0 vs silver 0; a random gold team is above a random silver team 71% of the time (p = 0.007)
+- **milk sold**: gold median 191 vs silver 194; a random gold team is above a random silver team 28% of the time (p = 0.031)
 - **weed tile-days**: gold median 0.2 vs silver 0; a random gold team is above a random silver team 71% of the time (p = 0.007)
+- **weed tile-days per weed**: gold median 0.0 vs silver 0; a random gold team is above a random silver team 71% of the time (p = 0.007)
 - **weed tiles standing (peak)**: gold median 0.2 vs silver 0; a random gold team is above a random silver team 71% of the time (p = 0.007)
 - **cows bought**: gold median 7.8 vs silver 8; a random gold team is above a random silver team 31% of the time (p = 0.016)
 - **unexecutable market orders**: gold median 0 vs silver 1; a random gold team is above a random silver team 32% of the time (p = 0.044)
-- **melon last sell day**: gold median 11 vs silver 11; a random gold team is above a random silver team 63% of the time (p = 0.041)
 
 Does not separate them (p >= 0.2, AUC within 0.35-0.65):
 
 - quadrants (3 vs 3)
+- milk first sell day (8 vs 8)
 - games to 2900 (74 vs 76)
 - land day 1 (6 vs 6)
 - weeds spawned (20 vs 19)
+- melon sold (72 vs 72)
+- wool first sell day (6 vs 6)
 - wheat planted (163 vs 162)
 - rating after game 50 (2826 vs 2801)
 - hands (peak) (12 vs 12)
+- melon first sell day (10 vs 10)
 - rating after game 1 (705 vs 713)
-- wool first sell day (6 vs 6)
+- units sold total (1601 vs 1593)
 - melon planted (12 vs 12)
 - rating after game 25 (2548 vs 2513)
 - plan branch turn (200 vs 200)
-- units sold total (1148 vs 1101)
 - field branch turn (200 vs 200)
-- units sold last 3 days (269 vs 266)
+- strawberry first sell day (15 vs 15)
 - rating after game 10 (1578 vs 1608)
+- strawberry sold (248 vs 249)
+- units sold last 3 days (399 vs 393)
 
 All public games between gold and silver, seen from the gold side: **872-602-12** (59% wins over 1486 games); current submissions of both sides only: **76-37-0** (113 games).
 
@@ -454,7 +460,7 @@ silver teams against gold:
 | land day 2 | 11 | 8 to 11 | 11 | 8 to 11 | 0.38 | 0.06 |
 | cows bought | 7.75 | 6 to 10 | 8 | 6 to 9 | 0.31 | 0.02 |
 | sheep bought | 6 | 3 to 7.5 | 6 | 6 to 6.5 | 0.38 | 0.06 |
-| geese bought | 3 | 2 to 6 | 3 | 2 to 3 | 0.61 | 0.10 |
+| geese bought | 3 | 2 to 5.5 | 3 | 2 to 3 | 0.61 | 0.10 |
 | strawberry planted | 33 | 26 to 34 | 33 | 33 to 34 | 0.38 | 0.06 |
 | wheat planted | 163 | 101 to 172 | 162 | 138.5 to 163 | 0.53 | 0.72 |
 | melon planted | 12 | 8 to 15 | 12 | 12 to 13 | 0.55 | 0.38 |
@@ -465,17 +471,17 @@ silver teams against gold:
 
 | feature | gold median | gold range | silver median | silver range | P(gold > silver) | p |
 |---|---|---|---|---|---|---|
-| melon sold | 12 | 0 to 48.5 | 12 | 12 to 23.5 | 0.59 | 0.18 |
-| strawberry sold | 151.50 | 119 to 240.5 | 129 | 115 to 217 | 0.64 | 0.17 |
-| milk sold | 125 | 62.5 to 161.5 | 110 | 96.5 to 155 | 0.66 | 0.10 |
-| wool sold | 70 | 38 to 103.5 | 75 | 49 to 109 | 0.33 | 0.09 |
-| units sold last 3 days | 269 | 238 to 794.5 | 266.50 | 223.5 to 574 | 0.57 | 0.49 |
-| units sold total | 1147.75 | 1014.5 to 4912 | 1101 | 1074 to 4713 | 0.57 | 0.50 |
-| melon first sell day | 11 | 11 to 15 | 11 | 11 to 18 | 0.58 | 0.16 |
-| melon last sell day | 11 | 11 to 27 | 11 | 11 to 21 | 0.63 | 0.04 |
-| strawberry first sell day | 16 | 12 to 19 | 19 | 15 to 19 | 0.25 | 0.01 |
-| milk first sell day | 11 | 8 to 14 | 12 | 9 to 15 | 0.26 | 0.01 |
-| wool first sell day | 6 | 6 to 13 | 6 | 6 to 16 | 0.55 | 0.58 |
+| melon sold | 72 | 48 to 87 | 72 | 72 to 75 | 0.52 | 0.76 |
+| strawberry sold | 248.50 | 205 to 256 | 249 | 233.5 to 255 | 0.40 | 0.31 |
+| milk sold | 191 | 159.5 to 213 | 194 | 191 to 245 | 0.28 | 0.03 |
+| wool sold | 122 | 64 to 150 | 132 | 103.5 to 161 | 0.31 | 0.05 |
+| units sold last 3 days | 398.75 | 369.5 to 1060.5 | 393 | 375 to 705 | 0.63 | 0.21 |
+| units sold total | 1601 | 1418 to 5781.5 | 1593 | 1569 to 5220 | 0.45 | 0.63 |
+| melon first sell day | 10 | 10 to 14.5 | 10 | 10 to 10 | 0.54 | 0.22 |
+| melon last sell day | 11 | 10 to 28.5 | 11 | 11 to 21 | 0.59 | 0.17 |
+| strawberry first sell day | 15 | 12 to 16 | 15 | 15 to 15 | 0.43 | 0.20 |
+| milk first sell day | 8 | 8 to 8 | 8 | 8 to 8 | 0.50 | 1 |
+| wool first sell day | 6 | 6 to 6 | 6 | 6 to 7 | 0.48 | 0.41 |
 
 **Weeds and repair**
 
@@ -510,41 +516,44 @@ silver teams against gold:
 Separates them (p < 0.05):
 
 - **rating after game 100**: silver median 2888 vs bronze 2622; a random silver team is above a random bronze team 95% of the time (p = 0.000)
-- **milk sold**: silver median 110 vs bronze 126; a random silver team is above a random bronze team 11% of the time (p = 0.000)
 - **rating after game 50**: silver median 2801 vs bronze 2622; a random silver team is above a random bronze team 85% of the time (p = 0.002)
 - **FERTILIZE ops**: silver median 111 vs bronze 103; a random silver team is above a random bronze team 84% of the time (p = 0.003)
 - **opp rating**: silver median 2346 vs bronze 2107; a random silver team is above a random bronze team 83% of the time (p = 0.003)
 - **CARE ops**: silver median 405 vs bronze 417; a random silver team is above a random bronze team 19% of the time (p = 0.004)
+- **milk sold**: silver median 194 vs bronze 205; a random silver team is above a random bronze team 19% of the time (p = 0.006)
 - **DIG ops**: silver median 37 vs bronze 36; a random silver team is above a random bronze team 77% of the time (p = 0.010)
+- **strawberry sold**: silver median 249 vs bronze 248; a random silver team is above a random bronze team 76% of the time (p = 0.014)
 - **final money**: silver median 102162 vs bronze 105605; a random silver team is above a random bronze team 24% of the time (p = 0.022)
-- **wool sold**: silver median 75 vs bronze 89; a random silver team is above a random bronze team 24% of the time (p = 0.022)
-- **milk first sell day**: silver median 12 vs bronze 11; a random silver team is above a random bronze team 73% of the time (p = 0.029)
+- **units sold total**: silver median 1593 vs bronze 1580; a random silver team is above a random bronze team 74% of the time (p = 0.035)
 
 Does not separate them (p >= 0.2, AUC within 0.35-0.65):
 
 - quadrants (3 vs 3)
 - hands (peak) (12 vs 12)
 - cows bought (8 vs 8)
-- units sold total (1101 vs 1100)
+- melon first sell day (10 vs 10)
+- milk first sell day (8 vs 8)
+- strawberry first sell day (15 vs 15)
 - land day 2 (11 vs 11)
 - sheep bought (6 vs 6)
+- melon sold (72 vs 72)
+- melon planted (12 vs 12)
 - strawberry planted (33 vs 33)
 - land day 1 (6 vs 6)
-- melon first sell day (11 vs 11)
-- melon planted (12 vs 12)
-- melon sold (12 vs 12)
+- wool first sell day (6 vs 6)
 - melon last sell day (11 vs 11)
 - wheat planted (162 vs 162)
 - rating after game 10 (1608 vs 1622)
 - geese bought (3 vs 3)
 - rating after game 1 (713 vs 711)
-- weed tile-days per weed (0 vs 0)
-- weed tiles standing (peak) (0 vs 0)
 - weed tile-days (0 vs 0)
+- weed tiles standing (peak) (0 vs 0)
+- weed tile-days per weed (0 vs 0)
+- units sold last 3 days (393 vs 393)
 - win % (84 vs 83)
 - unexecutable market orders (1 vs 1)
 - field branch turn (200 vs 200)
-- units sold last 3 days (266 vs 268)
+- wool sold (132 vs 138)
 - weeds spawned (19 vs 19)
 
 All public games between silver and bronze, seen from the silver side: **221-183-20** (52% wins over 424 games); current submissions of both sides only: **1-0-1** (2 games).
@@ -629,17 +638,17 @@ bronze teams against silver:
 
 | feature | silver median | silver range | bronze median | bronze range | P(silver > bronze) | p |
 |---|---|---|---|---|---|---|
-| melon sold | 12 | 12 to 23.5 | 12 | 12 to 12 | 0.52 | 0.49 |
-| strawberry sold | 129 | 115 to 217 | 133 | 117 to 134.5 | 0.33 | 0.12 |
-| milk sold | 110 | 96.5 to 155 | 126.50 | 116.5 to 135 | 0.11 | 0.00 |
-| wool sold | 75 | 49 to 109 | 89 | 67.5 to 108 | 0.24 | 0.02 |
-| units sold last 3 days | 266.50 | 223.5 to 574 | 268.25 | 256 to 270.5 | 0.39 | 0.34 |
-| units sold total | 1101 | 1074 to 4713 | 1099.75 | 1080.5 to 2300.5 | 0.52 | 0.88 |
-| melon first sell day | 11 | 11 to 18 | 11 | 11 to 11 | 0.52 | 0.49 |
+| melon sold | 72 | 72 to 75 | 72 | 72 to 72 | 0.52 | 0.49 |
+| strawberry sold | 249 | 233.5 to 255 | 248 | 247 to 249 | 0.76 | 0.01 |
+| milk sold | 194 | 191 to 245 | 205.25 | 194 to 245 | 0.19 | 0.01 |
+| wool sold | 132 | 103.5 to 161 | 138 | 115.5 to 161 | 0.38 | 0.29 |
+| units sold last 3 days | 393 | 375 to 705 | 392.75 | 379.5 to 398 | 0.45 | 0.66 |
+| units sold total | 1593 | 1569 to 5220 | 1579.75 | 1560 to 2866 | 0.74 | 0.03 |
+| melon first sell day | 10 | 10 to 10 | 10 | 10 to 10 | 0.50 | 1 |
 | melon last sell day | 11 | 11 to 21 | 11 | 11 to 11 | 0.52 | 0.49 |
-| strawberry first sell day | 19 | 15 to 19 | 18 | 18 to 19 | 0.68 | 0.08 |
-| milk first sell day | 12 | 9 to 15 | 11 | 11 to 12 | 0.73 | 0.03 |
-| wool first sell day | 6 | 6 to 16 | 7 | 6 to 7 | 0.31 | 0.05 |
+| strawberry first sell day | 15 | 15 to 15 | 15 | 15 to 15 | 0.50 | 1 |
+| milk first sell day | 8 | 8 to 8 | 8 | 8 to 8 | 0.50 | 1 |
+| wool first sell day | 6 | 6 to 7 | 6 | 6 to 6 | 0.52 | 0.49 |
 
 **Weeds and repair**
 
@@ -676,40 +685,40 @@ Separates them (p < 0.05):
 - **CARE ops**: top-14 median 334 vs bronze 417; a random top-14 team is above a random bronze team 2% of the time (p = 0.000)
 - **opp rating**: top-14 median 2453 vs bronze 2107; a random top-14 team is above a random bronze team 96% of the time (p = 0.000)
 - **distinct % at 400**: top-14 median 100 vs bronze 64; a random top-14 team is above a random bronze team 94% of the time (p = 0.000)
-- **strawberry first sell day**: top-14 median 15.5 vs bronze 18; a random top-14 team is above a random bronze team 6% of the time (p = 0.000)
 - **weed tile-days**: top-14 median 10.5 vs bronze 0; a random top-14 team is above a random bronze team 93% of the time (p = 0.000)
 - **weed tile-days per weed**: top-14 median 0.6 vs bronze 0; a random top-14 team is above a random bronze team 93% of the time (p = 0.000)
-- **rating after game 100**: top-14 median 2967 vs bronze 2622; a random top-14 team is above a random bronze team 93% of the time (p = 0.000)
 - **weed tiles standing (peak)**: top-14 median 4.5 vs bronze 0; a random top-14 team is above a random bronze team 93% of the time (p = 0.000)
+- **rating after game 100**: top-14 median 2967 vs bronze 2622; a random top-14 team is above a random bronze team 93% of the time (p = 0.000)
 - **rating after game 50**: top-14 median 2860 vs bronze 2622; a random top-14 team is above a random bronze team 90% of the time (p = 0.001)
+- **melon last sell day**: top-14 median 20 vs bronze 11; a random top-14 team is above a random bronze team 89% of the time (p = 0.000)
 - **field branch turn**: top-14 median 36 vs bronze 200; a random top-14 team is above a random bronze team 11% of the time (p = 0.000)
 - **plan branch turn**: top-14 median 36 vs bronze 200; a random top-14 team is above a random bronze team 11% of the time (p = 0.000)
+- **milk sold**: top-14 median 180 vs bronze 205; a random top-14 team is above a random bronze team 12% of the time (p = 0.002)
 - **FERTILIZE ops**: top-14 median 154 vs bronze 103; a random top-14 team is above a random bronze team 86% of the time (p = 0.003)
-- **melon last sell day**: top-14 median 19 vs bronze 11; a random top-14 team is above a random bronze team 86% of the time (p = 0.001)
+- **strawberry sold**: top-14 median 222 vs bronze 248; a random top-14 team is above a random bronze team 15% of the time (p = 0.003)
+- **wool sold**: top-14 median 116 vs bronze 138; a random top-14 team is above a random bronze team 15% of the time (p = 0.004)
 - **melon planted**: top-14 median 13 vs bronze 12; a random top-14 team is above a random bronze team 82% of the time (p = 0.004)
 - **strawberry planted**: top-14 median 32 vs bronze 33; a random top-14 team is above a random bronze team 18% of the time (p = 0.002)
 - **rating after game 10**: top-14 median 1491 vs bronze 1622; a random top-14 team is above a random bronze team 21% of the time (p = 0.016)
-- **strawberry sold**: top-14 median 172 vs bronze 133; a random top-14 team is above a random bronze team 79% of the time (p = 0.016)
 - **land day 2**: top-14 median 9.5 vs bronze 11; a random top-14 team is above a random bronze team 21% of the time (p = 0.005)
 - **unexecutable market orders**: top-14 median 0 vs bronze 1; a random top-14 team is above a random bronze team 22% of the time (p = 0.011)
-- **melon sold**: top-14 median 18 vs bronze 12; a random top-14 team is above a random bronze team 75% of the time (p = 0.025)
-- **sheep bought**: top-14 median 5 vs bronze 6; a random top-14 team is above a random bronze team 29% of the time (p = 0.049)
+- **sheep bought**: top-14 median 5 vs bronze 6; a random top-14 team is above a random bronze team 25% of the time (p = 0.018)
+- **melon sold**: top-14 median 75 vs bronze 72; a random top-14 team is above a random bronze team 71% of the time (p = 0.036)
 
 Does not separate them (p >= 0.2, AUC within 0.35-0.65):
 
 - quadrants (3 vs 3)
-- units sold last 3 days (266 vs 268)
-- milk sold (129 vs 126)
+- milk first sell day (8 vs 8)
+- wool first sell day (6 vs 6)
+- units sold last 3 days (393 vs 393)
 - weeds spawned (19.2 vs 19)
+- melon first sell day (10 vs 10)
 - hands (peak) (12 vs 12)
-- milk first sell day (11 vs 11)
 - DIG ops (36 vs 36)
+- units sold total (1572 vs 1580)
 - win % (84 vs 83)
-- melon first sell day (11 vs 11)
-- units sold total (1162 vs 1100)
 - wheat planted (157 vs 162)
 - final money (103828 vs 105605)
-- cows bought (8 vs 8)
 
 All public games between top-14 and bronze, seen from the top-14 side: **142-117-5** (54% wins over 264 games); current submissions of both sides only: **0-0-0** (0 games).
 
@@ -771,8 +780,8 @@ bronze teams against top-14:
 | quadrants | 3 | 3 to 3 | 3 | 3 to 3 | 0.50 | 1 |
 | land day 1 | 6 | 3 to 6 | 6 | 6 to 6 | 0.39 | 0.13 |
 | land day 2 | 9.50 | 8 to 11 | 11 | 11 to 11 | 0.21 | 0.01 |
-| cows bought | 8 | 6 to 11.5 | 8 | 8 to 8 | 0.39 | 0.31 |
-| sheep bought | 5 | 3 to 8.5 | 6 | 6 to 6 | 0.29 | 0.05 |
+| cows bought | 8 | 6 to 9 | 8 | 8 to 8 | 0.36 | 0.16 |
+| sheep bought | 5 | 3 to 7 | 6 | 6 to 6 | 0.25 | 0.02 |
 | geese bought | 2.50 | 0 to 6 | 3 | 3 to 3 | 0.32 | 0.09 |
 | strawberry planted | 31.50 | 24 to 33 | 33 | 33 to 33 | 0.18 | 0.00 |
 | wheat planted | 157 | 104.5 to 192 | 162 | 162 to 163 | 0.41 | 0.43 |
@@ -784,17 +793,17 @@ bronze teams against top-14:
 
 | feature | top-14 median | top-14 range | bronze median | bronze range | P(top-14 > bronze) | p |
 |---|---|---|---|---|---|---|
-| melon sold | 18 | 0 to 72 | 12 | 12 to 12 | 0.75 | 0.03 |
-| strawberry sold | 172.50 | 42 to 224 | 133 | 117 to 134.5 | 0.79 | 0.02 |
-| milk sold | 129.25 | 29 to 180.5 | 126.50 | 116.5 to 135 | 0.52 | 0.86 |
-| wool sold | 64 | 20.5 to 109 | 89 | 67.5 to 108 | 0.29 | 0.09 |
-| units sold last 3 days | 265.50 | 198.5 to 368 | 268.25 | 256 to 270.5 | 0.50 | 1 |
-| units sold total | 1162.25 | 754.5 to 1612 | 1099.75 | 1080.5 to 2300.5 | 0.57 | 0.54 |
-| melon first sell day | 11 | 10 to 22 | 11 | 11 to 11 | 0.43 | 0.44 |
-| melon last sell day | 19 | 11 to 28 | 11 | 11 to 11 | 0.86 | 0.00 |
-| strawberry first sell day | 15.50 | 13 to 19 | 18 | 18 to 19 | 0.06 | 0.00 |
-| milk first sell day | 11 | 8 to 14 | 11 | 11 to 12 | 0.45 | 0.65 |
-| wool first sell day | 8.50 | 6 to 16 | 7 | 6 to 7 | 0.66 | 0.17 |
+| melon sold | 75 | 60 to 90 | 72 | 72 to 72 | 0.71 | 0.04 |
+| strawberry sold | 221.50 | 185 to 253 | 248 | 247 to 249 | 0.15 | 0.00 |
+| milk sold | 180.25 | 157.5 to 232 | 205.25 | 194 to 245 | 0.12 | 0.00 |
+| wool sold | 116 | 84 to 145 | 138 | 115.5 to 161 | 0.15 | 0.00 |
+| units sold last 3 days | 393.25 | 310.5 to 448 | 392.75 | 379.5 to 398 | 0.49 | 0.93 |
+| units sold total | 1572.50 | 1495 to 2259 | 1579.75 | 1560 to 2866 | 0.43 | 0.58 |
+| melon first sell day | 10 | 10 to 11 | 10 | 10 to 10 | 0.54 | 0.40 |
+| melon last sell day | 20 | 11 to 28 | 11 | 11 to 11 | 0.89 | 0.00 |
+| strawberry first sell day | 14.50 | 13 to 16 | 15 | 15 to 15 | 0.36 | 0.19 |
+| milk first sell day | 8 | 8 to 8 | 8 | 8 to 8 | 0.50 | 1 |
+| wool first sell day | 6 | 6 to 6 | 6 | 6 to 6 | 0.50 | 1 |
 
 **Weeds and repair**
 
@@ -837,80 +846,80 @@ Sampled losses per group: how close they were, who inflicted them, and which fea
 
 | group | biggest scaled difference in the loss | losses | share % |
 |---|---|---|---|
-| top-14 | strawberry sold, opponent higher | 25 | 12.2 |
-| top-14 | FERTILIZE ops, opponent lower | 22 | 10.7 |
-| top-14 | milk sold, opponent higher | 19 | 9.3 |
-| gold | milk sold, opponent higher | 10 | 13.3 |
-| gold | FERTILIZE ops, opponent lower | 9 | 12 |
-| gold | FERTILIZE ops, opponent higher | 7 | 9.3 |
-| silver | milk sold, opponent higher | 28 | 13.3 |
-| silver | wool sold, opponent higher | 22 | 10.5 |
-| silver | FERTILIZE ops, opponent higher | 21 | 10 |
-| bronze | milk sold, opponent lower | 9 | 12.2 |
-| bronze | weeds spawned, opponent higher | 8 | 10.8 |
-| bronze | hands (peak), opponent higher | 7 | 9.5 |
+| top-14 | geese bought, opponent lower | 27 | 13.2 |
+| top-14 | FERTILIZE ops, opponent lower | 24 | 11.7 |
+| top-14 | hands (peak), opponent lower | 18 | 8.8 |
+| gold | FERTILIZE ops, opponent higher | 9 | 12 |
+| gold | FERTILIZE ops, opponent lower | 8 | 10.7 |
+| gold | milk sold, opponent higher | 7 | 9.3 |
+| silver | FERTILIZE ops, opponent higher | 32 | 15.2 |
+| silver | FERTILIZE ops, opponent lower | 24 | 11.4 |
+| silver | cows bought, opponent lower | 16 | 7.6 |
+| bronze | weeds spawned, opponent higher | 12 | 16.2 |
+| bronze | milk sold, opponent higher | 8 | 10.8 |
+| bronze | FERTILIZE ops, opponent higher | 7 | 9.5 |
 
 ## Per-team profile
 
 | rank | team | zone | group | games | win % | opp rating | field branch turn | plan branch turn | distinct % at 400 | driver | final money | hands (peak) | quadrants | land day 1 | land day 2 | cows bought | sheep bought | geese bought | strawberry planted | wheat planted | melon planted | CARE ops | FERTILIZE ops | DIG ops | melon sold | strawberry sold | milk sold | wool sold | units sold total | units sold last 3 days | melon first sell day | melon last sell day | strawberry first sell day | milk first sell day | wool first sell day | weeds spawned | weed tile-days | weed tiles standing (peak) | unexecutable market orders | weed tile-days per weed | rating after game 1 | rating after game 10 | rating after game 25 | rating after game 50 | rating after game 100 | rating after game 200 | games to 2900 |
 |---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|
-| 1 | Artem The Farmer 🍅 | gold | top | 86 | 94.2 | 2441.8 | 200 | 200 | 100 | none | 102655 | 13 | 3 | 6 | 8 | 7 | 6 | 2 | 27 | 143.5 | 13 | 311 | 156.5 | 37 | 6 | 143 | 103.5 | 35 | 1058 | 269 | 11 | 11 | 16 | 12 | 16 | 11 | 10 | 4 | 0 | 0.9 | 718.2 | 1459.7 | 2515.7 | 2854.1 | 3026.9 |  | 58 |
-| 2 | Majkel1337 | gold | top | 96 | 87.5 | 2557.9 | 24 | 24 | 100 | opponent | 113284 | 11 | 3 | 6 | 9 | 8 | 4 | 2 | 31 | 177.5 | 14 | 326.5 | 154 | 36 | 72 | 218.5 | 180.5 | 109 | 1515 | 368 | 10 | 18 | 14 | 8 | 6 | 19.5 | 26 | 7 | 0 | 1.3 | 650.7 | 1446.2 | 2543.1 | 2875.1 | 3096.7 | 3247.0 | 54 |
-| 3 | Unknown Mother-Goose | gold | gold | 81 | 90.1 | 2380.4 | 48 | 48 | 100 | weed | 117836 | 11 | 3 | 6 | 11 | 7 | 6 | 3 | 30 | 143 | 14 | 332 | 180 | 37 | 22 | 151 | 121 | 81 | 1156 | 286 | 11 | 22 | 16 | 13 | 7 | 17 | 14 | 9 | 7 | 0.8 | 683.6 | 1332.0 | 2342.0 | 2809.3 | 2987.2 |  | 63 |
-| 4 | DSM | gold | top | 80 | 97.5 | 2417.0 | 24 | 24 | 100 | none | 104556.5 | 11 | 3 | 6 | 9 | 9 | 4 | 2 | 30 | 187.5 | 14 | 340.5 | 154.5 | 35 | 64 | 224 | 177.5 | 92.5 | 1509.5 | 361.5 | 10 | 23 | 13 | 8 | 6 | 19 | 28 | 8 | 0 | 1.4 | 697.2 | 1479.3 | 2521.9 | 2865.1 | 3036.2 |  | 58 |
-| 5 | SpaTaro | gold | top | 86 | 79.1 | 2081.0 | 24 | 24 | 100 | none | 97042 | 11 | 3 | 6 | 8 | 11.5 | 8.5 | 0 | 26 | 192 | 11 | 272.5 | 95 | 23.5 | 18 | 115.5 | 131 | 62.5 | 1482 | 277 | 10 | 13 | 14 | 11 | 12 | 23 | 25 | 7 | 239.5 | 1.2 | 684.3 | 1169.7 | 1588.1 | 1846.4 | 2079.4 | 2490.5 | 358 |
-| 6 | THIRD FARM CLUB | gold | gold | 50 | 96 | 1837.5 | 200 | 200 | 100 | shop | 117769 | 13 | 3 | 6 | 9 | 10 | 4 | 6 | 32.5 | 133.5 | 15 | 324 | 184.5 | 45 | 48.5 | 200 | 161.5 | 45 | 1238.5 | 275.5 | 12 | 23 | 14 | 9 | 6 | 14.5 | 22 | 7 | 0 | 1.6 | 698.9 | 1369.9 | 2135.6 | 2433.8 | 2688.0 | 2977.0 | 173 |
-| 7 | Orbital Terraformer | gold | top | 73 | 87.7 | 2238.6 | 24 | 24 | 100 | opponent | 103266 | 11 | 3 | 6 | 9 | 8 | 5 | 2 | 31 | 188 | 14 | 332 | 154 | 35 | 72 | 202 | 170 | 101 | 1512 | 339 | 10 | 13 | 14 | 8 | 6 | 15 | 31 | 7 | 0 | 2.2 | 677.1 | 1328.1 | 2243.0 | 2700.5 | 2910.0 | 3010.8 | 92 |
-| 8 | Sida Zuo | gold | gold | 50 | 92 | 2081.5 | 24 | 24 | 100 | opponent | 107532.5 | 11 | 3 | 6 | 8 | 7 | 4 | 4 | 26 | 129 | 8 | 317 | 150 | 40 | 0 | 191 | 112.5 | 47 | 1067.5 | 242 | 11 | 11 | 12 | 11 | 13 | 13.5 | 9 | 3 | 0 | 0.7 | 667.4 | 1534.4 | 2329.7 | 2670.8 | 2823.0 |  |  |
-| 9 | ymg_aq | gold | top | 73 | 86.3 | 2502.1 | 100 | 100 | 100 | none | 105617 | 13 | 3 | 5 | 8 | 7 | 3 | 0 | 33 | 152 | 15 | 249 | 135 | 37 | 30 | 196 | 144 | 53 | 1612 | 262 | 17 | 28 | 14 | 11 | 10 | 13 | 9 | 4 | 0 | 0.7 | 663.5 | 1605.0 | 2691.1 | 2967.0 | 3007.2 |  | 38 |
-| 10 | leave you | gold | gold | 73 | 87.7 | 2421.7 | 200 | 200 | 46.6 | weed | 102283 | 12 | 3 | 6 | 11 | 8 | 6 | 3 | 33 | 163 | 12 | 364 | 109 | 35 | 12 | 152 | 135 | 61 | 1150 | 272 | 11 | 11 | 16 | 11 | 6 | 20 | 0 | 0 | 0 | 0 | 691.8 | 1583.2 | 2559.3 | 2894.1 | 2954.8 |  | 51 |
-| 12 | Mengfei Li | gold | top | 74 | 83.8 | 2464.7 | 24 | 200 | 100 | none | 103670 | 13 | 3 | 6 | 11 | 9 | 5 | 3 | 33 | 113 | 13 | 286 | 187 | 33 | 18 | 174.5 | 82.5 | 65.5 | 1030 | 204.5 | 11 | 23 | 16 | 13 | 7 | 41 | 48.5 | 16 | 0 | 1.1 | 736.6 | 1712.8 | 2565.4 | 2868.2 | 2965.2 | 3051.3 | 59 |
-| 13 | HowardLeeTW | gold | top | 74 | 77.0 | 2428.1 | 48 | 48 | 100 | seat | 107674 | 12 | 3 | 3 | 8 | 6 | 4.5 | 1 | 32 | 131.5 | 13 | 247 | 190 | 39 | 48 | 203.5 | 127.5 | 55 | 998 | 229 | 11 | 24 | 15 | 8 | 10 | 7.5 | 2 | 1 | 0 | 0.4 | 669.5 | 1569.9 | 2559.3 | 2797.1 | 2928.6 | 2984.7 | 81 |
-| 14 | Catalyst | gold | top | 80 | 83.8 | 2474.3 | 24 | 24 | 68.8 | none | 102193 | 12 | 3 | 6 | 11 | 8 | 6 | 3 | 33 | 162 | 12 | 389 | 119.5 | 36 | 12 | 170.5 | 143.5 | 103.5 | 1176 | 279 | 11 | 11 | 16 | 11 | 7 | 19 | 0 | 0 | 1 | 0 | 703.2 | 1480.3 | 2608.4 | 2834.4 | 2958.4 |  | 61 |
-| 15 | feel the agi | gold | top | 71 | 80.3 | 2388.4 | 200 | 24 | 98.6 | shop | 114473 | 12 | 3 | 6 | 11 | 7 | 3 | 6 | 29 | 151 | 12 | 389 | 163 | 24 | 12 | 202 | 88 | 40 | 1054 | 228 | 11 | 11 | 16 | 11 | 7 | 29 | 16 | 7 | 0 | 0.6 | 735.6 | 1724.7 | 2470.0 | 2658.6 | 2841.7 | 3043.2 | 118 |
-| 16 | local | gold | gold | 50 | 90 | 2128.0 | 200 | 200 | 76 | weed | 105971 | 12 | 3 | 6 | 11 | 6 | 6 | 3 | 33 | 163 | 12 | 417 | 114 | 36 | 12 | 125 | 107 | 72 | 1100.5 | 262.5 | 11 | 11 | 18 | 11 | 7 | 20 | 0 | 0 | 1 | 0 | 707.3 | 1549.4 | 2448.8 | 2712.5 | 2910.6 |  | 98 |
-| 17 | lumen | gold | gold | 50 | 96 | 2202.6 | 200 | 24 | 92 | shop | 102415 | 12 | 3 | 6 | 11 | 8 | 6 | 3 | 33 | 163 | 12 | 382 | 116.5 | 35 | 12 | 119 | 103 | 73.5 | 1117 | 258 | 11 | 11 | 19 | 11 | 6 | 21 | 0.5 | 0.5 | 45 | 0.0 | 674.7 | 1571.8 | 2625.8 | 2923.8 | 2956.3 |  | 45 |
-| 19 | carbonapi | gold | gold | 50 | 88 | 2220.2 | 200 | 200 | 88 | weed | 103596.5 | 12 | 3 | 6 | 11 | 7.5 | 7.5 | 3 | 33 | 154.5 | 12 | 400 | 124.5 | 40 | 12 | 119 | 146.5 | 103.5 | 1239.5 | 292.5 | 11 | 11 | 19 | 8 | 6 | 21.5 | 2 | 1 | 0 | 0.1 | 736.1 | 1597.1 | 2632.6 | 2820.3 | 2908.2 |  | 86 |
-| 20 | Cow Boy | gold | gold | 50 | 90 | 2320.7 | 200 | 200 | 60 | none | 110421.5 | 12 | 3 | 6 | 11 | 8 | 6 | 3 | 33 | 162 | 12 | 416 | 106 | 35 | 12 | 141 | 130.5 | 84.5 | 1145.5 | 274.5 | 11 | 11 | 18 | 11 | 7 | 18 | 0 | 0 | 4 | 0 | 802.0 | 1694.7 | 2752.8 | 2927.9 | 2950.8 | 2944.3 | 43 |
-| 21 | Ebi | gold | gold | 50 | 84 | 2058.3 | 100 | 48 | 100 | none | 106327 | 14 | 3 | 5 | 8 | 6 | 5.5 | 4 | 32 | 101 | 14 | 333 | 153 | 35.5 | 42 | 188 | 62.5 | 38 | 4912 | 794.5 | 15 | 27 | 15 | 11 | 10 | 15.5 | 21 | 4 | 0 | 1.3 | 716.4 | 1589.5 | 2305.8 | 2550.5 | 2718.8 | 2916.5 | 192 |
-| 22 | アルモンド | gold | top | 82 | 85.4 | 2485.8 | 100 | 100 | 98.8 | none | 101879.5 | 12 | 3 | 6 | 11 | 8 | 6 | 3 | 33 | 130.5 | 15 | 410 | 144 | 35 | 30 | 148 | 134.5 | 94 | 1206 | 287 | 11 | 20 | 16 | 11 | 14 | 20 | 1 | 1 | 1 | 0.1 | 656.4 | 1489.5 | 2662.4 | 2894.6 | 2978.5 |  | 51 |
-| 23 | AI是我的豆包 | gold | gold | 50 | 92 | 2037.1 | 100 | 200 | 98 | opponent | 107738 | 11 | 3 | 6 | 9 | 7 | 3 | 2 | 34 | 172 | 12 | 301 | 151.5 | 32.5 | 41 | 240.5 | 141 | 50 | 1014.5 | 238 | 13 | 24.5 | 14 | 9 | 13 | 17 | 24 | 7 | 0 | 1.3 | 726.1 | 1498.0 | 2402.4 | 2671.5 | 2822.4 |  | 130 |
-| 24 | fog flower | gold | gold | 50 | 94 | 2292.7 | 200 | 200 | 62 | shop | 109297 | 12 | 3 | 6 | 11 | 8 | 6 | 3 | 33 | 163 | 12 | 362.5 | 105 | 35 | 12 | 152 | 129 | 68 | 1151.5 | 270 | 11 | 11 | 16 | 11 | 6 | 20 | 0 | 0 | 0 | 0 | 735.6 | 1757.2 | 2640.4 | 2879.8 | 2933.2 |  | 55 |
-| 25 | Otter Vibe | gold | top | 152 | 69.7 | 2688.6 | 100 | 100 | 100 | none | 103985.5 | 15 | 3 | 5 | 10 | 7 | 7 | 6 | 24 | 104.5 | 15 | 369 | 188.5 | 45.5 | 0 | 42 | 29 | 20.5 | 754.5 | 198.5 | 22 | 22 | 15 | 14 | 14 | 4 | 1 | 1 | 0 | 0.4 | 678.7 | 1508.8 | 2542.6 | 2848.9 | 2947.6 | 3026.3 | 58 |
-| 26 | nilochan | gold | gold | 50 | 94 | 2215.7 | 200 | 24 | 72 | weed | 102002 | 12 | 3 | 6 | 11 | 6.5 | 6 | 3 | 33 | 163 | 12 | 405 | 116.5 | 37 | 12 | 126 | 95 | 65.5 | 1079 | 252 | 11 | 11 | 19 | 14 | 6 | 20 | 0 | 0 | 1 | 0 | 712.3 | 1655.9 | 2561.0 | 2831.7 | 2929.0 |  | 81 |
-| 27 | yjshyfy | gold | gold | 50 | 94 | 2183.1 | 200 | 200 | 90 | weed | 100857 | 12 | 3 | 6 | 11 | 8 | 6 | 3 | 33 | 163 | 12 | 358.5 | 101 | 35 | 12 | 154.5 | 135 | 75 | 1160 | 268 | 11 | 11 | 16 | 11 | 6 | 21 | 0 | 0 | 0 | 0 | 697.9 | 1618.1 | 2545.8 | 2833.2 | 2917.2 |  | 65 |
-| 28 | kyy666 | gold | gold | 82 | 82.9 | 2462.6 | 200 | 200 | 70.7 | shop | 103416.5 | 12 | 3 | 6 | 11 | 8 | 6 | 3 | 33 | 163 | 12 | 397 | 112.5 | 37 | 12 | 123 | 108 | 74 | 1088 | 259 | 11 | 11 | 19 | 13 | 6 | 20 | 0 | 0 | 1 | 0 | 703.6 | 1533.3 | 2550.0 | 2845.6 | 2927.5 |  | 74 |
-| 29 | 𝕯𝖊𝖔𝖉𝖎𝖒𝖘 & 𝕮𝖔 | silver | silver | 65 | 83.1 | 2405.0 | 200 | 200 | 64.6 | none | 101748 | 12 | 3 | 6 | 11 | 8 | 6 | 3 | 33 | 163 | 12 | 405 | 111 | 37 | 12 | 126 | 101 | 71 | 1086 | 258 | 11 | 11 | 19 | 15 | 6 | 20 | 0 | 0 | 1 | 0 | 701.3 | 1686.6 | 2607.5 | 2894.9 | 2946.6 |  | 49 |
-| 31 | redblackbst | silver | top | 100 | 78 | 2587.4 | 24 | 24 | 98 | none | 104306 | 11 | 3 | 6 | 11 | 7 | 5 | 3 | 32 | 162 | 13 | 336.5 | 87 | 36 | 18 | 164 | 109 | 62 | 1148.5 | 259 | 11 | 23.5 | 17 | 11 | 15 | 25 | 11 | 5 | 0 | 0.5 | 697.7 | 1547.7 | 2618.9 | 2885.2 | 2991.0 |  | 52 |
-| 32 | Kilupy | silver | silver | 76 | 80.3 | 2517.3 | 200 | 200 | 68.4 | shop | 100873 | 12 | 3 | 6 | 11 | 8 | 6 | 3 | 33 | 162 | 12 | 405 | 110 | 37 | 12 | 122 | 102.5 | 85 | 1079.5 | 265 | 11 | 11 | 19 | 15 | 6 | 19 | 0 | 0 | 1 | 0 | 694.9 | 1698.1 | 2719.2 | 2926.6 | 2942.5 |  | 36 |
-| 35 | Kaggriculture Agent | silver | silver | 63 | 79.4 | 2387.7 | 24 | 24 | 58.7 | none | 99763 | 12 | 3 | 6 | 11 | 8 | 6 | 3 | 33 | 159 | 12 | 408 | 116 | 35 | 12 | 140 | 155 | 109 | 4713 | 574 | 11 | 11 | 18 | 11 | 6 | 20 | 0 | 0 | 45 | 0 | 714.8 | 1608.1 | 2657.9 | 2872.9 | 2916.7 |  | 60 |
-| 36 | Zhenghongshuang | silver | silver | 72 | 83.3 | 2388.1 | 200 | 200 | 59.7 | weed | 97905 | 12 | 3 | 6 | 11 | 8 | 6 | 3 | 33 | 157 | 12 | 355.5 | 110 | 35 | 12 | 151 | 127.5 | 86 | 1149 | 272.5 | 11 | 11 | 16 | 11 | 6 | 20 | 0 | 0 | 0 | 0 | 701.6 | 1642.7 | 2564.2 | 2855.8 | 2946.5 |  | 59 |
-| 38 | elmo | silver | silver | 73 | 83.6 | 2413.7 | 200 | 200 | 65.8 | weed | 105124 | 12 | 3 | 6 | 11 | 8 | 6 | 3 | 33 | 153 | 12 | 405 | 115 | 38 | 12 | 131 | 101 | 85 | 1998 | 265 | 11 | 11 | 19 | 12 | 6 | 19 | 0 | 0 | 1 | 0 | 697.1 | 1565.6 | 2563.7 | 2826.4 | 2928.4 |  | 70 |
-| 41 | Thomas Tschinkel | silver | top | 69 | 81.2 | 2431.4 | 200 | 200 | 66.7 | weed | 98229 | 12 | 3 | 6 | 11 | 8 | 6 | 3 | 33 | 163 | 12 | 405 | 121 | 37 | 12 | 120 | 112 | 68 | 1107 | 262 | 11 | 11 | 19 | 14 | 6 | 20 | 0 | 0 | 1 | 0 | 699.5 | 1492.6 | 2686.5 | 2916.0 | 2969.0 |  | 46 |
-| 45 | mtmr_s1 | silver | silver | 71 | 87.3 | 2369.4 | 200 | 100 | 95.8 | weed | 102829 | 12 | 3 | 6 | 11 | 8 | 6 | 3 | 33 | 151 | 12 | 402 | 124 | 40 | 12 | 153 | 119 | 74 | 1190 | 257 | 11 | 11 | 16 | 11 | 7 | 21 | 1 | 1 | 45 | 0.0 | 694.6 | 1473.9 | 2484.5 | 2838.6 | 2896.1 |  | 76 |
-| 46 | Emile Andrieu | silver | silver | 63 | 79.4 | 2348.8 | 200 | 200 | 82.5 | shop | 102162 | 12 | 3 | 6 | 11 | 8 | 6 | 3 | 33 | 163 | 12 | 439 | 111 | 37 | 12 | 128 | 109 | 72 | 1076 | 258 | 11 | 11 | 19 | 15 | 6 | 20 | 0 | 0 | 1 | 0 | 718.2 | 1572.2 | 2671.2 | 2789.1 | 2896.7 |  | 85 |
-| 49 | THUNDER THUNDER | silver | silver | 70 | 78.6 | 2262.7 | 100 | 100 | 100 | none | 103235.5 | 12 | 3 | 4 | 8 | 9 | 6.5 | 2 | 34 | 138.5 | 13 | 299 | 181 | 39 | 23.5 | 217 | 116.5 | 49 | 1253.5 | 223.5 | 18 | 21 | 15 | 9 | 7 | 17 | 18 | 5 | 0 | 1.1 | 696.6 | 1555.9 | 2249.0 | 2569.2 | 2729.6 | 2872.8 | 226 |
-| 72 | doubao | silver | silver | 75 | 74.7 | 2345.6 | 200 | 200 | 69.3 | shop | 111169 | 12 | 3 | 6 | 11 | 8 | 6 | 3 | 33 | 163 | 12 | 400 | 119 | 37 | 12 | 129 | 101 | 90 | 1105 | 273 | 11 | 11 | 19 | 12 | 7 | 20 | 0 | 0 | 1 | 0 | 714.7 | 1716.4 | 2290.8 | 2558.7 | 2774.5 | 2890.9 | 212 |
-| 74 | yomogii | silver | silver | 78 | 85.9 | 2393.9 | 48 | 24 | 70.5 | none | 102744.5 | 12 | 3 | 6 | 11 | 8 | 6 | 3 | 33 | 163 | 12 | 403 | 108 | 36.5 | 12 | 129 | 96.5 | 75 | 1117.5 | 266 | 11 | 11 | 19 | 15 | 6 | 20 | 0 | 0 | 1 | 0 | 685.0 | 1519.9 | 2489.5 | 2805.2 | 2902.0 |  | 95 |
-| 75 | Tom&Jerry | silver | silver | 76 | 76.3 | 2432.9 | 200 | 200 | 69.7 | weed | 101110.5 | 12 | 3 | 6 | 11 | 8 | 6 | 3 | 33 | 162 | 12 | 405 | 111 | 37 | 12 | 122 | 100 | 62.5 | 1080 | 264 | 11 | 11 | 19 | 15 | 6 | 19 | 0 | 0 | 1 | 0 | 736.2 | 1711.6 | 2506.0 | 2799.3 | 2887.6 |  | 104 |
-| 120 | Navier-stokes | silver | silver | 50 | 90 | 2180.9 | 200 | 200 | 74 | shop | 103187 | 12 | 3 | 6 | 11 | 8 | 6 | 3 | 33 | 162 | 12 | 405 | 117 | 37 | 12 | 129 | 107.5 | 63.5 | 1101 | 266.5 | 11 | 11 | 19 | 14 | 16 | 19 | 0 | 0 | 1 | 0 | 743.9 | 1562.5 | 2565.6 | 2801.2 |  |  |  |
-| 121 | Pai | silver | silver | 50 | 86 | 2268.4 | 200 | 200 | 74 | shop | 94496 | 12 | 3 | 6 | 11 | 8 | 6 | 3 | 33 | 162 | 12 | 405 | 116 | 37 | 12 | 128 | 105 | 57.5 | 1080.5 | 271.5 | 11 | 11 | 19 | 15 | 6 | 19 | 0 | 0 | 1 | 0 | 713.2 | 1621.7 | 2648.5 | 2835.7 | 2883.0 |  |  |
-| 122 | Munal Singh | silver | silver | 50 | 84 | 2259.4 | 200 | 100 | 78 | shop | 96852.5 | 12 | 3 | 6 | 11 | 8 | 6 | 3 | 33 | 162 | 12 | 405 | 110 | 37.5 | 12 | 128 | 107 | 75.5 | 1086 | 268.5 | 11 | 11 | 19 | 15 | 6 | 19 | 0 | 0 | 1 | 0 | 700.7 | 1560.6 | 2695.2 | 2879.8 | 2885.0 | 2816.5 | 76 |
-| 227 | ElephtAI | silver | silver | 72 | 84.7 | 2468.1 | 200 | 100 | 61.1 | none | 99151.5 | 12 | 3 | 6 | 11 | 8 | 6 | 3 | 33 | 162 | 12 | 417 | 103.5 | 36 | 12 | 126 | 113 | 74 | 1074 | 267 | 11 | 11 | 18 | 11 | 7 | 19 | 0 | 0 | 1 | 0 | 768.4 | 1679.9 | 2642.5 | 2942.2 | 2900.9 |  | 42 |
-| 250 | Bldr2 | silver | silver | 50 | 90 | 2169.0 | 200 | 200 | 78 | weed | 95980 | 12 | 3 | 6 | 11 | 8 | 6 | 3 | 33 | 163 | 12 | 405 | 118 | 38 | 12 | 129 | 110.5 | 62 | 1105 | 268 | 11 | 11 | 19 | 12 | 6 | 20 | 0 | 0 | 1 | 0 | 680.3 | 1642.7 | 2513.5 | 2740.6 | 2803.5 |  |  |
-| 251 | let cats farm | silver | silver | 50 | 96 | 2029.8 | 200 | 200 | 68 | none | 100482.5 | 12 | 3 | 6 | 11 | 8 | 6 | 2 | 33 | 163 | 12 | 338 | 95 | 36 | 12 | 115 | 110.5 | 68 | 1263 | 248 | 11 | 11 | 19 | 11 | 7 | 20 | 0 | 0 | 193 | 0 | 720.3 | 1496.8 | 2321.4 | 2690.6 | 2832.3 | 2838.3 |  |
-| 252 | kevin park | silver | silver | 50 | 90 | 2094.1 | 200 | 200 | 78 | weed | 102818 | 12 | 3 | 6 | 11 | 8 | 6 | 3 | 33 | 162 | 12 | 405 | 116 | 37 | 12 | 129 | 111 | 77 | 1115 | 269 | 11 | 11 | 19 | 12 | 6 | 19 | 0 | 0 | 1 | 0 | 697.7 | 1511.5 | 2448.1 | 2692.6 |  |  |  |
-| 400 | peppersaltman | silver | silver | 50 | 84 | 2150.7 | 200 | 200 | 80 | weed | 110276.5 | 12 | 3 | 6 | 11 | 8 | 6 | 3 | 33 | 162 | 12 | 417 | 99.5 | 36 | 12 | 134 | 113.5 | 100.5 | 1084 | 266.5 | 11 | 11 | 18 | 11 | 7 | 19 | 0 | 0 | 1 | 0 | 724.1 | 1648.9 | 2476.8 | 2653.5 | 2739.4 | 2565.5 |  |
-| 401 | Win Suthar | silver | silver | 50 | 86 | 1938.1 | 200 | 200 | 76 | shop | 105322.5 | 12 | 3 | 6 | 11 | 8 | 6 | 3 | 33 | 162 | 12 | 417 | 102.5 | 36 | 12 | 133.5 | 126 | 82 | 1091 | 268 | 11 | 11 | 18 | 11 | 7 | 19 | 0 | 0 | 1 | 0 | 730.4 | 1619.8 | 2210.7 | 2410.4 | 2535.7 |  |  |
-| 402 | spencersi123 | silver | silver | 50 | 82 | 2125.4 | 200 | 200 | 80 | none | 106474 | 12 | 3 | 6 | 11 | 6 | 6 | 3 | 33 | 163 | 12 | 405 | 110 | 37 | 12 | 129 | 110 | 81 | 1101 | 268 | 11 | 11 | 19 | 12 | 6 | 20 | 0 | 0 | 1 | 0 | 729.0 | 1526.7 | 2479.3 | 2671.7 | 2734.1 |  |  |
-| 470 | Naru041104 | bronze | bronze | 50 | 90 | 2099.3 | 200 | 200 | 46 | shop | 105926.5 | 12 | 3 | 6 | 11 | 8 | 6 | 3 | 33 | 163 | 12 | 405 | 91 | 36 | 12 | 117 | 135 | 104 | 2300.5 | 256 | 11 | 11 | 19 | 12 | 6 | 20 | 0 | 0 | 0 | 0 | 747.7 | 1612.0 | 2440.3 | 2660.5 | 2739.1 | 2737.9 |  |
-| 473 | Jacky Chan | bronze | bronze | 50 | 86 | 2188.7 | 200 | 200 | 74 | shop | 102570.5 | 12 | 3 | 6 | 11 | 8 | 6 | 3 | 33 | 162 | 12 | 405 | 115.5 | 37 | 12 | 130.5 | 117.5 | 82 | 1107 | 270 | 11 | 11 | 19 | 12 | 6 | 19 | 0 | 0 | 1 | 0 | 682.8 | 1647.2 | 2591.3 | 2750.5 | 2729.3 |  |  |
-| 600 | 最强扫地僧 | bronze | bronze | 50 | 76 | 2185.4 | 200 | 200 | 64 | none | 105283 | 12 | 3 | 6 | 11 | 8 | 6 | 3 | 33 | 163 | 12 | 417 | 98 | 36 | 12 | 134 | 116.5 | 78 | 1080.5 | 262 | 11 | 11 | 18 | 11 | 7 | 20 | 0 | 0 | 1 | 0 | 713.1 | 1631.9 | 2633.3 | 2628.1 | 2581.7 |  |  |
-| 601 | Cyrus | bronze | bronze | 50 | 86 | 2130.3 | 200 | 200 | 76 | weed | 112238.5 | 12 | 3 | 6 | 11 | 8 | 6 | 3 | 33 | 162 | 12 | 417 | 104.5 | 36 | 12 | 134 | 126.5 | 88.5 | 1099.5 | 268.5 | 11 | 11 | 18 | 11 | 7 | 19 | 0 | 0 | 1 | 0 | 708.0 | 1653.7 | 2464.3 | 2661.5 | 2694.4 |  |  |
-| 602 | matcha110 | bronze | bronze | 50 | 92 | 2057.1 | 200 | 200 | 62 | none | 109357 | 12 | 3 | 6 | 11 | 8 | 6 | 3 | 33 | 162 | 12 | 417 | 96 | 36 | 12 | 133 | 126.5 | 108 | 1089.5 | 270 | 11 | 11 | 18 | 11 | 7 | 19 | 0 | 0 | 1 | 0 | 701.7 | 1549.1 | 2361.5 | 2646.0 | 2657.6 |  |  |
-| 750 | Daiki Takahashi | bronze | bronze | 50 | 72 | 2113.7 | 200 | 200 | 64 | none | 99677 | 12 | 3 | 6 | 11 | 8 | 6 | 3 | 33 | 162 | 12 | 417 | 103 | 36 | 12 | 134.5 | 128.5 | 90 | 1100.5 | 270.5 | 11 | 11 | 18 | 11 | 7 | 19 | 0 | 0 | 1 | 0 | 706.3 | 1566.9 | 2467.2 | 2615.0 | 2660.3 | 2506.1 |  |
-| 751 | ansheng jhang | bronze | bronze | 50 | 90 | 2008.0 | 200 | 200 | 74 | seat | 113235.5 | 12 | 3 | 6 | 11 | 8 | 6 | 3 | 33 | 162 | 12 | 417 | 99 | 36 | 12 | 134 | 128.5 | 97 | 1102 | 267 | 11 | 11 | 18 | 11 | 7 | 19 | 0 | 0 | 1 | 0 | 730.5 | 1666.3 | 2228.3 | 2483.0 | 2535.2 |  |  |
-| 752 | CaliforniaDog | bronze | bronze | 50 | 68 | 2154.3 | 200 | 200 | 60 | none | 103913 | 12 | 3 | 6 | 11 | 8 | 6 | 3 | 33 | 162 | 12 | 417 | 106 | 36 | 12 | 133 | 132 | 79 | 1097 | 267.5 | 11 | 11 | 18 | 11 | 7 | 19 | 0 | 0 | 1 | 0 | 727.9 | 1572.2 | 2545.3 | 2592.0 | 2586.6 |  |  |
-| 881 | Toru59er | bronze | bronze | 50 | 62 | 2077.6 | 200 | 200 | 64 | weed | 111330.5 | 12 | 3 | 6 | 11 | 8 | 6 | 3 | 33 | 162 | 12 | 417 | 103 | 36 | 12 | 133 | 124 | 89.5 | 1100 | 269.5 | 11 | 11 | 18 | 11 | 7 | 19 | 0 | 0 | 1 | 0 | 663.0 | 1497.4 | 2555.3 | 2542.5 | 2520.0 |  |  |
-| 882 | broccoli | bronze | bronze | 50 | 80 | 2020.8 | 200 | 200 | 80 | weed | 101990.5 | 12 | 3 | 6 | 11 | 8 | 6 | 3 | 33 | 162 | 12 | 417 | 105.5 | 36 | 12 | 133 | 123 | 67.5 | 1093.5 | 268 | 11 | 11 | 18 | 11 | 7 | 19 | 0 | 0 | 1 | 0 | 750.4 | 1663.5 | 2286.7 | 2468.0 | 2573.9 | 2456.4 |  |
+| 1 | Artem The Farmer 🍅 | gold | top | 86 | 94.2 | 2441.8 | 200 | 200 | 100 | none | 102655 | 13 | 3 | 6 | 8 | 7 | 6 | 2 | 27 | 143.5 | 13 | 311 | 156.5 | 37 | 78 | 200.5 | 191 | 117.5 | 1540.5 | 404 | 10 | 20 | 16 | 8 | 6 | 11 | 10 | 4 | 0 | 0.9 | 718.2 | 1459.7 | 2515.7 | 2854.1 | 3026.9 |  | 58 |
+| 2 | Majkel1337 | gold | top | 96 | 87.5 | 2557.9 | 24 | 24 | 100 | opponent | 113284 | 11 | 3 | 6 | 9 | 8 | 4 | 2 | 31 | 177.5 | 14 | 326.5 | 154 | 36 | 72 | 218.5 | 180.5 | 109 | 1513.5 | 368 | 10 | 18 | 14 | 8 | 6 | 19.5 | 26 | 7 | 0 | 1.3 | 650.7 | 1446.2 | 2543.1 | 2875.1 | 3096.7 | 3247.0 | 54 |
+| 3 | Unknown Mother-Goose | gold | gold | 81 | 90.1 | 2380.4 | 48 | 48 | 100 | weed | 117836 | 11 | 3 | 6 | 11 | 7 | 6 | 3 | 30 | 143 | 14 | 332 | 180 | 37 | 83 | 205 | 175 | 150 | 1569 | 401 | 10 | 22 | 16 | 8 | 6 | 17 | 14 | 9 | 7 | 0.8 | 683.6 | 1332.0 | 2342.0 | 2809.3 | 2987.2 |  | 63 |
+| 4 | DSM | gold | top | 80 | 97.5 | 2417.0 | 24 | 24 | 100 | none | 104556.5 | 11 | 3 | 6 | 9 | 8.5 | 4 | 2 | 30 | 187.5 | 14 | 340.5 | 154.5 | 35 | 72 | 224.5 | 187.5 | 107.5 | 1560 | 366.5 | 10 | 23 | 13 | 8 | 6 | 19 | 28 | 8 | 0 | 1.4 | 697.2 | 1479.3 | 2521.9 | 2865.1 | 3036.2 |  | 58 |
+| 5 | SpaTaro | gold | top | 86 | 79.1 | 2081.0 | 24 | 24 | 100 | none | 97042 | 11 | 3 | 6 | 8 | 8 | 6 | 0 | 26 | 192 | 11 | 272.5 | 95 | 23.5 | 60 | 185 | 175.5 | 123.5 | 1716.5 | 310.5 | 10 | 13 | 14 | 8 | 6 | 23 | 25 | 7 | 239.5 | 1.2 | 684.3 | 1169.7 | 1588.1 | 1846.4 | 2079.4 | 2490.5 | 358 |
+| 6 | THIRD FARM CLUB | gold | gold | 50 | 96 | 1837.5 | 200 | 200 | 100 | shop | 117769 | 13 | 3 | 6 | 9 | 10 | 4 | 5.5 | 32.5 | 133.5 | 15 | 324 | 184.5 | 45 | 87 | 206.5 | 176.5 | 64 | 1567 | 448 | 10 | 24.5 | 14 | 8 | 6 | 14.5 | 22 | 7 | 0 | 1.6 | 698.9 | 1369.9 | 2135.6 | 2433.8 | 2688.0 | 2977.0 | 173 |
+| 7 | Orbital Terraformer | gold | top | 73 | 87.7 | 2238.6 | 24 | 24 | 100 | opponent | 103266 | 11 | 3 | 6 | 9 | 8 | 5 | 2 | 31 | 188 | 14 | 332 | 154 | 35 | 72 | 202 | 171 | 101 | 1514 | 344 | 10 | 13 | 14 | 8 | 6 | 15 | 31 | 7 | 0 | 2.2 | 677.1 | 1328.1 | 2243.0 | 2700.5 | 2910.0 | 3010.8 | 92 |
+| 8 | Sida Zuo | gold | gold | 50 | 92 | 2081.5 | 24 | 24 | 100 | opponent | 107532.5 | 11 | 3 | 6 | 8 | 7 | 4 | 4 | 26 | 129 | 8 | 317 | 150 | 40 | 48 | 206.5 | 169 | 82 | 1510.5 | 384 | 10 | 10 | 12 | 8 | 6 | 13.5 | 9 | 3 | 0 | 0.7 | 667.4 | 1534.4 | 2329.7 | 2670.8 | 2823.0 |  |  |
+| 9 | ymg_aq | gold | top | 73 | 86.3 | 2502.1 | 100 | 100 | 100 | none | 105617 | 13 | 3 | 5 | 8 | 7 | 3 | 0 | 33 | 152 | 15 | 249 | 135 | 37 | 84 | 242 | 186 | 87 | 2259 | 417 | 10 | 28 | 13 | 8 | 6 | 13 | 9 | 4 | 0 | 0.7 | 663.5 | 1605.0 | 2691.1 | 2967.0 | 3007.2 |  | 38 |
+| 10 | leave you | gold | gold | 73 | 87.7 | 2421.7 | 200 | 200 | 46.6 | weed | 102283 | 12 | 3 | 6 | 11 | 8 | 6 | 3 | 33 | 163 | 12 | 364 | 109 | 35 | 72 | 249 | 213 | 103 | 1596 | 407 | 10 | 11 | 15 | 8 | 6 | 20 | 0 | 0 | 0 | 0 | 691.8 | 1583.2 | 2559.3 | 2894.1 | 2954.8 |  | 51 |
+| 12 | Mengfei Li | gold | top | 74 | 83.8 | 2464.7 | 24 | 200 | 100 | none | 103670 | 13 | 3 | 6 | 11 | 9 | 5 | 3 | 33 | 113 | 13 | 286 | 187 | 33 | 78 | 211.5 | 157.5 | 115 | 1532.5 | 402 | 10 | 26 | 16 | 8 | 6 | 41 | 48.5 | 16 | 0 | 1.1 | 736.6 | 1712.8 | 2565.4 | 2868.2 | 2965.2 | 3051.3 | 59 |
+| 13 | HowardLeeTW | gold | top | 74 | 77.0 | 2428.1 | 48 | 48 | 100 | seat | 107674 | 12 | 3 | 3 | 8 | 6 | 4.5 | 1 | 32 | 131.5 | 13 | 247 | 190 | 39 | 78 | 244.5 | 169.5 | 91 | 1495 | 394.5 | 11 | 24 | 14 | 8 | 6 | 7.5 | 2 | 1 | 0 | 0.4 | 669.5 | 1569.9 | 2559.3 | 2797.1 | 2928.6 | 2984.7 | 81 |
+| 14 | Catalyst | gold | top | 80 | 83.8 | 2474.3 | 24 | 24 | 68.8 | none | 102193 | 12 | 3 | 6 | 11 | 8 | 6 | 3 | 33 | 162 | 12 | 389 | 119.5 | 36 | 72 | 249 | 200 | 145 | 1668 | 393.5 | 10 | 11 | 15 | 8 | 6 | 19 | 0 | 0 | 1 | 0 | 703.2 | 1480.3 | 2608.4 | 2834.4 | 2958.4 |  | 61 |
+| 15 | feel the agi | gold | top | 71 | 80.3 | 2388.4 | 200 | 24 | 98.6 | shop | 114473 | 12 | 3 | 6 | 11 | 7 | 3 | 6 | 29 | 151 | 12 | 389 | 163 | 24 | 72 | 218 | 180 | 84 | 1840 | 393 | 10 | 11 | 16 | 8 | 6 | 29 | 16 | 7 | 0 | 0.6 | 735.6 | 1724.7 | 2470.0 | 2658.6 | 2841.7 | 3043.2 | 118 |
+| 16 | local | gold | gold | 50 | 90 | 2128.0 | 200 | 200 | 76 | weed | 105971 | 12 | 3 | 6 | 11 | 6 | 6 | 3 | 33 | 163 | 12 | 417 | 114 | 36 | 72 | 247 | 191 | 126 | 1584 | 391.5 | 10 | 11 | 15 | 8 | 6 | 20 | 0 | 0 | 1 | 0 | 707.3 | 1549.4 | 2448.8 | 2712.5 | 2910.6 |  | 98 |
+| 17 | lumen | gold | gold | 50 | 96 | 2202.6 | 200 | 24 | 92 | shop | 102415 | 12 | 3 | 6 | 11 | 8 | 6 | 3 | 33 | 163 | 12 | 382 | 116.5 | 35 | 72 | 250 | 191 | 126 | 1647.5 | 392.5 | 10 | 11 | 15 | 8 | 6 | 21 | 0.5 | 0.5 | 45 | 0.0 | 674.7 | 1571.8 | 2625.8 | 2923.8 | 2956.3 |  | 45 |
+| 19 | carbonapi | gold | gold | 50 | 88 | 2220.2 | 200 | 200 | 88 | weed | 103596.5 | 12 | 3 | 6 | 11 | 7.5 | 7.5 | 3 | 33 | 154.5 | 12 | 400 | 124.5 | 40 | 72 | 249 | 189.5 | 144 | 1763 | 403 | 10 | 11 | 15 | 8 | 6 | 21.5 | 2 | 1 | 0 | 0.1 | 736.1 | 1597.1 | 2632.6 | 2820.3 | 2908.2 |  | 86 |
+| 20 | Cow Boy | gold | gold | 50 | 90 | 2320.7 | 200 | 200 | 60 | none | 110421.5 | 12 | 3 | 6 | 11 | 8 | 6 | 3 | 33 | 162 | 12 | 416 | 106 | 35 | 72 | 251 | 206 | 138.5 | 1629 | 396.5 | 10 | 11 | 15 | 8 | 6 | 18 | 0 | 0 | 4 | 0 | 802.0 | 1694.7 | 2752.8 | 2927.9 | 2950.8 | 2944.3 | 43 |
+| 21 | Ebi | gold | gold | 50 | 84 | 2058.3 | 100 | 48 | 100 | none | 106327 | 14 | 3 | 5 | 8 | 6 | 5.5 | 4 | 32 | 101 | 14 | 333 | 153 | 35.5 | 84 | 241 | 181.5 | 107 | 5781.5 | 1060.5 | 14.5 | 28.5 | 15 | 8 | 6 | 15.5 | 21 | 4 | 0 | 1.3 | 716.4 | 1589.5 | 2305.8 | 2550.5 | 2718.8 | 2916.5 | 192 |
+| 22 | アルモンド | gold | top | 82 | 85.4 | 2485.8 | 100 | 100 | 98.8 | none | 101879.5 | 12 | 3 | 6 | 11 | 8 | 6 | 3 | 33 | 130.5 | 15 | 410 | 144 | 35 | 90 | 253 | 232 | 141.5 | 1650.5 | 407.5 | 10 | 20 | 15 | 8 | 6 | 20 | 1 | 1 | 1 | 0.1 | 656.4 | 1489.5 | 2662.4 | 2894.6 | 2978.5 |  | 51 |
+| 23 | AI是我的豆包 | gold | gold | 50 | 92 | 2037.1 | 100 | 200 | 98 | opponent | 107738 | 11 | 3 | 6 | 9 | 7 | 3 | 2 | 34 | 172 | 12 | 301 | 151.5 | 32.5 | 71 | 256 | 159.5 | 98 | 1418 | 369.5 | 10 | 24.5 | 14 | 8 | 6 | 17 | 24 | 7 | 0 | 1.3 | 726.1 | 1498.0 | 2402.4 | 2671.5 | 2822.4 |  | 130 |
+| 24 | fog flower | gold | gold | 50 | 94 | 2292.7 | 200 | 200 | 62 | shop | 109297 | 12 | 3 | 6 | 11 | 8 | 6 | 3 | 33 | 163 | 12 | 362.5 | 105 | 35 | 72 | 249 | 205 | 106 | 1607.5 | 407.5 | 10 | 11 | 15 | 8 | 6 | 20 | 0 | 0 | 0 | 0 | 735.6 | 1757.2 | 2640.4 | 2879.8 | 2933.2 |  | 55 |
+| 25 | Otter Vibe | gold | top | 152 | 69.7 | 2688.6 | 100 | 100 | 100 | none | 103985.5 | 15 | 3 | 5 | 10 | 7 | 7 | 6 | 24 | 104.5 | 15 | 369 | 188.5 | 45.5 | 90 | 185 | 167.5 | 133.5 | 1767 | 448 | 10 | 21 | 14 | 8 | 6 | 4 | 1 | 1 | 0 | 0.4 | 678.7 | 1508.8 | 2542.6 | 2848.9 | 2947.6 | 3026.3 | 58 |
+| 26 | nilochan | gold | gold | 50 | 94 | 2215.7 | 200 | 24 | 72 | weed | 102002 | 12 | 3 | 6 | 11 | 6.5 | 6 | 3 | 33 | 163 | 12 | 405 | 116.5 | 37 | 72 | 249 | 191.5 | 125.5 | 1603.5 | 380.5 | 10 | 11 | 15 | 8 | 6 | 20 | 0 | 0 | 1 | 0 | 712.3 | 1655.9 | 2561.0 | 2831.7 | 2929.0 |  | 81 |
+| 27 | yjshyfy | gold | gold | 50 | 94 | 2183.1 | 200 | 200 | 90 | weed | 100857 | 12 | 3 | 6 | 11 | 8 | 6 | 3 | 33 | 163 | 12 | 358.5 | 101 | 35 | 72 | 246 | 195 | 118.5 | 1603 | 403 | 10 | 11 | 15 | 8 | 6 | 21 | 0 | 0 | 0 | 0 | 697.9 | 1618.1 | 2545.8 | 2833.2 | 2917.2 |  | 65 |
+| 28 | kyy666 | gold | gold | 82 | 82.9 | 2462.6 | 200 | 200 | 70.7 | shop | 103416.5 | 12 | 3 | 6 | 11 | 8 | 6 | 3 | 33 | 163 | 12 | 397 | 112.5 | 37 | 72 | 248 | 191 | 139 | 1599 | 395 | 10 | 11 | 15 | 8 | 6 | 20 | 0 | 0 | 1 | 0 | 703.6 | 1533.3 | 2550.0 | 2845.6 | 2927.5 |  | 74 |
+| 29 | 𝕯𝖊𝖔𝖉𝖎𝖒𝖘 & 𝕮𝖔 | silver | silver | 65 | 83.1 | 2405.0 | 200 | 200 | 64.6 | none | 101748 | 12 | 3 | 6 | 11 | 8 | 6 | 3 | 33 | 163 | 12 | 405 | 111 | 37 | 72 | 249 | 197 | 139 | 1639 | 386 | 10 | 11 | 15 | 8 | 6 | 20 | 0 | 0 | 1 | 0 | 701.3 | 1686.6 | 2607.5 | 2894.9 | 2946.6 |  | 49 |
+| 31 | redblackbst | silver | top | 100 | 78 | 2587.4 | 24 | 24 | 98 | none | 104306 | 11 | 3 | 6 | 11 | 7 | 5 | 3 | 32 | 162 | 13 | 336.5 | 87 | 36 | 78 | 235 | 173 | 117 | 1553.5 | 371 | 10 | 23.5 | 15 | 8 | 6 | 25 | 11 | 5 | 0 | 0.5 | 697.7 | 1547.7 | 2618.9 | 2885.2 | 2991.0 |  | 52 |
+| 32 | Kilupy | silver | silver | 76 | 80.3 | 2517.3 | 200 | 200 | 68.4 | shop | 100873 | 12 | 3 | 6 | 11 | 8 | 6 | 3 | 33 | 162 | 12 | 405 | 110 | 37 | 72 | 247 | 191 | 147.5 | 1591 | 391 | 10 | 11 | 15 | 8 | 6 | 19 | 0 | 0 | 1 | 0 | 694.9 | 1698.1 | 2719.2 | 2926.6 | 2942.5 |  | 36 |
+| 35 | Kaggriculture Agent | silver | silver | 63 | 79.4 | 2387.7 | 24 | 24 | 58.7 | none | 99763 | 12 | 3 | 6 | 11 | 8 | 6 | 3 | 33 | 159 | 12 | 408 | 116 | 35 | 72 | 249 | 245 | 161 | 5220 | 705 | 10 | 11 | 15 | 8 | 6 | 20 | 0 | 0 | 45 | 0 | 714.8 | 1608.1 | 2657.9 | 2872.9 | 2916.7 |  | 60 |
+| 36 | Zhenghongshuang | silver | silver | 72 | 83.3 | 2388.1 | 200 | 200 | 59.7 | weed | 97905 | 12 | 3 | 6 | 11 | 8 | 6 | 3 | 33 | 157 | 12 | 355.5 | 110 | 35 | 72 | 249 | 198.5 | 130 | 1603 | 409 | 10 | 11 | 15 | 8 | 6 | 20 | 0 | 0 | 0 | 0 | 701.6 | 1642.7 | 2564.2 | 2855.8 | 2946.5 |  | 59 |
+| 38 | elmo | silver | silver | 73 | 83.6 | 2413.7 | 200 | 200 | 65.8 | weed | 105124 | 12 | 3 | 6 | 11 | 8 | 6 | 3 | 33 | 153 | 12 | 405 | 115 | 38 | 72 | 250 | 191 | 139 | 2475 | 387 | 10 | 11 | 15 | 8 | 6 | 19 | 0 | 0 | 1 | 0 | 697.1 | 1565.6 | 2563.7 | 2826.4 | 2928.4 |  | 70 |
+| 41 | Thomas Tschinkel | silver | top | 69 | 81.2 | 2431.4 | 200 | 200 | 66.7 | weed | 98229 | 12 | 3 | 6 | 11 | 8 | 6 | 3 | 33 | 163 | 12 | 405 | 121 | 37 | 72 | 247 | 203 | 123 | 1585 | 389 | 10 | 11 | 15 | 8 | 6 | 20 | 0 | 0 | 1 | 0 | 699.5 | 1492.6 | 2686.5 | 2916.0 | 2969.0 |  | 46 |
+| 45 | mtmr_s1 | silver | silver | 71 | 87.3 | 2369.4 | 200 | 100 | 95.8 | weed | 102829 | 12 | 3 | 6 | 11 | 8 | 6 | 3 | 33 | 151 | 12 | 402 | 124 | 40 | 72 | 255 | 196 | 129 | 1652 | 385 | 10 | 11 | 15 | 8 | 6 | 21 | 1 | 1 | 45 | 0.0 | 694.6 | 1473.9 | 2484.5 | 2838.6 | 2896.1 |  | 76 |
+| 46 | Emile Andrieu | silver | silver | 63 | 79.4 | 2348.8 | 200 | 200 | 82.5 | shop | 102162 | 12 | 3 | 6 | 11 | 8 | 6 | 3 | 33 | 163 | 12 | 439 | 111 | 37 | 72 | 248 | 194 | 133 | 1578 | 391 | 10 | 11 | 15 | 8 | 6 | 20 | 0 | 0 | 1 | 0 | 718.2 | 1572.2 | 2671.2 | 2789.1 | 2896.7 |  | 85 |
+| 49 | THUNDER THUNDER | silver | silver | 70 | 78.6 | 2262.7 | 100 | 100 | 100 | none | 103235.5 | 12 | 3 | 4 | 8 | 9 | 6.5 | 2 | 34 | 138.5 | 13 | 299 | 181 | 39 | 75 | 233.5 | 224 | 117.5 | 1796 | 410.5 | 10 | 21 | 15 | 8 | 7 | 17 | 18 | 5 | 0 | 1.1 | 696.6 | 1555.9 | 2249.0 | 2569.2 | 2729.6 | 2872.8 | 226 |
+| 72 | doubao | silver | silver | 75 | 74.7 | 2345.6 | 200 | 200 | 69.3 | shop | 111169 | 12 | 3 | 6 | 11 | 8 | 6 | 3 | 33 | 163 | 12 | 400 | 119 | 37 | 72 | 249 | 192 | 151 | 1623 | 389 | 10 | 11 | 15 | 8 | 6 | 20 | 0 | 0 | 1 | 0 | 714.7 | 1716.4 | 2290.8 | 2558.7 | 2774.5 | 2890.9 | 212 |
+| 74 | yomogii | silver | silver | 78 | 85.9 | 2393.9 | 48 | 24 | 70.5 | none | 102744.5 | 12 | 3 | 6 | 11 | 8 | 6 | 3 | 33 | 163 | 12 | 403 | 108 | 36.5 | 72 | 251 | 191 | 130 | 1614 | 393 | 10 | 11 | 15 | 8 | 6 | 20 | 0 | 0 | 1 | 0 | 685.0 | 1519.9 | 2489.5 | 2805.2 | 2902.0 |  | 95 |
+| 75 | Tom&Jerry | silver | silver | 76 | 76.3 | 2432.9 | 200 | 200 | 69.7 | weed | 101110.5 | 12 | 3 | 6 | 11 | 8 | 6 | 3 | 33 | 162 | 12 | 405 | 111 | 37 | 72 | 249 | 191 | 122.5 | 1593 | 391 | 10 | 11 | 15 | 8 | 6 | 19 | 0 | 0 | 1 | 0 | 736.2 | 1711.6 | 2506.0 | 2799.3 | 2887.6 |  | 104 |
+| 120 | Navier-stokes | silver | silver | 50 | 90 | 2180.9 | 200 | 200 | 74 | shop | 103187 | 12 | 3 | 6 | 11 | 8 | 6 | 3 | 33 | 162 | 12 | 405 | 117 | 37 | 72 | 249 | 199.5 | 124.5 | 1605 | 393 | 10 | 11 | 15 | 8 | 6 | 19 | 0 | 0 | 1 | 0 | 743.9 | 1562.5 | 2565.6 | 2801.2 |  |  |  |
+| 121 | Pai | silver | silver | 50 | 86 | 2268.4 | 200 | 200 | 74 | shop | 94496 | 12 | 3 | 6 | 11 | 8 | 6 | 3 | 33 | 162 | 12 | 405 | 116 | 37 | 72 | 248 | 200.5 | 103.5 | 1590.5 | 396.5 | 10 | 11 | 15 | 8 | 6 | 19 | 0 | 0 | 1 | 0 | 713.2 | 1621.7 | 2648.5 | 2835.7 | 2883.0 |  |  |
+| 122 | Munal Singh | silver | silver | 50 | 84 | 2259.4 | 200 | 100 | 78 | shop | 96852.5 | 12 | 3 | 6 | 11 | 8 | 6 | 3 | 33 | 162 | 12 | 405 | 110 | 37.5 | 72 | 249 | 192.5 | 135.5 | 1585 | 385.5 | 10 | 11 | 15 | 8 | 6 | 19 | 0 | 0 | 1 | 0 | 700.7 | 1560.6 | 2695.2 | 2879.8 | 2885.0 | 2816.5 | 76 |
+| 227 | ElephtAI | silver | silver | 72 | 84.7 | 2468.1 | 200 | 100 | 61.1 | none | 99151.5 | 12 | 3 | 6 | 11 | 8 | 6 | 3 | 33 | 162 | 12 | 417 | 103.5 | 36 | 72 | 249 | 204 | 138.5 | 1583.5 | 390 | 10 | 11 | 15 | 8 | 6 | 19 | 0 | 0 | 1 | 0 | 768.4 | 1679.9 | 2642.5 | 2942.2 | 2900.9 |  | 42 |
+| 250 | Bldr2 | silver | silver | 50 | 90 | 2169.0 | 200 | 200 | 78 | weed | 95980 | 12 | 3 | 6 | 11 | 8 | 6 | 3 | 33 | 163 | 12 | 405 | 118 | 38 | 72 | 248 | 195.5 | 107 | 1593 | 393 | 10 | 11 | 15 | 8 | 6 | 20 | 0 | 0 | 1 | 0 | 680.3 | 1642.7 | 2513.5 | 2740.6 | 2803.5 |  |  |
+| 251 | let cats farm | silver | silver | 50 | 96 | 2029.8 | 200 | 200 | 68 | none | 100482.5 | 12 | 3 | 6 | 11 | 8 | 6 | 2 | 33 | 163 | 12 | 338 | 95 | 36 | 72 | 249 | 191.5 | 125 | 1763 | 375 | 10 | 11 | 15 | 8 | 6 | 20 | 0 | 0 | 193 | 0 | 720.3 | 1496.8 | 2321.4 | 2690.6 | 2832.3 | 2838.3 |  |
+| 252 | kevin park | silver | silver | 50 | 90 | 2094.1 | 200 | 200 | 78 | weed | 102818 | 12 | 3 | 6 | 11 | 8 | 6 | 3 | 33 | 162 | 12 | 405 | 116 | 37 | 72 | 249 | 192 | 132 | 1585 | 396 | 10 | 11 | 15 | 8 | 6 | 19 | 0 | 0 | 1 | 0 | 697.7 | 1511.5 | 2448.1 | 2692.6 |  |  |  |
+| 400 | peppersaltman | silver | silver | 50 | 84 | 2150.7 | 200 | 200 | 80 | weed | 110276.5 | 12 | 3 | 6 | 11 | 8 | 6 | 3 | 33 | 162 | 12 | 417 | 99.5 | 36 | 72 | 248 | 191 | 148.5 | 1569 | 396.5 | 10 | 11 | 15 | 8 | 6 | 19 | 0 | 0 | 1 | 0 | 724.1 | 1648.9 | 2476.8 | 2653.5 | 2739.4 | 2565.5 |  |
+| 401 | Win Suthar | silver | silver | 50 | 86 | 1938.1 | 200 | 200 | 76 | shop | 105322.5 | 12 | 3 | 6 | 11 | 8 | 6 | 3 | 33 | 162 | 12 | 417 | 102.5 | 36 | 72 | 247 | 197 | 130 | 1573.5 | 395.5 | 10 | 11 | 15 | 8 | 6 | 19 | 0 | 0 | 1 | 0 | 730.4 | 1619.8 | 2210.7 | 2410.4 | 2535.7 |  |  |
+| 402 | spencersi123 | silver | silver | 50 | 82 | 2125.4 | 200 | 200 | 80 | none | 106474 | 12 | 3 | 6 | 11 | 6 | 6 | 3 | 33 | 163 | 12 | 405 | 110 | 37 | 72 | 249 | 191 | 137.5 | 1590.5 | 393 | 10 | 11 | 15 | 8 | 6 | 20 | 0 | 0 | 1 | 0 | 729.0 | 1526.7 | 2479.3 | 2671.7 | 2734.1 |  |  |
+| 470 | Naru041104 | bronze | bronze | 50 | 90 | 2099.3 | 200 | 200 | 46 | shop | 105926.5 | 12 | 3 | 6 | 11 | 8 | 6 | 3 | 33 | 163 | 12 | 405 | 91 | 36 | 72 | 247 | 245 | 161 | 2866 | 379.5 | 10 | 11 | 15 | 8 | 6 | 20 | 0 | 0 | 0 | 0 | 747.7 | 1612.0 | 2440.3 | 2660.5 | 2739.1 | 2737.9 |  |
+| 473 | Jacky Chan | bronze | bronze | 50 | 86 | 2188.7 | 200 | 200 | 74 | shop | 102570.5 | 12 | 3 | 6 | 11 | 8 | 6 | 3 | 33 | 162 | 12 | 405 | 115.5 | 37 | 72 | 249 | 196 | 137.5 | 1595 | 393 | 10 | 11 | 15 | 8 | 6 | 19 | 0 | 0 | 1 | 0 | 682.8 | 1647.2 | 2591.3 | 2750.5 | 2729.3 |  |  |
+| 600 | 最强扫地僧 | bronze | bronze | 50 | 76 | 2185.4 | 200 | 200 | 64 | none | 105283 | 12 | 3 | 6 | 11 | 8 | 6 | 3 | 33 | 163 | 12 | 417 | 98 | 36 | 72 | 248 | 198 | 129.5 | 1560 | 390 | 10 | 11 | 15 | 8 | 6 | 20 | 0 | 0 | 1 | 0 | 713.1 | 1631.9 | 2633.3 | 2628.1 | 2581.7 |  |  |
+| 601 | Cyrus | bronze | bronze | 50 | 86 | 2130.3 | 200 | 200 | 76 | weed | 112238.5 | 12 | 3 | 6 | 11 | 8 | 6 | 3 | 33 | 162 | 12 | 417 | 104.5 | 36 | 72 | 247.5 | 205.5 | 137.5 | 1588 | 398 | 10 | 11 | 15 | 8 | 6 | 19 | 0 | 0 | 1 | 0 | 708.0 | 1653.7 | 2464.3 | 2661.5 | 2694.4 |  |  |
+| 602 | matcha110 | bronze | bronze | 50 | 92 | 2057.1 | 200 | 200 | 62 | none | 109357 | 12 | 3 | 6 | 11 | 8 | 6 | 3 | 33 | 162 | 12 | 417 | 96 | 36 | 72 | 248 | 199 | 157 | 1575 | 392.5 | 10 | 11 | 15 | 8 | 6 | 19 | 0 | 0 | 1 | 0 | 701.7 | 1549.1 | 2361.5 | 2646.0 | 2657.6 |  |  |
+| 750 | Daiki Takahashi | bronze | bronze | 50 | 72 | 2113.7 | 200 | 200 | 64 | none | 99677 | 12 | 3 | 6 | 11 | 8 | 6 | 3 | 33 | 162 | 12 | 417 | 103 | 36 | 72 | 248 | 211 | 139 | 1580.5 | 396 | 10 | 11 | 15 | 8 | 6 | 19 | 0 | 0 | 1 | 0 | 706.3 | 1566.9 | 2467.2 | 2615.0 | 2660.3 | 2506.1 |  |
+| 751 | ansheng jhang | bronze | bronze | 50 | 90 | 2008.0 | 200 | 200 | 74 | seat | 113235.5 | 12 | 3 | 6 | 11 | 8 | 6 | 3 | 33 | 162 | 12 | 417 | 99 | 36 | 72 | 248 | 194 | 145 | 1588.5 | 392.5 | 10 | 11 | 15 | 8 | 6 | 19 | 0 | 0 | 1 | 0 | 730.5 | 1666.3 | 2228.3 | 2483.0 | 2535.2 |  |  |
+| 752 | CaliforniaDog | bronze | bronze | 50 | 68 | 2154.3 | 200 | 200 | 60 | none | 103913 | 12 | 3 | 6 | 11 | 8 | 6 | 3 | 33 | 162 | 12 | 417 | 106 | 36 | 72 | 248 | 219 | 128 | 1578.5 | 397 | 10 | 11 | 15 | 8 | 6 | 19 | 0 | 0 | 1 | 0 | 727.9 | 1572.2 | 2545.3 | 2592.0 | 2586.6 |  |  |
+| 881 | Toru59er | bronze | bronze | 50 | 62 | 2077.6 | 200 | 200 | 64 | weed | 111330.5 | 12 | 3 | 6 | 11 | 8 | 6 | 3 | 33 | 162 | 12 | 417 | 103 | 36 | 72 | 248 | 205 | 138.5 | 1579 | 395.5 | 10 | 11 | 15 | 8 | 6 | 19 | 0 | 0 | 1 | 0 | 663.0 | 1497.4 | 2555.3 | 2542.5 | 2520.0 |  |  |
+| 882 | broccoli | bronze | bronze | 50 | 80 | 2020.8 | 200 | 200 | 80 | weed | 101990.5 | 12 | 3 | 6 | 11 | 8 | 6 | 3 | 33 | 162 | 12 | 417 | 105.5 | 36 | 72 | 247 | 205.5 | 115.5 | 1572.5 | 392.5 | 10 | 11 | 15 | 8 | 6 | 19 | 0 | 0 | 1 | 0 | 750.4 | 1663.5 | 2286.7 | 2468.0 | 2573.9 | 2456.4 |  |
 

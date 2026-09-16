@@ -35,13 +35,13 @@ game 1: 683, game 10: 1647, game 25: 2591, game 50: 2750, game 100: 2729, game l
 | melon planted | 12 |
 | FERTILIZE ops | 115.5 |
 | CARE ops | 405 |
-| melon sold | 12 |
-| strawberry sold | 130.5 |
-| milk sold | 117.5 |
-| wool sold | 82 |
-| wheat sold | 328 |
-| fertilizer sold | 287 |
-| units sold last 3 days | 270 |
+| melon sold | 72 |
+| strawberry sold | 249 |
+| milk sold | 196 |
+| wool sold | 137.5 |
+| wheat sold | 378 |
+| fertilizer sold | 342 |
+| units sold last 3 days | 393 |
 | shed peak | 45 |
 | weeds spawned | 19 |
 | unexecutable market orders | 1 |
@@ -99,17 +99,17 @@ What goes with being off the modal field line at turn 200 (the first cut where f
 
 | window | games | win % | median bank | hands | cows | sheep | geese | quadrants | land day 1 | strawberry | wheat | melon | melon sold | milk sold | wool sold | field lines @400 | market lines @400 |
 |---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|
-| C0 | 50 | 86 | 102570.5 | 12 | 8 | 6 | 3 | 3 | 6 | 33 | 162 | 12 | 12 | 117.5 | 82 | 37 | 39 |
+| C0 | 50 | 86 | 102570.5 | 12 | 8 | 6 | 3 | 3 | 6 | 33 | 162 | 12 | 72 | 196 | 137.5 | 37 | 39 |
 
 ## Losses in the first and last windows
 
 | window | episode | opponent | opp rating | my bank | opp bank | margin | opp opening | biggest differences (opponent vs me) |
 |---|---|---|---|---|---|---|---|---|
-| C0 | 109044861 | cm391 | 2702.7 | 70486 | 71806 | -1320 | 9b0c82fd |  |
-| C0 | 109045903 | HireMe | 2703.0 | 63819 | 65109 | -1290 | 9b0c82fd | milk sold: they 110 vs me 78; wool sold: they 164 vs me 135; FERTILIZE ops: they 97 vs me 111 |
+| C0 | 109044861 | cm391 | 2702.7 | 70486 | 71806 | -1320 | 9b0c82fd | melon sold: they 72 vs me 66 |
+| C0 | 109045903 | HireMe | 2703.0 | 63819 | 65109 | -1290 | 9b0c82fd | milk sold: they 191 vs me 150; wool sold: they 272 vs me 241; FERTILIZE ops: they 97 vs me 111 |
 | C0 | 109046944 | magic101 | 2781.8 | 120811 | 121888 | -1077 | 9b0c82fd | weeds spawned: they 19 vs me 21; wheat planted: they 162 vs me 161 |
-| C0 | 109047441 | Harshini Reddy | 2746.8 | 88575 | 90683 | -2108 | 9b0c82fd | milk sold: they 161 vs me 76; wool sold: they 107 vs me 66; CARE ops: they 417 vs me 398 |
-| C0 | 109058365 | MMN0222 | 2819.7 | 60330 | 61290 | -960 | 9b0c82fd | CARE ops: they 484 vs me 405; strawberry sold: they 115 vs me 124; milk sold: they 110 vs me 118 |
+| C0 | 109047441 | Harshini Reddy | 2746.8 | 88575 | 90683 | -2108 | 9b0c82fd | milk sold: they 245 vs me 141; wool sold: they 161 vs me 123; CARE ops: they 417 vs me 398 |
+| C0 | 109058365 | MMN0222 | 2819.7 | 60330 | 61290 | -960 | 9b0c82fd | CARE ops: they 484 vs me 405; strawberry sold: they 240 vs me 247; FERTILIZE ops: they 118 vs me 124 |
 
 ## Head to head with the other studied teams (all games, not only sampled)
 

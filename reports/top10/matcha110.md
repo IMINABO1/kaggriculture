@@ -35,13 +35,13 @@ game 1: 702, game 10: 1549, game 25: 2361, game 50: 2646, game 100: 2658, game l
 | melon planted | 12 |
 | FERTILIZE ops | 96 |
 | CARE ops | 417 |
-| melon sold | 12 |
-| strawberry sold | 133 |
-| milk sold | 126.5 |
-| wool sold | 108 |
-| wheat sold | 314 |
-| fertilizer sold | 291 |
-| units sold last 3 days | 270 |
+| melon sold | 72 |
+| strawberry sold | 248 |
+| milk sold | 199 |
+| wool sold | 157 |
+| wheat sold | 364.5 |
+| fertilizer sold | 351 |
+| units sold last 3 days | 392.5 |
 | shed peak | 45 |
 | weeds spawned | 19 |
 | unexecutable market orders | 1 |
@@ -99,15 +99,15 @@ What goes with being off the modal field line at turn 200 (the first cut where f
 
 | window | games | win % | median bank | hands | cows | sheep | geese | quadrants | land day 1 | strawberry | wheat | melon | melon sold | milk sold | wool sold | field lines @400 | market lines @400 |
 |---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|
-| C0 | 50 | 92 | 109357 | 12 | 8 | 6 | 3 | 3 | 6 | 33 | 162 | 12 | 12 | 126.5 | 108 | 31 | 24 |
+| C0 | 50 | 92 | 109357 | 12 | 8 | 6 | 3 | 3 | 6 | 33 | 162 | 12 | 72 | 199 | 157 | 31 | 24 |
 
 ## Losses in the first and last windows
 
 | window | episode | opponent | opp rating | my bank | opp bank | margin | opp opening | biggest differences (opponent vs me) |
 |---|---|---|---|---|---|---|---|---|
-| C0 | 108844194 | Jun_value | 2032.5 | 82716 | 84010 | -1294 | 9b0c82fd | milk sold: they 100 vs me 120; strawberry sold: they 124 vs me 132; units sold last 3 days: they 265 vs me 268 |
-| C0 | 108854232 | york1to | 2504.4 | 129917 | 130234 | -317 | 9b0c82fd | wool sold: they 110 vs me 56; FERTILIZE ops: they 104 vs me 120; CARE ops: they 406 vs me 417 |
-| C0 | 108867629 | Hanserong | 2607.1 | 122952 | 125938 | -2986 | 9b0c82fd | FERTILIZE ops: they 84 vs me 120; milk sold: they 182 vs me 155; wool sold: they 90 vs me 76 |
+| C0 | 108844194 | Jun_value | 2032.5 | 82716 | 84010 | -1294 | 9b0c82fd | wheat planted: they 163 vs me 162; weeds spawned: they 20 vs me 19 |
+| C0 | 108854232 | york1to | 2504.4 | 129917 | 130234 | -317 | 9b0c82fd | wool sold: they 161 vs me 99; FERTILIZE ops: they 104 vs me 120; CARE ops: they 406 vs me 417 |
+| C0 | 108867629 | Hanserong | 2607.1 | 122952 | 125938 | -2986 | 9b0c82fd | FERTILIZE ops: they 84 vs me 120; milk sold: they 266 vs me 245; wool sold: they 139 vs me 123 |
 
 ## Head to head with the other studied teams (all games, not only sampled)
 

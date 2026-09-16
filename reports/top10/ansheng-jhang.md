@@ -35,13 +35,13 @@ game 1: 730, game 10: 1666, game 25: 2228, game 50: 2483, game 100: 2535, game l
 | melon planted | 12 |
 | FERTILIZE ops | 99 |
 | CARE ops | 417 |
-| melon sold | 12 |
-| strawberry sold | 134 |
-| milk sold | 128.5 |
-| wool sold | 97 |
-| wheat sold | 316.5 |
-| fertilizer sold | 291 |
-| units sold last 3 days | 267 |
+| melon sold | 72 |
+| strawberry sold | 248 |
+| milk sold | 194 |
+| wool sold | 145 |
+| wheat sold | 370.5 |
+| fertilizer sold | 352 |
+| units sold last 3 days | 392.5 |
 | shed peak | 45 |
 | weeds spawned | 19 |
 | unexecutable market orders | 1 |
@@ -99,17 +99,17 @@ What goes with being off the modal field line at turn 200 (the first cut where f
 
 | window | games | win % | median bank | hands | cows | sheep | geese | quadrants | land day 1 | strawberry | wheat | melon | melon sold | milk sold | wool sold | field lines @400 | market lines @400 |
 |---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|
-| C0 | 50 | 90 | 113235.5 | 12 | 8 | 6 | 3 | 3 | 6 | 33 | 162 | 12 | 12 | 128.5 | 97 | 37 | 29 |
+| C0 | 50 | 90 | 113235.5 | 12 | 8 | 6 | 3 | 3 | 6 | 33 | 162 | 12 | 72 | 194 | 145 | 37 | 29 |
 
 ## Losses in the first and last windows
 
 | window | episode | opponent | opp rating | my bank | opp bank | margin | opp opening | biggest differences (opponent vs me) |
 |---|---|---|---|---|---|---|---|---|
-| C0 | 109099516 | HojunLee | 1916.8 | 92318 | 96108 | -3790 | 9b0c82fd | CARE ops: they 407 vs me 417; units sold last 3 days: they 274 vs me 266; wool sold: they 50 vs me 56 |
-| C0 | 109103115 | Le Viet | 1933.3 | 96121 | 97568 | -1447 | 9b0c82fd | milk sold: they 124 vs me 144; units sold last 3 days: they 271 vs me 257; strawberry sold: they 120 vs me 132 |
-| C0 | 109106924 | try | 2020.3 | 120647 | 125508 | -4861 | b3aed51d | milk sold: they 175 vs me 133; FERTILIZE ops: they 89 vs me 116; units sold last 3 days: they 249 vs me 263 |
+| C0 | 109099516 | HojunLee | 1916.8 | 92318 | 96108 | -3790 | 9b0c82fd | CARE ops: they 407 vs me 417; strawberry sold: they 249 vs me 247; units sold last 3 days: they 391 vs me 389 |
+| C0 | 109103115 | Le Viet | 1933.3 | 96121 | 97568 | -1447 | 9b0c82fd | FERTILIZE ops: they 117 vs me 107; wool sold: they 107 vs me 99; milk sold: they 228 vs me 233 |
+| C0 | 109106924 | try | 2020.3 | 120647 | 125508 | -4861 | b3aed51d | FERTILIZE ops: they 89 vs me 116; milk sold: they 245 vs me 219; hands (peak): they 17 vs me 13 |
 | C0 | 109121256 | Bruce | 2427.0 | 86400 | 86557 | -157 | 9b0c82fd | weeds spawned: they 20 vs me 19 |
-| C0 | 109135976 | ALLAI | 2523.5 | 119481 | 120039 | -558 | 9b0c82fd | milk sold: they 155 vs me 176; FERTILIZE ops: they 122 vs me 103; wool sold: they 71 vs me 83 |
+| C0 | 109135976 | ALLAI | 2523.5 | 119481 | 120039 | -558 | 9b0c82fd | FERTILIZE ops: they 122 vs me 103; CARE ops: they 405 vs me 417; units sold last 3 days: they 439 vs me 434 |
 
 ## Head to head with the other studied teams (all games, not only sampled)
 

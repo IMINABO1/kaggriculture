@@ -35,13 +35,13 @@ game 1: 728, game 10: 1572, game 25: 2545, game 50: 2592, game 100: 2587, game l
 | melon planted | 12 |
 | FERTILIZE ops | 106 |
 | CARE ops | 417 |
-| melon sold | 12 |
-| strawberry sold | 133 |
-| milk sold | 132 |
-| wool sold | 79 |
-| wheat sold | 324 |
-| fertilizer sold | 291 |
-| units sold last 3 days | 267.5 |
+| melon sold | 72 |
+| strawberry sold | 248 |
+| milk sold | 219 |
+| wool sold | 128 |
+| wheat sold | 374.5 |
+| fertilizer sold | 352 |
+| units sold last 3 days | 397 |
 | shed peak | 45 |
 | weeds spawned | 19 |
 | unexecutable market orders | 1 |
@@ -99,23 +99,23 @@ What goes with being off the modal field line at turn 200 (the first cut where f
 
 | window | games | win % | median bank | hands | cows | sheep | geese | quadrants | land day 1 | strawberry | wheat | melon | melon sold | milk sold | wool sold | field lines @400 | market lines @400 |
 |---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|
-| C0 | 50 | 68 | 103913 | 12 | 8 | 6 | 3 | 3 | 6 | 33 | 162 | 12 | 12 | 132 | 79 | 30 | 24 |
+| C0 | 50 | 68 | 103913 | 12 | 8 | 6 | 3 | 3 | 6 | 33 | 162 | 12 | 72 | 219 | 128 | 30 | 24 |
 
 ## Losses in the first and last windows
 
 | window | episode | opponent | opp rating | my bank | opp bank | margin | opp opening | biggest differences (opponent vs me) |
 |---|---|---|---|---|---|---|---|---|
-| C0 | 109070592 | yt0914 | 2463.9 | 119861 | 122057 | -2196 | d6b925bb | milk sold: they 173 vs me 176; wool sold: they 89 vs me 90; wheat planted: they 161 vs me 162 |
-| C0 | 109080032 | kta_jpn | 2653.8 | 91363 | 92580 | -1217 | 9b0c82fd | units sold last 3 days: they 250 vs me 254; weeds spawned: they 22 vs me 20; wheat planted: they 163 vs me 162 |
-| C0 | 109081148 | Kirderf | 2596.5 | 93725 | 95336 | -1611 | 9b0c82fd | strawberry sold: they 126 vs me 132; wool sold: they 51 vs me 56; units sold last 3 days: they 275 vs me 272 |
-| C0 | 109086147 | Jingxiang | 2571.2 | 54049 | 54757 | -708 | 9b0c82fd | milk sold: they 152 vs me 106; wool sold: they 107 vs me 84; FERTILIZE ops: they 104 vs me 124 |
+| C0 | 109070592 | yt0914 | 2463.9 | 119861 | 122057 | -2196 | d6b925bb | wheat planted: they 161 vs me 162; weeds spawned: they 21 vs me 20 |
+| C0 | 109080032 | kta_jpn | 2653.8 | 91363 | 92580 | -1217 | 9b0c82fd | units sold last 3 days: they 398 vs me 402; weeds spawned: they 22 vs me 20; wheat planted: they 163 vs me 162 |
+| C0 | 109081148 | Kirderf | 2596.5 | 93725 | 95336 | -1611 | 9b0c82fd | wool sold: they 94 vs me 99; units sold last 3 days: they 393 vs me 390; strawberry sold: they 249 vs me 247 |
+| C0 | 109086147 | Jingxiang | 2571.2 | 54049 | 54757 | -708 | 9b0c82fd | milk sold: they 245 vs me 185; wool sold: they 161 vs me 132; FERTILIZE ops: they 104 vs me 124 |
 | C0 | 109088094 | Ali Alghaithi | 2648.8 | 149198 | 149239 | -41 | 9b0c82fd | weeds spawned: they 19 vs me 20 |
-| C0 | 109091185 | tq1d | 2681.5 | 141201 | 141942 | -741 | 9b0c82fd | FERTILIZE ops: they 86 vs me 106; units sold last 3 days: they 268 vs me 284; wool sold: they 160 vs me 151 |
-| C0 | 109092417 | kawauso9n | 2647.4 | 147960 | 148326 | -366 | 9b0c82fd | strawberry sold: they 130 vs me 146; milk sold: they 116 vs me 110; units sold last 3 days: they 250 vs me 251 |
+| C0 | 109091185 | tq1d | 2681.5 | 141201 | 141942 | -741 | 9b0c82fd | FERTILIZE ops: they 86 vs me 106; units sold last 3 days: they 387 vs me 405; wool sold: they 272 vs me 259 |
+| C0 | 109092417 | kawauso9n | 2647.4 | 147960 | 148326 | -366 | 9b0c82fd | units sold last 3 days: they 391 vs me 393; weeds spawned: they 21 vs me 20; CARE ops: they 505 vs me 506 |
 | C0 | 109094663 | AQiDA19 | 2658.6 | 99283 | 99286 | -3 | 9b0c82fd | wheat planted: they 163 vs me 162; weeds spawned: they 20 vs me 19 |
-| C0 | 109094681 | track | 2608.2 | 107729 | 109855 | -2126 | 9b0c82fd | FERTILIZE ops: they 125 vs me 103; units sold last 3 days: they 268 vs me 252; CARE ops: they 405 vs me 417 |
-| C0 | 109095990 | Blu3s | 2636.0 | 134352 | 136503 | -2151 | d6b925bb | FERTILIZE ops: they 94 vs me 113; milk sold: they 191 vs me 173; strawberry sold: they 119 vs me 132 |
-| C0 | 109096489 | hidsaito | 2622.9 | 111931 | 111932 | -1 | 9b0c82fd |  |
+| C0 | 109094681 | track | 2608.2 | 107729 | 109855 | -2126 | 9b0c82fd | FERTILIZE ops: they 125 vs me 103; units sold last 3 days: they 443 vs me 431; CARE ops: they 405 vs me 417 |
+| C0 | 109095990 | Blu3s | 2636.0 | 134352 | 136503 | -2151 | d6b925bb | FERTILIZE ops: they 94 vs me 113; milk sold: they 281 vs me 263; wool sold: they 76 vs me 89 |
+| C0 | 109096489 | hidsaito | 2622.9 | 111931 | 111932 | -1 | 9b0c82fd | units sold last 3 days: they 388 vs me 387 |
 
 ## Head to head with the other studied teams (all games, not only sampled)
 

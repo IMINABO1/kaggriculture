@@ -35,13 +35,13 @@ game 1: 716, game 10: 1589, game 25: 2306, game 50: 2551, game 100: 2719, game 2
 | melon planted | 14 |
 | FERTILIZE ops | 153 |
 | CARE ops | 333 |
-| melon sold | 42 |
-| strawberry sold | 188 |
-| milk sold | 62.5 |
-| wool sold | 38 |
-| wheat sold | 4205 |
-| fertilizer sold | 115 |
-| units sold last 3 days | 794.5 |
+| melon sold | 84 |
+| strawberry sold | 241 |
+| milk sold | 181.5 |
+| wool sold | 107 |
+| wheat sold | 4530.5 |
+| fertilizer sold | 266 |
+| units sold last 3 days | 1060.5 |
 | shed peak | 2 |
 | weeds spawned | 15.5 |
 | unexecutable market orders | 0 |
@@ -99,20 +99,20 @@ What goes with being off the modal field line at turn 100 (the first cut where f
 
 | window | games | win % | median bank | hands | cows | sheep | geese | quadrants | land day 1 | strawberry | wheat | melon | melon sold | milk sold | wool sold | field lines @400 | market lines @400 |
 |---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|
-| C0 | 50 | 84 | 106327 | 14 | 6 | 5.5 | 4 | 3 | 5 | 32 | 101 | 14 | 42 | 62.5 | 38 | 50 | 50 |
+| C0 | 50 | 84 | 106327 | 14 | 6 | 5.5 | 4 | 3 | 5 | 32 | 101 | 14 | 84 | 181.5 | 107 | 50 | 50 |
 
 ## Losses in the first and last windows
 
 | window | episode | opponent | opp rating | my bank | opp bank | margin | opp opening | biggest differences (opponent vs me) |
 |---|---|---|---|---|---|---|---|---|
-| C0 | 108699094 | Suneeth reddy | 2063.0 | 96880 | 98224 | -1344 | 9b0c82fd | units sold last 3 days: they 261 vs me 1161; milk sold: they 200 vs me 51; CARE ops: they 416 vs me 330 |
-| C0 | 108701495 | DieByTheSword | 2313.5 | 83890 | 84331 | -441 | 9b0c82fd | units sold last 3 days: they 249 vs me 855; FERTILIZE ops: they 61 vs me 146; milk sold: they 151 vs me 70 |
-| C0 | 108702542 | yukino | 2249.4 | 95861 | 99110 | -3249 | 9b0c82fd | wool sold: they 119 vs me 33; strawberry sold: they 138 vs me 221; FERTILIZE ops: they 61 vs me 141 |
-| C0 | 108718018 | Abhijit Pise | 2558.0 | 108657 | 123827 | -15170 | 9b0c82fd | units sold last 3 days: they 273 vs me 118; strawberry sold: they 133 vs me 232; wool sold: they 111 vs me 22 |
-| C0 | 108721101 | TIM | 2633.8 | 98227 | 98318 | -91 | 9b0c82fd | units sold last 3 days: they 262 vs me 114; wheat planted: they 163 vs me 63; strawberry sold: they 129 vs me 212 |
-| C0 | 108722173 | Shiji Zheng | 2574.7 | 85078 | 87377 | -2299 | 9b0c82fd | units sold last 3 days: they 247 vs me 1084; CARE ops: they 417 vs me 297; wheat planted: they 163 vs me 106 |
-| C0 | 108724196 | Vanshika #2 | 2539.5 | 106560 | 107807 | -1247 | 9b0c82fd | units sold last 3 days: they 263 vs me 806; CARE ops: they 525 vs me 467; wool sold: they 124 vs me 69 |
-| C0 | 108728288 | 洛希边际 | 2543.9 | 95934 | 96385 | -451 | 9b0c82fd | units sold last 3 days: they 257 vs me 1030; strawberry sold: they 133 vs me 283; CARE ops: they 417 vs me 270 |
+| C0 | 108699094 | Suneeth reddy | 2063.0 | 96880 | 98224 | -1344 | 9b0c82fd | units sold last 3 days: they 374 vs me 1457; milk sold: they 284 vs me 180; CARE ops: they 416 vs me 330 |
+| C0 | 108701495 | DieByTheSword | 2313.5 | 83890 | 84331 | -441 | 9b0c82fd | units sold last 3 days: they 362 vs me 1116; milk sold: they 245 vs me 138; FERTILIZE ops: they 61 vs me 146 |
+| C0 | 108702542 | yukino | 2249.4 | 95861 | 99110 | -3249 | 9b0c82fd | units sold last 3 days: they 366 vs me 475; wool sold: they 161 vs me 61; FERTILIZE ops: they 61 vs me 141 |
+| C0 | 108718018 | Abhijit Pise | 2558.0 | 108657 | 123827 | -15170 | 9b0c82fd | wool sold: they 160 vs me 107; wheat planted: they 163 vs me 114; strawberry sold: they 248 vs me 287 |
+| C0 | 108721101 | TIM | 2633.8 | 98227 | 98318 | -91 | 9b0c82fd | wheat planted: they 163 vs me 63; CARE ops: they 405 vs me 340; wool sold: they 161 vs me 207 |
+| C0 | 108722173 | Shiji Zheng | 2574.7 | 85078 | 87377 | -2299 | 9b0c82fd | units sold last 3 days: they 422 vs me 1317; CARE ops: they 417 vs me 297; strawberry sold: they 248 vs me 175 |
+| C0 | 108724196 | Vanshika #2 | 2539.5 | 106560 | 107807 | -1247 | 9b0c82fd | units sold last 3 days: they 426 vs me 1080; strawberry sold: they 249 vs me 167; CARE ops: they 525 vs me 467 |
+| C0 | 108728288 | 洛希边际 | 2543.9 | 95934 | 96385 | -451 | 9b0c82fd | units sold last 3 days: they 375 vs me 1320; CARE ops: they 417 vs me 270; strawberry sold: they 248 vs me 353 |
 
 ## Head to head with the other studied teams (all games, not only sampled)
 

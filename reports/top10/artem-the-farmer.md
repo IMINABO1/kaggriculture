@@ -40,13 +40,13 @@ game 1: 718, game 10: 1460, game 25: 2516, game 50: 2854, game 100: 3027, game l
 | melon planted | 17 | 12 | 12 | 13 | 13 | 13 |
 | FERTILIZE ops | 48.5 | 82 | 127 | 155.5 | 153 | 159 |
 | CARE ops | 242.5 | 262 | 286 | 307.5 | 310.5 | 310.5 |
-| melon sold | 37 | 8 | 6 | 12 | 6.5 | 6 |
-| strawberry sold | 147 | 153 | 147 | 117.5 | 135.5 | 146 |
-| milk sold | 150.5 | 112.5 | 114.5 | 95.5 | 99.5 | 106 |
-| wool sold | 83 | 77.5 | 33.5 | 35.5 | 37 | 26.5 |
-| wheat sold | 510 | 433.5 | 378 | 361 | 308.5 | 311.5 |
-| fertilizer sold | 202.5 | 203 | 145 | 161 | 165.5 | 148.5 |
-| units sold last 3 days | 214.5 | 222.5 | 198.5 | 233 | 274 | 257 |
+| melon sold | 101.5 | 72 | 72 | 78 | 78 | 78 |
+| strawberry sold | 166 | 242 | 224 | 179 | 186.5 | 214.5 |
+| milk sold | 166 | 221 | 186 | 192 | 186 | 191.5 |
+| wool sold | 105 | 112.5 | 102 | 140 | 124 | 107.5 |
+| wheat sold | 526.5 | 474.5 | 426 | 418.5 | 377.5 | 379.5 |
+| fertilizer sold | 217.5 | 213 | 185.5 | 201 | 203 | 183.5 |
+| units sold last 3 days | 246.5 | 330 | 349.5 | 387.5 | 405 | 401 |
 | shed peak | 26.5 | 29.5 | 17 | 21 | 20 | 20.5 |
 | weeds spawned | 27.5 | 32 | 11.5 | 11 | 11 | 11 |
 | unexecutable market orders | 0 | 0 | 0 | 0 | 0 | 0 |
@@ -59,36 +59,36 @@ Episode 109000897 (the median-bank game of the latest window): seat 1, bank 9634
 
 | day | money | hands | quads | bought | built | planted | care/fert | harvest | sold | revenue | farm at day end | new weeds | shop unlock |
 |---|---|---|---|---|---|---|---|---|---|---|---|---|---|
-| 0 | 3000 | 5 | 1 | cow2 sheep2 \| W7 M12 | pasture 4  | W7 M12 | 4/0 | 0 | W17 | 485 | cow2 sheep2; W7 M12 |  |  |
-| 1 | 13 | 4 | 1 |  | pasture 2  |  | 4/0 | 0 | F1 | 99 | cow2 sheep2; W7 M12; empty pens 2 |  |  |
-| 2 | 138 | 4 | 1 | cow1 \| W5 |  | W3 | 5/0 | 3 | W2 | 60 | cow3 sheep2; W7 M12; empty pens 1 |  |  |
-| 3 | 132 | 5 | 1 | cow1 \| W5 |  | W4 | 5/0 | 4 | W3 | 90 | cow3 sheep2; W7 M12; empty pens 1 |  | Yarn Store |
-| 4 | 145 | 4 | 1 | W5 S4 |  | W3 | 6/0 | 3 | W2 F2 | 246 | cow4 sheep2; W7 M12 |  |  |
-| 5 | 226 | 5 | 1 | W4 S4 |  | S4 | 6/0 | 4 | W2 | 60 | cow4 sheep2; W3 S4 M12 |  |  |
-| 6 | 383 | 8 | 2 | sheep2 \| W2 S3 | pasture 7  | W6 S7 | 7/0 | 3 | W9 | 279 | cow4 sheep4; W8 S11 M12; empty pens 5 |  | Brunch Spot |
-| 7 | 1020 | 8 | 2 | sheep2 \| S7 |  | W5 S3 | 10/0 | 2 | F3 | 265 | cow4 sheep6; W11 S14 M12; empty pens 2 |  |  |
-| 8 | 19 | 9 | 2 | sheep4 \| W2 S4 | pasture 1  | W2 S4 | 13/0 | 7 | F7 | 601 | cow4 sheep9; W7 S18 M12 |  |  |
-| 9 | 60 | 10 | 3 | W22 |  | W20 | 13/0 | 4 | F10 | 830 | cow4 sheep9; W25 S18 M12 |  | Bakery |
-| 10 | 393 | 13 | 3 | goose2 sheep2 \| W10 M1 | pasture 2 coop 1 | W10 M1 | 16/0 | 16 | W2 F13 | 1077 | goose1 cow4 sheep11; W34 S18 M1 |  |  |
-| 11 | 13043 | 10 | 3 | sheep2 \| W7 | pasture 2 coop 1 | W8 | 19/0 | 7 | W2 M6 F13 | 1731 | goose2 cow4 sheep13; W36 S18 M1 |  |  |
-| 12 | 13332 | 10 | 3 | W6 S2 |  | W3 S2 | 19/1 | 14 | W2 Mk2 F16 | 1291 | goose2 cow4 sheep13; W32 S20 M1 |  | Ice Cream |
-| 13 | 18884 | 11 | 3 | W6 S4 |  | W7 S4 | 19/3 | 16 | W3 Mk4 F18 | 1475 | goose2 cow4 sheep13; W26 S24 M1 |  |  |
-| 14 | 22461 | 11 | 3 | W9 |  | W10 | 18/6 | 16 | W27 Mk3 F16 | 2085 | goose2 cow4 sheep13; W28 S24 M1 |  |  |
-| 15 | 27142 | 11 | 3 | W8 |  | W9 | 18/8 | 19 | W13 E4 Mk6 Wl6 F13 | 3005 | goose2 cow4 sheep13; W27 S24 M1; weeds 1 | 1 | Pizza |
-| 16 | 32562 | 12 | 3 | W7 |  | W6 | 18/6 | 19 | W11 S8 E6 Mk3 Wl4 F6 | 3749 | goose2 cow4 sheep13; W30 S24 M1 |  |  |
-| 17 | 41013 | 12 | 3 | W4 T2 |  | W6 T2 | 19/10 | 25 | W5 S10 E4 Mk6 F15 | 3211 | goose2 cow4 sheep13; W26 T2 S24 M1 |  |  |
-| 18 | 47297 | 12 | 3 | W8 T5 |  | W5 T5 | 16/8 | 30 | W14 S18 E4 Mk2 F12 | 4673 | goose2 cow4 sheep13; W22 T7 S24 M1 |  | Yarn Store |
-| 19 | 53405 | 12 | 3 | W6 |  | W7 | 17/14 | 21 | W20 S14 E4 Mk7 Wl8 F4 | 4735 | goose2 cow4 sheep13; W21 T7 S24 M1 |  |  |
-| 20 | 58326 | 12 | 3 | W9 |  | W10 | 14/12 | 26 | W26 S14 M6 E4 Wl16 F5 | 6196 | goose2 cow4 sheep13; W25 T7 S24 |  |  |
-| 21 | 65386 | 11 | 3 | W8 |  | W9 | 16/15 | 16 | W13 S8 E4 Mk2 Wl12 F6 | 2682 | goose2 cow4 sheep13; W29 T7 S20 |  | Farmers Market |
-| 22 | 67543 | 12 | 3 | W11 |  | W10 | 17/13 | 30 | W12 S20 E4 Mk2 F4 | 1688 | goose2 cow4 sheep13; W33 T7 S14 |  |  |
-| 23 | 70453 | 11 | 3 | W13 |  | W12 | 16/13 | 22 | W14 S10 E4 Mk10 Wl8 F5 | 2118 | goose2 cow4 sheep13; W36 T7 S10 | 1 |  |
-| 24 | 72105 | 11 | 3 | W12 |  | W12 | 18/13 | 23 | W24 S2 E4 Mk6 Wl12 F9 | 2924 | goose2 cow4 sheep13; W39 T7 S6; weeds 1 | 1 | Bakery |
-| 25 | 75250 | 11 | 3 | W7 C4 |  | W9 C4 | 14/16 | 21 | W31 S20 E4 Mk5 Wl3 F3 | 2567 | goose2 cow4 sheep13; W38 C4 T7 S6; weeds 1 |  |  |
-| 26 | 77899 | 11 | 3 | W7 C4 |  | W6 C4 | 15/17 | 24 | W30 T1 S9 E4 Mk3 Wl8 F5 | 2028 | goose2 cow4 sheep13; W35 C8 T7 S6 |  |  |
-| 27 | 79794 | 11 | 3 |  |  | W1 | 12/13 | 28 | W30 T15 S4 E4 Wl7 F2 | 3264 | goose2 cow4 sheep13; W25 C8 T7 S6 |  |  |
-| 28 | 83521 | 11 | 3 |  |  |  | 5/11 | 36 | W51 T16 S7 E6 Mk3 F6 | 3932 | goose2 cow4 sheep12; W13 C4 T7 S5; empty pens 1 |  |  |
-| 29 | 89563 | 11 | 3 |  |  |  | 1/0 | 31 | W53 C18 T14 S4 E6 Mk9 Wl11 F12 | 4962 | goose2 cow3 sheep7; W1 T5 S4; weeds 3 empty pens 7 | 3 |  |
+| 0 | 3000 | 5 | 1 | cow2 sheep2 \| W7 M12 | pasture 4  | W7 M12 | 4/0 | 0 | W17 | 477 | cow2 sheep2; W7 M12 |  |  |
+| 1 | 13 | 4 | 1 |  | pasture 2  |  | 4/0 | 0 | F4 | 398 | cow2 sheep2; W7 M12; empty pens 2 |  |  |
+| 2 | 138 | 4 | 1 | cow1 \| W5 |  | W3 | 5/0 | 3 | W2 F4 | 451 | cow3 sheep2; W7 M12; empty pens 1 |  |  |
+| 3 | 132 | 5 | 1 | cow1 \| W5 |  | W4 | 5/0 | 4 | W3 F4 | 475 | cow3 sheep2; W7 M12; empty pens 1 |  | Yarn Store |
+| 4 | 145 | 4 | 1 | W5 S4 |  | W3 | 6/0 | 3 | W2 F7 | 716 | cow4 sheep2; W7 M12 |  |  |
+| 5 | 226 | 5 | 1 | W4 S4 |  | S4 | 6/0 | 4 | W2 F6 | 609 | cow4 sheep2; W3 S4 M12 |  |  |
+| 6 | 383 | 8 | 2 | sheep2 \| W2 S3 | pasture 7  | W6 S7 | 7/0 | 3 | W9 Wl12 F3 | 3313 | cow4 sheep4; W8 S11 M12; empty pens 5 |  | Brunch Spot |
+| 7 | 1020 | 8 | 2 | sheep2 \| S3 |  | W5 S3 | 10/0 | 2 | F4 | 353 | cow4 sheep6; W11 S14 M12; empty pens 2 |  |  |
+| 8 | 19 | 9 | 2 | sheep3 \| W2 S4 | pasture 1  | W2 S4 | 13/0 | 7 | Mk12 F7 | 2505 | cow4 sheep9; W7 S18 M12 |  |  |
+| 9 | 60 | 10 | 3 | W22 |  | W20 | 13/0 | 4 | Wl8 F10 | 2696 | cow4 sheep9; W25 S18 M12 |  | Bakery |
+| 10 | 393 | 13 | 3 | goose2 sheep2 \| W10 M1 | pasture 2 coop 1 | W10 M1 | 16/0 | 16 | W2 M66 Mk12 F13 | 15890 | goose1 cow4 sheep11; W34 S18 M1 |  |  |
+| 11 | 13043 | 10 | 3 | sheep2 \| W7 | pasture 2 coop 1 | W8 | 19/0 | 7 | W2 M6 Mk6 F13 | 2057 | goose2 cow4 sheep13; W36 S18 M1 |  |  |
+| 12 | 13332 | 10 | 3 | W6 S2 |  | W3 S2 | 19/1 | 14 | W2 Mk5 Wl19 F16 | 5955 | goose2 cow4 sheep13; W32 S20 M1 |  | Ice Cream |
+| 13 | 18884 | 11 | 3 | W6 S4 |  | W7 S4 | 19/3 | 16 | W3 Mk4 Wl12 F18 | 4269 | goose2 cow4 sheep13; W26 S24 M1 |  |  |
+| 14 | 22461 | 11 | 3 | W9 |  | W10 | 18/6 | 16 | W27 Mk6 Wl12 F16 | 5003 | goose2 cow4 sheep13; W28 S24 M1 |  |  |
+| 15 | 27142 | 11 | 3 | W8 |  | W9 | 18/8 | 19 | W13 E4 Mk6 Wl18 F13 | 5732 | goose2 cow4 sheep13; W27 S24 M1; weeds 1 | 1 | Pizza |
+| 16 | 32562 | 12 | 3 | W7 |  | W6 | 18/6 | 19 | W11 S12 E6 Mk5 Wl24 F6 | 8897 | goose2 cow4 sheep13; W30 S24 M1 |  |  |
+| 17 | 41013 | 12 | 3 | W4 T2 |  | W6 T2 | 19/10 | 25 | W5 S10 E4 Mk6 Wl24 F15 | 7367 | goose2 cow4 sheep13; W26 T2 S24 M1 |  |  |
+| 18 | 47297 | 12 | 3 | W8 T5 |  | W5 T5 | 16/8 | 30 | W15 S22 E4 Mk5 Wl12 F13 | 6814 | goose2 cow4 sheep13; W22 T7 S24 M1 |  | Yarn Store |
+| 19 | 53405 | 12 | 3 | W6 |  | W7 | 17/14 | 21 | W20 S14 E4 Mk8 Wl16 F4 | 5357 | goose2 cow4 sheep13; W21 T7 S24 M1 |  |  |
+| 20 | 58326 | 12 | 3 | W9 |  | W10 | 14/12 | 26 | W26 S28 M6 E4 Wl16 F5 | 7526 | goose2 cow4 sheep13; W25 T7 S24 |  |  |
+| 21 | 65386 | 11 | 3 | W8 |  | W9 | 16/15 | 16 | W13 S8 E4 Mk2 Wl12 F6 | 2469 | goose2 cow4 sheep13; W29 T7 S20 |  | Farmers Market |
+| 22 | 67543 | 12 | 3 | W11 |  | W10 | 17/13 | 30 | W12 S28 E4 Mk2 Wl19 F5 | 3396 | goose2 cow4 sheep13; W33 T7 S14 |  |  |
+| 23 | 70453 | 11 | 3 | W13 |  | W12 | 16/13 | 22 | W14 S10 E4 Mk10 Wl8 F5 | 2014 | goose2 cow4 sheep13; W36 T7 S10 | 1 |  |
+| 24 | 72105 | 11 | 3 | W12 |  | W12 | 18/13 | 23 | W25 S2 E4 Mk6 Wl18 F9 | 3497 | goose2 cow4 sheep13; W39 T7 S6; weeds 1 | 1 | Bakery |
+| 25 | 75250 | 11 | 3 | W7 C4 |  | W9 C4 | 14/16 | 21 | W41 S20 E4 Mk5 Wl14 F3 | 3031 | goose2 cow4 sheep13; W38 C4 T7 S6; weeds 1 |  |  |
+| 26 | 77899 | 11 | 3 | W7 C4 |  | W6 C4 | 15/17 | 24 | W30 T1 S9 E4 Mk6 Wl11 F5 | 2277 | goose2 cow4 sheep13; W35 C8 T7 S6 |  |  |
+| 27 | 79794 | 11 | 3 |  |  | W1 | 12/13 | 28 | W37 T15 S4 E4 Wl14 F3 | 4039 | goose2 cow4 sheep13; W25 C8 T7 S6 |  |  |
+| 28 | 83521 | 11 | 3 |  |  |  | 5/11 | 36 | W87 T18 S7 E6 Mk3 Wl14 F8 | 6274 | goose2 cow4 sheep12; W13 C4 T7 S5; empty pens 1 |  |  |
+| 29 | 89563 | 11 | 3 |  |  |  | 1/0 | 31 | W94 C28 T20 S10 E6 Mk12 Wl19 F19 | 7011 | goose2 cow3 sheep7; W1 T5 S4; weeds 3 empty pens 7 | 3 |  |
 
 ## Determinism
 
@@ -156,46 +156,46 @@ What goes with being off the modal field line at turn 200 (the first cut where f
 
 | window | games | win % | median bank | hands | cows | sheep | geese | quadrants | land day 1 | strawberry | wheat | melon | melon sold | milk sold | wool sold | field lines @400 | market lines @400 |
 |---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|
-| F | 50 | 52 | 76407 | 12 | 8 | 5 | 0 | 3 | 6 | 34 | 142 | 17 | 37 | 150.5 | 83 | 49 | 50 |
-| Q1 | 50 | 40 | 92987.5 | 12 | 10 | 4 | 0 | 3 | 6 | 39 | 123 | 12 | 8 | 112.5 | 77.5 | 40 | 45 |
-| Q2 | 50 | 86 | 102443.5 | 13 | 7.5 | 4 | 0 | 3 | 6 | 30 | 138.5 | 12 | 6 | 114.5 | 33.5 | 50 | 50 |
-| Q3 | 50 | 90 | 101643.5 | 13 | 7 | 7 | 2 | 3 | 6 | 24 | 154 | 13 | 12 | 95.5 | 35.5 | 50 | 50 |
-| L | 50 | 92 | 95925 | 13 | 7 | 6 | 2 | 3 | 6 | 25 | 146 | 13 | 6.5 | 99.5 | 37 | 50 | 50 |
-| C0 | 50 | 98 | 109196.5 | 13 | 7.5 | 4 | 2 | 3 | 6 | 29 | 142 | 13 | 6 | 106 | 26.5 | 50 | 50 |
+| F | 50 | 52 | 76407 | 12 | 8 | 5 | 0 | 3 | 6 | 34 | 142 | 17 | 101.5 | 166 | 105 | 49 | 50 |
+| Q1 | 50 | 40 | 92987.5 | 12 | 10 | 4 | 0 | 3 | 6 | 39 | 123 | 12 | 72 | 221 | 112.5 | 40 | 45 |
+| Q2 | 50 | 86 | 102443.5 | 13 | 7.5 | 4 | 0 | 3 | 6 | 30 | 138.5 | 12 | 72 | 186 | 102 | 50 | 50 |
+| Q3 | 50 | 90 | 101643.5 | 13 | 7 | 7 | 2 | 3 | 6 | 24 | 154 | 13 | 78 | 192 | 140 | 50 | 50 |
+| L | 50 | 92 | 95925 | 13 | 7 | 6 | 2 | 3 | 6 | 25 | 146 | 13 | 78 | 186 | 124 | 50 | 50 |
+| C0 | 50 | 98 | 109196.5 | 13 | 7.5 | 4 | 2 | 3 | 6 | 29 | 142 | 13 | 78 | 191.5 | 107.5 | 50 | 50 |
 
 ## Losses in the first and last windows
 
 | window | episode | opponent | opp rating | my bank | opp bank | margin | opp opening | biggest differences (opponent vs me) |
 |---|---|---|---|---|---|---|---|---|
-| F | 94544362 | CherylStoned | 857.9 | 55850 | 110368 | -54518 | c0f95790 | milk sold: they 305 vs me 44; CARE ops: they 327 vs me 121; wheat planted: they 19 vs me 85 |
-| F | 94549767 | chengsongtao | 1190.8 | 73505 | 139962 | -66457 | 19b7fa8e | CARE ops: they 322 vs me 161; milk sold: they 241 vs me 92; strawberry sold: they 195 vs me 83 |
-| F | 94555951 | Jesy Lu | 1221.9 | 88960 | 90564 | -1604 | 19b7fa8e | melon sold: they 139 vs me 12; wool sold: they 154 vs me 86; CARE ops: they 322 vs me 267 |
-| F | 94556845 | weedfarmer | 1250.5 | 65244 | 108132 | -42888 | 19b7fa8e | CARE ops: they 322 vs me 173; strawberry sold: they 205 vs me 99; wheat planted: they 93 vs me 175 |
-| F | 94557746 | Candidates | 1223.8 | 122767 | 127883 | -5116 | cb6bb402 | strawberry sold: they 273 vs me 147; melon sold: they 96 vs me 46; weeds spawned: they 68 vs me 27 |
-| F | 94560433 | HowardLeeTW | 1241.3 | 74383 | 94383 | -20000 | 19b7fa8e | CARE ops: they 322 vs me 204; strawberry sold: they 197 vs me 107; units sold last 3 days: they 245 vs me 163 |
-| F | 94561328 | Manish Kumar Maurya | 1238.1 | 53742 | 55815 | -2073 | 19b7fa8e | CARE ops: they 322 vs me 199; units sold last 3 days: they 192 vs me 74; strawberry sold: they 197 vs me 109 |
-| F | 94562217 | Luka Philip | 1202.4 | 69813 | 116373 | -46560 | 19b7fa8e | units sold last 3 days: they 190 vs me 12; strawberry sold: they 183 vs me 53; CARE ops: they 322 vs me 192 |
-| F | 94563119 | Faruk Çiftler | 1187.9 | 46664 | 68216 | -21552 | 19b7fa8e | CARE ops: they 322 vs me 168; wheat planted: they 92 vs me 201; strawberry sold: they 200 vs me 115 |
-| F | 94564905 | Rheal Thomas | 1271.6 | 53410 | 141760 | -88350 | 79ce6b41 | CARE ops: they 394 vs me 136; strawberry sold: they 215 vs me 14; units sold last 3 days: they 198 vs me 11 |
-| F | 94565798 | brainpick | 1206.6 | 52810 | 126749 | -73939 | f28688d7 | strawberry sold: they 266 vs me 34; CARE ops: they 366 vs me 152; units sold last 3 days: they 223 vs me 15 |
-| F | 94566688 | Agrofitting | 1255.6 | 108551 | 135744 | -27193 | 42ff02f0 | strawberry sold: they 213 vs me 128; CARE ops: they 339 vs me 261; wool sold: they 179 vs me 122 |
-| F | 94567321 | Sergei Fironov | 1373.1 | 105352 | 139273 | -33921 | 4e479345 | CARE ops: they 957 vs me 258; strawberry sold: they 241 vs me 109; wheat planted: they 143 vs me 197 |
-| F | 94567568 | Agzam | 1181.9 | 69728 | 78842 | -9114 | 19b7fa8e | CARE ops: they 322 vs me 217; strawberry sold: they 201 vs me 97; melon sold: they 144 vs me 48 |
-| F | 94568463 | Caio Coelho | 1123.9 | 58881 | 125382 | -66501 | 79ce6b41 | units sold last 3 days: they 261 vs me 49; CARE ops: they 308 vs me 143; strawberry sold: they 187 vs me 71 |
-| F | 94569351 | Aditya Raj #2 | 1069.0 | 62650 | 64427 | -1777 | 25254350 | CARE ops: they 820 vs me 204; melon sold: they 23 vs me 74; wool sold: they 78 vs me 126 |
-| F | 94573834 | Abdul Wahab Khan | 1188.7 | 105201 | 141606 | -36405 | 19b7fa8e | melon sold: they 144 vs me 12; CARE ops: they 322 vs me 237; milk sold: they 216 vs me 148 |
-| F | 94585652 | minamoto | 1221.8 | 122428 | 150794 | -28366 | 65da1d57 | strawberry sold: they 151 vs me 200; units sold last 3 days: they 245 vs me 292; milk sold: they 227 vs me 184 |
-| F | 94612791 | 我的AI是豆包 | 1169.3 | 80517 | 89858 | -9341 | 65da1d57 | units sold last 3 days: they 216 vs me 7; CARE ops: they 317 vs me 183; FERTILIZE ops: they 70 vs me 29 |
-| F | 94632799 | Joseph Franck | 1183.5 | 61376 | 85282 | -23906 | 19b7fa8e | CARE ops: they 322 vs me 193; milk sold: they 213 vs me 122; melon sold: they 136 vs me 53 |
-| F | 94632912 | jnurik | 1198.0 | 90984 | 113036 | -22052 | 19b7fa8e | wheat planted: they 92 vs me 185; milk sold: they 78 vs me 149; CARE ops: they 322 vs me 257 |
-| F | 94725127 | Faris Abqari | 1100.6 | 102580 | 111675 | -9095 | 8967c0e2 | wheat planted: they 68 vs me 171; wool sold: they 64 vs me 124; FERTILIZE ops: they 103 vs me 52 |
-| F | 94755749 | ktyser | 1156.2 | 71010 | 84485 | -13475 | 65da1d57 | CARE ops: they 318 vs me 234; milk sold: they 226 vs me 163; units sold last 3 days: they 263 vs me 234 |
-| F | 94801382 | Jacky Chan | 1430.8 | 96661 | 111194 | -14533 | 65da1d57 | CARE ops: they 318 vs me 262; milk sold: they 226 vs me 192; units sold last 3 days: they 263 vs me 245 |
-| C0 | 108955051 | Yanis Belami | 2647.9 | 110955 | 113759 | -2804 | 9b0c82fd | CARE ops: they 417 vs me 291; FERTILIZE ops: they 89 vs me 168; wool sold: they 92 vs me 21 |
-| L | 108983231 | Otter Vibe | 2987.4 | 103145 | 103805 | -660 | 1dcdc01b | CARE ops: they 406 vs me 288; strawberry sold: they 61 vs me 158; milk sold: they 24 vs me 111 |
-| L | 108991556 | dre | 2882.4 | 86269 | 86485 | -216 | 9b0c82fd | CARE ops: they 406 vs me 322; FERTILIZE ops: they 80 vs me 148; wool sold: they 94 vs me 29 |
-| L | 109004245 | Cow Boy | 2957.5 | 105559 | 108442 | -2883 | 83322aec | CARE ops: they 416 vs me 325; FERTILIZE ops: they 90 vs me 180; milk sold: they 154 vs me 101 |
-| L | 109007507 | ymg_aq | 3029.3 | 111194 | 113920 | -2726 | 33af7d45 | CARE ops: they 264 vs me 391; units sold last 3 days: they 385 vs me 281; wool sold: they 120 vs me 82 |
+| F | 94544362 | CherylStoned | 857.9 | 55850 | 110368 | -54518 | c0f95790 | milk sold: they 305 vs me 52; CARE ops: they 327 vs me 121; wheat planted: they 19 vs me 85 |
+| F | 94549767 | chengsongtao | 1190.8 | 73505 | 139962 | -66457 | 19b7fa8e | strawberry sold: they 305 vs me 91; CARE ops: they 322 vs me 161; units sold last 3 days: they 301 vs me 151 |
+| F | 94555951 | Jesy Lu | 1221.9 | 88960 | 90564 | -1604 | 19b7fa8e | melon sold: they 139 vs me 72; strawberry sold: they 303 vs me 239; units sold last 3 days: they 335 vs me 280 |
+| F | 94556845 | weedfarmer | 1250.5 | 65244 | 108132 | -42888 | 19b7fa8e | strawberry sold: they 313 vs me 110; CARE ops: they 322 vs me 173; units sold last 3 days: they 330 vs me 204 |
+| F | 94557746 | Candidates | 1223.8 | 122767 | 127883 | -5116 | cb6bb402 | strawberry sold: they 273 vs me 188; units sold last 3 days: they 196 vs me 250; weeds spawned: they 68 vs me 27 |
+| F | 94560433 | HowardLeeTW | 1241.3 | 74383 | 94383 | -20000 | 19b7fa8e | strawberry sold: they 313 vs me 115; units sold last 3 days: they 332 vs me 199; CARE ops: they 322 vs me 204 |
+| F | 94561328 | Manish Kumar Maurya | 1238.1 | 53742 | 55815 | -2073 | 19b7fa8e | units sold last 3 days: they 327 vs me 99; strawberry sold: they 313 vs me 109; CARE ops: they 322 vs me 199 |
+| F | 94562217 | Luka Philip | 1202.4 | 69813 | 116373 | -46560 | 19b7fa8e | units sold last 3 days: they 334 vs me 12; strawberry sold: they 308 vs me 53; CARE ops: they 322 vs me 192 |
+| F | 94563119 | Faruk Çiftler | 1187.9 | 46664 | 68216 | -21552 | 19b7fa8e | strawberry sold: they 281 vs me 122; CARE ops: they 322 vs me 168; wheat planted: they 92 vs me 201 |
+| F | 94564905 | Rheal Thomas | 1271.6 | 53410 | 141760 | -88350 | 79ce6b41 | units sold last 3 days: they 297 vs me 14; strawberry sold: they 293 vs me 14; CARE ops: they 394 vs me 136 |
+| F | 94565798 | brainpick | 1206.6 | 52810 | 126749 | -73939 | f28688d7 | strawberry sold: they 266 vs me 36; CARE ops: they 366 vs me 152; units sold last 3 days: they 217 vs me 15 |
+| F | 94566688 | Agrofitting | 1255.6 | 108551 | 135744 | -27193 | 42ff02f0 | strawberry sold: they 227 vs me 136; CARE ops: they 339 vs me 261; wheat planted: they 125 vs me 180 |
+| F | 94567321 | Sergei Fironov | 1373.1 | 105352 | 139273 | -33921 | 4e479345 | CARE ops: they 957 vs me 258; strawberry sold: they 278 vs me 112; units sold last 3 days: they 345 vs me 274 |
+| F | 94567568 | Agzam | 1181.9 | 69728 | 78842 | -9114 | 19b7fa8e | strawberry sold: they 305 vs me 119; units sold last 3 days: they 324 vs me 203; CARE ops: they 322 vs me 217 |
+| F | 94568463 | Caio Coelho | 1123.9 | 58881 | 125382 | -66501 | 79ce6b41 | units sold last 3 days: they 324 vs me 49; strawberry sold: they 269 vs me 71; CARE ops: they 308 vs me 143 |
+| F | 94569351 | Aditya Raj #2 | 1069.0 | 62650 | 64427 | -1777 | 25254350 | CARE ops: they 820 vs me 204; milk sold: they 182 vs me 83; strawberry sold: they 177 vs me 124 |
+| F | 94573834 | Abdul Wahab Khan | 1188.7 | 105201 | 141606 | -36405 | 19b7fa8e | strawberry sold: they 313 vs me 163; CARE ops: they 322 vs me 237; milk sold: they 237 vs me 160 |
+| F | 94585652 | minamoto | 1221.8 | 122428 | 150794 | -28366 | 65da1d57 | milk sold: they 278 vs me 212; melon sold: they 120 vs me 72; CARE ops: they 318 vs me 275 |
+| F | 94612791 | 我的AI是豆包 | 1169.3 | 80517 | 89858 | -9341 | 65da1d57 | units sold last 3 days: they 251 vs me 12; CARE ops: they 317 vs me 183; FERTILIZE ops: they 70 vs me 29 |
+| F | 94632799 | Joseph Franck | 1183.5 | 61376 | 85282 | -23906 | 19b7fa8e | strawberry sold: they 313 vs me 137; CARE ops: they 322 vs me 193; milk sold: they 237 vs me 123 |
+| F | 94632912 | jnurik | 1198.0 | 90984 | 113036 | -22052 | 19b7fa8e | strawberry sold: they 313 vs me 152; units sold last 3 days: they 336 vs me 235; wheat planted: they 92 vs me 185 |
+| F | 94725127 | Faris Abqari | 1100.6 | 102580 | 111675 | -9095 | 8967c0e2 | wheat planted: they 68 vs me 171; strawberry sold: they 262 vs me 178; milk sold: they 230 vs me 159 |
+| F | 94755749 | ktyser | 1156.2 | 71010 | 84485 | -13475 | 65da1d57 | milk sold: they 279 vs me 183; units sold last 3 days: they 329 vs me 244; CARE ops: they 318 vs me 234 |
+| F | 94801382 | Jacky Chan | 1430.8 | 96661 | 111194 | -14533 | 65da1d57 | milk sold: they 279 vs me 212; CARE ops: they 318 vs me 262; units sold last 3 days: they 329 vs me 279 |
+| C0 | 108955051 | Yanis Belami | 2647.9 | 110955 | 113759 | -2804 | 9b0c82fd | CARE ops: they 417 vs me 291; FERTILIZE ops: they 89 vs me 168; wool sold: they 141 vs me 86 |
+| L | 108983231 | Otter Vibe | 2987.4 | 103145 | 103805 | -660 | 1dcdc01b | CARE ops: they 406 vs me 288; wheat planted: they 109 vs me 186; wool sold: they 49 vs me 109 |
+| L | 108991556 | dre | 2882.4 | 86269 | 86485 | -216 | 9b0c82fd | CARE ops: they 406 vs me 322; FERTILIZE ops: they 80 vs me 148; units sold last 3 days: they 380 vs me 432 |
+| L | 109004245 | Cow Boy | 2957.5 | 105559 | 108442 | -2883 | 83322aec | CARE ops: they 416 vs me 325; FERTILIZE ops: they 90 vs me 180; wool sold: they 153 vs me 212 |
+| L | 109007507 | ymg_aq | 3029.3 | 111194 | 113920 | -2726 | 33af7d45 | units sold last 3 days: they 599 vs me 370; CARE ops: they 264 vs me 391; wool sold: they 171 vs me 254 |
 
 ## Head to head with the other studied teams (all games, not only sampled)
 

@@ -35,13 +35,13 @@ game 1: 744, game 10: 1562, game 25: 2566, game 50: 2801, game last: 2823
 | melon planted | 12 |
 | FERTILIZE ops | 117 |
 | CARE ops | 405 |
-| melon sold | 12 |
-| strawberry sold | 129 |
-| milk sold | 107.5 |
-| wool sold | 63.5 |
-| wheat sold | 345 |
-| fertilizer sold | 287 |
-| units sold last 3 days | 266.5 |
+| melon sold | 72 |
+| strawberry sold | 249 |
+| milk sold | 199.5 |
+| wool sold | 124.5 |
+| wheat sold | 394 |
+| fertilizer sold | 342 |
+| units sold last 3 days | 393 |
 | shed peak | 45 |
 | weeds spawned | 19 |
 | unexecutable market orders | 1 |
@@ -99,17 +99,17 @@ What goes with being off the modal field line at turn 200 (the first cut where f
 
 | window | games | win % | median bank | hands | cows | sheep | geese | quadrants | land day 1 | strawberry | wheat | melon | melon sold | milk sold | wool sold | field lines @400 | market lines @400 |
 |---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|
-| C0 | 50 | 90 | 103187 | 12 | 8 | 6 | 3 | 3 | 6 | 33 | 162 | 12 | 12 | 107.5 | 63.5 | 37 | 33 |
+| C0 | 50 | 90 | 103187 | 12 | 8 | 6 | 3 | 3 | 6 | 33 | 162 | 12 | 72 | 199.5 | 124.5 | 37 | 33 |
 
 ## Losses in the first and last windows
 
 | window | episode | opponent | opp rating | my bank | opp bank | margin | opp opening | biggest differences (opponent vs me) |
 |---|---|---|---|---|---|---|---|---|
-| C0 | 109241128 | KouFu | 2732.6 | 111931 | 112868 | -937 | 9b0c82fd | milk sold: they 137 vs me 128; units sold last 3 days: they 278 vs me 269; strawberry sold: they 126 vs me 131 |
-| C0 | 109241991 | weichy7 | 2817.3 | 76165 | 77038 | -873 | 9b0c82fd | strawberry sold: they 129 vs me 97; FERTILIZE ops: they 117 vs me 100; wool sold: they 212 vs me 196 |
-| C0 | 109245165 | Rasmus Hulthe | 2803.8 | 116335 | 120968 | -4633 | 9b0c82fd | strawberry sold: they 143 vs me 125; wool sold: they 153 vs me 136; milk sold: they 110 vs me 125 |
-| C0 | 109249942 | Erfan Eshratifar | 2774.7 | 90824 | 91311 | -487 | 3bc18d7a | milk sold: they 116 vs me 73; wool sold: they 72 vs me 50; wheat planted: they 148 vs me 162 |
-| C0 | 109250505 | Keisuke | 2863.6 | 132952 | 134435 | -1483 | 5738b34d | wool sold: they 42 vs me 26; units sold last 3 days: they 268 vs me 257; milk sold: they 152 vs me 149 |
+| C0 | 109241128 | KouFu | 2732.6 | 111931 | 112868 | -937 | 9b0c82fd | units sold last 3 days: they 398 vs me 392; FERTILIZE ops: they 106 vs me 110; strawberry sold: they 249 vs me 251 |
+| C0 | 109241991 | weichy7 | 2817.3 | 76165 | 77038 | -873 | 9b0c82fd | FERTILIZE ops: they 117 vs me 100; wool sold: they 262 vs me 270; units sold last 3 days: they 383 vs me 391 |
+| C0 | 109245165 | Rasmus Hulthe | 2803.8 | 116335 | 120968 | -4633 | 9b0c82fd | wool sold: they 273 vs me 250; wheat planted: they 153 vs me 162; CARE ops: they 397 vs me 401 |
+| C0 | 109249942 | Erfan Eshratifar | 2774.7 | 90824 | 91311 | -487 | 3bc18d7a | milk sold: they 186 vs me 146; wheat planted: they 148 vs me 162; FERTILIZE ops: they 115 vs me 129 |
+| C0 | 109250505 | Keisuke | 2863.6 | 132952 | 134435 | -1483 | 5738b34d | milk sold: they 266 vs me 263; units sold last 3 days: they 433 vs me 435; wheat planted: they 163 vs me 162 |
 
 ## Head to head with the other studied teams (all games, not only sampled)
 

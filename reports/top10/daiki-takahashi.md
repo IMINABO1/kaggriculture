@@ -35,13 +35,13 @@ game 1: 706, game 10: 1567, game 25: 2467, game 50: 2615, game 100: 2660, game 2
 | melon planted | 12 |
 | FERTILIZE ops | 103 |
 | CARE ops | 417 |
-| melon sold | 12 |
-| strawberry sold | 134.5 |
-| milk sold | 128.5 |
-| wool sold | 90 |
-| wheat sold | 322 |
-| fertilizer sold | 291 |
-| units sold last 3 days | 270.5 |
+| melon sold | 72 |
+| strawberry sold | 248 |
+| milk sold | 211 |
+| wool sold | 139 |
+| wheat sold | 369.5 |
+| fertilizer sold | 352 |
+| units sold last 3 days | 396 |
 | shed peak | 45 |
 | weeds spawned | 19 |
 | unexecutable market orders | 1 |
@@ -99,20 +99,20 @@ What goes with being off the modal field line at turn 200 (the first cut where f
 
 | window | games | win % | median bank | hands | cows | sheep | geese | quadrants | land day 1 | strawberry | wheat | melon | melon sold | milk sold | wool sold | field lines @400 | market lines @400 |
 |---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|
-| C0 | 50 | 72 | 99677 | 12 | 8 | 6 | 3 | 3 | 6 | 33 | 162 | 12 | 12 | 128.5 | 90 | 32 | 30 |
+| C0 | 50 | 72 | 99677 | 12 | 8 | 6 | 3 | 3 | 6 | 33 | 162 | 12 | 72 | 211 | 139 | 32 | 30 |
 
 ## Losses in the first and last windows
 
 | window | episode | opponent | opp rating | my bank | opp bank | margin | opp opening | biggest differences (opponent vs me) |
 |---|---|---|---|---|---|---|---|---|
-| C0 | 108898023 | Max64738CB | 2491.7 | 96292 | 99618 | -3326 | 9b0c82fd | milk sold: they 149 vs me 127; units sold last 3 days: they 257 vs me 275; CARE ops: they 400 vs me 417 |
-| C0 | 108900260 | magic101 | 2459.5 | 95523 | 95607 | -84 | 9b0c82fd | strawberry sold: they 133 vs me 134; milk sold: they 91 vs me 92 |
-| C0 | 108904783 | Maximo Uribarri | 2664.0 | 130106 | 131305 | -1199 | 9b0c82fd | CARE ops: they 348 vs me 417; wool sold: they 27 vs me 56; units sold last 3 days: they 264 vs me 245 |
+| C0 | 108898023 | Max64738CB | 2491.7 | 96292 | 99618 | -3326 | 9b0c82fd | units sold last 3 days: they 369 vs me 401; milk sold: they 245 vs me 216; wool sold: they 158 vs me 133 |
+| C0 | 108900260 | magic101 | 2459.5 | 95523 | 95607 | -84 | 9b0c82fd | strawberry sold: they 248 vs me 249 |
+| C0 | 108904783 | Maximo Uribarri | 2664.0 | 130106 | 131305 | -1199 | 9b0c82fd | CARE ops: they 348 vs me 417; wool sold: they 68 vs me 99; units sold last 3 days: they 432 vs me 411 |
 | C0 | 108905785 | KoRo2_JP | 2673.9 | 96543 | 96549 | -6 | 9b0c82fd |  |
-| C0 | 108907530 | yy | 2679.6 | 60319 | 62085 | -1766 | 9b0c82fd | CARE ops: they 405 vs me 417; strawberry sold: they 136 vs me 144; milk sold: they 124 vs me 132 |
-| C0 | 108908582 | 最强扫地僧 | 2597.0 | 98059 | 99325 | -1266 | 9b0c82fd | milk sold: they 173 vs me 153; FERTILIZE ops: they 102 vs me 113; wool sold: they 85 vs me 90 |
-| C0 | 108910746 | Neural Knight | 2575.7 | 58925 | 59059 | -134 | 9b0c82fd | CARE ops: they 486 vs me 417; FERTILIZE ops: they 112 vs me 118; strawberry sold: they 133 vs me 136 |
-| C0 | 108914821 | lumen | 2617.5 | 97991 | 99372 | -1381 | 9b0c82fd | strawberry sold: they 83 vs me 146; milk sold: they 48 vs me 102; units sold last 3 days: they 241 vs me 289 |
+| C0 | 108907530 | yy | 2679.6 | 60319 | 62085 | -1766 | 9b0c82fd | CARE ops: they 405 vs me 417; units sold last 3 days: they 396 vs me 407; FERTILIZE ops: they 117 vs me 113 |
+| C0 | 108908582 | 最强扫地僧 | 2597.0 | 98059 | 99325 | -1266 | 9b0c82fd | milk sold: they 266 vs me 239; FERTILIZE ops: they 102 vs me 113; units sold last 3 days: they 402 vs me 396 |
+| C0 | 108910746 | Neural Knight | 2575.7 | 58925 | 59059 | -134 | 9b0c82fd | CARE ops: they 486 vs me 417; FERTILIZE ops: they 112 vs me 118; strawberry sold: they 244 vs me 247 |
+| C0 | 108914821 | lumen | 2617.5 | 97991 | 99372 | -1381 | 9b0c82fd | milk sold: they 109 vs me 153; units sold last 3 days: they 372 vs me 405; CARE ops: they 385 vs me 401 |
 | C0 | 108916912 | Baiqing Wang | 2603.8 | 78288 | 78297 | -9 | 9b0c82fd |  |
 
 ## Head to head with the other studied teams (all games, not only sampled)

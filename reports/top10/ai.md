@@ -35,13 +35,13 @@ game 1: 726, game 10: 1498, game 25: 2402, game 50: 2671, game 100: 2822, game l
 | melon planted | 12 |
 | FERTILIZE ops | 151.5 |
 | CARE ops | 301 |
-| melon sold | 41 |
-| strawberry sold | 240.5 |
-| milk sold | 141 |
-| wool sold | 50 |
-| wheat sold | 233.5 |
-| fertilizer sold | 97.5 |
-| units sold last 3 days | 238 |
+| melon sold | 71 |
+| strawberry sold | 256 |
+| milk sold | 159.5 |
+| wool sold | 98 |
+| wheat sold | 339.5 |
+| fertilizer sold | 201 |
+| units sold last 3 days | 369.5 |
 | shed peak | 55 |
 | weeds spawned | 17 |
 | unexecutable market orders | 0 |
@@ -99,16 +99,16 @@ What goes with being off the modal field line at turn 100 (the first cut where f
 
 | window | games | win % | median bank | hands | cows | sheep | geese | quadrants | land day 1 | strawberry | wheat | melon | melon sold | milk sold | wool sold | field lines @400 | market lines @400 |
 |---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|
-| C0 | 50 | 92 | 107738 | 11 | 7 | 3 | 2 | 3 | 6 | 34 | 172 | 12 | 41 | 141 | 50 | 49 | 50 |
+| C0 | 50 | 92 | 107738 | 11 | 7 | 3 | 2 | 3 | 6 | 34 | 172 | 12 | 71 | 159.5 | 98 | 49 | 50 |
 
 ## Losses in the first and last windows
 
 | window | episode | opponent | opp rating | my bank | opp bank | margin | opp opening | biggest differences (opponent vs me) |
 |---|---|---|---|---|---|---|---|---|
-| C0 | 109017917 | nikotin55 | 2384.9 | 82568 | 84687 | -2119 | 9b0c82fd | CARE ops: they 417 vs me 264; strawberry sold: they 144 vs me 243; milk sold: they 155 vs me 69 |
-| C0 | 109024531 | bpbpbpbpb | 2384.5 | 130790 | 131714 | -924 | 9b0c82fd | strawberry sold: they 134 vs me 305; CARE ops: they 417 vs me 296; FERTILIZE ops: they 83 vs me 162 |
-| C0 | 109030483 | Arman Tuganbaev | 2535.7 | 127138 | 128760 | -1622 | 9b0c82fd | wool sold: they 152 vs me 225; CARE ops: they 459 vs me 387; strawberry sold: they 158 vs me 222 |
-| C0 | 109036686 | Odyssey | 2587.1 | 89656 | 95309 | -5653 | 9b0c82fd | CARE ops: they 417 vs me 296; strawberry sold: they 144 vs me 247; FERTILIZE ops: they 80 vs me 158 |
+| C0 | 109017917 | nikotin55 | 2384.9 | 82568 | 84687 | -2119 | 9b0c82fd | CARE ops: they 417 vs me 264; milk sold: they 245 vs me 98; FERTILIZE ops: they 80 vs me 144 |
+| C0 | 109024531 | bpbpbpbpb | 2384.5 | 130790 | 131714 | -924 | 9b0c82fd | CARE ops: they 417 vs me 296; FERTILIZE ops: they 83 vs me 162; strawberry sold: they 249 vs me 324 |
+| C0 | 109030483 | Arman Tuganbaev | 2535.7 | 127138 | 128760 | -1622 | 9b0c82fd | units sold last 3 days: they 472 vs me 358; CARE ops: they 459 vs me 387; FERTILIZE ops: they 104 vs me 154 |
+| C0 | 109036686 | Odyssey | 2587.1 | 89656 | 95309 | -5653 | 9b0c82fd | CARE ops: they 417 vs me 296; FERTILIZE ops: they 80 vs me 158; wool sold: they 161 vs me 113 |
 
 ## Head to head with the other studied teams (all games, not only sampled)
 

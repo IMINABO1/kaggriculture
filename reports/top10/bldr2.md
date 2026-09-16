@@ -35,13 +35,13 @@ game 1: 680, game 10: 1643, game 25: 2513, game 50: 2741, game 100: 2804, game l
 | melon planted | 12 |
 | FERTILIZE ops | 118 |
 | CARE ops | 405 |
-| melon sold | 12 |
-| strawberry sold | 129 |
-| milk sold | 110.5 |
-| wool sold | 62 |
-| wheat sold | 350.5 |
-| fertilizer sold | 286 |
-| units sold last 3 days | 268 |
+| melon sold | 72 |
+| strawberry sold | 248 |
+| milk sold | 195.5 |
+| wool sold | 107 |
+| wheat sold | 397.5 |
+| fertilizer sold | 342 |
+| units sold last 3 days | 393 |
 | shed peak | 45 |
 | weeds spawned | 20 |
 | unexecutable market orders | 1 |
@@ -99,17 +99,17 @@ What goes with being off the modal field line at turn 200 (the first cut where f
 
 | window | games | win % | median bank | hands | cows | sheep | geese | quadrants | land day 1 | strawberry | wheat | melon | melon sold | milk sold | wool sold | field lines @400 | market lines @400 |
 |---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|
-| C0 | 50 | 90 | 95980 | 12 | 8 | 6 | 3 | 3 | 6 | 33 | 163 | 12 | 12 | 110.5 | 62 | 39 | 30 |
+| C0 | 50 | 90 | 95980 | 12 | 8 | 6 | 3 | 3 | 6 | 33 | 163 | 12 | 72 | 195.5 | 107 | 39 | 30 |
 
 ## Losses in the first and last windows
 
 | window | episode | opponent | opp rating | my bank | opp bank | margin | opp opening | biggest differences (opponent vs me) |
 |---|---|---|---|---|---|---|---|---|
-| C0 | 108896325 | Hiro Nomo | 2439.0 | 78845 | 83608 | -4763 | 9b0c82fd | wheat planted: they 143 vs me 163; FERTILIZE ops: they 132 vs me 121; units sold last 3 days: they 270 vs me 280 |
-| C0 | 108903984 | parv goyal2 | 2571.5 | 85343 | 93967 | -8624 | 88cd11eb | milk sold: they 243 vs me 115; CARE ops: they 312 vs me 405; wheat planted: they 232 vs me 163 |
-| C0 | 108907547 | Chris Deotte | 2657.1 | 126581 | 126940 | -359 | 9b0c82fd | milk sold: they 90 vs me 100; strawberry sold: they 118 vs me 113; weeds spawned: they 20 vs me 19 |
-| C0 | 108908602 | Xiaoyong Zhu | 2776.8 | 118566 | 119256 | -690 | 8008c86c | units sold last 3 days: they 271 vs me 270; weeds spawned: they 20 vs me 21; CARE ops: they 404 vs me 405 |
-| C0 | 108913789 | 自己找差距 | 2706.1 | 90793 | 96316 | -5523 | 3bc18d7a | CARE ops: they 259 vs me 405; FERTILIZE ops: they 205 vs me 92; wheat planted: they 80 vs me 156 |
+| C0 | 108896325 | Hiro Nomo | 2439.0 | 78845 | 83608 | -4763 | 9b0c82fd | wheat planted: they 143 vs me 163; FERTILIZE ops: they 132 vs me 121; CARE ops: they 415 vs me 405 |
+| C0 | 108903984 | parv goyal2 | 2571.5 | 85343 | 93967 | -8624 | 88cd11eb | CARE ops: they 312 vs me 405; strawberry sold: they 166 vs me 241; wheat planted: they 232 vs me 163 |
+| C0 | 108907547 | Chris Deotte | 2657.1 | 126581 | 126940 | -359 | 9b0c82fd | milk sold: they 143 vs me 152; strawberry sold: they 244 vs me 239; units sold last 3 days: they 395 vs me 393 |
+| C0 | 108908602 | Xiaoyong Zhu | 2776.8 | 118566 | 119256 | -690 | 8008c86c | units sold last 3 days: they 400 vs me 398; weeds spawned: they 20 vs me 21; CARE ops: they 404 vs me 405 |
+| C0 | 108913789 | 自己找差距 | 2706.1 | 90793 | 96316 | -5523 | 3bc18d7a | CARE ops: they 259 vs me 405; FERTILIZE ops: they 205 vs me 92; strawberry sold: they 154 vs me 249 |
 
 ## Head to head with the other studied teams (all games, not only sampled)
 

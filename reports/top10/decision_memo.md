@@ -65,17 +65,30 @@ a passive one, because the weeds land on different days; five other recordings o
 submission bank 116k-175k against the passive baseline because nobody competes in the
 market. A fixed action list is not a plan; a plan that is not weed-aware is not one either.
 
-**6. The #1's edge is the market, not the farm.** Against the median of the other current
-submissions it sells four times the melon (72 vs 18), 40% more milk (182 vs 128), 70% more
-wool (109 vs 63), and 40% more units in the last three days (365 vs 262), from a farm that is
-slightly smaller (11 hands vs 12, 4 sheep vs 5, 8 cows either way). Its sampled win rate is
-94% against 82% for the median team; its bank 113k against 104k. Its rating path: 651 after
-game 1, 2,543 after 25, 2,875 after 50, 3,097 after 100, 3,247 after 200.
+**6. The #2's edge is the price it gets, not the volume it sells.** (Rewritten 2026-09-16
+after P18: the traces had undercounted most teams' sales by 35-50%, which made Majkel1337
+look like it sold four times everyone's melon.) On corrected sales Majkel1337 sells the same
+72 melons as the public line and *fewer* strawberries, milk and wool (218 / 180 / 109 against
+248 / 191 / 126), but receives $169 a strawberry, $100 a milk and $132 a wool against the
+line's $116 / $84 / $105, for a bank of 113k against 101-105k. The mechanism (`analysis.md`
+section 7) is metering: strawberries in two-unit orders spread across the day, 9-10 a day
+from day 20 while the line dumps 20-29, so its price holds at $144-170 while the line's own
+units fetch $67-75; milk in bursts on days 14 and 16, ahead of the line's day-15 burst. Its
+farm is slightly smaller (11 hands, 4 sheep). Its rating path: 651 after game 1, 2,543 after
+25, 2,875 after 50, 3,097 after 100, 3,247 after 200.
 
-**7. Its losses are close and specific.** The only studied team with a winning record against
-it is Artem The Farmer (28-26), who runs a fixed five-day opening, a sheep-leaning herd, and
-sells almost no melon (6 a game). Sampled losses of the #1 are by 0.8k-4.3k to opponents on
-the shared public opening that CARE more and fertilize less.
+**7. The #1 beats the #2 by starving the market, not by out-earning it.** (Rewritten
+2026-09-16.) Artem The Farmer is 19-11 against Majkel1337 on current submissions (58-54
+all-time) and beats the public line 96% of the time by 11.6k with an ordinary bank of its
+own (98k against the line): the line's bank falls to 87.5k against it (82k against ymg_aq,
+88k against Mengfei Li, the other two starvers) from 101k against everyone else. The
+mechanism: 29% of its strawberries go out at hour 0 from the previous day's harvest, before
+the line's evening orders, and it sells every premium product every day to the end (10-14
+milk, 6-9 wool, 7-12 strawberries a day through day 29), so the line's late dump meets a
+market that never recovered (its strawberry price $93 against a reference $110, milk $70
+against $82); Artem's own late income comes from staples (44k: carrots, tomatoes, eggs,
+wheat). Denial hurts the out-earners too, whose banks rest on premium prices, which is why
+the #1 is #1. Artem sells 78 melons a game, not 6.
 
 **8. Three teams run the identical public plan.** アルモンド, Catalyst, and Thomas Tschinkel
 share one field line through turn 200 and the same medians to the unit (33 strawberry, 163
@@ -123,11 +136,15 @@ units sold, about 265 units in the last three days, final money 104k vs 103k, ra
 more strawberry tile (33 vs 32), buys one more sheep, CAREs more (403 vs 334 ops) and
 fertilizes less (111 vs 154).
 
-**13. Market timing differs in the direction finding 6 already pointed.** The batch dumps
-its melons on day 11 and never sells melon again (last melon sale day 11 vs 19; AUC 0.80);
-the top sells strawberries from day 15.5 vs 19 (AUC 0.15, the strongest market separator),
-wool later (day 8.5 vs 6), and 18 melons vs 12. Units sold in the last three days do not
-differ.
+**13. Market timing: everyone dumps melon on day 10, and the separators are prices, not
+days.** (Rewritten 2026-09-16 on corrected sales.) Every zone sells its first melon on day
+10 and its first strawberry on day 14-15; the family sells its last melon on day 11, the
+top-14 on day 20 (a trickle worth nothing: the town removes one melon a day and no shop
+buys it, so spreading melon earns 13.9k against the dump's 14.6k). Units sold in the last
+three days are 393-399 everywhere. What separates the top-14 from the rest of gold is the
+price received (strawberry $125 against $116, wool $117 against $105, milk $93 against $84,
+AUC 0.70 / 0.71 / 0.62) on fewer units, and fertilizer sold (218 against 342, AUC 0.19:
+the leaders use it on the fields).
 
 **14. "Standing weeds" are exhausted strawberries, not a labour strategy.** (Rewritten
 2026-09-16 from the tile-level pass, `analysis.md` section 2.) The engine rolls the weed
@@ -183,11 +200,15 @@ later: 3 of 14 top-14, 10 of 14 gold, 18 of 21 silver, 10 of 10 bronze. Opponent
 branching: 2 top-14 teams, 2 gold, none in silver or bronze; below gold it is weeds and the
 first shop draw. Distinct games at turn 400: 100%, 89%, 74%, 64% by zone.
 
-**18. The farm does not change down the zones; labour and market discipline do.** Final
-money is 104k, 106k, 102k, 106k (no gradient) and units sold in the last three days are
-265-269 everywhere. CARE ops rise 334, 363, 405, 417; FERTILIZE ops fall 154, 117, 111,
-103; weed tile-days fall 10.5, 0.2, 0, 0; the last melon sale is day 19 for the top-14 and
-day 11 for all three zones; the first strawberry sale is day 15.5, 16, 19, 18.
+**18. Neither the farm nor the sales change down the zones; the response to the town and
+the end game do.** (Revised 2026-09-16.) Final money is 104k, 105k, 102k, 105k, total
+revenue 133-136k and units sold in the last three days 393-399 in every zone; premium units
+sold are the same or higher below the top-14 (strawberry 222, 248, 249, 248). CARE ops rise
+334, 363, 405, 417 because the leaders stop caring for and feeding animals in the last three
+days; FERTILIZE ops fall 154, 117, 111, 103 and fertilizer *sold* rises 218, 342, 342, 352.
+The weed tile-days gradient (10.5, 0.2, 0, 0) is exhausted strawberries left standing
+(finding 14). The first strawberry sale is day 14.5-15 everywhere, the first milk sale day 8
+and the first wool sale day 6 everywhere.
 
 **19. Outcomes: the rest of gold is close to the top-14; gold to silver is the real step.**
 Current submissions head to head: top-14 over gold 99-89 (53%), gold over silver 76-37
@@ -210,18 +231,26 @@ and the rating plateaus where its margin over its own copies runs out.
 
 Not "deterministic" and not "strategy switching". **One plan, adaptive execution:** a fixed
 economic skeleton (the converged three-quadrant cow-and-sheep farm with strawberry, wheat,
-and an early melon cash-in), driven by a runtime controller that re-plans the details every
-turn. Three adaptive layers are what separates the leaders from the public line:
+and a day-10 melon cash-in), driven by a runtime controller that re-plans the details every
+turn. Revised 2026-09-16 from `analysis.md`: the three layers that separate the leaders from
+the public line are not the three named before.
 
-1. **Execution that survives the world**: weed repair, feed and water safety, and tile
-   re-assignment when a weed or a failed order breaks the schedule. The fixed-opening teams
-   do this from day 5; the #1 does it from day 1.
-2. **An opponent read in the first day**: classify the opponent's opening (public line,
-   mirror of our own plan, unknown) and choose between two or three openings. This is the
-   #1's signature, shared only by Orbital Terraformer among the 14.
-3. **A market layer with a clock**: premium sell timing against the opponent's visible
-   inventory and sales, staple metering, and a scripted last-three-day liquidation. This is
-   where the #1's whole margin over the field sits.
+1. **Follow the town.** Every agent on the plateau, bronze included, buys 10-14 sheep instead
+   of 4-6 when a Yarn Store unlocks by day 9; the leaders also follow milk shops (cows,
+   tomatoes), egg shops (geese) and carrot shops (carrots), and further. This is a table of
+   per-shop increments applied on days 3, 6 and 9, and it is the only reactive layer with
+   evidence behind it. Nobody reads the opponent on day 1 (P17).
+2. **Sell against the public line's clock.** The line dumps melon on day 10 and strawberries
+   at 20-29 a day on days 20-24, late in the day. Two things beat that: meter premium goods
+   at the town's drain rate in small orders across the day and hold the rest in the shed
+   (Majkel1337, $169 a strawberry against the line's $116), and sell first each day from
+   the previous day's harvest, every product, every day, so the line's dump meets a loaded
+   market while staples carry the last ten days (Artem, the line's strawberry price falls
+   to $93). The #1 uses the second and beats the user of the first 19-11.
+3. **An end game that stops paying for unsellable yield.** From day 27 the leaders taper
+   CARE and FEED and let the herd escape; they also fertilize about 30% more per crop
+   tile-day all season. Every other op per unit of work is the same in every zone, and
+   weed repair is a non-issue on a full farm (finding 14).
 
 ## Architecture we will build
 
@@ -230,9 +259,13 @@ turn. Three adaptive layers are what separates the leaders from the public line:
 - `agent/executor.py`: per-turn assignment of unit actions to the farmer and hands from the
   plan and the live farm state (BFS routing; priorities feed > water > harvest > plant >
   build > care > fertilize > dig), with weed repair and feed-cash reservation.
-- `agent/market.py`: buys funded in queue order, sells paced by product curve, end-game
-  liquidation, clone-aware front-running.
-- `agent/opponent.py`: opening classifier over the opponent's first 24 turns of public state.
+- `agent/market.py`: buys funded in queue order; premium sales metered at the town's drain
+  rate (from `unlocked_shops`) in small orders, the first of each day at hour 0 from the
+  shed; a denial mode that keeps selling every premium product daily once the opponent's
+  bulk sales start; melon dumped on day 10; end-game liquidation.
+- `agent/town.py`: the per-shop increment table (sheep, cows, geese, carrots, tomatoes)
+  applied when a shop unlocks. Replaces the opening classifier, which the data does not
+  support.
 - Every layer switchable, so the arena can measure each one's contribution.
 
 ## First three experiments
@@ -264,3 +297,9 @@ turn. Three adaptive layers are what separates the leaders from the public line:
   dossiers) and are read from recorded observations only.
 - Plan fingerprints ignore movement, so two games that differ only in walking order look
   identical; that is intended.
+- Until 2026-09-16 the traces capped each sale by the shed as observed *before* the turn's
+  unit actions, although the engine applies DROP and PLACE first (P18). Every sales figure
+  in this memo, `groups.md`, `summary.md` and the dossiers was rebuilt from an
+  engine-faithful market replica (`research/market_replay.py`) that reconciles to the
+  recorded money in every turn; `bought_*` columns now count executed rather than requested
+  purchases, which lowered a few herd medians by one animal.

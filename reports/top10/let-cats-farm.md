@@ -35,13 +35,13 @@ game 1: 720, game 10: 1497, game 25: 2321, game 50: 2691, game 100: 2832, game 2
 | melon planted | 12 |
 | FERTILIZE ops | 95 |
 | CARE ops | 338 |
-| melon sold | 12 |
-| strawberry sold | 115 |
-| milk sold | 110.5 |
-| wool sold | 68 |
-| wheat sold | 510.5 |
-| fertilizer sold | 314.5 |
-| units sold last 3 days | 248 |
+| melon sold | 72 |
+| strawberry sold | 249 |
+| milk sold | 191.5 |
+| wool sold | 125 |
+| wheat sold | 579 |
+| fertilizer sold | 343 |
+| units sold last 3 days | 375 |
 | shed peak | 59 |
 | weeds spawned | 20 |
 | unexecutable market orders | 193 |
@@ -99,14 +99,14 @@ What goes with being off the modal field line at turn 200 (the first cut where f
 
 | window | games | win % | median bank | hands | cows | sheep | geese | quadrants | land day 1 | strawberry | wheat | melon | melon sold | milk sold | wool sold | field lines @400 | market lines @400 |
 |---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|
-| C0 | 50 | 96 | 100482.5 | 12 | 8 | 6 | 2 | 3 | 6 | 33 | 163 | 12 | 12 | 110.5 | 68 | 34 | 47 |
+| C0 | 50 | 96 | 100482.5 | 12 | 8 | 6 | 2 | 3 | 6 | 33 | 163 | 12 | 72 | 191.5 | 125 | 34 | 47 |
 
 ## Losses in the first and last windows
 
 | window | episode | opponent | opp rating | my bank | opp bank | margin | opp opening | biggest differences (opponent vs me) |
 |---|---|---|---|---|---|---|---|---|
-| C0 | 108287792 | ultimatum_game | 1939.0 | 111027 | 123141 | -12114 | 9b0c82fd | milk sold: they 313 vs me 159; strawberry sold: they 160 vs me 113; CARE ops: they 392 vs me 353 |
-| C0 | 108305009 | 薄荷喵呜 | 2575.7 | 98727 | 105014 | -6287 | e41e7f8e | wool sold: they 225 vs me 144; CARE ops: they 386 vs me 335; units sold last 3 days: they 275 vs me 233 |
+| C0 | 108287792 | ultimatum_game | 1939.0 | 111027 | 123141 | -12114 | 9b0c82fd | milk sold: they 391 vs me 250; CARE ops: they 392 vs me 353; FERTILIZE ops: they 64 vs me 89 |
+| C0 | 108305009 | 薄荷喵呜 | 2575.7 | 98727 | 105014 | -6287 | e41e7f8e | CARE ops: they 386 vs me 335; wool sold: they 324 vs me 279; milk sold: they 101 vs me 128 |
 
 ## Head to head with the other studied teams (all games, not only sampled)
 

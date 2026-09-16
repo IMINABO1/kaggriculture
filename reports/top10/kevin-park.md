@@ -35,13 +35,13 @@ game 1: 698, game 10: 1512, game 25: 2448, game 50: 2693, game last: 2738
 | melon planted | 12 |
 | FERTILIZE ops | 116 |
 | CARE ops | 405 |
-| melon sold | 12 |
-| strawberry sold | 129 |
-| milk sold | 111 |
-| wool sold | 77 |
-| wheat sold | 342 |
-| fertilizer sold | 287 |
-| units sold last 3 days | 269 |
+| melon sold | 72 |
+| strawberry sold | 249 |
+| milk sold | 192 |
+| wool sold | 132 |
+| wheat sold | 374 |
+| fertilizer sold | 342 |
+| units sold last 3 days | 396 |
 | shed peak | 45 |
 | weeds spawned | 19 |
 | unexecutable market orders | 1 |
@@ -99,16 +99,16 @@ What goes with being off the modal field line at turn 200 (the first cut where f
 
 | window | games | win % | median bank | hands | cows | sheep | geese | quadrants | land day 1 | strawberry | wheat | melon | melon sold | milk sold | wool sold | field lines @400 | market lines @400 |
 |---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|
-| C0 | 50 | 90 | 102818 | 12 | 8 | 6 | 3 | 3 | 6 | 33 | 162 | 12 | 12 | 111 | 77 | 39 | 35 |
+| C0 | 50 | 90 | 102818 | 12 | 8 | 6 | 3 | 3 | 6 | 33 | 162 | 12 | 72 | 192 | 132 | 39 | 35 |
 
 ## Losses in the first and last windows
 
 | window | episode | opponent | opp rating | my bank | opp bank | margin | opp opening | biggest differences (opponent vs me) |
 |---|---|---|---|---|---|---|---|---|
-| C0 | 109262730 | morality0707 | 2389.7 | 94968 | 105442 | -10474 | 791b6988 | wool sold: they 229 vs me 136; melon sold: they 72 vs me 12; milk sold: they 132 vs me 80 |
+| C0 | 109262730 | morality0707 | 2389.7 | 94968 | 105442 | -10474 | 791b6988 | strawberry sold: they 144 vs me 247; FERTILIZE ops: they 140 vs me 95; CARE ops: they 376 vs me 397 |
 | C0 | 109273411 | The Grower | 2592.3 | 152476 | 152604 | -128 | 9b0c82fd |  |
-| C0 | 109281477 | Igor V | 2581.9 | 70774 | 71471 | -697 | 9b0c82fd | units sold last 3 days: they 258 vs me 266; FERTILIZE ops: they 117 vs me 124; milk sold: they 111 vs me 117 |
-| C0 | 109282952 | Igor V | 2679.9 | 113344 | 114027 | -683 | 9b0c82fd | wool sold: they 72 vs me 80; strawberry sold: they 120 vs me 125; milk sold: they 86 vs me 81 |
+| C0 | 109281477 | Igor V | 2581.9 | 70774 | 71471 | -697 | 9b0c82fd | units sold last 3 days: they 381 vs me 390; FERTILIZE ops: they 117 vs me 124; CARE ops: they 410 vs me 405 |
+| C0 | 109282952 | Igor V | 2679.9 | 113344 | 114027 | -683 | 9b0c82fd | FERTILIZE ops: they 124 vs me 121; units sold last 3 days: they 397 vs me 399; strawberry sold: they 249 vs me 248 |
 | C0 | 109285070 | yy | 2640.7 | 143771 | 143772 | -1 | 9b0c82fd | wheat planted: they 163 vs me 162; weeds spawned: they 20 vs me 19 |
 
 ## Head to head with the other studied teams (all games, not only sampled)

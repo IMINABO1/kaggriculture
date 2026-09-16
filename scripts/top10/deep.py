@@ -70,6 +70,8 @@ def load() -> dict:
     feats["rank"] = feats.team.map(rank)
     feats["group"] = feats.team.map(group)
     feats["zone"] = feats.team.map(zone)
+    if "revenue_total" in feats and "revenue_staple" not in feats:
+        feats["revenue_staple"] = feats.revenue_total - feats.revenue_premium
     cur = feats[feats.is_current_sub == True].copy()  # noqa: E712
     counts = cur.team.value_counts()
     cur = cur[cur.team.isin(counts[counts >= 10].index)]
@@ -250,7 +252,6 @@ def section_shops(d: dict) -> str:
             a, b = g[g[flag]], g[~g[flag]]
             r[f"{label}: shop / none"] = f"{a[col].median():.1f} / {b[col].median():.1f}"
         grp.append(r)
-    # breadth of response: how many of the five products a team's plan follows
     early = cur.shops.fillna("").str.split("|").apply(lambda l: l[:3])
     cur["tomato_early"] = early.apply(lambda l: any(s in TOMATO_SHOPS for s in l))
     breadth_rows = []
@@ -390,7 +391,6 @@ def section_trajectories(d: dict) -> str:
             }
         )
     t = pd.DataFrame(rows).sort_values("rank")
-    # window table for the teams with history windows
     wt = pd.read_csv(TOP10 / "window_trajectories.csv") if (TOP10 / "window_trajectories.csv").exists() else None
     wtext = ""
     if wt is not None:
@@ -529,7 +529,6 @@ def section_market(d: dict) -> str:
     show["group"] = show.group.map(GROUP_NAMES)
     show_cols = ["rank", "team", "group", "final_money", "revenue_premium", "revenue_staple", "revenue_last_3_days", "sold_melon", "price_melon", "sold_strawberry", "price_strawberry", "sold_milk", "price_milk", "sold_wool", "price_wool", "sold_egg", "sold_carrot", "sold_tomato", "premium_cheap_pct"]
 
-    # sale-day profiles
     fig, axes = plt.subplots(1, 4, figsize=(18, 4), sharey=False)
     for ax, p in zip(axes, PREMIUM):
         col = f"units_by_day_{p}"
@@ -553,7 +552,6 @@ def section_market(d: dict) -> str:
     fig.savefig(FIGS / "an_sales_by_day.png", dpi=110)
     plt.close(fig)
 
-    # shop-conditional revenue
     sc = shop_flags(cur)
     early = sc.shops.fillna("").str.split("|").apply(lambda l: l[:3])
     sc["straw_shops_early"] = early.apply(lambda l: sum(s in STRAWBERRY_SHOPS for s in l))
@@ -613,6 +611,48 @@ Median units sold per day by group (solid), with Majkel1337 (dashed) and Artem T
 (dotted). Revenue conditional on the shops unlocked by day 9 (medians, "with / without"):
 
 {md_table(shop_tbl)}
+
+**What the corrected numbers say.** The zones do not differ in what they sell or in what
+they bank: total revenue is 133-136k and the final bank 102-105k in every group, and the
+top-14 sell *fewer* premium units than the family (strawberry 222 against 248, milk 182
+against 191, wool 113 against 126, melon 75 against 72) at higher prices (strawberry $125
+against $116, milk $93 against $84, wool $117 against $105). The family sells 342 fertilizer
+a game against the leaders' 218, because the leaders spread it on the fields. Every earlier
+"the #1 sells four times the melon" statement was the P18 undercount. The leaders' edge is
+relative, and section 9b shows where it comes from; the per-day tables behind the figure
+(mean units and revenue per day, computed from `market.parquet`) give the mechanism:
+
+- **The public line's clock is fixed.** Melon: 60 units on day 10 and the last 12 on day 11.
+  No shop demands melon, so the town removes one a day and a 72-melon dump takes the price
+  from $250 to about $200 (the glut curve is quadratic, 3.6 times base over 300 units); two
+  farms dumping in the same hours take it near the floor. Strawberries: days 15-29 with the
+  bulk on days 20-24 at 20-29 a day, sold late in the day (hours 13 and 19-23) in orders of
+  six. Milk about 10 a day from day 8; wool 8-16 every third day from day 6; wheat rising
+  to 61 on day 29; fertilizer 10-20 a day all season.
+- **The town's drain sets the price-holding rate.** Median units removed per day across the
+  sampled games: strawberry 7 before the shops accumulate and 22-36 from day 18; milk 14;
+  wool 12; carrot 13; egg 7; tomato 7; wheat 32; melon 1. Strawberry's price falls by 1.6
+  times base for every 100 units above the anchor and milk's by the same for every 122, so
+  whoever sells faster than the drain crashes the price for both farms.
+- **Out-earning = metering.** Majkel1337 sells strawberries in orders of two spread over the
+  day (67 orders a game against the line's 40 of six): 18-21 a day on days 16-18 at about
+  $190 like everyone, then 9-10 a day from day 20 while the line sells 20-29. It holds
+  $144-170 a unit through day 28 while the line's own units fetch $67-75 on days 22-24, and
+  sells its last 20 at $150 on day 29. Milk goes out in bursts of 18-19 on days 14 and 16,
+  ahead of the line's day-15 burst. Result: $169 a strawberry, $100 a milk, $132 a wool on
+  fewer units, and a bank of 113k against the family's 101-105k.
+- **Starving = selling first and selling every day.** 29% of Artem's strawberries and 23% of
+  ymg_aq's leave at hour 0, from the previous day's harvest, before the line's evening
+  orders; both then sell every premium product every day to the end (Artem 10-14 milk,
+  6-9 wool, 7-12 strawberries a day through day 29) so the price never recovers, and they
+  replace the late premium income with staples (Artem 44k, ymg_aq 71k, of which 48k is
+  1,270 wheat at $38: wheat's glut curve is logarithmic and 400 units cost $5). The line's
+  late dump then meets a loaded market: its strawberry price falls to $93 against Artem and
+  $77 against ymg_aq (reference $110), its milk to $70 and $69 (reference $82).
+- **Melon timing is worthless.** Spreading melon (Majkel1337 29 on day 10 and a trickle to
+  day 22; ymg_aq days 16-19) earns 13.9k against the dump's 14.6k, because the glut never
+  clears. The "melon last sell day 20 against 11" separator in `groups.md` is real and means
+  nothing for the bank.
 """
     return text
 
@@ -714,7 +754,6 @@ def section_pca(d: dict) -> str:
     sc = cur[["team", "group", "rank", "won"]].copy()
     sc["PC1"], sc["PC2"], sc["PC3"] = scores[:, 0], scores[:, 1], scores[:, 2]
     cent = sc.groupby(["group", "rank", "team"])[["PC1", "PC2", "PC3"]].median().reset_index().sort_values("rank")
-    # figure: team centroids and game clouds
     fig, ax = plt.subplots(figsize=(9, 7))
     colors = {"top": "#c0392b", "gold": "#d4a017", "silver": "#7f8c8d", "bronze": "#8e5a2b"}
     for gname in GROUPS:
@@ -731,7 +770,6 @@ def section_pca(d: dict) -> str:
     fig.tight_layout()
     fig.savefig(FIGS / "an_pca.png", dpi=110)
     plt.close(fig)
-    # clustering of team medians
     tm = cur.groupby(["group", "rank", "team"])[feats].median().reset_index().sort_values("rank")
     Zt = ((tm[feats] - mu) / sd).fillna(0).to_numpy()
     rows = []
@@ -742,14 +780,16 @@ def section_pca(d: dict) -> str:
             members = tm[tm[f"k{k}"] == j]
             rows.append({"k": k, "cluster": j, "teams": len(members), "top-14": int((members.group == "top").sum()), "gold": int((members.group == "gold").sum()), "silver": int((members.group == "silver").sum()), "bronze": int((members.group == "bronze").sum()), "who (by rank)": ", ".join(members.sort_values("rank").team.head(8)) + (" ..." if len(members) > 8 else "")})
     clus = pd.DataFrame(rows)
-    # how well does PC1 alone separate zones? per-team medians
     sep = cent.groupby("group")[["PC1", "PC2", "PC3"]].median().reindex(GROUPS)
     sep.index = [GROUP_NAMES[g] for g in sep.index]
-    text = f"""## 9. Structure: one continuum with a few outliers, not discrete strategies
+    text = f"""## 9. Structure: one dense public point and two leader clusters
 
 PCA over {len(cur)} current-submission games of {cur.team.nunique()} teams on {len(feats)} standardised features
 (farm plan, ops, corrected sales and prices). The first three components carry
-{100 * var[:3].sum():.0f}% of the variance:
+{100 * var[:3].sum():.0f}% of the variance. PC1 runs from the family's signature (fertilizer sold rather
+than used, CARE every day, land bought late, wool) to the leaders' (fertilizer used, tomatoes
+and eggs, geese); PC2 separates the two leader groups (cows, strawberries and milk against
+sheep, carrots and wool):
 
 {md_table(pd.DataFrame(load_rows))}
 
@@ -763,6 +803,15 @@ k-means on the {len(tm)} team medians (standardised the same way), for k = 2 to 
 make-up of each cluster:
 
 {md_table(clus)}
+
+The picture is not a continuum: 44 of the 59 teams form one tight cluster (every silver and
+bronze team, nine of the fourteen gold, and the five family members of the top-14) with a
+within-team spread of about 0.5 on PC1; the other 15 teams split into two stable groups, the
+2-cow-3-sheep code base and its relatives (Majkel1337, DSM, Orbital Terraformer, SpaTaro,
+Artem The Farmer, ymg_aq, Sida Zuo) and the goose-and-tomato agents (Unknown Mother-Goose,
+THIRD FARM CLUB, Mengfei Li, HowardLeeTW, Otter Vibe, THUNDER THUNDER). The zone medians of
+PC1 differ only because the zones contain different numbers of leaders: a silver team is
+not "between" gold and bronze, it is on the public point like most of gold.
 """
     return text
 
@@ -840,6 +889,10 @@ Farmer, ymg_aq and Mengfei Li **starve** it: their own banks are ordinary (95-98
 opponent's falls to 82-88k. The memo's "the #1 wins on the market" was half right in the
 wrong way: the top of the ladder is a market-denial contest, and Artem is #1 (19-11 over
 Majkel1337) because denial also hurts the out-earners, whose banks rest on premium prices.
+Section 7 names the two mechanisms: metering premium sales at the town's drain rate in small
+orders across the day (out-earn), and selling first each day from the previous day's
+harvest, every product, every day to the end, with staples covering the late income
+(starve).
 {price_text}"""
     return text
 
@@ -879,6 +932,61 @@ def section_gaps(d: dict) -> str:
     return text
 
 
+# ---------------------------------------------------------------- 11. what to clone
+
+
+def section_recommendation(d: dict) -> str:
+    return """## 11. What to clone, what to hybridise, and how to judge it
+
+Layer by layer, which studied version is best and whether they combine:
+
+- **Economy (clone the public line, then Artem's variant of it).** The current public line
+  (33 strawberry, 163 wheat, 12 melon, 31 carrot, 8 cows, 6 sheep, 3 geese, land on days 6
+  and 11, 12 hands) banks 99-101k against ordinary opponents and is what four fifths of the
+  medal plateau runs; matching it is the floor. Artem The Farmer's skeleton differs in the
+  second land purchase (day 8, three days earlier), fewer strawberries (24-29), more carrots
+  and tomatoes, and 13 hands, and is the only leader line that other teams have copied
+  (section 4). The two farms are compatible: same quadrants, same herd order, same melon
+  cash-in on day 10-11.
+- **Opening (clone the family's or the 2c3s list; no opponent read).** Both day-1 lists
+  spend the $3,000 to the last dollar on animals, pastures, melon and wheat and hire 4-5
+  hands. Nothing on day 1 depends on the opponent (section 1), so the opening is a fixed
+  list with a budget loop for the last wheat seeds.
+- **Shop response (clone the leaders' breadth).** Every zone follows the Yarn Store; the
+  leaders also follow milk shops (cows and tomatoes), egg shops (geese) and carrot shops
+  (carrots) and they follow them further (section 3). This is a table of per-shop
+  increments applied when a shop unlocks on days 3, 6 and 9, not a strategy switch, and it
+  is the one reactive layer with evidence behind it. The increments are read off the
+  conditional means in section 3.
+- **Labour (clone the leaders' end game, keep the family's mid game).** Ops per unit of work
+  are identical across the zones (section 8) except fertilizer, where the leaders spend 30%
+  more per crop tile-day. The leaders' CARE and FEED taper from day 27 and their herds are
+  allowed to escape once no yield can be sold: do that, and fertilize more.
+- **Market (hybridise Artem's denial with Majkel1337's metering).** Two things beat the
+  public line (section 9b): out-earning it (Majkel1337, THIRD FARM CLUB, Unknown
+  Mother-Goose finish 108-115k while the opponent keeps its usual 98-108k) and starving it
+  (Artem, ymg_aq, Mengfei Li bank an ordinary 95-98k while the opponent falls to 82-88k).
+  Artem is #1 and 19-11 over Majkel1337 because denial also works on the out-earners. The
+  concrete rules (section 7): sell premium goods first thing each day from the previous
+  day's harvest; meter each product at about the town's drain rate (strawberry 7 a day
+  before day 18 and 22-36 after, milk 14, wool 12, split with the opponent) in small orders
+  across the day, holding the rest in the shed; never let a premium price recover once the
+  opponent's bulk sales start (days 20-24 for the current line); dump melon on day 10 with
+  everyone else, since no shop buys it and timing earns nothing; and let staples (tomatoes,
+  carrots, eggs, and wheat, whose glut curve is flat) carry the last ten days. Whether
+  metering and denial combine against a line that also adapts is an arena question.
+- **Noise (skip).** SpaTaro's unexecutable orders protect it from cloning and cost nothing,
+  but they are not why it wins and it is 5th, not 1st.
+
+**The yardstick.** Everything above is measured against the current public line; the line
+changes every seven to ten days (section 4), so the local gate should be paired-seat games on
+fixed seeds against (a) the current public line's recorded games (`export_tapes.py` on the
+family's C0 windows, both seats), (b) Artem's and Majkel1337's recordings, and (c) whatever
+line is public two weeks from now, re-exported then. Win rate is the score; the median margin
+over the line (7k for the top-14, 4k for gold, 2k for silver) is the diagnostic.
+"""
+
+
 # ---------------------------------------------------------------- assemble
 
 
@@ -901,6 +1009,7 @@ def main() -> None:
         section_pca(d),
         section_versus_line(d),
         section_gaps(d),
+        section_recommendation(d),
     ]
     (REPORTS / "analysis.md").write_text("\n".join(parts), encoding="utf-8")
     print(f"wrote {REPORTS / 'analysis.md'}")
