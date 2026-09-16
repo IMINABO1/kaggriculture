@@ -342,3 +342,18 @@ Sample: the 29 already-studied teams keep their windows; the 34 new gold, silver
 bronze teams get C0 only (50 games each, 1,700 replays, about 14 hours at the quota's
 pace). The fetcher takes C0 first, so the zone comparison lands before the first batch's
 remaining history windows.
+
+### Decision: keep the first-50 window, drop the quarter points for the second batch, then stop
+Iminabo's call after seeing the leaderboard shape (a plateau of near-identical agents in
+the medal zones, not a power law; `reports/top10/figs/leaderboard_rank_curve.png` and
+`leaderboard_powerlaw_check.png`): sampling a dozen teams per zone is enough to see the
+pattern, and the remaining fetch should buy findings, not completeness. Kept: every team's
+current submission (C0, all 63 teams; L for the first 29) and the first 50 games ever (F)
+for the 29 studied in full, because "did the rest of gold ever change, or start as tapes
+and stay tapes" is a finding in its own right and costs about 250 replays. Dropped: the
+quarter-point windows Q1-Q3 for the second batch of 15 (about 2,300 replays, a day at the
+quota's pace) whose value on the top-14 was one gradual change the endpoints already
+showed. The fetcher now runs `--windows C0,F` and exits when those are complete; the
+four-group report is built when C0 lands, refreshed when F lands, and the thorough
+analysis of the zone comparison follows in a fresh session. Replays on disk at this point:
+6,700; the quarter windows can be fetched later if a finding needs them.
