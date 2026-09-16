@@ -35,6 +35,9 @@ LINES = {
     "line:0913": "data/notebooks/shop-router-0913/output/main.py",
     "line:v5": "data/notebooks/kaggriculture-shop-router-reactive-v5/output/main.py",
     "line:v6": "data/notebooks/kaggriculture-shop-router-reactive-v6/output/main.py",
+    # the multi-route family (V41/EXP260): 28 routes chosen by the first two shops; its route
+    # tapes match hundreds of sampled ladder seats through turn 400 (journal 2026-09-16)
+    "line:v41": "data/notebooks/kaggriculture-multi-route-farming-agent/output/main.py",
 }
 FIELDS = [
     "ts",

@@ -1051,3 +1051,22 @@ basket 95,672 (95,352), margin -25,291 (-25,644), mean bank 86,038 vs 111,329. B
 pass by small amounts; kept. Standing weeds late in the game were exhausted strawberries
 waiting for a DIG that ranked below everything else (priority 3.5); the tile is a wheat
 planting, so the dig now ranks with a planting (1.0).
+
+### Surprise: the multi-route family is already the plateau, hidden by the day-5 hash
+Hashing every V41 route tape's farmer-and-hand stream with the study's convention
+(`research.trace.split_streams`, `stream_hashes`) and matching against
+`data/top10/features.parquet` (14,788 seat rows): all 40 shop routes and the old routes share
+one field line through turn 136, and it is G11 (4,895 seats, 1,089 teams, 2026-09-09 to
+09-15). They part after the day-6 router. At turn 200, 4,358 seats (1,056 teams) match one of
+12 V41 lines; at turn 300, 3,365 seats (951 teams) match one of 24; at turn 400, 967 seats
+(549 teams) match one of 30. At turn 300 the v5-style routes 0 and 2 carry 1,485 seats (662
+teams; Catalyst 154, doubao 43, ElephtAI 43) and the shop-pair routes 101-128 about 1,300
+(route 123 alone 410 seats and 205 teams; the route-105 group 409 seats and 109 teams;
+elmo, Tom&Jerry, Thomas Tschinkel, Emile Andrieu, nilochan, yomogii among the top carriers).
+So section 4's G11 generation was never one plan: from 2026-09-09 the plateau has been a
+family that picks one of 28 searched routes from the first two shops, and section 3's
+"the family follows only the Yarn Store" is true of v5's router and false of the family's
+majority. The exact matches through turn 400 on hundreds of seats are a stronger fidelity
+check of the route tapes than one replay; the runtime layers on top are the same lineage
+as v5's. `scripts/arena.py` gains `line:v41` (flexonafft's `main.py`), and the competition
+yardstick will report against v5 and v41 both once the executor queue is through.
