@@ -46,6 +46,7 @@ FEED_DEADLINE_HOUR = 16     # from here an unfed animal outranks everything but 
 FEEDER_LOAD = 3             # animals one morning feeder takes on (feed, care, collect, harvest)
 SPARE_WATER_HOUR = 17       # from here a plant not yet watered is worth a walk
 LAST_ACT_HOUR = 22          # step 718 is the last executed action
+LATE_HARVEST_HOUR = 18      # a ready crop still unwatered by now is taken, freeing the tile tonight
 STICKY_BONUS = -1.5         # a unit keeps the job it set out for unless another beats it by this
 
 # priority weights added to walking distance; lower wins
@@ -125,7 +126,7 @@ def crop_harvestable(tile, day, hour=0, wanted=None, seeds=None) -> bool:
         return True  # a wheat filler making way for the crop the tile is meant for
     if tile["yield_units"] >= cd["max_yield"] or age > cd["max_day"]:
         return True
-    return age >= cd["ready"] and tile["watered_today"]
+    return age >= cd["ready"] and (tile["watered_today"] or hour >= LATE_HARVEST_HOUR)
 
 
 def needs_water(tile, day) -> tuple:

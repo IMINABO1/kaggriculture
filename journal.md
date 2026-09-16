@@ -1204,3 +1204,9 @@ wool into the shed, so they sell after v5's hour-1 lots (its day-end drop) inste
 alongside them, and v5 takes the higher price on the same units. Reverted. The converse is
 the next single change after W1: collect animal products late in the day so the free
 day-end drop sells them at hour 1 in the same turn as the line's (A2).
+
+### Checkpoint: W1 accepted (ready wheat harvested from hour 18 without that day's watering)
+Production basket 96,041 (S 95,566), bank 149,710 (148,836), wheat 408 (400); competition
+basket 96,514 (96,754), margin -24,022 (-24,516), mean bank 86,858 vs 110,881. Both gates
+pass; kept. A wheat at its ready age no longer waits past nightfall for a watering that
+adds one unit; the tile is freed for tonight's replanting instead.
