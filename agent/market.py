@@ -12,14 +12,17 @@ from agent import plan as P
 from agent.executor import PRODUCE, target_crop
 
 MAX_ORDERS = 10
-# metering (memo, "The answer" 2): sell each premium product at about the town's drain rate
-# in small orders across the day and hold the rest, instead of dumping what reaches the shed
-METER = False               # off: against a daily dumper the held stock sold at the same floor (journal 2026-09-16)
+# metering (memo, "The answer" 2): where the town drains a premium product faster than the
+# opponent supplies it, sell only into that room, in small lots across the day, and hold the
+# rest; where the opponent floods it, holding buys nothing (journal 2026-09-16) and the stock
+# is sold as it reaches the shed
+METER = False               # off against the line: holding hands a dumper a recovered price (journal 2026-09-16)
 METERED = ("STRAWBERRY", "MILK", "WOOL", "EGG", "CARROT", "TOMATO")
-METER_K = 1.3               # sell this multiple of the drain so the stock still clears
-METER_MIN_DRAIN = 6         # units a day the town must take before metering is worth it
-METER_STOCK_CAP = 40        # shed stock above this is sold whatever the drain
+METER_FROM_DAY = 12         # before this the premium stock is a few units
 DUMP_FROM_DAY = 28          # everything goes from here
+METER_K = 1.0               # sell this multiple of the room
+METER_MIN_ROOM = 4          # units a day of room below which the market counts as flooded
+OPP_WINDOW = 48             # turns over which the opponent's selling rate is measured
 SHOPS = {
     "BAKERY": ("EGG", "WHEAT"), "PIZZA_SHOP": ("MILK", "TOMATO", "WHEAT"),
     "BRUNCH_SPOT": ("EGG", "WHEAT", "STRAWBERRY"), "YARN_STORE": ("WOOL",),
@@ -81,6 +84,50 @@ def town_drain_per_day(obs) -> dict:
     return drain
 
 
+def drain_at_step(obs, step: int) -> dict:
+    """Units the town removes right after this step's market (the engine's _town_consume)."""
+    drain = {item: 0 for item in PRODUCE}
+    if step % 4 == 0:
+        for shop in obs["town"].get("unlocked_shops", []):
+            products = SHOPS.get(shop, ())
+            for item in products:
+                drain[item] += 2 if len(products) == 1 else 1
+    if step % 24 == 0:
+        for item in PRODUCE:
+            if item != "FERTILIZER":
+                drain[item] += 1
+    return drain
+
+
+def opponent_rate(state: dict, obs, step: int) -> dict:
+    """Units a day the opponent has been selling of each metered product: the market
+    inventory's change since last turn, net of the town's drain and our own executed sells
+    (we never order more than the shed holds, so an order executes in full)."""
+    inv = obs["market"]["inventory"]
+    hist = state.setdefault("opp_hist", {item: [] for item in METERED})
+    if state.get("inv_step") == step - 1:
+        prev, mine, drained = state["inv_prev"], state.get("my_sells", {}), drain_at_step(obs, step - 1)
+        for item in METERED:
+            hist[item].append(max(0, inv[item] - prev[item] + drained[item] - mine.get(item, 0)))
+            del hist[item][:-OPP_WINDOW]
+    state["inv_prev"], state["inv_step"] = dict(inv), step
+    return {item: sum(hist[item]) * 24.0 / max(1, len(hist[item])) for item in METERED}
+
+
+def metered_quantity(item: str, have: int, day: int, drain: dict, opp: dict, budget: dict) -> int:
+    room = drain.get(item, 0.0) - opp.get(item, 0.0)
+    if room < METER_MIN_ROOM:
+        return have
+    holdable = room * (DUMP_FROM_DAY - day)
+    budget[item] = budget.get(item, 0.0) + room * METER_K / 24.0
+    n = int(budget[item])
+    if have > holdable:
+        n = max(n, int(have - holdable))
+    n = min(n, have)
+    budget[item] = max(0.0, budget[item] - n)
+    return n
+
+
 def market_orders(obs, day, hour, summary, state=None) -> list:
     me = obs["farms"][obs["player"]]
     private = obs["private"]
@@ -99,8 +146,11 @@ def market_orders(obs, day, hour, summary, state=None) -> list:
         FERTILIZER_RESERVE_CAP, summary.get("fertilize_pending", 0) + summary.get("fertilize_taken", 0)
     )
     expected = 0.0
-    drain = town_drain_per_day(obs) if METER else {}
-    budget = state.setdefault("meter", {}) if state is not None else {}
+    metering = METER and state is not None
+    if metering:
+        opp = opponent_rate(state, obs, day * 24 + hour)
+        drain = town_drain_per_day(obs)
+        budget = state.setdefault("meter", {})
     for item in PRODUCE:
         have = shed.get(item, 0)
         if item == "WHEAT":
@@ -110,14 +160,10 @@ def market_orders(obs, day, hour, summary, state=None) -> list:
         if have <= 0 or prices.get(item, 0) < MIN_SELL_PRICE:
             continue
         n = have
-        if METER and item in METERED and day < DUMP_FROM_DAY and drain.get(item, 0) >= METER_MIN_DRAIN:
-            budget[item] = budget.get(item, 0.0) + drain[item] * METER_K / 24.0
-            n = min(have, int(budget[item]))
-            if have > METER_STOCK_CAP:
-                n = max(n, have - METER_STOCK_CAP)
+        if metering and item in METERED and METER_FROM_DAY <= day < DUMP_FROM_DAY:
+            n = metered_quantity(item, have, day, drain, opp, budget)
             if n <= 0:
                 continue
-            budget[item] -= n
         orders.append(["SELL", item, int(n)])
         expected += 0.8 * n * prices[item]
     cash = money + expected
@@ -185,4 +231,7 @@ def market_orders(obs, day, hour, summary, state=None) -> list:
                 orders.append(["BUY_SEED", crop, n])
                 cash -= n * P.SEED_COST[crop]
 
-    return orders[:MAX_ORDERS]
+    orders = orders[:MAX_ORDERS]
+    if state is not None:
+        state["my_sells"] = {o[1]: int(o[2]) for o in orders if o[0] == "SELL"}
+    return orders

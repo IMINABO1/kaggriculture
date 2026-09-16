@@ -1126,3 +1126,32 @@ market layer against plain v41, in mirror seats. If the tapes-plus-layer wins by
 leaders' 8-14k margin (section 9b) while our runtime skeleton does not, the handoff will
 say so plainly and recommend switching the skeleton; that is a change to the plan Iminabo
 saw and is flagged as such, not made silently.
+
+### Decision: the opponent-aware metering is built, measured, and switched off against the line
+`agent/market.py` now estimates the opponent's selling rate per premium product from the
+market inventory's turn-to-turn change net of the town's drain and our own orders
+(`opponent_rate`), and `metered_quantity` sells only into the room the drain leaves after
+the opponent, holding at most what that room can still take before day 28. With it on
+(`METER = True`), executor at S, decoupled shops:
+
+| yardstick | METER off | METER on |
+|---|---|---|
+| production vs pass, bank / basket | 148,836 / 95,566 | 149,903 / 95,317 |
+| competition vs v5, mean bank, margin | 86,667 vs 111,183, -24,516 | 87,041 vs 112,987, -25,946 |
+| competition vs v41, mean bank, margin | 85,410 vs 111,340, -25,930 | 86,014 vs 113,263, -27,249 |
+
+Against pass, where nobody floods the market, it earns 1.1k; against the line it raises
+our bank by 0.4-0.6k and the line's by 1.8-1.9k, so the margin falls 1.3-1.4k. Holding
+stock hands a daily dumper a recovered price: that is the out-earn pattern of section 9b
+(Majkel1337's opponents keep their bank), and the ladder scores wins. Artem's "denial" is
+not holding either: it sells 7-12 strawberries a day from fewer tiles (24-29), so its steady
+supply is what the line's bulk dump lands on. On our 33-tile skeleton there is no steady
+rate to sell at without holding. `METER` stays off; the estimator stays for opponents who
+do not dump, and the production mix (fewer strawberries, more staples) is the lever the
+data points to, which is a skeleton change, not a market one.
+
+**Decision (architecture experiment):** the tape-plus-metering wrapper would only repeat
+this result, so the experiment that answers the skeleton question is a hybrid: v41's tape
+and layers for the first N days, then our runtime executor and market from hour 0 of day
+N. The margin against plain v41 as N grows shows where our executor falls behind the
+searched tapes; N = 6, 10, 13, 16 are run next.
