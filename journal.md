@@ -525,3 +525,19 @@ suppression also works on the out-earners, whose banks depend on premium prices,
 19-11 record over Majkel1337 is where it shows. The product being flooded is the next thing
 to read from the rebuilt sales (the family opponent's realized prices per product in games
 against each leader), which is exactly what the pre-P18 traces could not show.
+
+### Surprise: the starvers flood milk and wool, not melon; the out-earners hold their prices
+Rebuilt traces (about half done) already show what each leader does to a public-line
+opponent's realized prices. Reference: a family seat against a non-family opponent receives
+$132 a strawberry, $211 a melon, $118 a milk, $147 a wool and banks 111k. Against Artem the
+same seat gets $119 / $202 / $91 / $102 (milk down 23%, wool 31%) and banks 89k; against
+ymg_aq $83 / $238 / $87 / $114 (strawberry down 37%) and 82k; against Mengfei Li $105 / $198 /
+$60 / $113 (milk halved) and 84k. Artem does this with 202 milk and 162 wool sold at $105
+and $130, i.e. it sells more of the same premium goods *earlier and steadier* than the family,
+whose 245 milk and 161 wool arrive in the family's fixed dump days; ymg_aq sells 1,270 wheat
+(three times anyone) and takes strawberry down instead. Majkel1337, THIRD FARM CLUB and
+Unknown Mother-Goose leave the opponent's prices almost untouched ($125 / $227 / $104 /
+$161 for Majkel's opponents) and win by receiving more themselves ($164 a strawberry, $132 a
+milk, $154 a wool against the family's $132 / $118 / $147). The two axes are therefore
+"sell before the family's dump" (starve) and "sell where the family is not selling" (out-
+earn); the exact days come from the per-day series once the rebuild finishes.
