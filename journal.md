@@ -1350,3 +1350,16 @@ stretches; (3) the market layer on top of the tape's opening, where the tape's o
 hours are now ours to change from the switch day; (4) Phase 2a on top of the tape's
 routes; (5) the notebook watch, since the tape we bundle is the plateau's current
 generation and will be replaced.
+
+### Checkpoint: where the hybrid would stand if submitted (Iminabo's question)
+Packaged agent (TAPE_DAYS = 24) under the ladder's own coupled shop draw, fresh seeds
+10-29, both seats: against v41 0-40, mean bank 88,628 against 98,781, margin -10,153;
+against v5 1-39, 89,057 against 94,046, margin -4,989. So on ladder conditions the hybrid
+loses to the plain public line almost every game. The final ranking is a Bradley-Terry
+over post-deadline games (competition facts, memory), in which an agent that loses to a
+block of near-identical agents ranks below the whole block; the line's block is the
+plateau (its day-5 line is on 1,089 sampled teams' seats, from rank 9 through silver into
+bronze on the running ladder). Estimate, not measured: a submission today would land below
+the plateau, in silver or bronze, and the plain tape alone (TAPE_DAYS = 30) would land
+mid-plateau. Iminabo's rule stands: no submission until the gauntlet says we stand a
+chance; the entry deadline of 2026-09-23 still requires some submission to exist by then.
