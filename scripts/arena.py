@@ -51,7 +51,14 @@ FIELDS = [
     "ref_me",
     "ref_opp",
     "secs",
+    "shops",
+    "harvest",
 ]
+HARVEST_KEYS = {"MELON": "MEL", "STRAWBERRY": "STR", "WHEAT": "WHE", "CARROT": "CAR", "TOMATO": "TOM",
+                "COW": "MIL", "SHEEP": "WOO", "GOOSE": "EGG"}
+# the public line's realized prices (analysis.md section 7, gold medians): a basket value of
+# the units harvested that does not move with the shop draw
+BASKET_PRICES = {"MEL": 198, "STR": 116, "WHE": 39, "CAR": 49, "TOM": 143, "MIL": 84, "WOO": 105, "EGG": 55}
 
 
 def parse_seeds(spec: str) -> list[int]:
@@ -117,6 +124,36 @@ def build_tasks(args) -> list[dict]:
     ]
 
 
+def harvested_units(steps, seat: int) -> str:
+    """Units harvested by product, counted from HARVEST actions against the tile they stood on:
+    a production readout that does not depend on the prices the shop draw set."""
+    counts: dict[str, int] = {}
+    for t in range(len(steps) - 1):
+        farm = steps[t][seat].observation["farms"][seat]
+        action = steps[t + 1][seat].action or {}
+        units = [farm["farmer"]] + list(farm["hands"])
+        ops = [action.get("farmer")] + list(action.get("hands") or [])
+        for i, op in enumerate(ops):
+            if not op or op[0] != "HARVEST" or i >= len(units):
+                continue
+            x, y = units[i]
+            tile = farm["tiles"][y][x]
+            if not isinstance(tile, dict):
+                continue
+            key = HARVEST_KEYS.get(tile.get("crop") or tile.get("animal"))
+            if key:
+                counts[key] = counts.get(key, 0) + int(tile.get("yield_units", 0))
+    return " ".join(f"{k}{counts[k]}" for k in HARVEST_KEYS.values() if counts.get(k))
+
+
+def parse_harvest(text: str) -> dict[str, int]:
+    return {tok[:3]: int(tok[3:]) for tok in text.split() if tok[3:].isdigit()}
+
+
+def basket(text: str) -> float:
+    return sum(n * BASKET_PRICES.get(k, 0) for k, n in parse_harvest(text).items())
+
+
 def play(task: dict) -> dict:
     from kenv import import_ke
 
@@ -156,6 +193,8 @@ def play(task: dict) -> dict:
         "ref_me": ref_me,
         "ref_opp": ref_opp,
         "secs": round(time.time() - t0, 1),
+        "shops": " ".join(s[:6] for s in final[0].observation["town"]["unlocked_shops"]),
+        "harvest": harvested_units(env.steps, seat),
     }
 
 
@@ -219,6 +258,10 @@ def main() -> None:
     errors = sum(r["me_status"] != "DONE" for r in rows)
     margin = statistics.mean(r["me"] - r["opp"] for r in rows)
     print(f"\n{args.a} vs {args.b} | {len(rows)} games")
+    keys = list(HARVEST_KEYS.values())
+    mean_units = {k: statistics.mean(parse_harvest(r["harvest"]).get(k, 0) for r in rows) for k in keys}
+    print("harvest mean " + " ".join(f"{k}{mean_units[k]:.0f}" for k in keys if mean_units[k])
+          + f"  basket {statistics.mean(basket(r['harvest']) for r in rows):.0f}")
     print(
         f"W-L-T {wins}-{losses}-{ties}  win rate {wins / len(rows):.0%}  "
         f"mean bank {statistics.mean(r['me'] for r in rows):.0f} vs "

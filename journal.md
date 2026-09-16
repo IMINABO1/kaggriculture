@@ -946,3 +946,22 @@ around NW until the day-end drop put its load into the shed for the hour-1 sale 
 until it has dropped them, on any day. `scripts/arena.py` now also records each game's shop
 list and the units harvested by product; `results/arena.csv` restarts with the new header
 (the old log is `results/arena_to_2026-09-16.csv`).
+
+### Checkpoint: B2 measured by harvested units; the melon carriers skipped the herd
+`scripts/arena.py` now prints, per run, the mean units harvested by product and a basket
+value at the line's realized prices from analysis.md section 7 (melon 198, strawberry 116,
+wheat 39, carrot 49, tomato 143, milk 84, wool 105, egg 55), which the shop draw cannot
+move. Production, eight seeds against pass, B (committed) against B2 (melon carriers take
+no job at all until they drop):
+
+| executor | bank | basket | melon | strawberry | wheat | carrot | milk | wool | egg |
+|---|---|---|---|---|---|---|---|---|---|
+| B | 141,490 | 95,436 | 67 | 219 | 351 | 77 | 232 | 143 | 87 |
+| B2 | 137,361 | 94,609 | 67 | 218 | 362 | 74 | 229 | 138 | 83 |
+
+B's basket is higher on 6 of 8 seeds (paired mean +827); the shops differed on all eight
+seeds, so the 4.1k bank difference is mostly P22. Competition, B2: 0-20, mean bank 72,564 vs
+98,457, margin -25,893 (B: -26,572). The units B2 loses are milk, wool and egg: on melon day
+the twelve carriers pass the pastures without CARE or COLLECT and no feeder exists that day
+(B turned them off), so some animals go uncared at the lowest priority. B3 assigns the
+feeders the turn the last melon job disappears; measured next with the basket.
