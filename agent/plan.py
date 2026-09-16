@@ -51,7 +51,6 @@ WHEAT_LAST_DAY = 27           # harvest at age 2 on day 29 gives 2 units for a $
 MELON_DAY = 0
 
 WHEAT_FEED_RESERVE_DAYS = 1   # shed wheat kept back from sales, in days of feed
-LAST_STEP = 718
 
 
 def cumulative(target: dict[int, int], day: int) -> int:

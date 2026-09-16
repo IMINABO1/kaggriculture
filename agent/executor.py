@@ -39,7 +39,6 @@ LAST_PLANT_HOUR = 21
 LIQUIDATION_HOUR = 14
 DEPOSIT_VALUE = 400         # carried produce worth this much walks to the shed when nothing is nearer
 DEPOSIT_URGENT_VALUE = 1500  # worth this much, the walk comes before any other job
-STICKY_BONUS = 0.0         # a unit keeps the job it set out for unless something urgent appears
 URGENCY_FROM_HOUR = 13      # feeding and must-watering climb over other work from this hour
 URGENCY_PER_HOUR = 0.75
 ON_TILE_BONUS = -10.0       # a job under the unit's feet comes before walking to an ordinary one
@@ -126,10 +125,9 @@ def crop_harvestable(tile, day, hour=0, wanted=None, seeds=None) -> bool:
 
 
 def needs_water(tile, day) -> tuple:
-    """(needed, must): every unwatered plant is watered every day, as the line does; "must"
-    marks the ones that would weed tonight (two consecutive unwatered days) and so come first.
-    Skipping the off days would save nothing: the line's water count equals ours, and a
-    missed must-day kills the plant."""
+    """(needed, must): every unwatered plant, "must" when a second unwatered day would weed it.
+
+    Skipping off days saves nothing (the line's water count equals ours) and leaves no slack."""
     if tile["watered_today"]:
         return False, False
     return True, tile.get("consecutive_unwatered", 0) >= 1
@@ -300,7 +298,7 @@ def is_animal_job(j) -> bool:
     return j.kind in ANIMAL_JOBS or (j.kind == "HARVEST" and j.arg == "animal")
 
 
-def act_units(obs, day, hour, state, step=0):
+def act_units(obs, day, hour, state):
     """Return (unit actions, summary) for this turn.
 
     Jobs are assigned globally, cheapest (unit, job) pair first, so the nearest unit takes
@@ -354,9 +352,7 @@ def act_units(obs, day, hour, state, step=0):
     def input_needed_by(inv, item):
         return item in pending_inputs and inv.get(item, 0) > 0
 
-    # candidate (score, unit, job) pairs; a unit's previous walking target is remembered by
-    # (kind, tile) and favoured so units stop re-targeting each other's jobs every turn
-    previous = state.get("targets", {}) if state.get("target_step") == step - 1 else {}
+    # candidate (score, unit, job) pairs
     pairs = []
     for ui, pos in enumerate(positions):
         inv = invs[ui]
@@ -368,8 +364,6 @@ def act_units(obs, day, hour, state, step=0):
                 continue
             d = dist(pos, j.pos)
             score = j.prio + ON_TILE_BONUS if d == 0 else d + j.prio
-            if d > 0 and previous.get(ui) == (j.kind, j.x, j.y):
-                score += STICKY_BONUS
             if j.kind == "FEED" or (j.kind == "WATER" and j.arg == "must"):
                 score -= URGENCY_PER_HOUR * max(0, hour - URGENCY_FROM_HOUR)
                 if hour >= FEED_DEADLINE_HOUR:
@@ -431,13 +425,6 @@ def act_units(obs, day, hour, state, step=0):
             plant_left[j.arg] -= 1
         j.taken = True
         assigned[ui] = ("JOB", j, 0, j.pos)
-
-    targets = {}
-    for ui, a in enumerate(assigned):
-        if a is not None and a[0] == "JOB" and a[3] != positions[ui]:
-            targets[ui] = (a[1].kind, a[1].x, a[1].y)
-    state["targets"] = targets
-    state["target_step"] = step
 
     actions = []
     for ui, pos in enumerate(positions):

@@ -1,9 +1,9 @@
 """Market orders: the public line's purchase schedule and a sell-what-you-hold policy.
 
 Sells go first in the queue so their money funds the buys behind them in the same turn.
-Phase 1 sells every product as soon as it reaches the shed, keeping back only the wheat the
-animals eat and the fertilizer the strawberries are about to get; the metering and denial
-rules of the memo are Phase 2 and live here later.
+By default every product is sold as soon as it reaches the shed, keeping back only the wheat
+the animals eat and the fertilizer the strawberries are about to get; `METER` switches the
+memo's metering rule on.
 """
 
 from __future__ import annotations

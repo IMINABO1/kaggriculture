@@ -17,7 +17,7 @@ def act(obs):
         state = _GAMES[player] = {"last_step": -1, "day": -1, "feeders": set()}
     state["last_step"] = step
     day, hour = step // TURNS_PER_DAY, step % TURNS_PER_DAY
-    units, summary = act_units(obs, day, hour, state, step)
+    units, summary = act_units(obs, day, hour, state)
     return {
         "farmer": units[0],
         "hands": units[1:],
