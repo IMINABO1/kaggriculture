@@ -41,12 +41,12 @@ game 1: 684, game 10: 1170, game 25: 1588, game 50: 1846, game 100: 2079, game 2
 | FERTILIZE ops | 59 | 93.5 | 99 | 119 | 111 | 83 |
 | CARE ops | 278 | 282 | 245 | 278 | 286.5 | 267 |
 | melon sold | 66 | 66 | 72 | 66 | 66 | 64.5 |
-| strawberry sold | 192 | 158 | 210.5 | 202 | 195 | 183 |
-| milk sold | 252 | 194.5 | 167 | 169.5 | 195 | 165.5 |
-| wool sold | 124 | 117.5 | 80.5 | 95 | 123 | 123.5 |
-| wheat sold | 339 | 636 | 718.5 | 701.5 | 732.5 | 718 |
-| fertilizer sold | 251 | 215.5 | 172 | 217.5 | 225.5 | 216.5 |
-| units sold last 3 days | 341 | 280 | 281.5 | 324.5 | 324.5 | 300 |
+| strawberry sold | 192 | 158 | 210.5 | 202 | 190 | 183 |
+| milk sold | 252 | 194.5 | 167 | 169.5 | 194 | 165.5 |
+| wool sold | 124 | 117.5 | 80.5 | 95 | 125 | 123.5 |
+| wheat sold | 339 | 636 | 718.5 | 701.5 | 732 | 718 |
+| fertilizer sold | 251 | 215.5 | 172 | 217.5 | 224 | 216.5 |
+| units sold last 3 days | 341 | 280 | 281.5 | 324.5 | 323 | 300 |
 | shed peak | 39 | 26.5 | 25 | 23 | 22 | 19.5 |
 | weeds spawned | 14 | 20 | 26 | 22 | 21.5 | 23 |
 | unexecutable market orders | 0 | 222 | 234.5 | 228.5 | 239 | 241 |
@@ -159,7 +159,7 @@ What goes with being off the modal field line at turn 24 (the first cut where fe
 | Q1 | 50 | 76 | 98947 | 12 | 8 | 4 | 0 | 3 | 6 | 23 | 173 | 11 | 66 | 194.5 | 117.5 | 46 | 46 |
 | Q2 | 50 | 50 | 88826 | 12 | 7 | 4 | 0 | 3 | 6 | 28 | 176.5 | 12 | 72 | 167 | 80.5 | 50 | 50 |
 | Q3 | 42 | 73.8 | 98493.5 | 12 | 8 | 6 | 0 | 3 | 6 | 27 | 168.5 | 11 | 66 | 169.5 | 95 | 42 | 42 |
-| L | 50 | 46 | 96397 | 11 | 9 | 6.5 | 0 | 3 | 6 | 28 | 183.5 | 11 | 66 | 195 | 123 | 50 | 50 |
+| L | 50 | 46 | 96397 | 11 | 9 | 6.5 | 0 | 3 | 6 | 28 | 183.5 | 11 | 66 | 194 | 125 | 50 | 50 |
 | C0 | 50 | 98 | 96824.5 | 11 | 8 | 5 | 0 | 3 | 6 | 25.5 | 188.5 | 11 | 64.5 | 165.5 | 123.5 | 50 | 50 |
 
 ## Losses in the first and last windows
@@ -172,7 +172,7 @@ What goes with being off the modal field line at turn 24 (the first cut where fe
 | F | 97717112 | Timbo615 | 1164.2 | 128446 | 130666 | -2220 | 19b7fa8e | strawberry sold: they 313 vs me 143; melon sold: they 144 vs me 66; milk sold: they 237 vs me 291 |
 | F | 97721706 | SHAURYA SHARMA | 1157.1 | 99265 | 105598 | -6333 | 19b7fa8e | strawberry sold: they 313 vs me 142; melon sold: they 144 vs me 66; wheat planted: they 92 vs me 146 |
 | F | 97730888 | Raj Aryan | 1179.8 | 103532 | 115173 | -11641 | 19b7fa8e | strawberry sold: they 313 vs me 203; wheat planted: they 92 vs me 172; melon sold: they 144 vs me 66 |
-| F | 97735489 | Scorpi | 1245.1 | 91645 | 100331 | -8686 | f3866a53 | units sold last 3 days: they 1407 vs me 330; strawberry sold: they 292 vs me 187; wool sold: they 150 vs me 65 |
+| F | 97735489 | Scorpi | 1245.1 | 91645 | 100331 | -8686 | f3866a53 | CARE ops: they 307 vs me 237; strawberry planted: they 42 vs me 24; wheat planted: they 111 vs me 100 |
 | F | 97767553 | Boiled-Sweet-Potato | 1436.9 | 107092 | 113791 | -6699 | 902b6f5f | wool sold: they 138 vs me 208; milk sold: they 225 vs me 161; strawberry sold: they 268 vs me 211 |
 | F | 97769841 | dunky su | 1437.4 | 75462 | 81499 | -6037 | 0d007086 | strawberry sold: they 329 vs me 232; wool sold: they 66 vs me 124; CARE ops: they 267 vs me 310 |
 | F | 97776610 | DASH村 | 1362.7 | 83820 | 90666 | -6846 | 65da1d57 | strawberry sold: they 268 vs me 187; CARE ops: they 318 vs me 237; wool sold: they 120 vs me 61 |

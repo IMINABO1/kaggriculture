@@ -109,7 +109,7 @@ What goes with being off the modal field line at turn 200 (the first cut where f
 | C0 | 108903984 | parv goyal2 | 2571.5 | 85343 | 93967 | -8624 | 88cd11eb | CARE ops: they 312 vs me 405; strawberry sold: they 166 vs me 241; wheat planted: they 232 vs me 163 |
 | C0 | 108907547 | Chris Deotte | 2657.1 | 126581 | 126940 | -359 | 9b0c82fd | milk sold: they 143 vs me 152; strawberry sold: they 244 vs me 239; units sold last 3 days: they 395 vs me 393 |
 | C0 | 108908602 | Xiaoyong Zhu | 2776.8 | 118566 | 119256 | -690 | 8008c86c | units sold last 3 days: they 400 vs me 398; weeds spawned: they 20 vs me 21; CARE ops: they 404 vs me 405 |
-| C0 | 108913789 | 自己找差距 | 2706.1 | 90793 | 96316 | -5523 | 3bc18d7a | CARE ops: they 259 vs me 405; FERTILIZE ops: they 205 vs me 92; strawberry sold: they 154 vs me 249 |
+| C0 | 108913789 | 自己找差距 | 2706.1 | 90793 | 96316 | -5523 | 3bc18d7a | CARE ops: they 259 vs me 405; FERTILIZE ops: they 205 vs me 92; wheat planted: they 80 vs me 156 |
 
 ## Head to head with the other studied teams (all games, not only sampled)
 

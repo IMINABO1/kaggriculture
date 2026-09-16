@@ -41,12 +41,12 @@ game 1: 669, game 10: 1570, game 25: 2559, game 50: 2797, game 100: 2929, game 2
 | FERTILIZE ops | 80 | 64 | 64 | 176.5 | 184 | 192.5 |
 | CARE ops | 322 | 318 | 318 | 287.5 | 241 | 247 |
 | melon sold | 132 | 120 | 120 | 78 | 78 | 78 |
-| strawberry sold | 313 | 252 | 252 | 240.5 | 270.5 | 234.5 |
-| milk sold | 234 | 241 | 237 | 214 | 169.5 | 182 |
-| wool sold | 164 | 120 | 138 | 95.5 | 81.5 | 95.5 |
+| strawberry sold | 313 | 252 | 252 | 243 | 270.5 | 234.5 |
+| milk sold | 234 | 241 | 237 | 215 | 169.5 | 182 |
+| wool sold | 164 | 120 | 138 | 95 | 81.5 | 95.5 |
 | wheat sold | 815 | 598.5 | 603 | 390 | 340.5 | 342 |
-| fertilizer sold | 233 | 233 | 233 | 228 | 213 | 204 |
-| units sold last 3 days | 322 | 311 | 311 | 397 | 392.5 | 394.5 |
+| fertilizer sold | 233 | 233 | 233 | 227 | 212.5 | 204 |
+| units sold last 3 days | 322 | 311 | 311 | 397 | 394.5 | 394.5 |
 | shed peak | 51 | 33.5 | 35 | 28 | 6 | 44 |
 | weeds spawned | 19 | 24 | 24 | 8.5 | 8 | 8 |
 | unexecutable market orders | 0 | 0 | 0 | 0 | 0 | 0 |
@@ -158,7 +158,7 @@ What goes with being off the modal field line at turn 48 (the first cut where fe
 | F | 50 | 76 | 80186.5 | 14 | 8 | 6 | 0 | 3 | 7 | 42 | 92 | 23 | 132 | 234 | 164 | 7 | 40 |
 | Q1 | 50 | 30 | 80973 | 12 | 10 | 4 | 0 | 3 | 6 | 34 | 127 | 20 | 120 | 241 | 120 | 17 | 35 |
 | Q2 | 50 | 28 | 79810.5 | 12 | 8 | 5 | 0 | 3 | 6 | 34 | 127 | 20 | 120 | 237 | 138 | 17 | 41 |
-| Q3 | 38 | 94.7 | 109334 | 12 | 7.5 | 4.5 | 2 | 3 | 3 | 31 | 143 | 13 | 78 | 214 | 95.5 | 38 | 38 |
+| Q3 | 38 | 94.7 | 109334 | 12 | 7.5 | 4.5 | 2 | 3 | 3 | 31 | 143 | 13 | 78 | 215 | 95 | 38 | 38 |
 | L | 50 | 60 | 102454.5 | 12 | 6 | 4 | 2 | 3 | 3 | 37 | 118 | 13 | 78 | 169.5 | 81.5 | 50 | 50 |
 | C0 | 50 | 90 | 108796 | 12 | 7 | 4.5 | 1 | 3 | 3 | 31 | 131.5 | 13 | 78 | 182 | 95.5 | 50 | 50 |
 
@@ -184,24 +184,24 @@ What goes with being off the modal field line at turn 48 (the first cut where fe
 | C0 | 108506126 | Bryce Muhlnickel | 2796.6 | 111691 | 112702 | -1011 | 9b0c82fd | CARE ops: they 417 vs me 234; strawberry sold: they 249 vs me 411; FERTILIZE ops: they 64 vs me 183 |
 | C0 | 108514366 | saberzky | 2715.5 | 106151 | 107001 | -850 | 9b0c82fd | FERTILIZE ops: they 61 vs me 196; CARE ops: they 397 vs me 308; units sold last 3 days: they 359 vs me 404 |
 | L | 108919396 | Dude and Destroy | 2177.1 | 77423 | 88508 | -11085 | 9b0c82fd | FERTILIZE ops: they 61 vs me 184; CARE ops: they 407 vs me 317; strawberry sold: they 249 vs me 170 |
-| L | 108926648 | MD Concepcion | 2113.4 | 92339 | 98316 | -5977 | 9b0c82fd | strawberry sold: they 248 vs me 172; CARE ops: they 417 vs me 347; FERTILIZE ops: they 104 vs me 174 |
+| L | 108926648 | MD Concepcion | 2113.4 | 92339 | 98316 | -5977 | 9b0c82fd | CARE ops: they 417 vs me 347; FERTILIZE ops: they 104 vs me 174; wheat planted: they 163 vs me 138 |
 | L | 108928764 | DSM | 2975.3 | 87181 | 94083 | -6902 | 422a8637 | wheat planted: they 266 vs me 178; CARE ops: they 331 vs me 260; units sold last 3 days: they 348 vs me 415 |
 | L | 108931878 | ymg_aq | 3011.1 | 107391 | 109938 | -2547 | 33af7d45 | CARE ops: they 230 vs me 251; melon sold: they 78 vs me 96; weeds spawned: they 25 vs me 7 |
 | L | 108931881 | Mengfei Li | 2995.0 | 101706 | 110138 | -8432 | b478e1df | wheat planted: they 82 vs me 144; strawberry sold: they 255 vs me 305; CARE ops: they 264 vs me 220 |
 | L | 108940072 | test_money | 2063.7 | 85242 | 90086 | -4844 | 9b0c82fd | CARE ops: they 417 vs me 241; FERTILIZE ops: they 87 vs me 190; milk sold: they 231 vs me 170 |
-| L | 108947323 | Unknown Mother-Goose | 2948.1 | 98445 | 108001 | -9556 | cfefcbaa | strawberry sold: they 260 vs me 347; CARE ops: they 302 vs me 239; milk sold: they 147 vs me 125 |
+| L | 108947323 | Unknown Mother-Goose | 2948.1 | 98445 | 108001 | -9556 | cfefcbaa | CARE ops: they 302 vs me 239; strawberry planted: they 34 vs me 46; weeds spawned: they 20 vs me 8 |
 | L | 108951045 | digitalChaos | 2150.6 | 106083 | 108718 | -2635 | 9b0c82fd | CARE ops: they 417 vs me 256; strawberry sold: they 249 vs me 334; FERTILIZE ops: they 108 vs me 186 |
 | L | 108955644 | Catalyst | 2952.7 | 100904 | 102606 | -1702 | 9b0c82fd | strawberry sold: they 247 vs me 105; FERTILIZE ops: they 86 vs me 185; wool sold: they 264 vs me 236 |
 | L | 108963033 | DSM | 3009.7 | 98025 | 107301 | -9276 | 422a8637 | CARE ops: they 308 vs me 230; wheat planted: they 214 vs me 150; units sold last 3 days: they 362 vs me 399 |
 | L | 108970322 | Cow Boy | 2944.5 | 125881 | 135771 | -9890 | 9b0c82fd | CARE ops: they 507 vs me 346; FERTILIZE ops: they 61 vs me 168; wool sold: they 381 vs me 300 |
 | L | 108972089 | maxout | 2147.2 | 112340 | 120949 | -8609 | 9b0c82fd | strawberry sold: they 245 vs me 317; FERTILIZE ops: they 93 vs me 156; CARE ops: they 397 vs me 344 |
 | L | 108975412 | Manu Nicholas Jacob | 2115.4 | 92989 | 107529 | -14540 | ff23a7fd | CARE ops: they 414 vs me 265; FERTILIZE ops: they 61 vs me 171; strawberry sold: they 249 vs me 348 |
-| L | 108976486 | SpaTaro | 3004.5 | 62380 | 69415 | -7035 | efd0e28b | FERTILIZE ops: they 49 vs me 98; wool sold: they 106 vs me 58; units sold last 3 days: they 287 vs me 332 |
+| L | 108976486 | SpaTaro | 3004.5 | 62380 | 69415 | -7035 | efd0e28b | FERTILIZE ops: they 49 vs me 98; weeds spawned: they 16 vs me 8; CARE ops: they 214 vs me 220 |
 | L | 108977189 | leave you | 2939.7 | 81788 | 87750 | -5962 | 3bc18d7a | CARE ops: they 347 vs me 204; FERTILIZE ops: they 66 vs me 196; milk sold: they 261 vs me 176 |
 | L | 108990328 | Yuta Yamazaki | 2222.4 | 100519 | 102699 | -2180 | 9b0c82fd | CARE ops: they 405 vs me 292; FERTILIZE ops: they 125 vs me 177; wheat planted: they 162 vs me 112 |
 | L | 108994979 | Orbital Terraformer | 2997.6 | 103203 | 111617 | -8414 | a87c2093 | CARE ops: they 373 vs me 281; wool sold: they 273 vs me 197; units sold last 3 days: they 359 vs me 406 |
 | L | 108996909 | mkai1981 | 2112.7 | 82492 | 85189 | -2697 | 9b0c82fd | CARE ops: they 417 vs me 232; FERTILIZE ops: they 61 vs me 195; wool sold: they 161 vs me 65 |
-| L | 109006489 | mtmr_s1 | 2889.5 | 104379 | 109578 | -5199 | 9b0c82fd | CARE ops: they 392 vs me 225; strawberry sold: they 255 vs me 397; FERTILIZE ops: they 121 vs me 185 |
+| L | 109006489 | mtmr_s1 | 2889.5 | 104379 | 109578 | -5199 | 9b0c82fd | CARE ops: they 392 vs me 225; FERTILIZE ops: they 121 vs me 185; wheat planted: they 155 vs me 111 |
 | L | 109014236 | DSM | 2989.7 | 63024 | 70114 | -7090 | 422a8637 | strawberry sold: they 144 vs me 105; melon sold: they 71 vs me 96; wheat planted: they 210 vs me 188 |
 
 ## Head to head with the other studied teams (all games, not only sampled)

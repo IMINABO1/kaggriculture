@@ -165,7 +165,7 @@ What goes with being off the modal field line at turn 24 (the first cut where fe
 | F | 101618542 | yuki0731 | 771.1 | 74762 | 81088 | -6326 | 95a4a982 | CARE ops: they 169 vs me 925; wheat planted: they 39 vs me 130; wool sold: they 46 vs me 87 |
 | F | 101623000 | Aldo Rizona | 811.3 | 49112 | 96483 | -47371 | bf5b32d0 | CARE ops: they 213 vs me 813; melon sold: they 145 vs me 47; strawberry sold: they 135 vs me 63 |
 | F | 101629724 | TheDuck | 786.2 | 64799 | 95017 | -30218 | f1bf84e8 | CARE ops: they 229 vs me 930; units sold last 3 days: they 314 vs me 134; milk sold: they 207 vs me 98 |
-| F | 101636461 | Vlad Kochetov | 863.1 | 40620 | 85609 | -44989 | 222440bf | CARE ops: they 403 vs me 936; strawberry sold: they 241 vs me 107; wheat planted: they 23 vs me 136 |
+| F | 101636461 | Vlad Kochetov | 863.1 | 40620 | 85609 | -44989 | 222440bf | CARE ops: they 403 vs me 936; wheat planted: they 23 vs me 136; weeds spawned: they 44 vs me 66 |
 | F | 101638693 | Emerson Suarez | 823.2 | 51011 | 69991 | -18980 | 222440bf | CARE ops: they 298 vs me 937; strawberry sold: they 280 vs me 146; units sold last 3 days: they 245 vs me 125 |
 | F | 101640966 | Dieter | 879.5 | 94750 | 108254 | -13504 | d0db95fa | CARE ops: they 343 vs me 929; strawberry sold: they 311 vs me 258; milk sold: they 240 vs me 191 |
 | F | 101652184 | Krishnan CS | 879.5 | 94553 | 97324 | -2771 | eeef3188 | CARE ops: they 299 vs me 931; wheat planted: they 10 vs me 131; units sold last 3 days: they 145 vs me 224 |

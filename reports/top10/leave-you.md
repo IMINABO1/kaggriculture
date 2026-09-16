@@ -152,25 +152,25 @@ What goes with being off the modal field line at turn 200 (the first cut where f
 
 | window | episode | opponent | opp rating | my bank | opp bank | margin | opp opening | biggest differences (opponent vs me) |
 |---|---|---|---|---|---|---|---|---|
-| F | 89410702 | Bugra0 | 644.5 | 50375 | 54162 | -3787 | 34d26a61 | melon sold: they 178 vs me 0; milk sold: they 15 vs me 180; CARE ops: they 88 vs me 239 |
+| F | 89410702 | Bugra0 | 644.5 | 50375 | 54162 | -3787 | 34d26a61 | CARE ops: they 88 vs me 239; sheep bought: they 7 vs me 0; cows bought: they 1 vs me 7 |
 | F | 89412283 | D S S Kumar | 638.0 | 59766 | 66620 | -6854 | 284fd457 | melon sold: they 230 vs me 0; CARE ops: they 38 vs me 239; milk sold: they 0 vs me 180 |
-| F | 89413882 | Alexandrine Cakpo | 840.1 | 46528 | 89692 | -43164 | 8837b14d | wool sold: they 137 vs me 0; units sold last 3 days: they 200 vs me 78; CARE ops: they 353 vs me 239 |
+| F | 89413882 | Alexandrine Cakpo | 840.1 | 46528 | 89692 | -43164 | 8837b14d | CARE ops: they 353 vs me 239; FERTILIZE ops: they 70 vs me 0; strawberry planted: they 42 vs me 0 |
 | F | 89414929 | maxingkong733 | 856.0 | 19331 | 102721 | -83390 | 2cd6b252 | strawberry sold: they 188 vs me 0; milk sold: they 196 vs me 36; CARE ops: they 248 vs me 117 |
 | F | 89414942 | Vu Tran Hoang | 699.6 | 49907 | 54645 | -4738 | 3d65c8d4 | units sold last 3 days: they 429 vs me 63; wheat planted: they 266 vs me 0; melon sold: they 210 vs me 0 |
-| F | 89415472 | Issac “Izreal” Davis | 689.7 | 52433 | 62234 | -9801 | 2717f46a | units sold last 3 days: they 381 vs me 78; CARE ops: they 75 vs me 235; strawberry sold: they 156 vs me 0 |
+| F | 89415472 | Issac “Izreal” Davis | 689.7 | 52433 | 62234 | -9801 | 2717f46a | CARE ops: they 75 vs me 235; wheat planted: they 145 vs me 0; strawberry planted: they 64 vs me 0 |
 | F | 89416527 | Tony Li | 659.1 | 28060 | 163316 | -135256 | aa27ef5f | units sold last 3 days: they 336 vs me 63; strawberry sold: they 251 vs me 0; wool sold: they 229 vs me 0 |
 | F | 89417613 | Tony Li | 844.2 | 35790 | 150318 | -114528 | aa27ef5f | units sold last 3 days: they 336 vs me 63; strawberry sold: they 243 vs me 0; wool sold: they 229 vs me 0 |
-| F | 89417640 | hiroshi murakami | 779.9 | 28144 | 46139 | -17995 | dc6fc820 | units sold last 3 days: they 813 vs me 72; milk sold: they 220 vs me 153; wheat planted: they 59 vs me 0 |
-| F | 89418203 | Aymar Avohoueme | 686.1 | 47717 | 70026 | -22309 | 8837b14d | units sold last 3 days: they 467 vs me 78; CARE ops: they 379 vs me 239; wool sold: they 104 vs me 0 |
+| F | 89417640 | hiroshi murakami | 779.9 | 28144 | 46139 | -17995 | dc6fc820 | wheat planted: they 59 vs me 0; weeds spawned: they 23 vs me 2; geese bought: they 0 vs me 4 |
+| F | 89418203 | Aymar Avohoueme | 686.1 | 47717 | 70026 | -22309 | 8837b14d | CARE ops: they 379 vs me 239; FERTILIZE ops: they 72 vs me 0; weeds spawned: they 22 vs me 2 |
 | F | 89419284 | sky machine | 725.0 | 55049 | 77431 | -22382 | f09dbe6d | CARE ops: they 49 vs me 239; milk sold: they 0 vs me 180; strawberry sold: they 146 vs me 0 |
 | F | 89420328 | satoooh | 600 | 43688 | 164826 | -121138 | fc1440dd | strawberry sold: they 315 vs me 0; units sold last 3 days: they 274 vs me 72; wool sold: they 145 vs me 0 |
 | F | 89425152 | 8ct10nz | 972.3 | 40701 | 63994 | -23293 | 63e3b270 | melon sold: they 186 vs me 0; units sold last 3 days: they 166 vs me 82; wheat planted: they 76 vs me 0 |
 | F | 89426223 | phibkro | 942.9 | 65634 | 116346 | -50712 | ddc27043 | units sold last 3 days: they 481 vs me 82; milk sold: they 88 vs me 264; melon sold: they 140 vs me 0 |
-| F | 89426761 | Adil Khabibullin | 844.7 | 44338 | 76060 | -31722 | 1a6d93c5 | units sold last 3 days: they 290 vs me 86; CARE ops: they 427 vs me 316; wheat planted: they 101 vs me 0 |
-| F | 89427289 | Sai Teja Bandaru | 600 | 53156 | 56200 | -3044 | efe2a640 | units sold last 3 days: they 1125 vs me 89; CARE ops: they 86 vs me 330; milk sold: they 57 vs me 264 |
-| F | 89427298 | Aymar Avohoueme | 838.0 | 73610 | 88773 | -15163 | 8837b14d | wool sold: they 210 vs me 91; milk sold: they 152 vs me 264; melon sold: they 96 vs me 0 |
+| F | 89426761 | Adil Khabibullin | 844.7 | 44338 | 76060 | -31722 | 1a6d93c5 | CARE ops: they 427 vs me 316; wheat planted: they 101 vs me 0; FERTILIZE ops: they 59 vs me 0 |
+| F | 89427289 | Sai Teja Bandaru | 600 | 53156 | 56200 | -3044 | efe2a640 | CARE ops: they 86 vs me 330; FERTILIZE ops: they 43 vs me 0; strawberry planted: they 37 vs me 0 |
+| F | 89427298 | Aymar Avohoueme | 838.0 | 73610 | 88773 | -15163 | 8837b14d | FERTILIZE ops: they 57 vs me 0; CARE ops: they 349 vs me 310; strawberry planted: they 26 vs me 0 |
 | F | 89428374 | Koichi HIRAOKA | 748.7 | 55040 | 65167 | -10127 | 65222265 | melon sold: they 168 vs me 0; units sold last 3 days: they 224 vs me 82; milk sold: they 144 vs me 264 |
-| F | 89429458 | Tejas | 799.0 | 67803 | 72805 | -5002 | 727dc4c9 | melon sold: they 211 vs me 0; units sold last 3 days: they 207 vs me 82; milk sold: they 146 vs me 264 |
+| F | 89429458 | Tejas | 799.0 | 67803 | 72805 | -5002 | 727dc4c9 | weeds spawned: they 71 vs me 2; wheat planted: they 57 vs me 0; CARE ops: they 364 vs me 310 |
 | F | 89462295 | Milkomeda | 743.3 | 79380 | 84470 | -5090 | 86513e08 | milk sold: they 93 vs me 264; strawberry sold: they 156 vs me 0; melon sold: they 108 vs me 0 |
 | F | 89648030 | Kaito Fukami | 1883.3 | 98759 | 103506 | -4747 | 1defe691 | strawberry sold: they 276 vs me 261; wool sold: they 146 vs me 137; melon sold: they 119 vs me 113 |
 | C0 | 108964432 | Jeryos | 2902.2 | 80394 | 81794 | -1400 | 9b0c82fd | wool sold: they 154 vs me 224; milk sold: they 165 vs me 213; CARE ops: they 405 vs me 372 |

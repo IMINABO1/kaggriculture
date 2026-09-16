@@ -38,11 +38,11 @@ game 1: 684, game 10: 1332, game 25: 2342, game 50: 2809, game 100: 2987, game l
 | FERTILIZE ops | 80 | 180.5 | 181 |
 | CARE ops | 343 | 311 | 337.5 |
 | melon sold | 66 | 82 | 83 |
-| strawberry sold | 311 | 208 | 200 |
+| strawberry sold | 311 | 206 | 200 |
 | milk sold | 264 | 168 | 182.5 |
-| wool sold | 131 | 102 | 153 |
-| wheat sold | 196 | 442 | 395.5 |
-| fertilizer sold | 259 | 211.5 | 229.5 |
+| wool sold | 131 | 103 | 153 |
+| wheat sold | 196 | 441 | 395.5 |
+| fertilizer sold | 259 | 212 | 229.5 |
 | units sold last 3 days | 352 | 397 | 405 |
 | shed peak | 58 | 66.5 | 69 |
 | weeds spawned | 20 | 17.5 | 17 |
@@ -144,7 +144,7 @@ What goes with being off the modal field line at turn 48 (the first cut where fe
 | window | games | win % | median bank | hands | cows | sheep | geese | quadrants | land day 1 | strawberry | wheat | melon | melon sold | milk sold | wool sold | field lines @400 | market lines @400 |
 |---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|
 | F | 50 | 74 | 88617.5 | 15 | 11 | 4 | 0 | 3 | 6 | 41 | 134 | 11 | 66 | 264 | 131 | 18 | 3 |
-| L | 50 | 80 | 111262.5 | 11 | 6.5 | 5 | 3 | 3 | 6 | 29.5 | 149 | 14 | 82 | 168 | 102 | 50 | 50 |
+| L | 50 | 80 | 111262.5 | 11 | 6.5 | 5 | 3 | 3 | 6 | 29.5 | 149 | 14 | 82 | 168 | 103 | 50 | 50 |
 | C0 | 50 | 100 | 119640 | 11 | 7 | 6 | 3 | 3 | 6 | 29.5 | 141 | 14 | 83 | 182.5 | 153 | 50 | 50 |
 
 ## Losses in the first and last windows

@@ -106,9 +106,14 @@ with, per seat:
   shared inventory, each unit quoted at the live price), so a sale carries its executed
   units and the revenue received, a purchase its executed units and spend. The simulated
   end-of-turn money is checked against the recorded money for both seats in every turn and
-  the mismatch count is stored per seat (`money_check`; zero for 99% of seats). Traces
-  carry `trace_version` 2; the earlier version capped sales by the shed as observed before
-  the turn's unit actions and undercounted most teams' sales by 35-50% (P18);
+  the mismatch count is stored per seat (`money_check`). It is zero for 14,378 of the 14,788
+  seat rows; the 410 others (379 on engine versions 1.32.2-1.32.6, whose market the replica
+  does not model, falling on Emile Andrieu's, Thomas Tschinkel's and THUNDER THUNDER's
+  first-50 windows and Mengfei Li's first quarter window; 31 on 1.32.7 at the last executed
+  step, at most $466) have their sales columns blanked by `research/features.py` before any
+  report takes a median, so those windows show no sales figures. Traces carry
+  `trace_version` 2; the earlier version capped sales by the shed as observed before the
+  turn's unit actions and undercounted most teams' sales by 35-50% (P18, P19);
 - counts of every unit op (CARE, FERTILIZE, HARVEST, DIG, ...);
 - three fingerprints at turns 24, 48, 100, 136, 200, 300, 400, 719:
   - the exact action-stream hash in the community's convention (comparable with their

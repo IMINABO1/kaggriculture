@@ -39,11 +39,11 @@ game 1: 715, game 10: 1608, game 25: 2658, game 50: 2873, game 100: 2917, game l
 | CARE ops | 239.5 | 406 | 408 |
 | melon sold | 54 | 72 | 72 |
 | strawberry sold | 0 | 249 | 249 |
-| milk sold | 276.5 | 224.5 | 245 |
+| milk sold | 276 | 224.5 | 245 |
 | wool sold | 0 | 140 | 161 |
 | wheat sold | 18 | 4007.5 | 3948 |
-| fertilizer sold | 127.5 | 328 | 329 |
-| units sold last 3 days | 93.5 | 721 | 696.5 |
+| fertilizer sold | 128 | 328 | 329 |
+| units sold last 3 days | 94 | 721 | 696.5 |
 | shed peak | 25.5 | 58 | 58 |
 | weeds spawned | 16 | 20 | 20 |
 | unexecutable market orders | 0 | 45 | 45 |
@@ -143,7 +143,7 @@ What goes with being off the modal field line at turn 24 (the first cut where fe
 
 | window | games | win % | median bank | hands | cows | sheep | geese | quadrants | land day 1 | strawberry | wheat | melon | melon sold | milk sold | wool sold | field lines @400 | market lines @400 |
 |---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|
-| F | 50 | 56 | 68557.5 | 10 | 12 | 0 | 0 | 2 | 11 | 0.5 | 8.5 | 14 | 54 | 276.5 | 0 | 36 | 38 |
+| F | 50 | 56 | 68557.5 | 10 | 12 | 0 | 0 | 2 | 11 | 0.5 | 8.5 | 14 | 54 | 276 | 0 | 36 | 38 |
 | L | 50 | 80 | 95476 | 12 | 7.5 | 5 | 4 | 3 | 6 | 33 | 153 | 12 | 72 | 224.5 | 140 | 37 | 47 |
 | C0 | 50 | 90 | 99096 | 12 | 8 | 6 | 3 | 3 | 6 | 33 | 158 | 12 | 72 | 245 | 161 | 27 | 48 |
 
@@ -151,27 +151,27 @@ What goes with being off the modal field line at turn 24 (the first cut where fe
 
 | window | episode | opponent | opp rating | my bank | opp bank | margin | opp opening | biggest differences (opponent vs me) |
 |---|---|---|---|---|---|---|---|---|
-| F | 89061335 | Danilo_Malbashich | 1140.1 | 59081 | 78212 | -19131 | 4ca76d17 | milk sold: they 112 vs me 307; units sold last 3 days: they 208 vs me 77; CARE ops: they 366 vs me 241 |
-| F | 89062328 | Beisenbek Nurassyl [dsmlkz] | 1036.0 | 25067 | 52179 | -27112 | 6e498144 | wool sold: they 189 vs me 0; milk sold: they 189 vs me 318; units sold last 3 days: they 199 vs me 99 |
+| F | 89061335 | Danilo_Malbashich | 1140.1 | 59081 | 78212 | -19131 | 4ca76d17 | CARE ops: they 366 vs me 241; weeds spawned: they 68 vs me 13; wheat planted: they 43 vs me 4 |
+| F | 89062328 | Beisenbek Nurassyl [dsmlkz] | 1036.0 | 25067 | 52179 | -27112 | 6e498144 | CARE ops: they 327 vs me 257; weeds spawned: they 36 vs me 12; sheep bought: they 10 vs me 0 |
 | F | 89063307 | Jesse Ferguson | 947.8 | 62004 | 83865 | -21861 | fc77718d | CARE ops: they 452 vs me 177; units sold last 3 days: they 225 vs me 76; wool sold: they 147 vs me 0 |
-| F | 89063309 | fgwiebfaoish | 1052.9 | 39965 | 66771 | -26806 | 43b287e3 | melon sold: they 138 vs me 48; units sold last 3 days: they 138 vs me 81; wheat planted: they 91 vs me 38 |
-| F | 89063808 | Vlad Kochetov | 1068.7 | 65757 | 96726 | -30969 | 3760ac38 | wool sold: they 226 vs me 0; milk sold: they 83 vs me 249; CARE ops: they 343 vs me 189 |
-| F | 89070098 | Jesse Ferguson | 1062.9 | 26226 | 67143 | -40917 | 44bf7b5a | units sold last 3 days: they 309 vs me 87; wool sold: they 169 vs me 0; milk sold: they 192 vs me 296 |
-| F | 89081681 | nasubiman | 1041.0 | 26528 | 26693 | -165 | 866496d0 | units sold last 3 days: they 948 vs me 93; CARE ops: they 376 vs me 243; wool sold: they 56 vs me 0 |
-| F | 89091739 | Peng Wang | 934.3 | 82573 | 89668 | -7095 | ec989382 | milk sold: they 0 vs me 319; strawberry sold: they 238 vs me 0; CARE ops: they 20 vs me 255 |
-| F | 89097060 | Danilo_Malbashich | 921.2 | 55657 | 109338 | -53681 | ea2b06f9 | wool sold: they 144 vs me 0; CARE ops: they 315 vs me 183; units sold last 3 days: they 204 vs me 88 |
-| F | 89104371 | Ali | 1072.8 | 21871 | 57843 | -35972 | 2cabfef4 | units sold last 3 days: they 438 vs me 105; CARE ops: they 501 vs me 249; wool sold: they 159 vs me 0 |
+| F | 89063309 | fgwiebfaoish | 1052.9 | 39965 | 66771 | -26806 | 43b287e3 | wheat planted: they 91 vs me 38; weeds spawned: they 53 vs me 35; CARE ops: they 158 vs me 175 |
+| F | 89063808 | Vlad Kochetov | 1068.7 | 65757 | 96726 | -30969 | 3760ac38 | CARE ops: they 343 vs me 189; FERTILIZE ops: they 46 vs me 0; weeds spawned: they 4 vs me 16 |
+| F | 89070098 | Jesse Ferguson | 1062.9 | 26226 | 67143 | -40917 | 44bf7b5a | CARE ops: they 336 vs me 240; weeds spawned: they 43 vs me 9; strawberry planted: they 25 vs me 1 |
+| F | 89081681 | nasubiman | 1041.0 | 26528 | 26693 | -165 | 866496d0 | CARE ops: they 376 vs me 243; wheat planted: they 12 vs me 5; cows bought: they 20 vs me 14 |
+| F | 89091739 | Peng Wang | 934.3 | 82573 | 89668 | -7095 | ec989382 | CARE ops: they 20 vs me 255; strawberry planted: they 60 vs me 0; wheat planted: they 63 vs me 14 |
+| F | 89097060 | Danilo_Malbashich | 921.2 | 55657 | 109338 | -53681 | ea2b06f9 | CARE ops: they 315 vs me 183; wheat planted: they 130 vs me 29; weeds spawned: they 69 vs me 28 |
+| F | 89104371 | Ali | 1072.8 | 21871 | 57843 | -35972 | 2cabfef4 | CARE ops: they 501 vs me 249; cows bought: they 22 vs me 14; wheat planted: they 14 vs me 7 |
 | F | 89112229 | Pomiro | 970.1 | 39955 | 49175 | -9220 | f403380f | CARE ops: they 286 vs me 196; units sold last 3 days: they 166 vs me 86; wool sold: they 66 vs me 0 |
 | F | 89116671 | BOBQWERA | 1049.8 | 51137 | 71599 | -20462 | 8a9d898c | melon sold: they 155 vs me 42; wheat planted: they 114 vs me 28; units sold last 3 days: they 142 vs me 79 |
-| F | 89119107 | smlcr | 927.2 | 69874 | 119107 | -49233 | c8f3ebd2 | strawberry sold: they 150 vs me 3; milk sold: they 120 vs me 267; wool sold: they 107 vs me 0 |
-| F | 89119591 | Vlad Kochetov | 945.2 | 60691 | 106090 | -45399 | 3760ac38 | CARE ops: they 353 vs me 145; wool sold: they 142 vs me 0; units sold last 3 days: they 195 vs me 89 |
-| F | 89123501 | Raiden.B | 1094.9 | 74307 | 134770 | -60463 | b54a1f3e | strawberry sold: they 178 vs me 0; wool sold: they 154 vs me 0; milk sold: they 168 vs me 313 |
-| F | 89125500 | Subin An | 1023.9 | 63626 | 83007 | -19381 | f51370d1 | units sold last 3 days: they 172 vs me 71; milk sold: they 186 vs me 283; wool sold: they 94 vs me 0 |
-| F | 89126470 | Vlad Kochetov | 983.8 | 66137 | 116423 | -50286 | 9d792506 | CARE ops: they 435 vs me 180; wool sold: they 248 vs me 0; units sold last 3 days: they 272 vs me 77 |
+| F | 89119107 | smlcr | 927.2 | 69874 | 119107 | -49233 | c8f3ebd2 | FERTILIZE ops: they 33 vs me 0; strawberry planted: they 32 vs me 1; wheat planted: they 45 vs me 21 |
+| F | 89119591 | Vlad Kochetov | 945.2 | 60691 | 106090 | -45399 | 3760ac38 | CARE ops: they 353 vs me 145; FERTILIZE ops: they 45 vs me 0; wheat planted: they 6 vs me 39 |
+| F | 89123501 | Raiden.B | 1094.9 | 74307 | 134770 | -60463 | b54a1f3e | FERTILIZE ops: they 121 vs me 0; strawberry planted: they 37 vs me 0; weeds spawned: they 40 vs me 7 |
+| F | 89125500 | Subin An | 1023.9 | 63626 | 83007 | -19381 | f51370d1 | wheat planted: they 73 vs me 20; weeds spawned: they 43 vs me 19; strawberry planted: they 16 vs me 0 |
+| F | 89126470 | Vlad Kochetov | 983.8 | 66137 | 116423 | -50286 | 9d792506 | CARE ops: they 435 vs me 180; FERTILIZE ops: they 93 vs me 0; weeds spawned: they 2 vs me 21 |
 | F | 89128934 | Raiden.B | 1035.8 | 62856 | 122003 | -59147 | c2c377f7 | strawberry sold: they 165 vs me 0; milk sold: they 114 vs me 276; units sold last 3 days: they 229 vs me 101 |
-| F | 89131864 | Kumaran K | 804.0 | 27921 | 32998 | -5077 | dc6fc820 | units sold last 3 days: they 821 vs me 85; melon sold: they 36 vs me 78; wheat planted: they 67 vs me 35 |
-| F | 89137321 | RuleCraft | 1104.9 | 50076 | 95522 | -45446 | 42c50837 | wool sold: they 121 vs me 0; strawberry sold: they 113 vs me 7; CARE ops: they 310 vs me 209 |
-| F | 89420843 | Alexander Gremyakov | 1428.4 | 112450 | 121935 | -9485 | ced113cf | units sold last 3 days: they 1204 vs me 339; wool sold: they 113 vs me 229; CARE ops: they 234 vs me 338 |
+| F | 89131864 | Kumaran K | 804.0 | 27921 | 32998 | -5077 | dc6fc820 | wheat planted: they 67 vs me 35; CARE ops: they 187 vs me 160; weeds spawned: they 23 vs me 35 |
+| F | 89137321 | RuleCraft | 1104.9 | 50076 | 95522 | -45446 | 42c50837 | CARE ops: they 310 vs me 209; FERTILIZE ops: they 19 vs me 0; strawberry planted: they 20 vs me 2 |
+| F | 89420843 | Alexander Gremyakov | 1428.4 | 112450 | 121935 | -9485 | ced113cf | CARE ops: they 234 vs me 338; wheat planted: they 28 vs me 8; weeds spawned: they 26 vs me 36 |
 | F | 89420887 | Ali | 1532.7 | 114792 | 120389 | -5597 | aa27ef5f | wool sold: they 163 vs me 229; milk sold: they 225 vs me 187; CARE ops: they 319 vs me 338 |
 | C0 | 108931203 | makishis | 2695.2 | 77686 | 77705 | -19 | 9b0c82fd | units sold last 3 days: they 385 vs me 676; milk sold: they 167 vs me 245; wheat planted: they 162 vs me 189 |
 | C0 | 108934575 | Friedhelm Winter | 2695.9 | 64109 | 66541 | -2432 | 9b0c82fd | units sold last 3 days: they 386 vs me 697; milk sold: they 198 vs me 245; wool sold: they 144 vs me 161 |

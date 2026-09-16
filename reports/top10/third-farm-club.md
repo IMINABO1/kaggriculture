@@ -36,12 +36,12 @@ game 1: 699, game 10: 1370, game 25: 2136, game 50: 2434, game 100: 2688, game 2
 | FERTILIZE ops | 184.5 |
 | CARE ops | 324 |
 | melon sold | 87 |
-| strawberry sold | 206.5 |
-| milk sold | 176.5 |
-| wool sold | 64 |
-| wheat sold | 285 |
-| fertilizer sold | 246.5 |
-| units sold last 3 days | 448 |
+| strawberry sold | 209 |
+| milk sold | 175 |
+| wool sold | 63 |
+| wheat sold | 283 |
+| fertilizer sold | 245 |
+| units sold last 3 days | 446 |
 | shed peak | 14 |
 | weeds spawned | 14.5 |
 | unexecutable market orders | 0 |
@@ -99,7 +99,7 @@ What goes with being off the modal field line at turn 200 (the first cut where f
 
 | window | games | win % | median bank | hands | cows | sheep | geese | quadrants | land day 1 | strawberry | wheat | melon | melon sold | milk sold | wool sold | field lines @400 | market lines @400 |
 |---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|
-| C0 | 50 | 96 | 117769 | 13 | 10 | 4 | 5.5 | 3 | 6 | 32.5 | 133.5 | 15 | 87 | 176.5 | 64 | 50 | 50 |
+| C0 | 50 | 96 | 117769 | 13 | 10 | 4 | 5.5 | 3 | 6 | 32.5 | 133.5 | 15 | 87 | 175 | 63 | 50 | 50 |
 
 ## Losses in the first and last windows
 

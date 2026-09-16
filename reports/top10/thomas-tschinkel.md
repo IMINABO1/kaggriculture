@@ -39,13 +39,13 @@ game 1: 699, game 10: 1493, game 25: 2686, game 50: 2916, game 100: 2969, game l
 | melon planted | 20 | 11 | 11 | 12 | 12 |
 | FERTILIZE ops | 64 | 80 | 135.5 | 114 | 121 |
 | CARE ops | 318 | 343 | 278.5 | 417 | 405 |
-| melon sold | 120 | 66 | 66 | 72 | 72 |
-| strawberry sold | 254 | 281 | 208.5 | 247 | 247 |
-| milk sold | 278.5 | 264 | 183 | 191 | 203.5 |
-| wool sold | 120 | 127 | 82.5 | 125 | 122 |
-| wheat sold | 598 | 209 | 1082 | 392.5 | 393 |
-| fertilizer sold | 242 | 259 | 249 | 342 | 340 |
-| units sold last 3 days | 313 | 352 | 305 | 395.5 | 389 |
+| melon sold |  | 66 | 66 | 72 | 72 |
+| strawberry sold |  | 281 | 208.5 | 247 | 247 |
+| milk sold |  | 264 | 183 | 191 | 203.5 |
+| wool sold |  | 127 | 82.5 | 125 | 122 |
+| wheat sold |  | 209 | 1082 | 392.5 | 393 |
+| fertilizer sold |  | 259 | 249 | 342 | 340 |
+| units sold last 3 days |  | 352 | 305 | 395.5 | 389 |
 | shed peak | 26 | 57 | 39.5 | 45 | 42 |
 | weeds spawned | 26 | 23 | 46.5 | 21 | 20 |
 | unexecutable market orders | 0 | 0 | 0 | 1 | 1 |
@@ -152,7 +152,7 @@ What goes with being off the modal field line at turn 200 (the first cut where f
 
 | window | games | win % | median bank | hands | cows | sheep | geese | quadrants | land day 1 | strawberry | wheat | melon | melon sold | milk sold | wool sold | field lines @400 | market lines @400 |
 |---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|
-| F | 50 | 86 | 94519.5 | 12 | 10 | 4 | 0 | 3 | 6 | 34 | 127 | 20 | 120 | 278.5 | 120 | 14 | 32 |
+| F | 50 | 86 | 94519.5 | 12 | 10 | 4 | 0 | 3 | 6 | 34 | 127 | 20 |  |  |  | 14 | 32 |
 | Q1 | 50 | 76 | 81245 | 15 | 10.5 | 4 | 0 | 3 | 6 | 39.5 | 133.5 | 11 | 66 | 264 | 127 | 26 | 31 |
 | Q2 | 50 | 62 | 99503 | 12 | 7 | 4 | 0 | 3 | 5 | 33 | 124.5 | 11 | 66 | 183 | 82.5 | 50 | 50 |
 | L | 50 | 68 | 97730.5 | 12 | 8 | 6 | 3 | 3 | 6 | 33 | 163 | 12 | 72 | 191 | 125 | 43 | 48 |
@@ -162,12 +162,12 @@ What goes with being off the modal field line at turn 200 (the first cut where f
 
 | window | episode | opponent | opp rating | my bank | opp bank | margin | opp opening | biggest differences (opponent vs me) |
 |---|---|---|---|---|---|---|---|---|
-| F | 92814040 | GPTatoes | 1572.2 | 121329 | 122937 | -1608 | 902b6f5f | wool sold: they 138 vs me 267; CARE ops: they 292 vs me 367; strawberry sold: they 276 vs me 221 |
-| F | 92815906 | Patrick Chan | 1635.7 | 51448 | 51528 | -80 | 65da1d57 | strawberry sold: they 254 vs me 245; units sold last 3 days: they 313 vs me 309 |
-| F | 92821571 | Yoganjaneyulu | 1870.1 | 52481 | 54608 | -2127 | 65da1d57 | units sold last 3 days: they 358 vs me 313; strawberry sold: they 242 vs me 254; wheat planted: they 131 vs me 127 |
-| F | 92829266 | Mehrdad_LU | 2044.8 | 78556 | 79248 | -692 | 490408c5 | CARE ops: they 967 vs me 318; milk sold: they 215 vs me 279; strawberry sold: they 286 vs me 254 |
-| F | 92833703 | Seb (allegedly) | 2088.2 | 49693 | 55853 | -6160 | 04e06d16 | strawberry sold: they 95 vs me 221; milk sold: they 98 vs me 189; units sold last 3 days: they 232 vs me 322 |
-| F | 92842105 | Vishodhan | 2119.0 | 90062 | 91145 | -1083 | 490408c5 | CARE ops: they 956 vs me 318; milk sold: they 215 vs me 274; strawberry sold: they 286 vs me 254 |
+| F | 92814040 | GPTatoes | 1572.2 | 121329 | 122937 | -1608 | 902b6f5f | CARE ops: they 292 vs me 367; weeds spawned: they 15 vs me 48; FERTILIZE ops: they 71 vs me 54 |
+| F | 92815906 | Patrick Chan | 1635.7 | 51448 | 51528 | -80 | 65da1d57 |  |
+| F | 92821571 | Yoganjaneyulu | 1870.1 | 52481 | 54608 | -2127 | 65da1d57 | wheat planted: they 131 vs me 127; weeds spawned: they 24 vs me 25; FERTILIZE ops: they 63 vs me 64 |
+| F | 92829266 | Mehrdad_LU | 2044.8 | 78556 | 79248 | -692 | 490408c5 | CARE ops: they 967 vs me 318; wheat planted: they 143 vs me 127; weeds spawned: they 13 vs me 24 |
+| F | 92833703 | Seb (allegedly) | 2088.2 | 49693 | 55853 | -6160 | 04e06d16 | FERTILIZE ops: they 25 vs me 54; weeds spawned: they 18 vs me 41; strawberry planted: they 14 vs me 34 |
+| F | 92842105 | Vishodhan | 2119.0 | 90062 | 91145 | -1083 | 490408c5 | CARE ops: they 956 vs me 318; wheat planted: they 143 vs me 127; weeds spawned: they 13 vs me 26 |
 | C0 | 108824511 | leave you | 2881.0 | 105398 | 106992 | -1594 | 3bc18d7a | milk sold: they 237 vs me 183; CARE ops: they 378 vs me 406; units sold last 3 days: they 420 vs me 396 |
 | C0 | 108827666 | THIRD FARM CLUB | 2884.1 | 65871 | 83580 | -17709 | 7cb9b079 | strawberry sold: they 66 vs me 247; milk sold: they 66 vs me 139; CARE ops: they 337 vs me 404 |
 | C0 | 108828693 | Zhongyi Dai | 2898.2 | 86413 | 87272 | -859 | 9b0c82fd | FERTILIZE ops: they 109 vs me 120; strawberry sold: they 246 vs me 245; units sold last 3 days: they 379 vs me 378 |
@@ -178,7 +178,7 @@ What goes with being off the modal field line at turn 200 (the first cut where f
 | L | 108937831 | 自己找差距 | 2796.9 | 75359 | 80568 | -5209 | 3bc18d7a | CARE ops: they 223 vs me 417; FERTILIZE ops: they 219 vs me 85; strawberry sold: they 160 vs me 248 |
 | L | 108939099 | weichy7 | 2817.2 | 99399 | 99918 | -519 | 9b0c82fd | FERTILIZE ops: they 110 vs me 132; units sold last 3 days: they 418 vs me 431; CARE ops: they 410 vs me 417 |
 | L | 108966602 | Artem The Farmer 🍅 | 2783.8 | 62393 | 75388 | -12995 | d6cc83df | CARE ops: they 310 vs me 417; strawberry sold: they 163 vs me 248; milk sold: they 127 vs me 188 |
-| L | 108969062 | THIRD FARM CLUB | 2931.5 | 109987 | 110738 | -751 | 7cb9b079 | wool sold: they 298 vs me 161; strawberry sold: they 164 vs me 249; milk sold: they 95 vs me 150 |
+| L | 108969062 | THIRD FARM CLUB | 2931.5 | 109987 | 110738 | -751 | 7cb9b079 | wheat planted: they 120 vs me 163; FERTILIZE ops: they 123 vs me 140; sheep bought: they 19 vs me 6 |
 | L | 108976340 | ChengxuGu | 2811.1 | 107471 | 109338 | -1867 | 9b0c82fd | CARE ops: they 405 vs me 417; FERTILIZE ops: they 124 vs me 114; strawberry sold: they 251 vs me 247 |
 | L | 108989276 | Satuker | 2811.7 | 95272 | 96409 | -1137 | 9b0c82fd | CARE ops: they 405 vs me 417; units sold last 3 days: they 390 vs me 395; FERTILIZE ops: they 117 vs me 113 |
 | L | 108989838 | Otter Vibe | 2990.9 | 101799 | 102840 | -1041 | 1dcdc01b | wheat planted: they 58 vs me 163; FERTILIZE ops: they 203 vs me 110; CARE ops: they 319 vs me 405 |

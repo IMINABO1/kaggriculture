@@ -19,6 +19,7 @@ import pandas as pd
 from research.narrate import day_table
 from research.paths import REPORTS, TOP10
 from research.report import SERIES, WINDOW_ORDER, bar_figure, line_figure, md_table
+from research.features import mask_unreliable_sales
 from research.stats import mann_whitney
 from research.store import load_trace
 
@@ -223,7 +224,12 @@ def load() -> tuple[pd.DataFrame, pd.DataFrame, pd.DataFrame, pd.DataFrame]:
         teams["zone_bounds"] = ""
     hist = pd.read_parquet(TOP10 / "history.parquet")
     sample = pd.read_csv(TOP10 / "sample.csv")
-    feats = pd.read_parquet(TOP10 / "features.parquet")
+    feats, masked = mask_unreliable_sales(pd.read_parquet(TOP10 / "features.parquet"))
+    if len(masked):
+        print(
+            f"sales columns blanked for {len(masked)} of {len(feats)} seat rows whose market replay "
+            f"does not reconcile ({int(masked.is_top10_seat.sum())} studied seats)"
+        )
     return teams, hist, sample, feats
 
 

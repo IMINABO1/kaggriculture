@@ -19,6 +19,7 @@ matplotlib.use("Agg")
 import matplotlib.pyplot as plt  # noqa: E402
 
 import research  # noqa: F401,E402
+from research.features import mask_unreliable_sales  # noqa: E402
 from research.paths import REPORTS, TOP10  # noqa: E402
 from research.stats import mann_whitney  # noqa: E402
 from research.store import load_trace, trace_path  # noqa: E402
@@ -52,7 +53,7 @@ def md_table(df: pd.DataFrame, floatfmt: str = "{:.2f}") -> str:
 
 
 def load() -> dict:
-    feats = pd.read_parquet(TOP10 / "features.parquet")
+    feats, masked = mask_unreliable_sales(pd.read_parquet(TOP10 / "features.parquet"))
     feats["create_time"] = feats.groupby("episode_id").create_time.transform("first")
     snap = pd.read_csv(TOP10 / "snapshot_latest.csv")
     hist = pd.read_parquet(TOP10 / "history.parquet")
@@ -77,7 +78,7 @@ def load() -> dict:
     cur = cur[cur.team.isin(counts[counts >= 10].index)]
     market = pd.read_parquet(TOP10 / "market.parquet") if (TOP10 / "market.parquet").exists() else None
     weeds = pd.read_parquet(TOP10 / "weed_events.parquet") if (TOP10 / "weed_events.parquet").exists() else None
-    return dict(feats=feats, cur=cur, snap=snap, hist=hist, teams=teams, sample=sample, market=market, weeds=weeds, rank=rank, group=group)
+    return dict(feats=feats, cur=cur, snap=snap, hist=hist, teams=teams, sample=sample, market=market, weeds=weeds, rank=rank, group=group, masked=masked)
 
 
 def team_order(d: dict, names) -> list[str]:
@@ -595,9 +596,15 @@ def section_market(d: dict) -> str:
     text = f"""## 7. The market, measured correctly
 
 Every number here comes from the rebuilt traces (P18): executed units and revenue per sale as
-the engine computed them, reconciled against the recorded money in every turn of every game
-(`money_check_turns` is 0 for {int((cur.money_check_turns == 0).mean() * 100)}% of current-submission seats). Medians of per-team
-medians by group, with the chance that a random top-14 team is above a random gold team:
+the engine computed them, checked against the recorded money in every turn of every game.
+Seats where that check fails are excluded from every sales column before any median is taken
+(`research/features.py`): {len(d["masked"])} of {len(d["feats"])} seat rows in the whole sample, of which
+{int((d["masked"].is_current_sub == True).sum())} are current-submission rows (final-step
+mismatches of at most $466, see P18); the rest are historical windows played on engine
+versions 1.32.2-1.32.6, whose market this replica does not model (Emile Andrieu's,
+Thomas Tschinkel's and THUNDER THUNDER's first-50 windows and Mengfei Li's first quarter
+window in full). Medians of per-team medians by group, with the chance that a random top-14
+team is above a random gold team:
 
 {md_table(grp_t)}
 

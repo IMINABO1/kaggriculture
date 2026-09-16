@@ -189,7 +189,7 @@ What goes with being off the modal field line at turn 100 (the first cut where f
 | L | 108983486 | Majkel1337 | 3067.3 | 103714 | 114774 | -11060 | 7ae94d1f | units sold last 3 days: they 380 vs me 468; milk sold: they 252 vs me 180; strawberry sold: they 125 vs me 191 |
 | L | 108983492 | Otter Vibe | 2982.1 | 74317 | 80584 | -6267 | 1dcdc01b | CARE ops: they 357 vs me 253; wheat planted: they 105 vs me 165; FERTILIZE ops: they 185 vs me 134 |
 | L | 109001134 | HowardLeeTW | 2969.8 | 64656 | 71019 | -6363 | 997b20f5 | CARE ops: they 256 vs me 189; units sold last 3 days: they 356 vs me 390; wheat planted: they 113 vs me 146 |
-| L | 109001196 | THIRD FARM CLUB | 2947.6 | 101511 | 106061 | -4550 | 7cb9b079 | CARE ops: they 427 vs me 310; strawberry sold: they 145 vs me 233; units sold last 3 days: they 437 vs me 384 |
+| L | 109001196 | THIRD FARM CLUB | 2947.6 | 101511 | 106061 | -4550 | 7cb9b079 | CARE ops: they 427 vs me 310; wheat planted: they 135 vs me 188; FERTILIZE ops: they 144 vs me 131 |
 | L | 109002218 | Majkel1337 | 3077.5 | 127700 | 137690 | -9990 | 7bd20c15 | CARE ops: they 323 vs me 256; units sold last 3 days: they 364 vs me 397; milk sold: they 319 vs me 300 |
 | L | 109013358 | Catalyst | 2970.1 | 95375 | 96133 | -758 | a6a57513 | units sold last 3 days: they 371 vs me 464; strawberry sold: they 247 vs me 167; CARE ops: they 379 vs me 314 |
 

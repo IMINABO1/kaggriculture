@@ -161,11 +161,11 @@ What goes with being off the modal field line at turn 24 (the first cut where fe
 
 | window | episode | opponent | opp rating | my bank | opp bank | margin | opp opening | biggest differences (opponent vs me) |
 |---|---|---|---|---|---|---|---|---|
-| F | 92815904 | NCK | 1790.7 | 105590 | 111130 | -5540 | 65da1d57 | CARE ops: they 318 vs me 967; milk sold: they 279 vs me 215; strawberry sold: they 252 vs me 278 |
-| F | 92817784 | Thomas Tschinkel | 1739.5 | 120532 | 130144 | -9612 | 65da1d57 | CARE ops: they 318 vs me 967; milk sold: they 279 vs me 215; strawberry sold: they 254 vs me 286 |
-| F | 92822703 | Dean0016 | 1882.2 | 58156 | 63729 | -5573 | 65da1d57 | CARE ops: they 318 vs me 967; milk sold: they 279 vs me 215; strawberry sold: they 245 vs me 286 |
-| F | 92829042 | Excluding | 2148.7 | 118702 | 124530 | -5828 | 6335be65 | CARE ops: they 321 vs me 967; wheat planted: they 63 vs me 143; milk sold: they 291 vs me 215 |
-| F | 92837364 | Kostiantyn Isaienkov | 2025.5 | 121118 | 128252 | -7134 | 65da1d57 | CARE ops: they 318 vs me 967; milk sold: they 279 vs me 215; strawberry sold: they 252 vs me 286 |
+| F | 92815904 | NCK | 1790.7 | 105590 | 111130 | -5540 | 65da1d57 | CARE ops: they 318 vs me 967; wheat planted: they 127 vs me 143; weeds spawned: they 25 vs me 14 |
+| F | 92817784 | Thomas Tschinkel | 1739.5 | 120532 | 130144 | -9612 | 65da1d57 | CARE ops: they 318 vs me 967; wheat planted: they 127 vs me 143; weeds spawned: they 24 vs me 13 |
+| F | 92822703 | Dean0016 | 1882.2 | 58156 | 63729 | -5573 | 65da1d57 | CARE ops: they 318 vs me 967; wheat planted: they 127 vs me 143; weeds spawned: they 25 vs me 13 |
+| F | 92829042 | Excluding | 2148.7 | 118702 | 124530 | -5828 | 6335be65 | CARE ops: they 321 vs me 967; wheat planted: they 63 vs me 143; FERTILIZE ops: they 122 vs me 72 |
+| F | 92837364 | Kostiantyn Isaienkov | 2025.5 | 121118 | 128252 | -7134 | 65da1d57 | CARE ops: they 318 vs me 967; wheat planted: they 127 vs me 143; weeds spawned: they 24 vs me 13 |
 | F | 92841162 | Emre Bayram | 2147.6 | 139172 | 139891 | -719 | 190cec70 | CARE ops: they 285 vs me 963; units sold last 3 days: they 366 vs me 338; melon sold: they 108 vs me 90 |
 | F | 92844910 | JeremiahMannings | 2083.1 | 58209 | 59074 | -865 | 190cec70 | CARE ops: they 285 vs me 963; units sold last 3 days: they 359 vs me 328; melon sold: they 108 vs me 84 |
 | L | 108994489 | Lucas Boesen | 2881.4 | 116179 | 116312 | -133 | 9b0c82fd | CARE ops: they 410 vs me 296; strawberry sold: they 249 vs me 323; FERTILIZE ops: they 90 vs me 152 |

@@ -621,3 +621,21 @@ the market module the two rules; findings 6, 7, 13 and 18 rewritten with the cor
 numbers. Structure (PCA + k-means over 36 features): 44 of 59 teams on one public point,
 two leader clusters (the 2c3s code base and relatives; the goose-and-tomato agents); zones
 differ only in how many leaders they hold.
+
+### Surprise: the verifier found a claimed filter that did not exist (P19)
+The P18 entry said the feature build "refuses seats where [the reconciliation error]
+exceeds a few dollars a game". It did not: the counter existed, nothing read it, and 410 of
+14,788 seat rows (four teams' whole historical windows on engine versions 1.32.2-1.32.6,
+errors up to $1,114) went into the dossiers' evolution tables unflagged while the report
+said "reconciles for 99% of current-submission seats". Iminabo pointed at the Pokémon TCG
+post-mortem, where the same habit (a plausible statement about the code or the data written
+as if verified) cost the campaign. Fixed today: `research/features.py` blanks the sales
+columns of every unreliable seat before `analyze.py` and `deep.py` take a median (the
+affected windows now show no sales figures; Thomas Tschinkel's and Emile Andrieu's and
+THUNDER THUNDER's first 50, Mengfei Li's first quarter); P18, `METHOD.md` and
+`analysis.md` state the true scope with the denominator; P19 records the miss and the rule:
+grep or query before writing "X does Y", and quote the count. The 31 mismatches on the
+current engine all sit at the last executed step, where the recording shows a shop tick's
+units removed before that step's sales were priced; bounded at $466, left as a known gap.
+Current-submission medians in `groups.md` did not move (one range edge, 185 to 184).
+Tests: 13 passed.

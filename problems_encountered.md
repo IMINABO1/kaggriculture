@@ -277,9 +277,47 @@ entry also says why I missed it and what changes so it does not happen again.
 - **Why I missed it:** P10 was fixed by reading the observation, not the engine's turn
   order; the check "does revenue add up to the bank" was never run. Every derived
   quantity that has an accounting identity should be checked against it once.
-- **Prevention:** the tracer stores a per-seat money-reconciliation error, and the feature
-  build refuses seats where it exceeds a few dollars a game.
+- **Prevention:** the tracer stores a per-seat money-reconciliation count and error
+  (`money_check`), and `research/features.py` blanks the sales columns of every seat whose
+  count is above zero before `analyze.py` or `deep.py` take a median. (Corrected 2026-09-16:
+  the first version of this entry claimed the filter existed when only the counter did; P19.)
+- **What does not reconcile:** 410 of 14,788 seat rows. 379 are on engine versions
+  1.32.2-1.32.6, whose market the replica does not model, and they fall on whole historical
+  windows: Emile Andrieu's, Thomas Tschinkel's and THUNDER THUNDER's first-50 windows and
+  Mengfei Li's first quarter window (50 seats each, errors up to $1,114 a game), plus a few
+  seats of Kaggriculture Agent, kevin park and Mengfei Li's first window. 31 are on 1.32.7
+  (8 of them current-submission rows) and all but one sit at the last executed step: the
+  recorded inventory shows a shop tick's worth of units removed before that step's sales
+  were priced, which the replica does not reproduce (checked on 108862197: shed identical
+  after the unit actions, 4 strawberries missing from the inventory, $466 more revenue). It
+  is bounded at $466 a game and is left as a known gap.
 - **Affected published numbers (before rebuild):** every `sold_*`, `sell_first/last_day_*`,
   `sold_units_total`, `sells_last_3_days` column; groups.md market tables; memo findings 6,
   7, 13, 18 (market parts); the "melon last sell day 19 vs 11" separator is suspect because
   the family's later melon sales were dropped as zero-unit sells.
+
+### P19: an unverified claim about the code was written into the record
+- **Symptom:** the P18 entry said "the feature build refuses seats where [the reconciliation
+  error] exceeds a few dollars a game". No such filter existed; `money_check_turns` and
+  `money_check_max_error` were computed and stored, and nothing downstream read them. The
+  report and journal said money reconciles "for 99% of current-submission seats", which was
+  true as scoped and silent about the 410 seat rows (four teams' whole historical windows,
+  errors up to $1,114) that fed the dossiers' evolution tables unflagged.
+- **Cause:** I wrote the prevention line as the design I intended, in the same sentence as
+  the parts I had built, and never went back to build or check it. The "99%" line was scoped
+  to the slice I had looked at.
+- **Fix:** `research/features.py` blanks the sales columns of unreliable seats before any
+  median; `analyze.py` and `deep.py` apply it and print the exclusion; `analysis.md`,
+  `METHOD.md` and P18 state the true scope and name the affected windows.
+- **Caught by:** the verifier session, by grepping the code for the claimed filter and
+  querying `features.parquet` for the failing rows.
+- **Why I missed it:** the same failure the Pokémon TCG post-mortem records twice (the
+  "our search can't do combinatorial targeting" claim that was never checked; gauntlet
+  results reported as confirmation): a plausible statement about what the code does or what
+  the data shows, written down as if verified. Here it was caught before the handoff because
+  the verifier was asked to check.
+- **Prevention:** before writing "X refuses / excludes / drops / guarantees Y" into the
+  journal, the problems log or a report, grep for the code that does it or run the query
+  that shows it, and quote the count. Any statement of coverage ("reconciles for 99%")
+  names the denominator and the excluded rows. Applies to every remaining session on this
+  project.

@@ -38,13 +38,13 @@ game 1: 718, game 10: 1572, game 25: 2671, game 50: 2789, game 100: 2897, game l
 | melon planted | 21 | 20 | 12 | 12 |
 | FERTILIZE ops | 107 | 64 | 110.5 | 113.5 |
 | CARE ops | 308 | 318 | 424 | 440 |
-| melon sold | 120 | 120 | 72 | 72 |
-| strawberry sold | 278 | 254 | 249 | 248 |
-| milk sold | 229 | 278 | 184 | 202 |
-| wool sold | 168 | 120 | 155 | 120.5 |
-| wheat sold | 880 | 598 | 368 | 377 |
-| fertilizer sold | 213 | 242 | 354.5 | 351 |
-| units sold last 3 days | 332 | 313 | 401.5 | 391 |
+| melon sold |  | 120 | 72 | 72 |
+| strawberry sold |  | 254 | 249 | 248 |
+| milk sold |  | 278 | 184 | 202 |
+| wool sold |  | 120 | 155 | 120.5 |
+| wheat sold |  | 598 | 368 | 377 |
+| fertilizer sold |  | 242 | 354.5 | 351 |
+| units sold last 3 days |  | 313 | 401.5 | 391 |
 | shed peak | 81 | 26 | 46 | 46 |
 | weeds spawned | 40 | 25 | 20 | 20 |
 | unexecutable market orders | 0 | 0 | 1 | 1 |
@@ -148,7 +148,7 @@ What goes with being off the modal field line at turn 200 (the first cut where f
 
 | window | games | win % | median bank | hands | cows | sheep | geese | quadrants | land day 1 | strawberry | wheat | melon | melon sold | milk sold | wool sold | field lines @400 | market lines @400 |
 |---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|
-| F | 50 | 68 | 118749 | 12 | 8 | 6 | 0 | 3 | 7 | 44 | 66 | 21 | 120 | 229 | 168 | 6 | 1 |
+| F | 50 | 68 | 118749 | 12 | 8 | 6 | 0 | 3 | 7 | 44 | 66 | 21 |  |  |  | 6 | 1 |
 | Q1 | 25 | 36 | 94274 | 12 | 10 | 4 | 0 | 3 | 6 | 34 | 127 | 20 | 120 | 278 | 120 | 7 | 21 |
 | L | 50 | 64 | 93072 | 12 | 8 | 6 | 3 | 3 | 6 | 33 | 156 | 12 | 72 | 184 | 155 | 47 | 46 |
 | C0 | 50 | 86 | 102305 | 12 | 8 | 6 | 3 | 3 | 6 | 33 | 166 | 12 | 72 | 202 | 120.5 | 42 | 40 |
@@ -157,22 +157,22 @@ What goes with being off the modal field line at turn 200 (the first cut where f
 
 | window | episode | opponent | opp rating | my bank | opp bank | margin | opp opening | biggest differences (opponent vs me) |
 |---|---|---|---|---|---|---|---|---|
-| F | 89725216 | CuteClaw | 1289.1 | 97852 | 98341 | -489 | 3797eb2c | units sold last 3 days: they 335 vs me 328; weeds spawned: they 39 vs me 42 |
-| F | 89749929 | Ali | 2030.1 | 100803 | 107556 | -6753 | 3797eb2c | units sold last 3 days: they 332 vs me 327; strawberry sold: they 282 vs me 278; weeds spawned: they 41 vs me 45 |
-| F | 89766252 | senkin13 | 2026.0 | 108687 | 110874 | -2187 | 3797eb2c | strawberry sold: they 278 vs me 270; units sold last 3 days: they 331 vs me 326; CARE ops: they 313 vs me 308 |
-| F | 89776306 | mbscgi | 1984.1 | 103280 | 107159 | -3879 | 3797eb2c | strawberry sold: they 268 vs me 278; milk sold: they 229 vs me 226; wool sold: they 167 vs me 165 |
-| F | 89776886 | mbscgi | 1998.2 | 117590 | 121563 | -3973 | 3797eb2c | units sold last 3 days: they 329 vs me 335; strawberry sold: they 276 vs me 278; weeds spawned: they 38 vs me 40 |
-| F | 89782700 | anvai_agents | 1991.2 | 118005 | 121327 | -3322 | 3797eb2c | units sold last 3 days: they 309 vs me 332; wool sold: they 159 vs me 167; milk sold: they 222 vs me 229 |
-| F | 89791751 | Oleg Melnik | 1873.4 | 35634 | 177132 | -141498 | 3797eb2c | strawberry sold: they 278 vs me 15; wool sold: they 168 vs me 28; units sold last 3 days: they 324 vs me 201 |
-| F | 89793622 | Tony Li | 2090.5 | 34003 | 172617 | -138614 | 3797eb2c | strawberry sold: they 280 vs me 20; wool sold: they 168 vs me 28; units sold last 3 days: they 319 vs me 201 |
-| F | 89800222 | cmasch | 1900.2 | 139811 | 145089 | -5278 | 3797eb2c | strawberry sold: they 278 vs me 264 |
-| F | 89801498 | Burkina_team_mate | 1848.6 | 37669 | 168076 | -130407 | 3797eb2c | strawberry sold: they 274 vs me 5; wool sold: they 168 vs me 27; units sold last 3 days: they 322 vs me 202 |
-| F | 89803859 | test_money | 1974.9 | 35386 | 181982 | -146596 | 3797eb2c | strawberry sold: they 280 vs me 5; wool sold: they 168 vs me 27; units sold last 3 days: they 319 vs me 199 |
-| F | 89809926 | Howard Lyu | 1947.0 | 147936 | 148598 | -662 | 3797eb2c | units sold last 3 days: they 332 vs me 322; weeds spawned: they 40 vs me 43 |
-| F | 89823198 | R^2 negative | 2026.2 | 110134 | 110590 | -456 | 3797eb2c | units sold last 3 days: they 316 vs me 335; melon sold: they 114 vs me 120; strawberry sold: they 274 vs me 278 |
-| F | 89826143 | TheDuck | 1990.1 | 102577 | 109019 | -6442 | 3797eb2c | units sold last 3 days: they 335 vs me 327; milk sold: they 229 vs me 226; wool sold: they 167 vs me 165 |
+| F | 89725216 | CuteClaw | 1289.1 | 97852 | 98341 | -489 | 3797eb2c | weeds spawned: they 39 vs me 42 |
+| F | 89749929 | Ali | 2030.1 | 100803 | 107556 | -6753 | 3797eb2c | weeds spawned: they 41 vs me 45; CARE ops: they 306 vs me 308 |
+| F | 89766252 | senkin13 | 2026.0 | 108687 | 110874 | -2187 | 3797eb2c | CARE ops: they 313 vs me 308; weeds spawned: they 41 vs me 42 |
+| F | 89776306 | mbscgi | 1984.1 | 103280 | 107159 | -3879 | 3797eb2c | strawberry planted: they 43 vs me 44; wheat planted: they 66 vs me 65; weeds spawned: they 38 vs me 39 |
+| F | 89776886 | mbscgi | 1998.2 | 117590 | 121563 | -3973 | 3797eb2c | weeds spawned: they 38 vs me 40; strawberry planted: they 43 vs me 44; FERTILIZE ops: they 106 vs me 107 |
+| F | 89782700 | anvai_agents | 1991.2 | 118005 | 121327 | -3322 | 3797eb2c | wheat planted: they 65 vs me 66; weeds spawned: they 39 vs me 40 |
+| F | 89791751 | Oleg Melnik | 1873.4 | 35634 | 177132 | -141498 | 3797eb2c | weeds spawned: they 41 vs me 17; land day 1: they 7 vs me 10; sheep bought: they 6 vs me 5 |
+| F | 89793622 | Tony Li | 2090.5 | 34003 | 172617 | -138614 | 3797eb2c | weeds spawned: they 40 vs me 20; land day 1: they 7 vs me 10; sheep bought: they 6 vs me 5 |
+| F | 89800222 | cmasch | 1900.2 | 139811 | 145089 | -5278 | 3797eb2c |  |
+| F | 89801498 | Burkina_team_mate | 1848.6 | 37669 | 168076 | -130407 | 3797eb2c | weeds spawned: they 40 vs me 18; land day 1: they 7 vs me 10; sheep bought: they 6 vs me 5 |
+| F | 89803859 | test_money | 1974.9 | 35386 | 181982 | -146596 | 3797eb2c | weeds spawned: they 41 vs me 18; land day 1: they 7 vs me 10; sheep bought: they 6 vs me 5 |
+| F | 89809926 | Howard Lyu | 1947.0 | 147936 | 148598 | -662 | 3797eb2c | weeds spawned: they 40 vs me 43 |
+| F | 89823198 | R^2 negative | 2026.2 | 110134 | 110590 | -456 | 3797eb2c | weeds spawned: they 41 vs me 40 |
+| F | 89826143 | TheDuck | 1990.1 | 102577 | 109019 | -6442 | 3797eb2c | weeds spawned: they 39 vs me 41; wheat planted: they 66 vs me 65 |
 | F | 89829099 | lucaskna | 1929.6 | 142632 | 145378 | -2746 | 3797eb2c | CARE ops: they 310 vs me 308; weeds spawned: they 41 vs me 40 |
-| F | 89829659 | David Pedersen | 1898.4 | 43212 | 173626 | -130414 | 3797eb2c | strawberry sold: they 280 vs me 26; wool sold: they 168 vs me 30; units sold last 3 days: they 324 vs me 210 |
+| F | 89829659 | David Pedersen | 1898.4 | 43212 | 173626 | -130414 | 3797eb2c | weeds spawned: they 39 vs me 17; land day 1: they 7 vs me 10; sheep bought: they 6 vs me 5 |
 | C0 | 108884986 | Yuka,Ota | 2618.2 | 105232 | 106200 | -968 | 9b0c82fd | units sold last 3 days: they 389 vs me 362; wool sold: they 121 vs me 100; CARE ops: they 417 vs me 429 |
 | C0 | 108886029 | 先过我的Gemini | 2731.3 | 107814 | 108070 | -256 | 9b0c82fd | wool sold: they 154 vs me 111; milk sold: they 213 vs me 241; units sold last 3 days: they 407 vs me 391 |
 | C0 | 108893074 | cqupt_sdq | 2667.9 | 125732 | 126050 | -318 | 9b0c82fd | wool sold: they 272 vs me 250; milk sold: they 191 vs me 209; wheat planted: they 162 vs me 171 |
@@ -195,7 +195,7 @@ What goes with being off the modal field line at turn 200 (the first cut where f
 | L | 109077968 | lumen | 2705.7 | 77492 | 77821 | -329 | 9b0c82fd | wool sold: they 140 vs me 118; FERTILIZE ops: they 107 vs me 121; wheat planted: they 163 vs me 174 |
 | L | 109078359 | Mengfei Li | 2925.7 | 89820 | 104880 | -15060 | 3bc18d7a | CARE ops: they 209 vs me 472; units sold last 3 days: they 337 vs me 434; wheat planted: they 61 vs me 148 |
 | L | 109083135 | SpaTaro | 2876.5 | 67836 | 71549 | -3713 | 47f5b3f3 | CARE ops: they 263 vs me 443; strawberry sold: they 144 vs me 251; units sold last 3 days: they 303 vs me 395 |
-| L | 109089169 | 自己找差距 | 2902.5 | 73731 | 76751 | -3020 | 3bc18d7a | CARE ops: they 225 vs me 443; FERTILIZE ops: they 216 vs me 90; strawberry sold: they 140 vs me 247 |
+| L | 109089169 | 自己找差距 | 2902.5 | 73731 | 76751 | -3020 | 3bc18d7a | CARE ops: they 225 vs me 443; FERTILIZE ops: they 216 vs me 90; weeds spawned: they 7 vs me 20 |
 | L | 109092798 | Thomas Tschinkel | 2970.3 | 71120 | 74092 | -2972 | 9b0c82fd | CARE ops: they 397 vs me 430; wool sold: they 257 vs me 247; wheat planted: they 165 vs me 172 |
 | L | 109094176 | pensukesan | 2870.7 | 90734 | 94812 | -4078 | 9b0c82fd | wool sold: they 327 vs me 263; units sold last 3 days: they 417 vs me 433; CARE ops: they 525 vs me 516 |
 
