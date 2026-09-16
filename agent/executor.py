@@ -397,7 +397,9 @@ def act_units(obs, day, hour, state, step=0):
                 prio = 1.0
             else:
                 prio = 6.0
-            pairs.append((d_shed + prio, ui, ("DEPOSIT", None, shed_tile)))
+            # beside the shed a deposit costs one turn and no walk: treat it like an on-tile job
+            score = ON_TILE_BONUS + 2.0 if d_shed == 0 else d_shed + prio
+            pairs.append((score, ui, ("DEPOSIT", None, shed_tile)))
     pairs.sort(key=lambda t: (t[0], t[1], str(t[2])))
 
     assigned = [None] * len(positions)
