@@ -231,3 +231,55 @@ entry also says why I missed it and what changes so it does not happen again.
 - **Caught by:** me, reading the refresher's output before building the report.
 - **Lesson:** a new marker value must be added to every consumer's allow-list the moment
   it is introduced, not when it bites.
+
+## 2026-09-16
+
+### P17: memo finding 4 read a conditional rate as a mechanism (the "day-1 opponent read")
+- **Symptom:** `decision_memo.md` finding 4 and the recommended architecture's layer 2 said
+  Majkel1337 and Orbital Terraformer "read the first hours of the opponent's farm and change
+  their own day" because being off their modal day-1 line was far more likely when the
+  opponent was off its own modal line (70% vs 16%). Reading the four lines shows identical
+  purchases and identical farmer actions; they differ only in the last one to three wheat
+  seeds the budget allows, and the wheat price (moved a dollar by the opponent's turn-0
+  trades) decides that. No team on the plateau changes its day-1 plan for the opponent.
+- **Cause:** the branch-driver table was built as a conditional-rate statistic and the memo
+  wrote it up as a causal read without diffing the actions between the branches. The
+  handoff flagged this as unverified ("nobody has read what the branch actually changes").
+- **Fix:** finding 4 and the layer-2 recommendation are rewritten in the memo from this
+  analysis; the analysis report states the mechanism with the turn-by-turn evidence.
+- **Caught by:** me, in the thorough-analysis phase, following the handoff's "check first" list.
+- **Why I missed it:** the statistic was suggestive and matched a story (a smart #1 that
+  reads its opponent), and the study's pace favoured tables over reading action streams.
+- **Prevention:** a "driver" or "reactive" claim about a team is not reportable until the
+  actions on the two sides of the branch have been diffed and the difference named.
+
+### P18: executed sale units were capped by the shed *before* the turn's unit actions
+- **Symptom:** summing each seat's recorded sale revenue gives 35-50% less than its final bank
+  implies for 55 of the 59 profiled teams (Artem The Farmer: 70k recorded against 123k
+  banked in one game). Only Majkel1337, Orbital Terraformer, DSM, Ebi and Kaggriculture
+  Agent are within 10%. The tape family's melon dump reads as 12 units when the replay
+  shows 72; Artem's "6 melons a game" is really about 72.
+- **Cause:** P10's fix capped executed units by the private shed as observed at the start
+  of the turn. The engine runs unit actions (DROP, PLACE into the shed, PICKUP) before it
+  processes market orders in the same turn, so an agent that harvests, walks to the shed,
+  drops and sells in one turn sells from a shed the trace never saw. Most agents do exactly
+  that; the three that sell a turn later were measured correctly, which is why the #1's
+  sales looked four times larger than everyone else's.
+- **Fix:** the tracer now replicates the engine's turn: both seats' DROP/PLACE/PICKUP are
+  applied to copies of the sheds, then both market queues are processed in the engine's
+  per-unit lockstep against the recorded market inventory, quoting each unit at the live
+  price. Every sale carries executed units and revenue; the simulated end-of-turn money is
+  checked against the recorded money for both seats and the mismatch count is stored in
+  the trace. All sampled traces, the feature table, `groups.md`, `summary.md`, the dossiers
+  and the memo's sales findings are rebuilt from it.
+- **Caught by:** me, in the thorough-analysis phase, because the new realized-price table
+  put Artem's revenue below its bank.
+- **Why I missed it:** P10 was fixed by reading the observation, not the engine's turn
+  order; the check "does revenue add up to the bank" was never run. Every derived
+  quantity that has an accounting identity should be checked against it once.
+- **Prevention:** the tracer stores a per-seat money-reconciliation error, and the feature
+  build refuses seats where it exceeds a few dollars a game.
+- **Affected published numbers (before rebuild):** every `sold_*`, `sell_first/last_day_*`,
+  `sold_units_total`, `sells_last_3_days` column; groups.md market tables; memo findings 6,
+  7, 13, 18 (market parts); the "melon last sell day 19 vs 11" separator is suspect because
+  the family's later melon sales were dropped as zero-unit sells.

@@ -66,7 +66,7 @@ def day_table(trace: dict, seat: int) -> pd.DataFrame:
     revenue = [0.0] * days
     for x in s["sells"]:
         sells[x["day"]][x["item"]] += x["n"]
-        revenue[x["day"]] += x["n"] * (x["price"] or 0)
+        revenue[x["day"]] += x.get("revenue", x["n"] * (x["price"] or 0))
     shops = {}
     for sh in trace["shops"]:
         shops.setdefault(sh["day"], []).append(

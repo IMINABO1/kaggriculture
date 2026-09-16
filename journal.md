@@ -387,3 +387,141 @@ failures) and exited. Final counts: 63 teams, 2,189 submissions, 309,306 history
 rows. Coverage by group: top-14 every window; first batch of 15 C0, L and F; the 34 zone
 teams C0. The report, dossiers, groups.md and memo are rebuilt from this state. The
 thorough analysis of the zone comparison starts in a fresh session.
+
+### Milestone: thorough-analysis phase started (no agent code)
+Iminabo's instruction: analyse what is in hand deeply before writing any agent code. Plan
+for this phase, in order: (1) the two unread items the handoff flagged, the #1's four day-1
+openings side by side and the tile-level mechanism behind "standing weeds"; (2) a trace-wide
+pass that adds realized sale prices per product per game (the feature table has units and
+days but not the price received, which is where the market layer's value must show);
+(3) trajectories and switching points per team from the history table (per-submission
+rating paths, when each team stopped being a tape); (4) the layer-by-layer comparison
+(opening read, market clock, labour discipline) across the named candidates; (5) a PCA
+and clustering over the per-game features to see whether the zones are a continuum or
+discrete strategies; (6) an account of what the data cannot answer and what it would cost
+under the replay quota. Output: `reports/top10/analysis.md` plus figures, built by
+`scripts/top10/deep.py`, and memo updates where a finding changes the build.
+
+### Surprise: nobody reads the opponent on day 1; the "four openings" are one plan spent to the last dollar
+Read the #1's four day-1 field lines side by side (traces, then three replays turn by turn).
+All four buy the same things in the same order (2 cows, 3 sheep, 5 pastures, 6+2 melon
+seeds, 10 wheat seeds, 4 hands) and the farmer's 24 actions are identical; the lines differ
+only in how many wheat seeds get planted at the end of the day (12, 11, 9) because the plan
+spends down to $7, $6, $5 and the last seed purchases depend on the wheat price ($27 vs $28),
+which the opponent's turn-0 wheat trades move by a dollar. That is why "opponent off its
+modal line" predicts the branch: the opponent's trades move the price, not the plan. The
+same holds for every day-1 brancher: DSM shares Majkel1337's three lines byte for byte,
+Orbital Terraformer runs the same list with 11 wheat seeds, Sida Zuo's three lines differ by
+1-3 wheat plantings, redblackbst's five lines by 4-7 wheat plantings at $5-$32 left, and
+Mengfei Li's 12 lines have identical purchases and identical money at day end (walking-order
+noise). The whole medal plateau uses two openings: "2c3s, 8 melon, ~10 wheat, 4 hands"
+(Majkel1337, DSM, Orbital Terraformer) and "2c2s, 12 melon, 7 wheat, 5 hands" (the public
+family: Catalyst, redblackbst, Kaggriculture Agent, Unknown Mother-Goose, yomogii, Mengfei
+Li). HowardLeeTW (5 cows, 1 sheep, 18 wheat, 1 melon, 7 hands) and Sida Zuo (3 cows, 2 sheep,
+7 pastures, 8 melon) are the only different day-1 plans among the branchers. Consequence:
+memo finding 4 and the recommended "layer 2: day-1 opponent read" have no evidence behind
+them; the leaders' edge over the family must be in what happens after day 1. Logged as P17.
+
+### Surprise: the "weeds" in the study are exhausted strawberries, and full farms cannot grow weeds
+Tile-level pass over 144 replays (`scripts/top10/weed_tiles.py`, 18 teams, 8 current-sub games
+each, 2,837 weed events). Weeds that spawn on empty tiles are rare: 0.1 to 2 a game, because
+the engine only rolls the 0.5% chance on *empty* unlocked tiles and the plateau farm keeps
+every tile occupied (the public family has 0 empty tiles at day end; the leaders 1-5). The
+other 95-99% of weed events are plants that finished their life and decayed in place:
+strawberries after their fourth yield (100% of the family's events, 15 before day 27 and 4
+in the last three days, every game), plus some wheat, tomato and carrot for the leaders.
+The family digs every one within about 0.6 days; the leaders leave 5-27% of the mid-game
+ones standing for 1-2 days while they have spare tiles, and most of the last-three-day ones
+forever. So "the top 7 tolerate weeds" (memo finding 14) is an executor that digs when it
+needs the tile, not a labour strategy, and the DIG count is the same because an exhausted
+plant costs one DIG whether it is dug before or after it turns into a weed. Finding 5 (weeds
+coupled to the opponent through the shared RNG) stands, but only matters while a farm has
+empty tiles, i.e. the first week and the leaders' spare tiles; a tape with no empty tiles
+sees no weed at all.
+
+### Checkpoint: engine-faithful market replica built and verified
+`research/market_replay.py` rebuilds every turn's market from the recorded observation:
+both seats' DROP/PLACE/PICKUP applied to the sheds first, then both order queues in the
+engine's per-unit lockstep against the shared inventory, each unit quoted at the live
+price. Checked on five replays (ten seats, 3,595 turns): zero turns where the simulated
+money differs from the recorded money; the price function agrees with the engine on 2,565
+inventory points; 0.3 s a game. The tracer now takes its sells, buys, hires and land from it
+(`trace_version` 2, `money_check` per seat) and every sampled trace is being rebuilt.
+First corrected numbers: in the #1's loss to Mengfei Li (108982600) Mengfei sold 102 melon,
+254 strawberry, 195 milk and 158 wool against the #1's 72/228/153/144; Artem sold 78 melon
+and 289 strawberry in a current-sub game where the old trace had 6 and 143. The "#1 sells
+four times the melon" finding was the undercount, not the market.
+
+### Surprise: everyone on the plateau reacts to the shop draw; the leaders just react to more of it
+Conditioning each team's current-submission games on the shops unlocked on days 3, 6 and 9
+(`features.shops`, the first three entries): with a Yarn Store among them, every one of the
+59 profiled teams buys 10-14 sheep instead of 4-6, from the #1 to the last bronze team; with
+a milk shop (Pizza, Ice Cream, Smoothie) cows go from 5-7 to 8-9. So the public family is not
+a pure tape either: it is one shared agent whose herd follows the demand the town reveals.
+The leaders differ in *how much* they react: carrots 50-95 with a Pet Cafe or Farmers Market
+against 20-35 without (the family plants 31 either way), tomatoes 8-12 with a milk shop
+(the family 1-3), and SpaTaro goes to 20 sheep or 13 cows. This is also what the "shop"
+branch driver in `groups.md` was measuring. The mechanism is the market model: each shop
+instance consumes one of every product it lists every four turns (12 a day; a single-product
+shop 24 a day) against a town centre that takes one a day, so a premium product's whole
+demand curve is decided by the eight random unlocks. The reactive layer that matters is
+"produce what the town is buying", and it is universal; the study's "reactivity gradient"
+is a gradient in the breadth of that response, not in whether it exists.
+
+### Checkpoint: head to head among the leaders, current submissions
+Artem The Farmer beats Majkel1337 19-11; Majkel1337 beats everyone else by wide margins
+(21-2 Mengfei Li, 14-2 feel the agi, 10-0 SpaTaro, 5-0 Orbital Terraformer, 4-0 DSM) and is
+level with Unknown Mother-Goose 4-4; ymg_aq beats Mengfei Li 12-3 and feel the agi 6-0. Of
+643 current-sub games among the top 15, the median bank margin is 4.1k, a quarter are
+within 2k. There is no seat effect: seat 0 wins 60.9% and seat 1 60.8% of the studied
+teams' 309k games (bronze 47/49, gold 75/77 by seat).
+
+### Checkpoint: verifier-facing checks on the zone extension
+Zone rule: 9,125 teams give gold = 10 + round(0.2%) = 28, silver = 5% = 456, bronze = 10% =
+912, matching the snapshot's zone column (sampled maxima 28 / 402 / 882). Pinning: all 29
+first-studied teams have `current_sub_source = frozen` in `teams.csv`. Sampling: the 34 zone
+teams carry only C0 (30 of them have games; 4 have none), the top-14 and the first batch
+carry C0, F, Q1-Q3 and L. Shared lines: 44 of the 59 profiled teams' modal day-1 field
+hashes are shared with another team and the largest family has 34 members, the numbers in
+`groups.md`. The four teams left out of `groups.md` (现实是个乐子, Excluding, Roman Katasonov,
+MtN) really have no crawled game of their current submission; `analyze.py` matches teams by
+id, so the fact that several teams have changed their display name (Artem Veshkin, Blurry,
+shiggriculture, Lin Alpha...) does not affect it. My own ad-hoc scripts joined on the
+replay's team name and were corrected to join on id.
+
+### Checkpoint: a "breadth of response" score grades the zones
+For each profiled team, the mean change in sheep (Yarn Store early), cows (milk shop),
+geese (egg shop), carrot plantings (Pet Cafe or Farmers Market) and tomato plantings (Pizza
+or Farmers Market) between games with and without the shop by day 9, thresholded (3 sheep,
+1.5 cows, 1 goose, 10 carrots, 3 tomatoes), counts how many products a team's plan follows.
+Medians: top-14 4.5, gold 3.5, silver 2, bronze 1; AUC silver over bronze 0.86 (p = 0.001),
+gold over silver 0.72 (p = 0.02), top-14 over gold 0.67 (p = 0.11). Every bronze team reacts
+to the Yarn Store alone. Within the public family the score varies (Catalyst 2, Kaggriculture
+Agent 4, feel the agi 5), so the family agent ships with switches its users set differently.
+`tests/test_research.py`: 10 passed, including the new replica tests.
+
+### Checkpoint: the zone is the margin over the public line
+Labelling every sampled opponent by its day-5 field line and taking each team's current
+submission's games against opponents on the current public line (G with 33 strawberry, 163
+wheat, 31 carrots): the top-14 win 88.8% of 544 such games by a median 7.2k (Artem 96% by
+11.6k, DSM 98% by 11.0k, ymg_aq 96% by 13.9k, THIRD FARM CLUB 93% by 13.4k, Majkel1337 93% by
+10.5k); gold 87.8% by 4.2k; silver 80.5% by 2.3k; bronze 58.2% by 0.3k, with several bronze
+teams tying (identical banks: two pure tapes of the same line) or losing to it (Toru59er 14%).
+The family agent's reactive switches beat its own tape copies, and the leaders beat the
+family by the same 8-14k that separates their farms' revenue. The yardstick for our agent is
+therefore the margin against the current public line on fixed seeds, both seats, and the
+line will change before the deadline (section 4 of `analysis.md`).
+
+### Surprise: two ways to beat the plateau, and the #1 uses the one the study could not see
+Money at the start of day 28 is the same in every zone (top-14 88.9k, gold 89.3k, silver
+86.8k, bronze 89.6k) and Artem's is *below* Catalyst's (85.5k vs 86.1k), yet Artem beats the
+public line 96% of the time by 11.6k. The opponent's bank explains it: a seat on the public
+line banks a median 98.9k over all sampled games (101k against non-family opponents, 96k in
+mirror matches), but 87.5k against Artem, 81.6k against ymg_aq and 88.2k against Mengfei Li,
+while those three bank 95-98k themselves. Majkel1337, THIRD FARM CLUB, Unknown Mother-Goose,
+feel the agi and HowardLeeTW win the other way: the family opponent keeps 98-108k and they
+bank 108-115k. So there is an out-earn axis and a suppress axis; Artem is #1 because
+suppression also works on the out-earners, whose banks depend on premium prices, and the
+19-11 record over Majkel1337 is where it shows. The product being flooded is the next thing
+to read from the rebuilt sales (the family opponent's realized prices per product in games
+against each leader), which is exactly what the pre-P18 traces could not show.

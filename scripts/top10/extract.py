@@ -22,15 +22,23 @@ from research.trace import (
     ANIMALS,
     CROPS,
     PRODUCTS,
+    TRACE_VERSION,
     build_trace,
     invalid_order_count,
     plan_hashes,
 )
 
 
+def trace_is_current(episode_id: int) -> bool:
+    if not trace_path(episode_id).exists():
+        return False
+    try:
+        return load_trace(episode_id).get("trace_version") == TRACE_VERSION
+    except Exception:  # noqa: BLE001 - an unreadable trace is rebuilt
+        return False
+
+
 def make_trace(episode_id: int) -> tuple[int, str | None]:
-    if trace_path(episode_id).exists():
-        return episode_id, None
     try:
         save_trace(build_trace(load_replay(episode_id)))
         return episode_id, None
@@ -107,13 +115,25 @@ def seat_features(trace: dict, seat: int) -> dict:
         "PASS",
     ):
         row[f"op_{op.lower()}"] = s["op_counts"].get(op, 0)
+    if len(sells) and "revenue" not in sells:
+        sells["revenue"] = sells.n * sells.price.fillna(0)
     for p in PRODUCTS:
         sp = sells[sells.item == p] if len(sells) else sells
-        row[f"sold_{p.lower()}"] = int(sp.n.sum()) if len(sp) else 0
+        units = int(sp.n.sum()) if len(sp) else 0
+        revenue = float(sp.revenue.sum()) if len(sp) else 0.0
+        row[f"sold_{p.lower()}"] = units
+        row[f"revenue_{p.lower()}"] = revenue
+        row[f"price_{p.lower()}"] = (revenue / units) if units else None
         row[f"sell_first_day_{p.lower()}"] = int(sp.day.min()) if len(sp) else None
         row[f"sell_last_day_{p.lower()}"] = int(sp.day.max()) if len(sp) else None
     row["sold_units_total"] = int(sells.n.sum()) if len(sells) else 0
     row["sells_last_3_days"] = int(sells[sells.day >= days - 3].n.sum()) if len(sells) else 0
+    row["revenue_total"] = float(sells.revenue.sum()) if len(sells) else 0.0
+    row["revenue_last_3_days"] = float(sells[sells.day >= days - 3].revenue.sum()) if len(sells) else 0.0
+    row["revenue_premium"] = sum(row[f"revenue_{p}"] for p in ("strawberry", "melon", "milk", "wool"))
+    check = s.get("money_check") or {}
+    row["money_check_turns"] = check.get("turns_mismatched")
+    row["money_check_max_error"] = check.get("max_error")
     row["final_tiles"] = json.dumps(final_tiles, sort_keys=True)
     for name, cut in (
         ("h24", 24),
@@ -142,6 +162,11 @@ def main() -> None:
     ap.add_argument("--all", action="store_true", help="every replay on disk, not just sample.csv")
     ap.add_argument("--traces-only", action="store_true", help="skip the feature table")
     ap.add_argument("--limit", type=int, default=0, help="build at most this many new traces")
+    ap.add_argument(
+        "--upgrade",
+        action="store_true",
+        help="also rebuild traces written by an older tracer (trace_version below the current one)",
+    )
     args = ap.parse_args()
 
     if args.all:
@@ -152,7 +177,13 @@ def main() -> None:
     else:
         sample = pd.read_csv(TOP10 / "sample.csv")
         episodes = sorted({int(e) for e in sample.episode_id if replay_path(int(e)).exists()})
-    todo = [e for e in episodes if not trace_path(e).exists()]
+    if args.upgrade:
+        todo = [e for e in episodes if not trace_is_current(e)]
+        # current-submission games first: they carry the group comparison
+        current = set(int(e) for e in sample[sample.window == "C0"].episode_id) if "window" in sample else set()
+        todo.sort(key=lambda e: (e not in current, e))
+    else:
+        todo = [e for e in episodes if not trace_path(e).exists()]
     if args.limit:
         todo = todo[: args.limit]
     print(f"{len(episodes)} replays on disk, {len(todo)} traces to build")

@@ -17,7 +17,9 @@ import json
 from collections import Counter
 
 from agent.tape import PASS, actions_from_replay
+from research.market_replay import market_events
 
+TRACE_VERSION = 2
 HASH_CUTS = (24, 48, 100, 136, 200, 300, 400, 719)
 CROPS = ("WHEAT", "CARROT", "TOMATO", "STRAWBERRY", "MELON")
 ANIMALS = ("GOOSE", "COW", "SHEEP")
@@ -143,7 +145,9 @@ def unit_ops(action: dict) -> list[list]:
     return [op for op in ops if isinstance(op, list) and op]
 
 
-def seat_trace(replay: dict, seat: int, turns_per_day: int) -> dict:
+def seat_trace(
+    replay: dict, seat: int, turns_per_day: int, events: list[dict], money_check: dict
+) -> dict:
     steps = replay["steps"]
     actions = actions_from_replay(replay, seat)
     field, market = split_streams(actions)
@@ -180,47 +184,55 @@ def seat_trace(replay: dict, seat: int, turns_per_day: int) -> dict:
 
     op_counts: Counter = Counter()
     plants_by_day = [Counter() for _ in range(days)]
-    sells: list[dict] = []
-    buys: list[dict] = []
-    hires_ordered = [0] * days
-    land_orders: list[int] = []
     for i, action in enumerate(actions):
-        t = i + 1
         day = i // turns_per_day
-        hour = i % turns_per_day
         for op in unit_ops(action):
             op_counts[op[0]] += 1
             if op[0] == "PLANT" and len(op) > 1 and op[1] in CROPS:
                 plants_by_day[day][op[1]] += 1
-        before = steps[t - 1]
-        prices = before[0]["observation"]["market"]["prices"]
-        shed = dict((before[seat]["observation"].get("private") or {}).get("shed") or {})
-        for order in action.get("market") or []:
-            if not isinstance(order, list) or not order:
-                continue
-            kind = order[0]
-            if kind == "SELL" and len(order) >= 3 and order[1] in PRODUCTS:
-                requested = max(int(order[2]), 0)
-                executed = min(requested, int(shed.get(order[1], 0)))
-                shed[order[1]] = shed.get(order[1], 0) - executed
-                sells.append(
-                    {
-                        "day": day,
-                        "hour": hour,
-                        "item": order[1],
-                        "n": executed,
-                        "requested": requested,
-                        "price": prices.get(order[1]),
-                    }
-                )
-            elif kind in ("BUY_SEED", "BUY_ANIMAL", "BUY_PRODUCT") and len(order) >= 3:
-                buys.append(
-                    {"day": day, "hour": hour, "kind": kind, "item": order[1], "n": int(order[2])}
-                )
-            elif kind == "HIRE":
-                hires_ordered[day] += 1
-            elif kind == "BUY_LAND":
-                land_orders.append(day)
+
+    # Market orders as the engine executed them (research.market_replay): a SELL's units
+    # are what the shed held after this turn's DROP/PLACE/PICKUP, and its revenue is the
+    # sum of the per-unit prices quoted in the lockstep with the opponent. `price` is the
+    # quote before the turn, kept for the narrators; `avg_price` is what was received.
+    sells: list[dict] = []
+    buys: list[dict] = []
+    hires_ordered = [0] * days
+    land_orders: list[int] = []
+    for ev in events:
+        kind = ev["type"]
+        if kind == "HIRE":
+            hires_ordered[ev["day"]] += 1
+        elif kind == "BUY_LAND":
+            land_orders.append(ev["day"])
+        elif kind == "SELL" and ev["item"] in PRODUCTS:
+            t = ev["day"] * turns_per_day + ev["hour"]
+            quote = steps[t][0]["observation"]["market"]["prices"].get(ev["item"])
+            n = int(ev["executed"])
+            sells.append(
+                {
+                    "day": ev["day"],
+                    "hour": ev["hour"],
+                    "item": ev["item"],
+                    "n": n,
+                    "requested": int(ev["requested"]),
+                    "price": quote,
+                    "revenue": float(ev["revenue"]),
+                    "avg_price": (float(ev["revenue"]) / n) if n else None,
+                }
+            )
+        elif kind in ("BUY_SEED", "BUY_ANIMAL", "BUY_PRODUCT"):
+            buys.append(
+                {
+                    "day": ev["day"],
+                    "hour": ev["hour"],
+                    "kind": kind,
+                    "item": ev["item"],
+                    "n": int(ev["executed"]),
+                    "requested": int(ev["requested"]),
+                    "spent": float(ev["spent"]),
+                }
+            )
 
     final_money = steps[-1][0]["observation"]["farms"][seat]["money"]
     land_days = [d for d in range(1, days) if quadrants[d] > quadrants[d - 1]]
@@ -249,6 +261,7 @@ def seat_trace(replay: dict, seat: int, turns_per_day: int) -> dict:
         "op_counts": dict(op_counts),
         "sells": sells,
         "buys": buys,
+        "money_check": money_check,
         "actions": actions,
     }
 
@@ -282,7 +295,10 @@ def market_series(replay: dict, turns_per_day: int) -> dict:
 def build_trace(replay: dict) -> dict:
     cfg = replay["configuration"]
     tpd = int(cfg.get("turnsPerDay", 24))
+    actions = [actions_from_replay(replay, 0), actions_from_replay(replay, 1)]
+    events, checks = market_events(replay, actions)
     return {
+        "trace_version": TRACE_VERSION,
         "episode_id": replay["info"]["EpisodeId"],
         "seed": replay["info"].get("seed"),
         "engine": replay.get("module_version"),
@@ -304,7 +320,10 @@ def build_trace(replay: dict) -> dict:
         },
         "shops": shop_unlocks(replay, tpd),
         "market": market_series(replay, tpd),
-        "seats": [seat_trace(replay, 0, tpd), seat_trace(replay, 1, tpd)],
+        "seats": [
+            seat_trace(replay, 0, tpd, events[0], checks[0]),
+            seat_trace(replay, 1, tpd, events[1], checks[1]),
+        ],
     }
 
 

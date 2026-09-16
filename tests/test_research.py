@@ -93,3 +93,29 @@ def test_day_table_covers_every_day():
     assert table.money.iloc[0] == 3000
     assert table.quads.iloc[-1] >= 1
     assert (table.harvest >= 0).all()
+
+
+def test_market_price_matches_engine():
+    from research.market_replay import market_price
+    from scripts.kenv import import_ke
+
+    import_ke()
+    from kaggle_environments.envs.kaggriculture import kaggriculture as engine
+
+    for item in engine.PRODUCTS:
+        for inventory in range(9000, 11001, 13):
+            assert market_price(item, inventory) == engine.market_price(item, inventory), (item, inventory)
+
+
+@pytest.mark.skipif(not replay_path(PROBE_EPISODE).exists(), reason="probe replay not stored")
+def test_market_replica_reconciles_money_every_turn():
+    from agent.tape import actions_from_replay
+    from research.market_replay import market_events
+
+    replay = load_replay(PROBE_EPISODE)
+    actions = [actions_from_replay(replay, 0), actions_from_replay(replay, 1)]
+    events, checks = market_events(replay, actions)
+    assert [c["turns_mismatched"] for c in checks] == [0, 0]
+    revenue = [sum(e["revenue"] for e in events[s] if e["type"] == "SELL") for s in (0, 1)]
+    # revenue must at least cover the bank minus the seed money; sales are the only income
+    assert all(r >= final - 3000 for r, final in zip(revenue, replay["rewards"]))
