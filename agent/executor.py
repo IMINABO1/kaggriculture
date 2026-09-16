@@ -164,9 +164,9 @@ def target_crop(x, y, day):
         return "MELON"
     if (x, y) in STRAWBERRY_TILES and P.STRAWBERRY_FIRST_DAY <= day <= P.STRAWBERRY_LAST_DAY:
         return "STRAWBERRY"
-    if P.CARROT_FIRST_DAY <= day <= P.CARROT_LAST_DAY:
-        return "CARROT"  # the line puts carrots on freed strawberry tiles and wheat tiles alike
-    if day <= P.WHEAT_LAST_DAY:
+    if (x, y) in STRAWBERRY_TILES and P.CARROT_FIRST_DAY <= day <= P.CARROT_LAST_DAY:
+        return "CARROT"  # v5 plants its 31 carrots on the freed strawberry tiles and keeps
+    if day <= P.WHEAT_LAST_DAY:  # 27-38 wheat tiles running to day 27 (census, 2026-09-16)
         return "WHEAT"
     return None
 

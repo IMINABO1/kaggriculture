@@ -1036,3 +1036,11 @@ margin, not the bank, is comparable with earlier entries. Next, one at a time on
 baseline: E3 (carrots only on the freed strawberry tiles, wheat elsewhere to day 27), E1
 (exhausted strawberries dug at planting priority), E2 (planting until hour 22), S (a unit
 keeps its walking target unless another job beats it by 1.5).
+
+### Checkpoint: E3 accepted (carrots only on the freed strawberry tiles)
+Production basket 94,896 (A' 94,713), bank 147,416 (146,208): wheat 408 (358) against
+carrots 39 (80), so the basket is flat and the bank gains 1.2k because the extra carrots
+had been selling below their basket price. Competition margin -25,644 (-26,270), mean bank
+85,726 vs 111,370. Both gates pass; kept. The executor now plants carrots on days 24-26 on
+the strawberry tiles only, which is the plan `agent/plan.py` documents and what v5's tape
+does (31 carrots, 27-38 wheat tiles to day 27).
