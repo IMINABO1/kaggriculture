@@ -965,3 +965,15 @@ seeds, so the 4.1k bank difference is mostly P22. Competition, B2: 0-20, mean ba
 the twelve carriers pass the pastures without CARE or COLLECT and no feeder exists that day
 (B turned them off), so some animals go uncared at the lowest priority. B3 assigns the
 feeders the turn the last melon job disappears; measured next with the basket.
+
+### Decision: B2 kept, B3 rejected
+B3 (feeders assigned the turn the melon rush ends) did not bring the animal units back:
+basket 94,719, milk 223, wool 138, egg 86 (B2: 94,609 / 229 / 138 / 83; B: 95,436 / 232 /
+143 / 87), competition margin -26,746 (B2 -25,893, B -26,572). The three margins sit inside
+the shop-draw noise, and milk units themselves move with the draw because `needs_feed`
+feeds daily only while milk is worth 1.2 wheat. B2 is kept as the simplest complete rule:
+on seed 1 it sells all 64 melons on day 10 (6 at $266 in v5's turn at hour 9, 15 at $247,
+25 at $193, 18 at $143) and v5's last 12 fall to $109 on day 11; melon revenue 12,700
+against 11,593 before, v5's 15,084 against 16,196, a 2.2k swing on that seed. The two
+late batches (hours 13 and 16) are the far tiles; the eight missing units are the days 7-9
+waterings, which A' addresses next.

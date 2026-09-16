@@ -360,15 +360,13 @@ def act_units(obs, day, hour, state):
     for ui, pos in enumerate(positions):
         inv = invs[ui]
         feeder = ui in feeders
-        haul_now = melon_rush and inv.get("MELON", 0) > 0
+        haul_now = inv.get("MELON", 0) > 0   # not even the pasture under its feet on the way
         for ji, j in enumerate(jobs):
-            if j.need and inv.get(j.need[0], 0) < j.need[1]:
+            if haul_now or (j.need and inv.get(j.need[0], 0) < j.need[1]):
                 continue
             if feeder and not is_animal_job(j):
                 continue
             d = dist(pos, j.pos)
-            if haul_now and d > 0:
-                continue
             score = j.prio + ON_TILE_BONUS if d == 0 else d + j.prio
             if j.kind == "FEED" or (j.kind == "WATER" and j.arg == "must"):
                 score -= URGENCY_PER_HOUR * max(0, hour - URGENCY_FROM_HOUR)
