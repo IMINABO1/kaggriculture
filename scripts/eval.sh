@@ -8,6 +8,6 @@
 cd "$(dirname "$0")/.."
 F='^(OpenSpiel|[a-z_0-9]+$|Available games)'
 echo "production vs pass (seeds 1-8, seat 0):"
-uv run python scripts/arena.py --a main.py --b pass --seeds 1-8 --one-seat --decouple-shops --jobs 3 2>&1 | grep -v -E "$F" | tail -2
+uv run python scripts/arena.py --a main.py --b pass --seeds 1-8 --one-seat --decouple-shops --jobs 6 2>&1 | grep -v -E "$F" | tail -2
 echo "competition vs line:v5 (seeds 0-9, both seats):"
-uv run python scripts/arena.py --a main.py --b line:v5 --seeds 0-9 --decouple-shops --jobs 3 2>&1 | grep -v -E "$F" | tail -2
+uv run python scripts/arena.py --a main.py --b line:v5 --seeds 0-9 --decouple-shops --jobs 6 2>&1 | grep -v -E "$F" | tail -2

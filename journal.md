@@ -1265,3 +1265,13 @@ verified: the competition rules page (last read 2026-09-14), the 31 last-step mo
 mismatches, the leaders' CARE dip on days 17-26, v41's runtime layers against a recorded
 game (only its tapes are hash-verified), and no game against a live adaptive opponent
 other than v5 and v41.
+
+### Note: the yardstick runs in 44 seconds at six workers; nothing here uses the GPU
+Iminabo asked whether the RTX 5070 is used. It is not and cannot be: every arena game is
+the kaggle-environments engine in single-threaded Python and the agent is rule-based, so
+the only speed lever is CPU parallelism. The machine has 8 cores, 16 threads and 31 GB;
+the eight production games take 15 s at three workers and 10 s at six with identical
+results, and a full `eval.sh` (28 games) takes 44 s at six. `eval.sh` now uses `--jobs 6`.
+The previous session's 1,200-second timeout came with `deep.py` and three other processes
+running at once; six arena workers alone are within memory. The four-to-five-minute waits
+recorded during today's evals were the background-task plumbing, not the games.
