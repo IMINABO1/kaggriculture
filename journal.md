@@ -824,3 +824,94 @@ production (3,500 moves a game against the line's 2,900; zone-based routing rath
 greedy nearest-pair); (3) then Phase 2a, the Yarn Store plan (6 cows, 10-11 sheep, 0 geese)
 and the leaders' carrots and tomatoes, since v5 already switches to a yarn route and made
 $90k on wool alone in seed 3. Every change through `eval.sh`, one at a time.
+
+### Checkpoint: second build session opened; baseline reproduced
+Read in the handoff's order (CLAUDE.md, METHOD.md, analysis.md 1-4, 7, 9b, 11, the memo's
+answer, architecture and plan, the 2026-09-16 journal and P17-P21, then `agent/`,
+`scripts/eval.sh`, `scripts/gauntlet.py`, the engine's market and end-of-day code). The five
+routers are under `data/notebooks/` (`ls data/notebooks/*/output/main.py`: 5 files); engine
+1.32.7. `scripts/eval.sh` reproduced to the dollar: production 158,165 (seeds 1, 2, 4),
+competition 0-10, mean bank 69,409 vs 94,145, margin -24,736. The notebook list (`kaggle
+kernels list --competition kaggriculture --sort-by dateRun --page-size 50`) shows v6 as the
+family's newest (2026-09-16 02:25Z, 3 votes) and five higher-voted new agents dated 09-15/16:
+tetsutani "Market-Smart Farming" (95 votes), flexonafft "Multi-Route Farming Agent" (93),
+ahmedberatozer V45 (86), reyhanksatria "Dynamic Route Agent" (85), guruprasaathas111
+"Master Engine V3" (79). None pulled yet; they are the candidates for the next public line.
+
+### Surprise: the town's shop draw is coupled to both farms' empty tiles (P22)
+`_end_of_day` seeds one `random.Random((seed * 1_000_003) ^ day)` per day, `_spawn_weeds`
+consumes one draw per empty tile of farm 0 and then of farm 1, and the shop for the next
+day (days 3, 6, ..., 24) is `rng.choice` from the same generator. So a change to our own
+empty-tile count on any day before a shop day changes the town for both players from then
+on. Seen directly: seed 1 with the committed executor unlocks BAKERY, PIZZA, PIZZA,
+ICE_CREAM, FARMERS, YARN, BAKERY, PET_CAFE; with change A (below) it unlocks BAKERY, PIZZA,
+ICE_CREAM, PET_CAFE, FARMERS, YARN, FARMERS, BRUNCH. A "fixed seed" is therefore not a fixed
+environment across executor changes: v5's own mean bank moved from 94,145 to 103,565 between
+two runs that differed only in one of our watering priorities. **Decision:** `eval.sh` now
+plays production on seeds 1-8 and competition on seeds 0-9, both seats (28 games, about four
+minutes at three jobs), and the verdict is the mean; the earlier numbers are not comparable.
+New baseline at commit f81686a's executor: production 137,622 (seeds 1-8; the three-seed
+figure was flattering), competition 0-20, mean bank 70,236 vs 99,096, margin -28,861.
+Reading a single seed's diagnostic still needs the shops printed next to it. The same
+coupling qualifies the gauntlet rule: a seat-0 recording does see its recorded weeds, but its
+town diverges from the recorded game as soon as our empty-tile count differs from its
+recorded opponent's, so the tape's fixed sales meet a different demand than they were
+played for (how often is not yet measured; a check against the tapes' recorded shops is on
+the list).
+
+### Checkpoint: where the 25k comes from, per product, on five seeds
+Executed sales from the engine-faithful replica (`research/market_replay.py`) on local
+replays of `main.py` (seat 0) against v5, our revenue minus v5's in $k:
+
+| seed | melon | strawberry | milk | wool | egg | wheat | carrot | tomato | fertilizer | gross | bank |
+|---|---|---|---|---|---|---|---|---|---|---|---|
+| 0 | -4.8 | -6.6 | -0.6 | -0.2 | +0.5 | -7.3 | -2.5 | 0 | -4.2 | -25.6 | -24.2 |
+| 1 | -4.6 | -4.6 | -2.9 | -1.5 | +0.6 | -5.7 | +0.1 | -13.5 | -4.6 | -36.7 | -30.4 |
+| 2 | -4.2 | -4.8 | -2.2 | -2.6 | +1.1 | -7.0 | -0.3 | 0 | -4.6 | -24.6 | -24.0 |
+| 4 | -4.2 | -7.3 | -2.2 | -0.2 | +1.1 | -9.1 | -0.1 | 0 | -4.7 | -26.8 | -25.9 |
+| 5 | -4.8 | -3.8 | -0.6 | -0.2 | +1.0 | -9.0 | +0.3 | 0 | -4.4 | -21.6 | -20.5 |
+
+Units (ours / v5): melon 63-68 / 72 at $181 / $225; strawberry 219-233 / 247-248; wheat
+195-243 / 340-451; fertilizer 243-256 / 347-352; milk within 5-20 units. Mechanisms, seed 1:
+- Melon: on day 10 each of my units waters and harvests one tile, then walks to the
+  neighbouring melon (URGENT priority at distance 1 beats the deposit at distance 3) and
+  harvests it too, so the first sale lands at hour 12 (4 units) and hour 13 (29) against
+  v5's hours 9-13 (48 units); 14 of mine go on day 11 at $114. Three of my twelve melons
+  carried 4 units and two carried 5: waterings on melon tiles were 8, 11 and 9 of 12 on days
+  7, 8 and 9 (v5: 12 every day; a one-time crop starts at 1 unit and gains one per watered
+  day in its window, ages 6-12 for melon, so five waterings make 6).
+- Wheat: I plant 125 wheat tiles to v5's 172 and harvest 1.7 units per tile to its 2.0; the
+  daily tile census shows 1-9 empty tiles at hour 0 on most days from day 12 (v5: 0 until its
+  tomato land opens), 1-6 standing weeds from day 23 (v5: 0-1), and carrots on every
+  non-strawberry tile on days 24-26 (39 carrots to v5's 29) while v5 keeps 27-38 wheat tiles
+  to day 27.
+- Fertilizer: collected 359 to v5's 367, but v5 sells 347 and spreads 103, so its tape also
+  buys fertilizer (about 80 units; the gross column overstates its net by that spend).
+- Tomato: v5's route V219 (below), seed 1 only.
+Reading: the competition gap is mostly production (wheat, fertilizer, strawberry and milk
+units), and the pure timing part (melon price, strawberry price in the first five days of the
+season) is 6-8k, not 25k. **Decision:** melon day first, because its mechanism is fully read;
+then the executor's idle tiles and walking; the market layer after, since against a daily
+dumper the strawberry inventory reaches the floor from day 19-20 whatever I hold (the price
+falls $1.92 a unit above the anchor and v5 alone adds 25 a day against a drain of 13).
+
+### Note: v5's two route switches, traced in its code
+`_v219_qualifies` (day 18): NW, NE and SW unlocked, money at least 12,000, tomato price at
+or above its minimum, at least three Pizza Shop or Farmers Market instances among the
+unlocked shops, SE locked, no tomatoes anywhere: it buys SE, ten tomato seeds and extra
+hands, fertilizes on days 24 and 27, and sold 80 tomatoes at $169 on seed 1 (13.5k).
+`_v233_eligible` (day 12): at least two Yarn Stores, wool at $220 or more, wheat at $45 or
+less: it buys SE and six more sheep (the seed-3 17-sheep route). The previous entry's
+"tomatoes against my mirror" is consistent with the shop trigger rather than the mirror
+detector (`_r37_similarity` only reorders sales): the shops in the pass game and the mirror
+game differ through P22, and that difference was not checked (not verified).
+
+### Decision: change A (melon-window watering at priority -6) rejected
+Applied alone to the committed executor, on the old three-and-five-seed yardstick:
+production 147,885 (from 158,165), competition 0-10 with margin -35,721 (from -24,736; part
+of it the shop draw). Seed 1 census: FEED 292 (from 357), CARE 319 (353),
+COLLECT_FERTILIZER 330 (359), NE bought on day 7 instead of 6; melon waterings did reach 12
+of 12 on every day. A priority of -6 beats FEED (0) and COLLECT (5) from up to ten tiles
+away, so the herd waited and the fertilizer that funds the land stayed on the pasture.
+Reverted. Next: B (a melon-day crew: no morning feeders that day, and a unit carrying
+melons walks straight to the shed), then A again at the WATER_MUST level.

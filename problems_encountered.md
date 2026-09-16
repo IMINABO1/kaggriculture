@@ -356,3 +356,20 @@ entry also says why I missed it and what changes so it does not happen again.
 - **Caught by:** me, from the traceback.
 - **Prevention:** scratch scripts never take a standard-library module's name, and a script
   that rewrites project files does its work under `if __name__ == "__main__"`.
+
+### P22: "fixed seeds" are not fixed environments across executor changes
+- **Symptom:** seed 1 unlocked different shops in two arena runs of the same seed, and a
+  change that touched only one watering priority moved v5's mean bank from 94,145 to
+  103,565 and the competition margin by 11k.
+- **Cause:** `_end_of_day` draws the day's weeds and the next shop from one
+  `random.Random` per day, and every empty tile on either farm consumes one draw before the
+  shop is chosen, so our own empty-tile count decides the town for both players.
+- **Fix:** `scripts/eval.sh` plays 8 production and 10 competition seeds (28 games) and the
+  verdict is the mean; single-seed diagnostics print the shops next to the numbers.
+- **Caught by:** me, from the census script printing the shop list of both runs.
+- **Why the previous session missed it:** it read `_end_of_day` for the weed order (the
+  gauntlet seat rule) and stopped two lines above the shop draw; the bisect rule was written
+  on three and five seeds without checking what else the seed fixed.
+- **Prevention:** an A/B on fixed seeds is trusted only when the environment is shown to be
+  identical between arms (here: the shop lists), or when the seed count is large enough
+  that the coupled draw averages out; every diagnostic that names a seed names its shops.
