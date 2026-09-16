@@ -1086,3 +1086,43 @@ previous session removed a sticky-target hook that had only ever been tried at z
 -1.5 it stops units re-targeting each other's jobs every turn. A stronger value is a later
 single change. Executor queue done for now: B2, A', E3, E1, S kept; E2 rejected. Baseline
 for what follows: production basket 95,566, competition margin -24,516 against v5.
+
+### Checkpoint: the successor line and the gauntlet with scripted towns
+Executor at S (commit c552018), decoupled shops, seeds 0-9 both seats: against `line:v41`
+0-20, mean bank 85,410 vs 111,340, margin -25,930 (against v5 the same day: 0-20, -24,516).
+The gauntlet, 80 seat-0 recordings of the top five and three gold teams, each played in its
+recorded town (80 of 80 matched), our agent in seat 1:
+
+| team | W-L | our bank | their bank | their recorded opponent's bank | their bank when recorded |
+|---|---|---|---|---|---|
+| Artem The Farmer | 0-10 | 85.7k | 119.1k | 96.5k | 107.9k |
+| Majkel1337 | 4-6 | 99.9k | 104.4k | 101.2k | 112.9k |
+| Unknown Mother-Goose | 0-10 | 86.6k | 125.6k | 97.6k | 119.8k |
+| DSM | 7-3 | 102.5k | 84.0k | 90.1k | 99.6k |
+| SpaTaro | 2-8 | 89.7k | 95.5k | 81.7k | 94.8k |
+| HowardLeeTW | 0-10 | 84.4k | 114.6k | 96.6k | 102.0k |
+| carbonapi | 0-10 | 80.0k | 118.2k | 99.6k | 104.3k |
+| Ebi | 0-10 | 89.1k | 120.5k | 102.8k | 105.1k |
+
+13-67 (16%), against 26-54 in the previous session's run, whose towns were drawn at random
+relative to the tapes' plans (P22) and handicapped them. Two readings. First, six of the
+eight recordings bank 10-15k more against us than they did against their real opponents,
+and our bank is 5-20k below those opponents', so a recording that cannot react still
+out-produces us and is left unpressed in the market: the gap is production and market
+both. Second, DSM and SpaTaro make 8-16k less against us than when recorded, so where
+our sales do land on the same products they hurt a tape. The answer to "do we stand a
+chance" is unchanged: not yet, and the distance to the top five is 15-40k a game.
+
+**Assessment.** After two sessions the runtime executor sits about 5-10% below the line's
+searched tapes in units and has no market layer beyond selling what reaches the shed;
+the plateau's own agents, the leaders included (Artem's line is a tape on other teams'
+seats, section 4), are searched tapes under runtime layers, and the multi-route family's
+tapes match 3,365 sampled seats through turn 300. Against that, the memo's market rules
+(sell first, meter at the drain, deny) are skeleton-independent: they decide when the shed's
+stock is sold, whatever put it there. **Decision:** build the market layer next as a module
+that works on top of any skeleton, measure it on ours against v5 and v41, and then run the
+architecture question as an arena experiment before the handoff: v41's tapes under our
+market layer against plain v41, in mirror seats. If the tapes-plus-layer wins by the
+leaders' 8-14k margin (section 9b) while our runtime skeleton does not, the handoff will
+say so plainly and recommend switching the skeleton; that is a change to the plan Iminabo
+saw and is flagged as such, not made silently.
