@@ -729,3 +729,13 @@ whether it stands a chance. The only local form of those teams is their recorded
 (`scripts/top10/export_tapes.py`, `scripts/arena.py --b tape:...`), which derail once the
 weeds differ (METHOD.md section 6), so that gauntlet is a floor, not a forecast, and it runs
 once the agent is at parity with the public routers. Phase 3's early submission is cancelled.
+
+### Decision: every executor change is accepted or rejected by a bisect on the production yardstick
+Four edits made together (dig priority, opportunistic deposits, morning animal harvests, a
+stronger haul priority) dropped production against pass from 151.2k to 137.4k, while each
+alone measured 149.2k, 158.2k, 151.8k and 152.7k: the assignment rule interacts with itself.
+From here every change is applied alone to the committed executor and measured on
+`scripts/eval.sh` (production: seeds 1, 2, 4 against pass; competition: seeds 0, 1, 2, 4, 5
+both seats against v5), both deterministic, and kept only if production does not fall and
+the competition margin does not worsen. Scratch bisect script: applies each variant to
+`git show HEAD:agent/executor.py` and runs the production arena.
