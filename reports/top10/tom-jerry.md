@@ -1,51 +1,52 @@
-# Tom&Jerry (rank 48, score 2884.9, next-15)
+# Tom&Jerry (rank 75, score 2863.6, silver)
 
-- team id 16777134; current submission 56221757 (154 public games)
-- 24 submissions found; 5368 public games from 2026-08-26 to 2026-09-15; 57 of them with a known rating
-- sampled games with a replay: 100
+- team id 16777134; current submission 56221757 (228 public games)
+- 24 submissions found; 5518 public games from 2026-08-26 to 2026-09-15; 57 of them with a known rating
+- sampled games with a replay: 150
 
 ## Ladder record by window
 
 | window | games | W-L-T | win % | median bank | mean bank | opp rating (mean) | seat 0 % | engines | from | to |
 |---|---|---|---|---|---|---|---|---|---|---|
+| F | 50 | 43-7-0 | 86 | 90280.5 | 93225.4 | 1435.1 | 36 | 1.32.7 | 2026-08-26 | 2026-08-26 |
 | L | 50 | 31-19-0 | 62 | 90407.5 | 93678.4 | 2837.4 | 64 | 1.32.7 | 2026-09-14 | 2026-09-15 |
 | C0 | 50 | 46-4-0 | 92 | 106862 | 105905.5 | 2204.3 | 48 | 1.32.7 | 2026-09-14 | 2026-09-14 |
 
 ## Rating path of the current submission
 
-game 1: 736, game 10: 1712, game 25: 2506, game 50: 2799, game 100: 2888, game last: 2881
+game 1: 736, game 10: 1712, game 25: 2506, game 50: 2799, game 100: 2888, game 200: nan, game last: 2850
 
 ![rating](figs/tom-jerry_rating.png)
 
 ## Farm plan by window (median per game)
 
-| median per game | L | C0 |
-|---|---|---|
-| hands (peak) | 12 | 12 |
-| quadrants | 3 | 3 |
-| land day 1 | 6 | 6 |
-| land day 2 | 11 | 11 |
-| cows bought | 8 | 6 |
-| sheep bought | 6 | 6 |
-| geese bought | 3 | 3 |
-| first cow day | 0 | 0 |
-| wheat planted | 162 | 162 |
-| carrot planted | 31 | 31 |
-| tomato planted | 0 | 0 |
-| strawberry planted | 33 | 33 |
-| melon planted | 12 | 12 |
-| FERTILIZE ops | 117 | 110 |
-| CARE ops | 405 | 405 |
-| melon sold | 12 | 12 |
-| strawberry sold | 122 | 121 |
-| milk sold | 90.5 | 102 |
-| wool sold | 60 | 62.5 |
-| wheat sold | 352.5 | 340 |
-| fertilizer sold | 286 | 286.5 |
-| units sold last 3 days | 265 | 263 |
-| shed peak | 45 | 45 |
-| weeds spawned | 19 | 19 |
-| unexecutable market orders | 1 | 1 |
+| median per game | F | L | C0 |
+|---|---|---|---|
+| hands (peak) | 15 | 12 | 12 |
+| quadrants | 3 | 3 | 3 |
+| land day 1 | 6 | 6 | 6 |
+| land day 2 | 10 | 11 | 11 |
+| cows bought | 11 | 8 | 6 |
+| sheep bought | 4 | 6 | 6 |
+| geese bought | 0 | 3 | 3 |
+| first cow day | 4 | 0 | 0 |
+| wheat planted | 134 | 162 | 162 |
+| carrot planted | 20 | 31 | 31 |
+| tomato planted | 0 | 0 | 0 |
+| strawberry planted | 41 | 33 | 33 |
+| melon planted | 11 | 12 | 12 |
+| FERTILIZE ops | 80 | 117 | 110 |
+| CARE ops | 343 | 405 | 405 |
+| melon sold | 30 | 12 | 12 |
+| strawberry sold | 249 | 122 | 121 |
+| milk sold | 194 | 90.5 | 102 |
+| wool sold | 110 | 60 | 62.5 |
+| wheat sold | 86 | 352.5 | 340 |
+| fertilizer sold | 214 | 286 | 286.5 |
+| units sold last 3 days | 215 | 265 | 263 |
+| shed peak | 58 | 45 | 45 |
+| weeds spawned | 21 | 19 | 19 |
+| unexecutable market orders | 0 | 1 | 1 |
 
 ![money by day](figs/tom-jerry_money.png)
 
@@ -94,6 +95,7 @@ Distinct action lines per window at each turn cut, with the share of the largest
 
 | window | games | h24 | h48 | h100 | h136 | h200 | h300 | h400 | h719 |
 |---|---|---|---|---|---|---|---|---|---|
+| F | 50 | 1 (100%) | 3 (96%) | 4 (94%) | 6 (78%) | 16 (58%) | 21 (40%) | 22 (40%) | 24 (40%) |
 | L | 50 | 3 (96%) | 4 (94%) | 4 (94%) | 4 (94%) | 12 (46%) | 22 (34%) | 36 (14%) | 49 (4%) |
 | C0 | 50 | 2 (98%) | 3 (96%) | 3 (96%) | 3 (96%) | 14 (28%) | 22 (20%) | 37 (12%) | 50 (2%) |
 
@@ -101,6 +103,7 @@ Distinct action lines per window at each turn cut, with the share of the largest
 
 | window | games | h24 | h48 | h100 | h136 | h200 | h300 | h400 | h719 |
 |---|---|---|---|---|---|---|---|---|---|
+| F | 50 | 1 (100%) | 1 (100%) | 2 (88%) | 2 (88%) | 6 (64%) | 8 (58%) | 44 (6%) | 50 (2%) |
 | L | 50 | 3 (96%) | 3 (96%) | 3 (96%) | 3 (96%) | 12 (46%) | 21 (34%) | 40 (8%) | 50 (2%) |
 | C0 | 50 | 2 (98%) | 2 (98%) | 2 (98%) | 2 (98%) | 12 (32%) | 22 (24%) | 38 (8%) | 50 (2%) |
 
@@ -108,6 +111,7 @@ Distinct action lines per window at each turn cut, with the share of the largest
 
 | window | games | h24 | h48 | h100 | h136 | h200 | h300 | h400 | h719 |
 |---|---|---|---|---|---|---|---|---|---|
+| F | 50 | 1 (100%) | 3 (96%) | 3 (94%) | 4 (78%) | 11 (58%) | 14 (40%) | 15 (40%) | 18 (40%) |
 | L | 50 | 3 (96%) | 4 (94%) | 4 (94%) | 4 (94%) | 14 (46%) | 23 (34%) | 35 (14%) | 50 (2%) |
 | C0 | 50 | 2 (98%) | 3 (96%) | 3 (96%) | 3 (96%) | 14 (28%) | 23 (20%) | 35 (12%) | 50 (2%) |
 
@@ -140,6 +144,7 @@ What goes with being off the modal field line at turn 200 (the first cut where f
 
 | window | games | win % | median bank | hands | cows | sheep | geese | quadrants | land day 1 | strawberry | wheat | melon | melon sold | milk sold | wool sold | field lines @400 | market lines @400 |
 |---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|
+| F | 50 | 86 | 90280.5 | 15 | 11 | 4 | 0 | 3 | 6 | 41 | 134 | 11 | 30 | 194 | 110 | 22 | 44 |
 | L | 50 | 62 | 90407.5 | 12 | 8 | 6 | 3 | 3 | 6 | 33 | 162 | 12 | 12 | 90.5 | 60 | 36 | 40 |
 | C0 | 50 | 92 | 106862 | 12 | 6 | 6 | 3 | 3 | 6 | 33 | 162 | 12 | 12 | 102 | 62.5 | 37 | 38 |
 
@@ -147,6 +152,13 @@ What goes with being off the modal field line at turn 200 (the first cut where f
 
 | window | episode | opponent | opp rating | my bank | opp bank | margin | opp opening | biggest differences (opponent vs me) |
 |---|---|---|---|---|---|---|---|---|
+| F | 100330427 | Deployable LLMs | 1281.7 | 96159 | 97243 | -1084 | 4185a63a | wool sold: they 174 vs me 266; strawberry sold: they 173 vs me 254; milk sold: they 195 vs me 129 |
+| F | 100339558 | t2better | 1299.0 | 134896 | 136375 | -1479 | 902b6f5f | wool sold: they 99 vs me 266; units sold last 3 days: they 206 vs me 350; CARE ops: they 285 vs me 364 |
+| F | 100350995 | Corenthin Buffard | 1520.4 | 70037 | 88490 | -18453 | adc6fac4 | milk sold: they 122 vs me 63; strawberry sold: they 168 vs me 116; units sold last 3 days: they 304 vs me 267 |
+| F | 100355568 | Raunak Dey | 1495.5 | 88319 | 90676 | -2357 | 490408c5 | CARE ops: they 967 vs me 343; milk sold: they 119 vs me 194; melon sold: they 12 vs me 30 |
+| F | 100357849 | Selene | 1486.5 | 54005 | 61323 | -7318 | 490408c5 | CARE ops: they 967 vs me 343; milk sold: they 117 vs me 194; melon sold: they 12 vs me 30 |
+| F | 100364699 | ikeuchy | 1473.8 | 48685 | 56354 | -7669 | 490408c5 | CARE ops: they 967 vs me 343; milk sold: they 119 vs me 194; melon sold: they 12 vs me 30 |
+| F | 100414886 | JeremiahMannings | 1667.4 | 124933 | 135044 | -10111 | 902b6f5f | wool sold: they 74 vs me 266; units sold last 3 days: they 185 vs me 350; milk sold: they 38 vs me 153 |
 | C0 | 108806031 | dddmd | 2540.6 | 68507 | 70148 | -1641 | 9b0c82fd | milk sold: they 143 vs me 98; strawberry sold: they 138 vs me 120; wool sold: they 56 vs me 47 |
 | C0 | 108812343 | Peng Wang | 2632.8 | 114241 | 117959 | -3718 | 9b0c82fd | wool sold: they 236 vs me 178; strawberry sold: they 105 vs me 91; units sold last 3 days: they 227 vs me 220 |
 | C0 | 108819618 | yfy | 2734.7 | 121442 | 126340 | -4898 | 3bc18d7a | milk sold: they 203 vs me 131; strawberry sold: they 156 vs me 126; units sold last 3 days: they 275 vs me 261 |
@@ -176,32 +188,59 @@ What goes with being off the modal field line at turn 200 (the first cut where f
 | opp_team_id | W | L | T |
 |---|---|---|---|
 | 16621799 | 0 | 1 | 0 |
-| 16622198 | 2 | 7 | 0 |
-| 16622349 | 3 | 1 | 0 |
-| 16633100 | 2 | 1 | 0 |
+| 16622198 | 3 | 8 | 0 |
+| 16622349 | 4 | 1 | 0 |
+| 16622459 | 3 | 3 | 0 |
+| 16626191 | 2 | 2 | 0 |
+| 16633100 | 2 | 2 | 0 |
+| 16633178 | 1 | 5 | 0 |
+| 16633944 | 3 | 2 | 0 |
 | 16637255 | 4 | 9 | 0 |
 | 16640467 | 0 | 4 | 0 |
 | 16640510 | 2 | 1 | 0 |
-| 16644724 | 3 | 3 | 0 |
+| 16641710 | 4 | 6 | 0 |
+| 16644724 | 3 | 4 | 0 |
+| 16655383 | 0 | 2 | 0 |
+| 16657100 | 2 | 0 | 2 |
+| 16658554 | 5 | 3 | 0 |
+| 16660726 | 2 | 0 | 0 |
+| 16664246 | 2 | 3 | 0 |
+| 16671741 | 1 | 2 | 0 |
+| 16683936 | 3 | 3 | 0 |
+| 16684093 | 1 | 3 | 0 |
 | 16690867 | 0 | 2 | 0 |
+| 16706321 | 2 | 4 | 0 |
 | 16718819 | 2 | 0 | 0 |
-| 16719123 | 5 | 6 | 0 |
+| 16719123 | 5 | 8 | 0 |
+| 16723379 | 3 | 3 | 0 |
 | 16725899 | 3 | 5 | 0 |
+| 16728071 | 6 | 3 | 0 |
+| 16730524 | 4 | 4 | 0 |
 | 16730612 | 1 | 6 | 0 |
 | 16730761 | 3 | 4 | 0 |
-| 16732403 | 3 | 2 | 0 |
+| 16731186 | 3 | 7 | 0 |
+| 16731275 | 1 | 2 | 0 |
+| 16732403 | 3 | 3 | 0 |
 | 16732521 | 2 | 5 | 0 |
-| 16732748 | 0 | 2 | 0 |
-| 16758882 | 3 | 4 | 0 |
-| 16773026 | 3 | 4 | 0 |
+| 16732748 | 0 | 3 | 0 |
+| 16741542 | 0 | 7 | 0 |
+| 16758882 | 3 | 5 | 0 |
+| 16760569 | 0 | 1 | 0 |
+| 16773026 | 4 | 4 | 0 |
 | 16778640 | 0 | 6 | 0 |
 | 16781445 | 1 | 1 | 0 |
-| 16805699 | 2 | 4 | 0 |
+| 16805699 | 3 | 6 | 0 |
+| 16810299 | 1 | 4 | 0 |
 | 16811307 | 0 | 2 | 0 |
-| 16833141 | 4 | 5 | 0 |
-| 16845367 | 0 | 4 | 0 |
+| 16833141 | 5 | 6 | 0 |
+| 16845367 | 1 | 8 | 0 |
+| 16848479 | 0 | 5 | 0 |
+| 16858228 | 0 | 3 | 0 |
+| 16879253 | 1 | 0 | 0 |
+| 16882725 | 0 | 1 | 0 |
 
 ## Episodes behind each window
 
+- **F** (50): 100314498, 100316778, 100319058, 100321324, 100323608, 100325878, 100328155, 100330427, 100332707, 100334977, 100337266, 100339558, 100341839, 100344148, 100346424, 100348710, 100350995, 100353282, 100355568, 100357849, 100360140, 100362422, 100364699, 100366973, 100369260, 100371540, 100373811, 100376085, 100378362, 100380641, 100382915, 100385187, 100387477, 100389758, 100392042, 100394330, 100396609, 100398899, 100401177, 100403461, 100405745, 100408030, 100410315, 100412597, 100414886, 100417158, 100417384, 100419442, 100421732, 100424009
 - **L** (50): 109035849, 109037293, 109037375, 109038209, 109038467, 109039804, 109040832, 109041534, 109043267, 109046301, 109046318, 109047164, 109047547, 109048191, 109048380, 109052223, 109052576, 109052631, 109053672, 109053898, 109056439, 109056789, 109060941, 109061093, 109061473, 109061497, 109061769, 109066048, 109066103, 109067710, 109068152, 109069376, 109072133, 109072590, 109074266, 109076612, 109078153, 109078176, 109080648, 109081201, 109081829, 109083583, 109084040, 109086555, 109089287, 109089406, 109091333, 109091716, 109092441, 109093560
 - **C0** (50): 108787558, 108788564, 108789575, 108790580, 108790591, 108791587, 108792612, 108793605, 108794618, 108795635, 108796654, 108797685, 108798700, 108799615, 108799730, 108800454, 108800773, 108801866, 108802868, 108803057, 108803978, 108805002, 108806031, 108807074, 108807350, 108808109, 108809150, 108810184, 108811234, 108812277, 108812343, 108813288, 108814321, 108815449, 108816380, 108817425, 108818448, 108819482, 108819618, 108820513, 108820778, 108821558, 108822600, 108823621, 108824760, 108824910, 108825712, 108826117, 108826752, 108827769

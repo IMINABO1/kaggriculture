@@ -219,3 +219,15 @@ entry also says why I missed it and what changes so it does not happen again.
   whenever no replay has landed for 20 minutes, alive or not.
 - **Caught by:** me, on the next hourly check (C0 count unchanged, log timestamp stale).
 - **Prevention:** liveness means "produced output recently", not "process exists".
+
+### P16: the ratings refresher overwrote three pinned submissions
+- **Symptom:** after the C0 fetch finished, `refresh_ratings.py` reported "3 current
+  submissions corrected", one of them yomogii, whose studied submission had been pinned
+  to the first snapshot by `sample.py --keep-c0`.
+- **Cause:** the refresher corrects every team whose `current_sub_source` is not
+  "leaderboard"; the pin writes "frozen", which it read as a guess.
+- **Fix:** "frozen" is now authoritative in the refresher; `sample.py --keep-c0` was re-run
+  to restore the three pins before the feature table was rebuilt.
+- **Caught by:** me, reading the refresher's output before building the report.
+- **Lesson:** a new marker value must be added to every consumer's allow-list the moment
+  it is introduced, not when it bites.

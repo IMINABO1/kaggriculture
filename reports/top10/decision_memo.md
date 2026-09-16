@@ -151,6 +151,49 @@ strawberries earlier; and (c) labour discipline, of which weed handling is the v
 A plan that merely equals the public family's economy lands around rank 15-30; the three
 adaptive layers below are the difference to the top 7.
 
+## Gold, silver, bronze: the zone comparison
+
+Added 2026-09-16 from the full-leaderboard snapshot (2026-09-15T1342Z, 9,125 teams; gold to
+rank 28, silver to 456, bronze to 912). Groups: the top-14; every other gold team the crawl
+could seed (14 profiled of 16); silver, the first-batch teams now in silver plus chunks at
+ranks 120, 250 and 400 (21); bronze, chunks at 470, 600, 750 and 880 (10 profiled of 12).
+The 34 teams added for this comparison have only their current submission's first 50
+games, so their win rates and opponent ratings are entry-phase numbers; four teams with
+fewer than 10 games are left out. Full tables and all pairwise tests in `groups.md`.
+
+**16. One tape family runs the whole medal plateau.** At turn 24, 34 of the 59 profiled
+teams share one byte-identical field line: 7 of the top-14, 7 of 14 gold, 20 of 21 silver,
+10 of 10 bronze. At day 8 the family still has 16 members, and 18 of 21 silver and 10 of 10
+bronze teams remain on a line shared with someone, against 5 of 14 gold and 2 of 14 top-14.
+Tape membership rises monotonically down the zones.
+
+**17. Branching and its drivers follow the same gradient.** First field branch on day 8 or
+later: 3 of 14 top-14, 10 of 14 gold, 18 of 21 silver, 10 of 10 bronze. Opponent-driven
+branching: 2 top-14 teams, 2 gold, none in silver or bronze; below gold it is weeds and the
+first shop draw. Distinct games at turn 400: 100%, 89%, 74%, 64% by zone.
+
+**18. The farm does not change down the zones; labour and market discipline do.** Final
+money is 104k, 106k, 102k, 106k (no gradient) and units sold in the last three days are
+265-269 everywhere. CARE ops rise 334, 363, 405, 417; FERTILIZE ops fall 154, 117, 111,
+103; weed tile-days fall 10.5, 0.2, 0, 0; the last melon sale is day 19 for the top-14 and
+day 11 for all three zones; the first strawberry sale is day 15.5, 16, 19, 18.
+
+**19. Outcomes: the rest of gold is close to the top-14; gold to silver is the real step.**
+Current submissions head to head: top-14 over gold 99-89 (53%), gold over silver 76-37
+(67%), all-time 55% and 59%. Rating after 100 games: 2,967, 2,922, 2,888, 2,622; after 200
+games gold 2,944 against silver 2,838. Bronze banks as much as anyone (105.6k) against
+weaker opponents and its rating stops near 2,620: a zone is decided by who a team can beat,
+not by the size of its farm. The first batch's 60-13 record against the top-14 looked lopsided
+because that batch was mostly silver.
+
+**What this changes:** the same three layers separate every zone from the one above, in the
+same order. Reactivity (a day-1 opening read and per-game branching) is most of what
+separates the top-14 from the rest of gold; labour and market discipline (fewer CARE ops,
+more fertilizer, weeds tolerated, melon sold across days 11-19, strawberries sold earlier)
+separate gold from silver; below that the tape family runs unchanged and the rating simply
+plateaus lower. The build order in "First three experiments" already matches this: economy,
+then execution discipline, then the market and opponent layers.
+
 ## The answer
 
 Not "deterministic" and not "strategy switching". **One plan, adaptive execution:** a fixed

@@ -1,51 +1,52 @@
-# Kilupy (rank 21, score 2934.9, next-15)
+# Kilupy (rank 32, score 2915.9, silver)
 
-- team id 16778640; current submission 56237107 (86 public games)
-- 8 submissions found; 890 public games from 2026-09-03 to 2026-09-15; 0 of them with a known rating
-- sampled games with a replay: 100
+- team id 16778640; current submission 56237107 (153 public games)
+- 13 submissions found; 1308 public games from 2026-09-02 to 2026-09-15; 0 of them with a known rating
+- sampled games with a replay: 150
 
 ## Ladder record by window
 
 | window | games | W-L-T | win % | median bank | mean bank | opp rating (mean) | seat 0 % | engines | from | to |
 |---|---|---|---|---|---|---|---|---|---|---|
+| F | 50 | 25-25-0 | 50 | 79794 | 81948.2 | 821.5 | 52 | 1.32.7 | 2026-09-03 | 2026-09-04 |
 | L | 50 | 29-21-0 | 58 | 94845.5 | 95401.9 | 2872.4 | 52 | 1.32.7 | 2026-09-14 | 2026-09-15 |
 | C0 | 50 | 45-5-0 | 90 | 101670 | 102542.5 | 2319.3 | 44 | 1.32.7 | 2026-09-14 | 2026-09-14 |
 
 ## Rating path of the current submission
 
-game 1: 695, game 10: 1698, game 25: 2719, game 50: 2927, game last: 2934
+game 1: 695, game 10: 1698, game 25: 2719, game 50: 2927, game 100: 2942, game last: nan
 
 ![rating](figs/kilupy_rating.png)
 
 ## Farm plan by window (median per game)
 
-| median per game | L | C0 |
-|---|---|---|
-| hands (peak) | 12 | 12 |
-| quadrants | 3 | 3 |
-| land day 1 | 6 | 6 |
-| land day 2 | 11 | 11 |
-| cows bought | 8 | 8 |
-| sheep bought | 6 | 6 |
-| geese bought | 3 | 3 |
-| first cow day | 0 | 0 |
-| wheat planted | 163 | 162 |
-| carrot planted | 31 | 31 |
-| tomato planted | 0 | 0 |
-| strawberry planted | 33 | 33 |
-| melon planted | 12 | 12 |
-| FERTILIZE ops | 106 | 110 |
-| CARE ops | 405 | 405 |
-| melon sold | 12 | 12 |
-| strawberry sold | 122 | 122 |
-| milk sold | 107 | 103 |
-| wool sold | 86.5 | 73 |
-| wheat sold | 334.5 | 341.5 |
-| fertilizer sold | 285 | 281 |
-| units sold last 3 days | 265 | 264 |
-| shed peak | 45 | 45 |
-| weeds spawned | 20 | 19 |
-| unexecutable market orders | 1 | 1 |
+| median per game | F | L | C0 |
+|---|---|---|---|
+| hands (peak) | 12 | 12 | 12 |
+| quadrants | 3 | 3 | 3 |
+| land day 1 | 7 | 6 | 6 |
+| land day 2 | 10 | 11 | 11 |
+| cows bought | 5 | 8 | 8 |
+| sheep bought | 8 | 6 | 6 |
+| geese bought | 0 | 3 | 3 |
+| first cow day | 0 | 0 | 0 |
+| wheat planted | 107 | 163 | 162 |
+| carrot planted | 11 | 31 | 31 |
+| tomato planted | 1 | 0 | 0 |
+| strawberry planted | 39 | 33 | 33 |
+| melon planted | 15 | 12 | 12 |
+| FERTILIZE ops | 76 | 106 | 110 |
+| CARE ops | 470.5 | 405 | 405 |
+| melon sold | 63 | 12 | 12 |
+| strawberry sold | 193.5 | 122 | 122 |
+| milk sold | 128.5 | 107 | 103 |
+| wool sold | 201.5 | 86.5 | 73 |
+| wheat sold | 196 | 334.5 | 341.5 |
+| fertilizer sold | 576.5 | 285 | 281 |
+| units sold last 3 days | 258 | 265 | 264 |
+| shed peak | 24 | 45 | 45 |
+| weeds spawned | 25 | 20 | 19 |
+| unexecutable market orders | 0 | 1 | 1 |
 
 ![money by day](figs/kilupy_money.png)
 
@@ -94,6 +95,7 @@ Distinct action lines per window at each turn cut, with the share of the largest
 
 | window | games | h24 | h48 | h100 | h136 | h200 | h300 | h400 | h719 |
 |---|---|---|---|---|---|---|---|---|---|
+| F | 50 | 1 (100%) | 7 (86%) | 19 (48%) | 23 (48%) | 49 (4%) | 50 (2%) | 50 (2%) | 50 (2%) |
 | L | 50 | 2 (96%) | 2 (96%) | 3 (94%) | 3 (94%) | 9 (34%) | 21 (26%) | 38 (12%) | 50 (2%) |
 | C0 | 50 | 3 (96%) | 3 (96%) | 3 (96%) | 3 (96%) | 10 (42%) | 18 (26%) | 38 (12%) | 50 (2%) |
 
@@ -101,6 +103,7 @@ Distinct action lines per window at each turn cut, with the share of the largest
 
 | window | games | h24 | h48 | h100 | h136 | h200 | h300 | h400 | h719 |
 |---|---|---|---|---|---|---|---|---|---|
+| F | 50 | 11 (52%) | 12 (50%) | 17 (28%) | 20 (26%) | 49 (4%) | 50 (2%) | 50 (2%) | 50 (2%) |
 | L | 50 | 5 (48%) | 5 (48%) | 6 (48%) | 6 (48%) | 19 (20%) | 26 (16%) | 43 (8%) | 50 (2%) |
 | C0 | 50 | 3 (96%) | 3 (96%) | 3 (96%) | 3 (96%) | 10 (42%) | 19 (26%) | 43 (10%) | 50 (2%) |
 
@@ -108,6 +111,7 @@ Distinct action lines per window at each turn cut, with the share of the largest
 
 | window | games | h24 | h48 | h100 | h136 | h200 | h300 | h400 | h719 |
 |---|---|---|---|---|---|---|---|---|---|
+| F | 50 | 11 (52%) | 16 (42%) | 30 (16%) | 32 (16%) | 49 (4%) | 50 (2%) | 50 (2%) | 50 (2%) |
 | L | 50 | 5 (48%) | 5 (48%) | 7 (48%) | 7 (48%) | 20 (20%) | 27 (16%) | 41 (6%) | 50 (2%) |
 | C0 | 50 | 3 (96%) | 3 (96%) | 3 (96%) | 3 (96%) | 12 (42%) | 20 (26%) | 38 (12%) | 50 (2%) |
 
@@ -140,6 +144,7 @@ What goes with being off the modal field line at turn 200 (the first cut where f
 
 | window | games | win % | median bank | hands | cows | sheep | geese | quadrants | land day 1 | strawberry | wheat | melon | melon sold | milk sold | wool sold | field lines @400 | market lines @400 |
 |---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|
+| F | 50 | 50 | 79794 | 12 | 5 | 8 | 0 | 3 | 7 | 39 | 107 | 15 | 63 | 128.5 | 201.5 | 50 | 50 |
 | L | 50 | 58 | 94845.5 | 12 | 8 | 6 | 3 | 3 | 6 | 33 | 163 | 12 | 12 | 107 | 86.5 | 38 | 43 |
 | C0 | 50 | 90 | 101670 | 12 | 8 | 6 | 3 | 3 | 6 | 33 | 162 | 12 | 12 | 103 | 73 | 38 | 43 |
 
@@ -147,6 +152,31 @@ What goes with being off the modal field line at turn 200 (the first cut where f
 
 | window | episode | opponent | opp rating | my bank | opp bank | margin | opp opening | biggest differences (opponent vs me) |
 |---|---|---|---|---|---|---|---|---|
+| F | 105171546 | kglctf | 1017.4 | 103864 | 134696 | -30832 | 79ce6b41 | CARE ops: they 308 vs me 462; units sold last 3 days: they 216 vs me 268; milk sold: they 134 vs me 177 |
+| F | 105172430 | IsThereAnyCode | 1063.3 | 57243 | 84851 | -27608 | 3bc18d7a | wool sold: they 71 vs me 296; strawberry sold: they 92 vs me 199; milk sold: they 161 vs me 72 |
+| F | 105174229 | Divyansh | 914.8 | 86977 | 95753 | -8776 | 8967c0e2 | CARE ops: they 322 vs me 481; milk sold: they 86 vs me 204; units sold last 3 days: they 144 vs me 254 |
+| F | 105175031 | zhangtingyu11 | 880.6 | 63703 | 102149 | -38446 | 3797eb2c | CARE ops: they 308 vs me 472; wool sold: they 100 vs me 215; milk sold: they 183 vs me 72 |
+| F | 105175896 | Milkman | 926.3 | 81800 | 86893 | -5093 | 8967c0e2 | CARE ops: they 322 vs me 466; wool sold: they 64 vs me 205; units sold last 3 days: they 147 vs me 263 |
+| F | 105176772 | Tekin24 | 877.7 | 105375 | 112440 | -7065 | 44f185e6 | units sold last 3 days: they 516 vs me 256; milk sold: they 246 vs me 72; wool sold: they 115 vs me 282 |
+| F | 105179416 | Bugra0 | 864.7 | 80949 | 84835 | -3886 | 3797eb2c | CARE ops: they 308 vs me 476; wool sold: they 83 vs me 142; wheat planted: they 66 vs me 102 |
+| F | 105184621 | irynavs | 896.5 | 101363 | 142536 | -41173 | 3797eb2c | wool sold: they 100 vs me 289; CARE ops: they 308 vs me 473; milk sold: they 180 vs me 72 |
+| F | 105185492 | harmo-miu | 855.6 | 40138 | 55289 | -15151 | 718fe4b8 | CARE ops: they 244 vs me 481; wool sold: they 42 vs me 124; melon sold: they 120 vs me 60 |
+| F | 105186389 | visit palja.co | 828.1 | 67196 | 85907 | -18711 | db0744f9 | CARE ops: they 308 vs me 448; milk sold: they 197 vs me 71; wool sold: they 110 vs me 178 |
+| F | 105188125 | sgsuh | 757.8 | 69551 | 88666 | -19115 | dfdb403a | CARE ops: they 220 vs me 461; wool sold: they 26 vs me 235; milk sold: they 197 vs me 69 |
+| F | 105189145 | yukio | 798.5 | 68297 | 84002 | -15705 | 30256172 | CARE ops: they 327 vs me 484; milk sold: they 113 vs me 234; wheat planted: they 174 vs me 101 |
+| F | 105189895 | nic001 | 766.4 | 79662 | 88909 | -9247 | 02f7dbb6 | CARE ops: they 286 vs me 482; units sold last 3 days: they 198 vs me 262; milk sold: they 192 vs me 148 |
+| F | 105195521 | Tesla1AC | 873.8 | 89529 | 107664 | -18135 | 8a9e3039 | CARE ops: they 296 vs me 460; wool sold: they 98 vs me 192; melon sold: they 126 vs me 63 |
+| F | 105197570 | Nolan Liang | 964.7 | 51552 | 55968 | -4416 | 19b7fa8e | CARE ops: they 322 vs me 472; units sold last 3 days: they 197 vs me 250; milk sold: they 98 vs me 129 |
+| F | 105198658 | yunus_bayram_kagle | 872.7 | 51906 | 57602 | -5696 | 3797eb2c | CARE ops: they 308 vs me 504; milk sold: they 183 vs me 238; wool sold: they 100 vs me 142 |
+| F | 105199687 | Chase Lebarv | 848.2 | 64441 | 69934 | -5493 | e4653146 | CARE ops: they 249 vs me 511; units sold last 3 days: they 336 vs me 258; wheat planted: they 61 vs me 102 |
+| F | 105218154 | Rintaro Moriwaki | 777.7 | 48471 | 68899 | -20428 | 3a45ec07 | CARE ops: they 293 vs me 462; wool sold: they 75 vs me 236; units sold last 3 days: they 113 vs me 257 |
+| F | 105232864 | SG4265 | 826.8 | 102863 | 120059 | -17196 | a82f6a7c | CARE ops: they 322 vs me 491; milk sold: they 182 vs me 72; wool sold: they 188 vs me 290 |
+| F | 105293040 | Moro | 804.6 | 102101 | 124355 | -22254 | bb1c42a7 | CARE ops: they 351 vs me 453; milk sold: they 111 vs me 210; strawberry sold: they 82 vs me 179 |
+| F | 105307935 | Jamie Nojek | 889.0 | 79926 | 125604 | -45678 | a9071c86 | wool sold: they 115 vs me 242; strawberry sold: they 86 vs me 188; wheat planted: they 195 vs me 108 |
+| F | 105326407 | Peter Parker | 918.2 | 58519 | 95896 | -37377 | 3bc18d7a | CARE ops: they 384 vs me 493; wheat planted: they 194 vs me 102; strawberry sold: they 100 vs me 167 |
+| F | 105357595 | edward1503 | 727.6 | 40492 | 76470 | -35978 | 87b52758 | milk sold: they 56 vs me 231; strawberry sold: they 79 vs me 201; CARE ops: they 351 vs me 464 |
+| F | 105360753 | Adil Khabibullin | 772.8 | 72948 | 95150 | -22202 | a566b056 | milk sold: they 230 vs me 72; CARE ops: they 296 vs me 445; wool sold: they 132 vs me 245 |
+| F | 105461759 | Leo Lilley | 945.9 | 74349 | 90915 | -16566 | fae92ea9 | CARE ops: they 354 vs me 474; FERTILIZE ops: they 155 vs me 66; milk sold: they 72 vs me 148 |
 | C0 | 109033808 | Kostiantyn Isaienkov | 2883.5 | 115601 | 116551 | -950 | 9b0c82fd | strawberry sold: they 124 vs me 119; units sold last 3 days: they 266 vs me 261; milk sold: they 105 vs me 102 |
 | C0 | 109034387 | Artem The Farmer 🍅 | 3001.8 | 68294 | 77034 | -8740 | d6cc83df | CARE ops: they 290 vs me 405; wool sold: they 37 vs me 101; milk sold: they 56 vs me 95 |
 | C0 | 109034632 | skw1990 | 2834.6 | 82630 | 85117 | -2487 | 5738b34d | wool sold: they 182 vs me 126; strawberry sold: they 133 vs me 117; milk sold: they 78 vs me 91 |
@@ -178,32 +208,54 @@ What goes with being off the modal field line at turn 200 (the first cut where f
 
 | opp_team_id | W | L | T |
 |---|---|---|---|
-| 16621799 | 0 | 3 | 0 |
-| 16622198 | 0 | 1 | 0 |
-| 16622349 | 0 | 1 | 0 |
-| 16637255 | 0 | 1 | 0 |
-| 16640467 | 1 | 3 | 0 |
-| 16640510 | 0 | 1 | 0 |
+| 16621799 | 0 | 5 | 0 |
+| 16622198 | 1 | 2 | 0 |
+| 16622349 | 0 | 2 | 0 |
+| 16622459 | 0 | 1 | 0 |
+| 16633100 | 1 | 1 | 0 |
+| 16633178 | 2 | 5 | 0 |
+| 16637255 | 1 | 1 | 0 |
+| 16640467 | 1 | 4 | 0 |
+| 16640510 | 1 | 2 | 0 |
+| 16641710 | 0 | 3 | 0 |
 | 16644724 | 0 | 2 | 0 |
+| 16655383 | 0 | 1 | 0 |
+| 16658554 | 1 | 3 | 0 |
+| 16660726 | 2 | 4 | 0 |
+| 16664246 | 1 | 2 | 0 |
 | 16675778 | 0 | 3 | 0 |
+| 16684093 | 3 | 0 | 0 |
 | 16690867 | 0 | 2 | 0 |
-| 16719123 | 0 | 2 | 0 |
-| 16730612 | 1 | 1 | 0 |
+| 16706321 | 1 | 2 | 0 |
+| 16718819 | 0 | 1 | 0 |
+| 16719123 | 1 | 3 | 0 |
+| 16723379 | 0 | 1 | 0 |
+| 16728071 | 0 | 4 | 0 |
+| 16730524 | 0 | 6 | 0 |
+| 16730612 | 1 | 2 | 0 |
 | 16730761 | 1 | 3 | 0 |
-| 16732521 | 2 | 1 | 0 |
-| 16732748 | 0 | 1 | 0 |
+| 16731186 | 1 | 0 | 0 |
+| 16731275 | 2 | 3 | 0 |
+| 16732521 | 2 | 2 | 0 |
+| 16732748 | 0 | 2 | 0 |
+| 16741542 | 1 | 0 | 0 |
 | 16758882 | 0 | 1 | 0 |
-| 16760569 | 2 | 0 | 0 |
-| 16773026 | 1 | 2 | 0 |
+| 16760569 | 3 | 0 | 0 |
+| 16773026 | 2 | 2 | 0 |
 | 16777134 | 6 | 0 | 0 |
-| 16781445 | 0 | 1 | 0 |
-| 16805699 | 0 | 1 | 0 |
-| 16811307 | 0 | 3 | 0 |
-| 16833141 | 1 | 3 | 0 |
-| 16845367 | 0 | 3 | 0 |
+| 16781445 | 0 | 4 | 0 |
+| 16805699 | 0 | 3 | 0 |
+| 16811307 | 1 | 4 | 0 |
+| 16833141 | 3 | 3 | 0 |
+| 16845367 | 0 | 4 | 0 |
+| 16848479 | 1 | 6 | 0 |
 | 16858228 | 1 | 0 | 0 |
+| 16879253 | 0 | 2 | 0 |
+| 16880773 | 1 | 0 | 0 |
+| 16882725 | 0 | 1 | 0 |
 
 ## Episodes behind each window
 
+- **F** (50): 105167257, 105168120, 105168977, 105169831, 105170731, 105171546, 105172430, 105173296, 105174229, 105175031, 105175896, 105176772, 105177682, 105178544, 105179416, 105180284, 105181157, 105182018, 105182881, 105183743, 105184621, 105185492, 105186389, 105187242, 105188125, 105189145, 105189895, 105190804, 105191846, 105193034, 105194392, 105195521, 105196391, 105197570, 105198658, 105199687, 105218154, 105232864, 105259241, 105293040, 105307935, 105326407, 105333172, 105357595, 105360753, 105400088, 105439824, 105440547, 105461187, 105461759
 - **L** (50): 109054300, 109054309, 109055327, 109055338, 109055352, 109055842, 109056372, 109056378, 109057418, 109057419, 109058460, 109058467, 109059113, 109059519, 109059522, 109060167, 109060685, 109060600, 109061592, 109061598, 109062625, 109062642, 109063655, 109063670, 109064605, 109064619, 109065732, 109065741, 109066762, 109066775, 109066810, 109067812, 109067865, 109069074, 109069099, 109069902, 109072338, 109072545, 109074354, 109074373, 109076761, 109079306, 109081873, 109082891, 109084265, 109088184, 109089606, 109092800, 109093957, 109095086
 - **C0** (50): 108998380, 108999416, 109000397, 109001431, 109002456, 109003481, 109004505, 109005534, 109006565, 109006827, 109007590, 109008619, 109009646, 109010677, 109011702, 109012756, 109013801, 109014856, 109015899, 109016944, 109018007, 109019082, 109020106, 109021174, 109021433, 109022189, 109023232, 109024303, 109025304, 109026352, 109027388, 109028424, 109029457, 109030152, 109030498, 109031527, 109032555, 109033808, 109034387, 109034632, 109035677, 109036697, 109037730, 109038764, 109039804, 109040832, 109041867, 109042903, 109043926, 109044986

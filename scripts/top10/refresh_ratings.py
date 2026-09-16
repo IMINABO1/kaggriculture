@@ -60,6 +60,8 @@ def main() -> None:
     known = sampled.groupby("sub").rating_after.apply(lambda s: s.notna().mean())
     current = set(hist[hist.is_current_sub]["sub"])
     guessed = set(teams[teams.current_sub_source == "latest-episode"].current_sub.dropna())
+    frozen = set(teams[teams.current_sub_source == "frozen"].current_sub.dropna())
+    current |= frozen
     for sub in guessed:
         known[sub] = known.get(sub, 0.0)
     order = sorted(known.index, key=lambda s: (s not in guessed, s not in current, known[s]))
@@ -95,7 +97,7 @@ def main() -> None:
     fixed = 0
     for i, r in teams.iterrows():
         real = leaderboard_sub.get(int(r.team_id))
-        if r.current_sub_source == "leaderboard" or real is None:
+        if r.current_sub_source in ("leaderboard", "frozen") or real is None:
             continue
         if real != int(r.current_sub):
             print(f"current submission of {r.team_name}: {int(r.current_sub)} -> {real}")

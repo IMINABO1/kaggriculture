@@ -357,3 +357,25 @@ showed. The fetcher now runs `--windows C0,F` and exits when those are complete;
 four-group report is built when C0 lands, refreshed when F lands, and the thorough
 analysis of the zone comparison follows in a fresh session. Replays on disk at this point:
 6,700; the quarter windows can be fetched later if a finding needs them.
+
+## 2026-09-16
+
+### Checkpoint: four-group comparison built (top-14, gold, silver, bronze)
+C0 landed for all 63 teams at 03:20Z (2,949 replays, 7,221 episodes with features). The
+refresher overwrote three pinned submissions on the way (P16, fixed and re-pinned before
+the build). `reports/top10/groups.md` now compares four groups (14 top-14, 14 gold, 21
+silver, 10 bronze profiled; four teams with fewer than 10 games left out). Headline
+numbers, all per-team medians of the current submission:
+- One tape family runs the plateau: at turn 24, 34 of 59 teams share one field line (7
+  top-14, 7 gold, 20 of 21 silver, 10 of 10 bronze); at day 8 silver 18 of 21 and bronze
+  10 of 10 are still on a shared line, gold 5 of 14, top-14 2 of 14.
+- First branch on day 8 or later: 3, 10, 18, 10 of 14, 14, 21, 10. Opponent-driven
+  branching: 2 top-14, 2 gold, none below. Distinct games at turn 400: 100, 89, 74, 64%.
+- Same farm everywhere (final money 104k, 106k, 102k, 106k; last-3-day units 265-269);
+  CARE 334, 363, 405, 417; FERTILIZE 154, 117, 111, 103; weed tile-days 10.5, 0.2, 0, 0;
+  last melon sale day 19 vs 11, 11, 11.
+- Head to head, current submissions: top-14 over gold 99-89 (53%), gold over silver
+  76-37 (67%). Rating after 100 games: 2,967, 2,922, 2,888, 2,622. The first batch's
+  60-13 looked lopsided because that batch was mostly silver.
+Memo findings 16-19 added. The fetcher continues on the F window (about 190 replays);
+milestone B closes the fetch. Thorough analysis follows in a fresh session per Iminabo.

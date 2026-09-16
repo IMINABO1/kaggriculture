@@ -1,8 +1,12 @@
 {
- "teams": 29,
- "top": 14,
- "batch": 15,
- "episodes_with_features": 5177,
- "top_seats": 5635,
+ "teams": 63,
+ "groups": {
+  "top": 14,
+  "gold": 16,
+  "silver": 21,
+  "bronze": 12
+ },
+ "episodes_with_features": 7221,
+ "top_seats": 8020,
  "profile_window": "current"
 }
