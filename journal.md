@@ -566,3 +566,19 @@ the shop draw). Silver and bronze centroids are indistinguishable from gold's fa
 (1.0 / 1.2 vs 0.8). So the zones are not strategies: there is one dense public point, and
 around it a halo of hand-built agents, each in its own place. Sales features are added to
 the PCA and the k-means run once the rebuild lands.
+
+**Correction to the entry above.** The sentence "care banked on non-yield days is wasted on
+cows and sheep once the max_held cap is hit" is wrong: the engine adds every fed-and-cared day
+to `pending_care_bonus` and pays the whole bank at the next production, so a cow cared on
+both days of its cycle gives 3 milk instead of 1, and a CARE op is worth one unit of premium
+product as long as the tile is harvested. Reading CARE per animal by day from the traces
+shows where the leaders' lower total comes from: every zone cares every animal every day
+through day 16 (ratio 1.0); from day 17-20 the top-14 drop to 0.76-0.88 while gold, silver
+and bronze stay at 1.0 through day 27; and in the last three days the leaders wind down
+(0.56, 0.27, 0.00 on days 27-29; Artem 0.66 / 0.41 / 0.15; ymg_aq 0.10 / 0.00 / 0.00) while
+the family cares at 0.88-1.00 until day 28 and stops only on day 29. The leaders also let
+their herds shrink at the end (12 animals at day 29 against 17: unfed animals escape after
+two days, which costs nothing once no further sale is possible). "Labour discipline" is thus
+an end-game rule: stop paying for yields that cannot be sold before the season ends, and put
+those hands on harvest and hauling instead. The mid-game dip (days 17-26) is unexplained yet
+and may be prioritisation of harvest over care when both compete for a hand.
