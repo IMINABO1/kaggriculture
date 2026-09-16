@@ -52,6 +52,10 @@ MELON_DAY = 0
 
 WHEAT_FEED_RESERVE_DAYS = 1   # shed wheat kept back from sales, in days of feed
 
+# the public line's tape (agent/line_v41.py) plays the first TAPE_DAYS days, our runtime agent
+# the rest; 0 is our agent alone, 30 the tape alone (journal 2026-09-16, hybrid curve)
+TAPE_DAYS = 16
+
 
 def cumulative(target: dict[int, int], day: int) -> int:
     return max([n for d, n in target.items() if d <= day], default=0)
