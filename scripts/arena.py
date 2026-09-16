@@ -3,9 +3,10 @@
     uv run python scripts/arena.py --a main.py --b starter --seeds 0-9
     uv run python scripts/arena.py --a main.py --b opponents/ref/rancher_rita.py --seeds 100-119 --jobs 4
     uv run python scripts/arena.py --a main.py --b "tape:opponents/top10/majkel1337_*.json" --jobs 4
+    uv run python scripts/arena.py --a main.py --b line:v5 --seeds 0-19 --jobs 3
 
-Opponents are builtin names, agent files, or `tape:<glob>` recordings exported by
-scripts/top10/export_tapes.py. A tape plays its recorded actions in its recorded seat on its
+Opponents are builtin names, agent files, `line:<name>` public-line routers (LINES below),
+or `tape:<glob>` recordings exported by scripts/top10/export_tapes.py. A tape plays its recorded actions in its recorded seat on its
 recorded seed, so the recorded bank of the seat we take over is a ground-truth reference.
 Pass --tape-both-seats to also play each tape from the other seat.
 
@@ -28,6 +29,13 @@ from pathlib import Path
 ROOT = Path(__file__).resolve().parents[1]
 RESULTS = ROOT / "results" / "arena.csv"
 BUILTINS = {"starter", "random", "pass"}
+# public-line routers pulled from Kaggle (data/notebooks/, gitignored; see journal 2026-09-16)
+LINES = {
+    "line:0909": "data/notebooks/shop-router-0909/output/main.py",
+    "line:0913": "data/notebooks/shop-router-0913/output/main.py",
+    "line:v5": "data/notebooks/kaggriculture-shop-router-reactive-v5/output/main.py",
+    "line:v6": "data/notebooks/kaggriculture-shop-router-reactive-v6/output/main.py",
+}
 FIELDS = [
     "ts",
     "a",
@@ -60,7 +68,7 @@ def parse_seeds(spec: str) -> list[int]:
 def resolve(spec: str) -> str:
     if spec in BUILTINS:
         return spec
-    path = Path(spec)
+    path = Path(LINES.get(spec, spec))
     if not path.is_absolute():
         path = ROOT / path
     if not path.exists():
