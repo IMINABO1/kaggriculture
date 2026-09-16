@@ -650,3 +650,47 @@ Thomas Tschinkel's F window and Mengfei Li's Q1 window show blank sales cells in
 dossiers; the breadth-table bug found on the way is P20 (numpy booleans add as OR, every
 team scored 1). `deep.py` rebuilt: medians 4.5 / 3.5 / 2 / 1, AUC 0.67 / 0.73 / 0.86, the
 memo's numbers within rounding. Nothing else in analysis.md moved.
+
+### Milestone: the public line's source is on Kaggle, and it runs locally as the arena opponent
+Searching the competition's notebooks for the line's date (first seen 2026-09-09, section 4
+of analysis.md) found `yhay81/shop-router-0909` (Apache-2.0): a `main.py` that replays one
+of 13 complete 719-turn tapes, picks the tape at step 144 from the first two shops (a Yarn
+Store among them gives a 6-cow / 10-11-sheep / 0-goose plan instead of 8 / 6 / 3; a double
+Yarn Store 4 / 14 / 0), inserts DIG when a weed blocks a planned PLANT or BUILD, brings
+sales forward one turn, and liquidates on the last turn. Its plan 0 matches Catalyst's
+recorded farmer-and-hand actions for the first 317 turns (13 days). The plateau's current
+variants are `aurax7/kaggriculture-shop-router-reactive-v5` (2026-09-14, 92 votes) and
+`-v6` (2026-09-16): the same tapes under a 3,300-line stack of runtime repairs (feed
+reserve, weed repair, sale lead, budget guard, terminal liquidation) from the
+ahmedberatozer / prvsiyan / thomastschinkel lineage, all Apache-2.0. Replaying each router
+in the recorded seat of one C0 game per family team, with the opponent's recorded stream
+as a tape (`data/notebooks/`, gitignored; `logs/fidelity_routers.log`):
+- v5 reproduces Cyrus's and Toru59er's games exactly (0 differing field turns, bank +0),
+  ElephtAI's within 15 turns (+$1,437) and Catalyst's within 71 turns from turn 317 (-$1,736);
+- v6 reproduces Toru59er exactly and Thomas Tschinkel, Kilupy and Tom&Jerry within 7-15
+  turns from turn 349-383 (+$267 to +$1,211);
+- kyy666, doubao and mtmr_s1 run forks that part from every candidate by turn 2, 94 and
+  218; v5 is still within $1.2k of two of them.
+- v5's router never switches plan (it reads the shops and discards them; every game is
+  plan 0, then the shared ending at step 648); v6 and 0909 switch on the Yarn Store.
+So the family's whole shop response is that one switch, and the "8-9 cows with a milk shop"
+of section 3 is the same switch seen from the other side (no Yarn Store means the 8-cow
+plan). The leaders' carrots and tomatoes remain real reactions.
+
+### Decision: the yardstick is the public routers themselves; the runtime clone is our skeleton
+The plan's Phase 1 asked for a runtime reimplementation of the line as "the only faithful
+arena opponent". The routers are more faithful than any reimplementation can be (they are
+the opponent), so the arena's public-line opponents are v5, v6, 0909 and 0913 run from
+`data/notebooks/` (aliases `line:v5` etc. in `scripts/arena.py`), re-pulled when a new
+notebook takes over the plateau. The runtime clone is still built, because every Phase 2
+layer (following the town beyond the Yarn Store, the end-game taper, metering and denial)
+needs an executor that re-plans from the observation, which a tape cannot do. Its
+acceptance changes accordingly: bank within about 2k of the routers' in the same seats, and
+a paired-seat win rate near 50% against v5 on fixed seeds, both seats. Not yet approved by
+Iminabo in so many words; the session was opened under the name "phase 1" and this keeps
+Phase 1's intent, so the work proceeds and the change is flagged in the handoff.
+
+**Note (environment).** The first fidelity run raised the framework's 1,200-second
+`runTimeout` on its first game; the rerun took 5-11 s a game. It coincided with `deep.py`
+and three other `uv` processes running at once, so it is filed as memory pressure on this
+machine, not a router property. Keep arena batches to a few processes.
