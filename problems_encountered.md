@@ -206,3 +206,16 @@ entry also says why I missed it and what changes so it does not happen again.
 - **Caught by:** me (background job exited with a traceback).
 - **Prevention:** the same rule as P7 and P12: a network call in a long job retries on
   every transient failure, not only the one seen last.
+
+### P15: the detached fetcher stalled silently for three and a half hours
+- **Symptom:** the fetch log stopped at 21:18Z and no replay landed until 00:49Z, while
+  both fetcher processes stayed alive with no error. The hourly maintenance job did not
+  fire between 21:23Z and 00:23Z either.
+- **Cause:** most likely the machine slept (both the fetcher's connections and the
+  in-session scheduler went quiet at the same time); after waking, the two worker threads
+  sat in requests that never returned. Not proven; no error was recorded anywhere.
+- **Fix:** killed and relaunched the fetcher; it immediately drew a 125-replay burst from
+  the quota that had refilled during the stall. The hourly job now restarts the fetcher
+  whenever no replay has landed for 20 minutes, alive or not.
+- **Caught by:** me, on the next hourly check (C0 count unchanged, log timestamp stale).
+- **Prevention:** liveness means "produced output recently", not "process exists".
