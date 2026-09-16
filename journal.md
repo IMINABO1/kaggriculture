@@ -1210,3 +1210,12 @@ Production basket 96,041 (S 95,566), bank 149,710 (148,836), wheat 408 (400); co
 basket 96,514 (96,754), margin -24,022 (-24,516), mean bank 86,858 vs 110,881. Both gates
 pass; kept. A wheat at its ready age no longer waits past nightfall for a watering that
 adds one unit; the tile is freed for tonight's replanting instead.
+
+### Decision: A2 (animal products collected from hour 16) rejected; the hour matters the other way
+Production basket 95,043 (W1 96,041), bank 148,339 (149,710); competition margin -28,388
+(-24,022), our mean bank 86,128 (86,858), v5's 114,516 (110,881). Deferring the collection
+so the day-end drop sells milk and wool at hour 1 hands v5 3.6k: our units then land
+after v5's daytime lots of the same day, not beside its hour-1 lot. Together with C1
+(caring before collecting, v5 +2.7k), both changes that put our animal products into the
+market later raised v5's bank, so the mirror rule is tested next as A3: collect milk, wool
+and eggs first thing in the morning, before feeding and caring.
