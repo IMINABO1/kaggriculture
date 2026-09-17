@@ -20,7 +20,7 @@ SHOP_ID = {s: i + 1 for i, s in enumerate(SHOPS)}
 QUADRANT_BIT = {"NW": 1, "NE": 2, "SW": 4, "SE": 8}
 TOP_DESTS = 4               # candidate destinations tried per unit before giving up
 WAIT_FOR_INPUT_HOUR = 2
-HERD_GUARD_HOUR = 14        # an animal unfed since yesterday escapes tonight unless fed by day end
+HERD_GUARD_HOUR = int(__import__("os").environ.get("KAGG_HERD_GUARD", 14))  # an animal unfed since yesterday escapes tonight; 99 = off
 # what a NONE prediction means: "pass" idles the unit as the team would, "greedy" hands it
 # to the executor for the step (fidelity 0.69 against 0.67 and -50.6k against -54.4k vs
 # v41 with the six-epoch weights, journal 2026-09-17; KAGG_CLONE_NONE overrides)

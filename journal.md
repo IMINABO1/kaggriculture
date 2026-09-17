@@ -2382,4 +2382,8 @@ fine-tuning the general weights on its games is the next offline run.
 ### Checkpoint: herd guard and scaled schedules, measured
 Fidelity 0.76 of the recorded bank (from 0.74; the diagnosed game 64,186 from 60,649);
 the sequence of fidelity readings today: 0.67, 0.69, 0.71, 0.73, 0.74, 0.76. The arena
-against v41 follows.
+against v41: 0-20 at -47,746 (77,314 against 125,061; basket 87,278), 3k worse than the
+-44,788 before the two changes, so the readings part: the recorded seats like the
+changes, the live line does not. The two are separated next: the guard alone off
+(`KAGG_HERD_GUARD=99`) against the same seeds gives the schedule's effect, and the
+difference to -47,746 the guard's.
