@@ -1657,3 +1657,15 @@ added since the pull began at 03:23Z). The endpoint runner is in quota waits bet
 batches (2-4 a minute); at that pace the 10 GB cap is about two weeks away and the log
 is `data/gold/pull.log`. Both runners survive this session; rerunning the `.cmd` files
 resumes them.
+
+### Checkpoint: search run 2 has stalled at the adopted constants
+By 10:42Z: 477 candidates on the twenty search seeds, 7 accepted, best -4,827 (the adopted
+state scores about -4,857 there), hold-out on seeds 20-29 -8,829 (from -8,915 at start),
+and no improvement since candidate 214. The 47-constant space is at a local optimum
+around the adopted state; the remaining 4-5k to the tape's second half is in what the
+executor does (its assignment of units to jobs, its walking), not in how it weighs the
+jobs. The run finishes its budget at about 11:52Z for the record and will not change the
+package. What would move the second half from here is a different executor (a planned
+daily route per unit rather than the greedy pair assignment) or a different skeleton,
+both larger than the days that remain before the entry deadline of 2026-09-23 allow
+without a decision on scope.
