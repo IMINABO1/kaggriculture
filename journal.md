@@ -1430,3 +1430,16 @@ kept; D3 (haul threshold 250) -6,108 and -1,682 and H2 (late harvest from hour 1
 and -1,904, both a little better, re-tested on top of C3 with C5 (carrots from day 23 on
 the freed strawberry tiles). End-game stack: W2, H3, C1, C3: from -7,979 and -3,698 to
 -5,682 and -1,229 at switch day 24.
+
+### Checkpoint: sixth batch; D3 accepted, the end-game pass closes
+On W2, H3, C1, C3 (baseline -5,682 against v41, -1,229 against v5): D3 (haul threshold
+250) -5,606 and -1,029, kept; H2 (late harvest from hour 15) -5,756 and -1,349, rejected;
+C5 (carrots from day 23) identical to the baseline, no strawberry tile is free that day,
+dropped. End-game stack at switch day 24: W2, H3, C1, C3, D3, from -7,979 and -3,698 to
+-5,606 and -1,029 (our mean bank 92,144 against v41's 97,750; 94,243 against v5's
+95,272). Rejected on the way: F2, L1, S2, FW, FR (no effect), L0, H4, E2e, E4 (twice),
+H2, C5. Tests 13 of 13; package builds and self-plays. Still 0-20 against both lines at
+this switch day; the remaining 5.6k against v41 sits in days 24-29 and the next candidates
+from the op comparison are the strawberry doublings (11 against 6 fertilized on day 24)
+and the fertilizer that is sold at $1-15 instead of spread. The gauntlet and the
+ladder-style coupled run were not repeated after this stack.
