@@ -2202,3 +2202,18 @@ on day 0 and 12 on day 9 for feed then 2-5 a day. These are now `plan.TFC_*` and
 `plan.tfc_animal_targets(day, shops)`; `agent/market.py` uses them when `POLICY ==
 "clone"`, and buys the seeds the clone reports wanting (`clone_seed_wanted`) instead
 of the v41 layout's.
+
+### Checkpoint: six epochs of the THIRD FARM CLUB clone
+Test set (its 25 latest games, 177,508 unit-steps), by epoch: destination top-1 0.667,
+0.706, 0.726, 0.742, 0.748, 0.753; within one tile 0.815 to 0.856; op given the true
+destination 0.843 to 0.910; joint (right tile and right op) 0.571, 0.608, 0.662, 0.681,
+0.692, 0.697; NONE 0.27 (the model gives a job to most units the team leaves idle). Joint
+by day at epoch 5: 0.978 on days 0-5 (the tape's days), 0.70 on days 6-15, 0.65 on days
+16-23, 0.62 on days 24-29. Per op at epoch 5: CARE 0.955, PICKUP 0.918, PLACE 0.893,
+PLANT 0.89, DROP 0.873, FEED 0.872, WATER 0.80, BUILD_PASTURE 0.77, COLLECT 0.75,
+HARVEST 0.65, FERTILIZE 0.64, BUILD_COOP 0.48, DIG 0.40. Gate G1 asks for joint 0.80 and
+op-given-destination 0.90: the second is met, the first is not, and the curve is still
+rising, so a ten-epoch continuation at a lower rate runs alongside the general model.
+The one-epoch weights are exported to `agent/clone_weights.npz` (numpy forward equal to
+torch) for the first end-to-end runs: one local game for errors and step time, then ten
+recorded-seat fidelity games.
