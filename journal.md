@@ -1443,3 +1443,12 @@ this switch day; the remaining 5.6k against v41 sits in days 24-29 and the next 
 from the op comparison are the strawberry doublings (11 against 6 fertilized on day 24)
 and the fertilizer that is sold at $1-15 instead of spread. The gauntlet and the
 ladder-style coupled run were not repeated after this stack.
+
+### Checkpoint: the D3 stack under ladder conditions (Iminabo's question)
+Coupled shop draw, fresh seeds 10-29, both seats: against v41 0-40, mean bank 90,264
+against 97,496, margin -7,231 (before the end-game pass: 0-40, -10,153); against v5 8-32,
+91,047 against 93,201, margin -2,154 (before: 1-39, -4,989). The end-game pass moved the
+ladder-style margin by about 2.9k against both lines and turned the v5 matchup from one
+win in forty to eight, but the multi-route family, which is the ladder's majority, still
+wins every game by about 7k. Standing estimate unchanged: below the plateau, silver or
+bronze in a final Bradley-Terry, not top 10; no submission.
