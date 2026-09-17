@@ -41,9 +41,10 @@ def main() -> None:
     ap.add_argument("--cap-gb", type=float, default=10.0)
     ap.add_argument("--jobs", type=int, default=3)
     ap.add_argument("--batch", type=int, default=500, help="downloads per fetch.py call")
+    ap.add_argument("--sources", default="daily,endpoint", help="comma list, in order")
     args = ap.parse_args()
     ids_file = TOP10 / "ids.txt"
-    for source in ("daily", "endpoint"):
+    for source in [s for s in args.sources.split(",") if s]:
         while True:
             size = store_gb()
             todo = missing_ids()

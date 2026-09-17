@@ -1512,3 +1512,18 @@ the whole zone is about 24 GB compressed; the 10 GB cap is about 69,000 games, t
 newest first (current submissions before old ones). Tables under `data/gold/`
 (snapshot_latest.csv, teams.csv, history.parquet) are tracked; the listings cache is
 shared with the study's.
+
+### Checkpoint: where the gold games can come from
+Of the 168,025 gold games, 3,130 were on disk from the study. Sources for the rest:
+- the official daily episode datasets (no replay quota): 34,093 episodes over 49 days after
+  today's index refresh, of which 8,528 are missing gold games, spread over 40 archives of
+  400-630 MB (median 185 gold games an archive, up to 632 for 2026-09-15). The fetcher's
+  file-by-file route ran at about 15 a minute, so `pull_daily_bulk.py` downloads each
+  archive whole and stores only the wanted games;
+- the community dataset georgymamarin/kaggriculture-episodes (19.3 GB of replay shards,
+  updated 2026-09-17 01:01Z): its index of 165,593 episodes holds only 2,911 of the missing
+  gold games (674 of the 1,172 gold submissions, 2,738 stored), so the shards are not
+  pulled;
+- the replay endpoint for the other 156,000: the detached runner (`pull_gold.cmd`, endpoint
+  only, cap 10 GB, two workers, newest first) opened at 106-109 a minute in the burst and
+  will trickle at 2-4 a minute once the quota bites; days for the cap, weeks for the zone.
