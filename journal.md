@@ -1495,3 +1495,20 @@ holds 32,802 episodes over 47 days) and then the rationed replay endpoint (about
 crawl writes its snapshot, teams, history and daily index under `data/gold/` while the
 replay store and the episode-listing cache stay shared with the study; the crawl runs
 alone first, the fetch after it, never together (memory: Kaggle replay quota).
+
+### Checkpoint: gold-zone crawl done
+`KAGG_WORKSPACE=data/gold crawl.py`, 02:30Z to 03:23Z: 30 teams, 1,172 submissions listed,
+173,017 game rows, 168,025 unique public games (all `EPISODE_TYPE_PUBLIC`), dated
+2026-07-31 to 2026-09-17. Per team, submissions found / public games: Majkel1337 12 /
+2,028; DSM 79 / 11,676; SpaTaro 23 / 5,550; Sida Zuo 26 / 4,100; Unknown Mother-Goose 29 /
+3,900; ymg_aq 37 / 6,262; Excluding 56 / 7,653; Arda Ceylan 65 / 8,910; Orbital
+Terraformer 8 / 2,362; THIRD FARM CLUB 64 / 8,512; feel the agi 21 / 4,099; kwa 53 / 7,509;
+Driz Lo 33 / 6,754; Ebi 2 / 625; Planned Economy 94 / 10,747; Thomas Tschinkel 91 /
+10,505; lingxiaojun 8 / 2,326; mikelou1 39 / 8,322; lumen 31 / 3,497; HowardLeeTW 12 /
+2,987; 现实是个乐子 64 / 9,145; QQ 4 / 466; Một hai ba bốn 5 sáu bảy tám 9 29 / 3,145; Crop
+Dustas 141 / 17,039; Hamed Vakili 27 / 6,073; local 53 / 8,090; forever young 31 / 5,243;
+Ishan Karnick 6 / 802; Radiant 9 / 1,395; Artem The Farmer 25 / 3,295. At 144 KB a replay
+the whole zone is about 24 GB compressed; the 10 GB cap is about 69,000 games, taken
+newest first (current submissions before old ones). Tables under `data/gold/`
+(snapshot_latest.csv, teams.csv, history.parquet) are tracked; the listings cache is
+shared with the study's.
