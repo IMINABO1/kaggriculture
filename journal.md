@@ -2160,3 +2160,23 @@ on; `tests/test_jobs.py`): 962,299 unit-steps on its own seat; NONE 8.7%, WATER 
 COLLECT_FERTILIZER 14.4%, HARVEST 9.2%, FERTILIZE 6.5%, PICKUP 5.9%, FEED 5.7%, PLANT
 5.6%, CARE 4.8%, DROP 3.7%, PLACE 1.7%, DIG 1.1%, BUILD_PASTURE 0.6%, BUILD_COOP 0.2%.
 `agent/clone_feats.py` holds the numpy feature code the trainer and the runtime share.
+
+### Note: the job-level trainer, its first run, and the runtime pieces
+`scripts/learn/train_jobs.py`: a four-layer convolutional trunk over the 13 planes once per
+step, a per-unit state from the trunk at the unit's tile, the pooled trunk, the unit
+vector and the step scalars, a destination head over the 100 tiles (a query against the
+trunk plus learned distance and relative-offset bias tables, locked tiles masked), and op,
+argument and count heads read at the destination (teacher-forced in training). Batches
+are 48 steps with all their units; games stream in chunks of 16; the test set is the last
+25 games of the submission by create_time. The first run trained nothing: label smoothing
+on the destination loss put mass on the masked tiles (logit -1e9) and the loss read in
+the millions; the destination loss is now plain cross-entropy with a -1e4 mask (matched
+in `agent/clone_net.py`, the numpy forward pass for the bundle, exported and checked
+against torch by `scripts/learn/export_clone.py`). The loader runs 2,500 steps a second
+on the GPU, about 30 s an epoch on 110 games. `agent/clone.py` is the runtime policy: per
+step the network scores every unit without a job; a unit keeps its (destination, op) job
+while the op stays possible, walks there and does it; the four best destinations are
+tried before the unit falls to the greedy executor; jobs' tiles are off the greedy table.
+`plan.POLICY` ("executor" or "clone", `KAGG_POLICY` override) selects it in
+`agent/hybrid.py` and `agent/executor.py`; the clone plays after the opening tape with no
+public tape in between. The market is still `agent/market.py` (the mined rules come next).

@@ -375,6 +375,14 @@ def act_units(obs, day, hour, state):
         for j in jobs:
             if j.pos in busy:
                 j.taken = True
+    if P.POLICY == "clone" and (not P.OPENING or day * 24 + hour >= P.OPENING_STEPS):
+        from agent import clone
+
+        planned.update(clone.act_units(obs, day, hour, state, me, private, positions, invs, shed_left, plant_left))
+        claimed = {job[0] for job in state.get("clone_jobs", {}).values()}
+        for j in jobs:
+            if j.pos in claimed:
+                j.taken = True
 
     # shed inputs the outstanding jobs still need beyond what units carry
     need_from_shed = {item: 0 for item in INPUTS}

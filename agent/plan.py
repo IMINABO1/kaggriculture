@@ -65,6 +65,10 @@ TAPE_FILE = "line_v41.py"
 # KAGG_* variables override these for arena runs and are absent on Kaggle.
 OPENING = os.environ.get("KAGG_OPENING") or None
 OPENING_STEPS = int(os.environ.get("KAGG_OPENING_STEPS", 144))
+# "executor": the greedy executor after the opening or the tape; "clone": the learned
+# job-level policy (agent/clone.py, weights in agent/clone_weights.npz) with the executor
+# as its fallback, and no public tape
+POLICY = os.environ.get("KAGG_POLICY", "executor")
 
 
 def cumulative(target: dict[int, int], day: int) -> int:

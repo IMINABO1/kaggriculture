@@ -44,6 +44,6 @@ def act(obs, config=None):
     step = int(obs.get("step", 0))
     if P.OPENING and step < min(P.OPENING_STEPS, len(opening())):
         return opening()(obs)
-    if step < P.TAPE_DAYS * TURNS_PER_DAY:
+    if P.POLICY != "clone" and step < P.TAPE_DAYS * TURNS_PER_DAY:
         return tape()(obs, config)
     return runtime_act(obs)
