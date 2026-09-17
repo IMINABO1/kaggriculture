@@ -1839,3 +1839,32 @@ snapshots (frozen v41, `scripts/search/resume.py`), the greedy executor's marks 
   tile (`PLACE` at (4,4) and (5,4) in its tours).
 Cut 3 adds both: a planned unit on a shed tile drops what it carries, and one carrying
 more than `HAUL_VALUE` walks it home before continuing; four thresholds are running.
+
+### Checkpoint: cut 3 (hauling) and where the planner still loses
+Day-24 evaluator, search seeds 0-19 / hold-out 20-29 (greedy -4,144 / -7,088):
+
+| HAUL_VALUE | margin | basket | opponent's bank |
+|---|---|---|---|
+| 250 | -8,609 / -12,127 | 23,108 | 105,174 |
+| 600 | -5,772 / -8,890 | 26,847 | 104,933 |
+| 1,200 | -5,611 / -8,438 | 28,103 | 105,145 |
+| drop at a shed tile only | -5,711 / -8,672 | 28,496 | 105,164 |
+
+Hauling at 250 wastes a fifth of the harvest in walking; 1,200 is the best and is the
+default. But the frozen opponent banks about 105.1k under every threshold against 103.5k
+against the greedy executor, so the price effect is not sale timing. It is the herd: the
+planned suffix harvests 53-59 milk, 30-36 wool and 25-32 eggs a game against greedy's 66,
+41 and 34, and fewer units of ours in the market leave the tape's daily milk and wool
+lots a higher price (milk falls 1.6 times base per 122 units, wool by the square). The
+census on seed 1 (scratch `census_diag.py`) names the cause: on day 24 the plan wrote 6
+FEED ops and 4 were done, because the herd units' wheat pickups were sized to the shed at
+hour 0, which holds only yesterday's leftover; the market buys the day's feed at hour 0
+and it lands at hour 1, so most FEEDs met an empty inventory and were dropped, and the
+unfed sheep produced 11 wool the next morning where the tape's fed ones gave 14. The
+tape, for comparison, cares for all 17 animals every day (17/17/17/17/15 CARE ops on
+days 24-28), feeds 5-15, and lets 13-32 plants go unwatered on days it has better work.
+Two more losses seen there: the planner digs exhausted strawberries on day 28 when
+nothing can follow (10 wasted DIGs, 33 idle unit-turns), and on the last planned day it
+banks 2.1k less than greedy in one day. Cut 4: pickups sized to the whole feed need with
+the residual retried at the shed until hour 2, no dig without a planting, and A/Bs of
+the last planned day (27) and the fertilizer reserve cap (40).
