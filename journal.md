@@ -1954,3 +1954,33 @@ without the unit's destination in the input; the tile ops are already close to t
 ceiling from the grid alone. Encoded games so far: 7,500 of the 16,422 on disk
 (208 a minute). The pipeline is what this session set out to build; the model itself is
 a first cut and nothing plays it.
+
+### Checkpoint: cuts 6 and 7 of the planner
+Cut 6 (feed-first hauling, the four capacity cuts, hires sized to the work): -5,287 /
+-8,968, worse than cut 5: dropping carrot plantings to fit the day cost 40 carrots a
+game. Cut 7 keeps the feed-first rule and the hire sizing, limits the capacity cut to
+spare waterings again, and orders each segment by the worth of its stops (harvests and
+must-waterings first, spare waterings last) so an unfinished segment leaves its
+cheapest stops: -5,023 / -8,250 (strawberries 57 a game against 48 without the
+ordering, which alone scores -5,606 / -8,329); the hire sizing never fires (MAX_HANDS
+13 gives the same numbers). Against greedy's -4,144 / -7,088 the planner is level or
+better on our own bank (100,004 against 99,402 on the search seeds) and the whole gap is
+the tape's bank, 105,028 against 103,547: the same 1.5k as in cut 2. Milk, wool and eggs
+are now 59/39/31 against 66/41/34, too close to carry 1.5k, so the remaining suspect is
+when our produce sells: greedy hauls loads during the day and its units are in the
+market before the tape's hour-0 lots; the planner's harvest reaches the shed at the
+day-end drop and sells beside them. A revenue-by-hour census on three seeds settles it,
+and cut 8 ends every field segment with a walk home and a drop (`RETURN_TO_SHED`).
+(The census was launched in the same response as the cut-8 edit, against P23's rule; it
+is read as indicative only and the evaluator's A/B of `RETURN_TO_SHED` is the measure.)
+
+### Milestone: v7 bundled as a second opening build, byte-exact
+`agent/line_v7.py` is aurax7's v7 `main.py` verbatim (347,606 bytes, md5 8bd6aeab, the
+same as the pull), under its Apache-2.0 notices (NOTICE.md); `plan.TAPE_FILE` selects
+line_v41.py (default) or line_v7.py, and `KAGG_TAPE` still overrides for arena runs. The
+bundled file against the notebook's own file in mirror seats, seeds 0-4 both seats:
+1-1-8, margin 0, identical banks on seeds 1-4 and the seat-0 turn-0 asymmetry on seed 0
+(70,865 against 70,576 either way), the same pattern as the plain v41 tape's 1-1-18. So
+a plain v7 tape package (`TAPE_DAYS = 30`, `TAPE_FILE = "line_v7.py"`) is ready to build
+as the parity anchor at the newest public generation; it is not submitted (Iminabo's
+call), and the tree's default stays the v41-opening hybrid.
