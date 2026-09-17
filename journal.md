@@ -1527,3 +1527,12 @@ Of the 168,025 gold games, 3,130 were on disk from the study. Sources for the re
 - the replay endpoint for the other 156,000: the detached runner (`pull_gold.cmd`, endpoint
   only, cap 10 GB, two workers, newest first) opened at 106-109 a minute in the burst and
   will trickle at 2-4 a minute once the quota bites; days for the cap, weeks for the zone.
+
+### Milestone: the gold pull is running, detached
+03:30Z: two detached runners (started with PowerShell `Start-Process`, so they outlive this
+session): `scripts/top10/pull_daily_bulk.cmd` importing the wanted games from the 39
+remaining daily archives (7,896 games; the first archive gave 632 in 106 s), and
+`scripts/top10/pull_gold.cmd` pulling the rest from the replay endpoint, two workers,
+newest first, until the store passes 10 GB. Logs: `data/gold/daily_bulk.log`,
+`data/gold/pull.log`. Store at launch: 8,498 replays, about 1.2 GB. To resume after a
+reboot, start the two `.cmd` files again; both skip what is on disk.
