@@ -1551,3 +1551,17 @@ weed generator reads the seed from `env.info`, which a rebuilt environment lacks
 three, `resume.py check` reproduces 40 of 40 full games exactly; one evaluation of 40 games
 takes 16 s on six workers. Caveat by construction: the frozen opponent cannot react, so
 the arena against the live lines stays the gate for anything the search finds.
+
+### Milestone: the parameter search is running, detached
+`scripts/search/climb.py` over 47 constants of the executor, plan and market (priorities,
+hours, thresholds, day cut-offs, hands per day for days 24-29, seed buffers, reserves),
+one or two knobs perturbed per iteration, accepted only if the mean margin on the search
+seeds (0-9, 20 resumed games, frozen v41) rises; every accepted step also scored on the
+hold-out seeds 10-19. Baseline: search margin -5,606 (the arena gate's -5,606 for the D3
+stack, as it should be), hold-out -5,994, day-24-onward basket 28,123. About 19 s an
+iteration on six workers. The smoke test accepted one step (feed priority 0.5, wheat
+planting 1.0: -5,569, hold-out -5,799). Detached via `scripts/search/climb.cmd` for three
+hours; log `results/search.log`, every candidate in `results/search.csv`, the incumbent in
+`results/search_best.json` (the run resumes from it). The frozen opponent cannot react, so
+the incumbent is confirmed against the live lines with the arena gate before it is
+adopted; two more detached jobs (the gold pull) share the machine.

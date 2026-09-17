@@ -56,7 +56,7 @@ SPACE = {
     "plan.HANDS_BY_DAY[28]": ("i", 8, 15, 1), "plan.HANDS_BY_DAY[29]": ("i", 6, 15, 1),
     "market.SEED_BUFFER[WHEAT]": ("i", 0, 12, 1), "market.SEED_BUFFER[CARROT]": ("i", 0, 12, 1),
     "market.FEED_BUY_HOUR": ("i", 16, 23, 1), "market.FERTILIZER_RESERVE_CAP": ("i", 0, 60, 4),
-    "market.WHEAT_FEED_RESERVE_DAYS": ("i", 0, 3, 1), "market.MIN_SELL_PRICE": ("i", 1, 8, 1),
+    "plan.WHEAT_FEED_RESERVE_DAYS": ("i", 0, 3, 1), "market.MIN_SELL_PRICE": ("i", 1, 8, 1),
 }
 FIELDS = ["ts", "iteration", "accepted", "search_margin", "search_bank", "search_basket", "holdout_margin", "changed", "params"]
 
