@@ -1363,3 +1363,21 @@ bronze on the running ladder). Estimate, not measured: a submission today would 
 the plateau, in silver or bronze, and the plain tape alone (TAPE_DAYS = 30) would land
 mid-plateau. Iminabo's rule stands: no submission until the gauntlet says we stand a
 chance; the entry deadline of 2026-09-23 still requires some submission to exist by then.
+
+### Checkpoint: days 24-29 from the same farm, ours against the tape, op by op
+Seed 1, switch day 24 (identical farms at day 24 hour 0). Harvested units by day, ours /
+v41: strawberries 7, 20, 0, 20 / 7, 25, 0, 26 on days 24-27 (both harvest on the
+production days; the tape's are doubled on five more tiles: it FERTILIZEs 11 strawberries
+on day 24 to our 6); wheat 32, 41, 32, 16, 14, 72 / 37, 42, 55, 36, 44, 19 (the tape
+fertilizes wheat 17 times on days 24-26 to our 3, harvests six-unit tiles on days 26-28,
+and does not dump on day 29; ours dumps 72 at two to four units); carrots 0, 0, 0, 3, 28,
+18 / 0, 0, 0, 17, 39, 37 (the tape has 18 carrot tiles at day 26 and 29 at day 27, ours 11
+and 19, because it plants carrots on freed wheat tiles as well and stops replanting
+wheat). Ops per day: CARE 6-13 / 15-17 (all 17 animals every day); FERTILIZE 27 / 40 over
+days 24-28 while both collect about 75, so we sell 50 fertilizer at $1-15 that the tape
+spreads; hands 11-12 / 13 on days 24-26; moves 157, 132, 134, 116, 177 / 121, 136, 130,
+105, 135 with the tape still idling 5-24 unit-turns a day. Candidates measured alone at
+the switch-day-24 gate (40 games, against v41 and v5): W2 wheat cut-off day 25, F2
+strawberry fertilize at -2.0, L1 liquidation hour 16, S2 sticky -3.0; then FW wheat and
+carrot fertilize at 1.5 with age 3 allowed, FR fertilizer reserve 60, H3 13 hands on days
+24-27, C1 care at 2.0.
