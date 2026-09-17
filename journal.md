@@ -1649,3 +1649,11 @@ melon crew could take from it is about $500 a game. The same bound applies to th
 other lots, which it hauls as it harvests. The lever that remains against the block is a
 stronger second half or a different skeleton, not sale timing. Submission 56291900 at
 1,580.7 (flat).
+
+### Checkpoint: the daily-archive import is complete; the endpoint pull is in its trickle
+`pull_daily_bulk.cmd` finished at 04:24Z: all 40 archives, the 8,528 gold games they held
+imported in about an hour. Store at 09:15Z: 20,297 replays, 2.97 GB (12,600 gold games
+added since the pull began at 03:23Z). The endpoint runner is in quota waits between
+batches (2-4 a minute); at that pace the 10 GB cap is about two weeks away and the log
+is `data/gold/pull.log`. Both runners survive this session; rerunning the `.cmd` files
+resumes them.
