@@ -1587,3 +1587,10 @@ Majkel1337 10-0, Unknown Mother-Goose 6-4, SpaTaro 4-6, Ebi 1-9, Artem, carbonap
 HowardLeeTW 0-10, Artem's recording 15.9k ahead (from 17.6k). Twenty-two constants moved
 together is not the one-at-a-time rule; the live gate on both lines is the check that
 stands in for it, and the hold-out seeds say about half the search gain is real.
+
+### Checkpoint: the adopted state under ladder conditions; the search relaunched
+Coupled shop draw, seeds 10-29, both seats: against v41 0-40, margin -6,883 (D3 stack
+-7,231); against v5 12-28, margin -1,285 (from -2,154; 8 wins became 12). The gains are
+smaller than on the decoupled gate the search saw (-4,398 and -781), as the search seeds'
+towns are not the coupled ones; the direction holds. The search relaunched at 05:52Z for
+three hours with four workers, resuming from the incumbent (`results/search.log`).
