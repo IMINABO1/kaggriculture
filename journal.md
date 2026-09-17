@@ -2180,3 +2180,25 @@ tried before the unit falls to the greedy executor; jobs' tiles are off the gree
 `plan.POLICY` ("executor" or "clone", `KAGG_POLICY` override) selects it in
 `agent/hybrid.py` and `agent/executor.py`; the clone plays after the opening tape with no
 public tape in between. The market is still `agent/market.py` (the mined rules come next).
+
+### Checkpoint: the first real training epoch, and the mined purchase schedule
+Trainer fixed (plain cross-entropy on the destination, -1e4 mask): one epoch on 110 games
+of THIRD FARM CLUB, tested on its 25 latest games (177,508 unit-steps): destination top-1
+0.663 and within one tile 0.813, op given the true destination 0.834, joint 0.561, NONE
+0.225; per op CARE 0.94, FEED 0.80, PLANT 0.75, WATER 0.71, COLLECT 0.61, FERTILIZE 0.41,
+HARVEST 0.37; joint by day 0.72 (days 0-5), 0.57, 0.55, 0.49 (days 24-29). A six-epoch run
+follows, and the general model (six training teams, stride 2, four epochs, tested on DSM,
+Unknown Mother-Goose, THIRD FARM CLUB and HowardLeeTW) runs after it on the same GPU.
+`scripts/learn/mine_market.py` on the 135 games: hands by day (median) 4, 4, 6, 6, 6, 6,
+11, 9, 9, 12, 13, 10, 9, 8, 9, 11, 10, 10, 11 x5, 10, 11, 11, 11, 10, 9, 11; land NE during
+day 6 and SW during day 9, SE never; animals owned by day (median): cows 2 from day 1, 6
+on day 7, 7 on day 9, 9 on day 10, 10 from day 13 with a milk shop (105 games) and let go
+from day 17 without one (30 games: 9 to 2 by day 24); sheep 3, and on Yarn Store towns (37)
+6 on day 7, 8 on day 9, 10 on day 10, 11 from day 14 with cows held at 4-7; geese 1 on day
+7, 2 on day 8, 4-5 on days 12-13, 6 from day 15, 7 with an egg shop (78), 3-4 without,
+3-4 on Yarn towns. Seeds: strawberries mostly on day 6 (about 10) after 1-2 a day on days
+2-4, melon 3+2+1 on days 0-2, carrots and tomatoes from day 11 and days 18-27, wheat 6
+on day 0 and 12 on day 9 for feed then 2-5 a day. These are now `plan.TFC_*` and
+`plan.tfc_animal_targets(day, shops)`; `agent/market.py` uses them when `POLICY ==
+"clone"`, and buys the seeds the clone reports wanting (`clone_seed_wanted`) instead
+of the v41 layout's.
