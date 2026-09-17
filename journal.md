@@ -1669,3 +1669,12 @@ package. What would move the second half from here is a different executor (a pl
 daily route per unit rather than the greedy pair assignment) or a different skeleton,
 both larger than the days that remain before the entry deadline of 2026-09-23 allow
 without a decision on scope.
+
+### Milestone: second submission, the plain tape (Iminabo: "submit the plain tape as the second one")
+Kaggle submission 56306746, built from commit 5245c0a (`TAPE_DAYS = 30`: v41's tape and
+layers for the whole game, nothing of ours after), 148.2 KiB, tests 13 of 13, self-play
+verified; message "plain multi-route tape (v41) for the whole game, commit 5245c0a;
+parity anchor". Three submissions remain today. The repo is back on `TAPE_DAYS = 24`
+(commit 67bbfee) as the development target. Both active submissions now sit on the
+ladder: 56291900 (the pre-search hybrid, 1,569.9 at this check) and the parity anchor;
+their ramps over the same hours are the comparison.
