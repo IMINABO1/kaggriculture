@@ -1463,3 +1463,12 @@ reading stands (0-40 against v41 and 8-32 against v5 under ladder conditions), s
 ladder result is the test of that reading. Check with `uv run kaggle competitions
 submissions -c kaggriculture`; the entry deadline of 2026-09-23 is now met and the final
 uses the last two active submissions at 2026-09-30.
+
+### Note: rating thresholds for the medal zones (Iminabo's question), and the submission's first status
+Public leaderboard downloaded 2026-09-17 about 02:20Z (`kaggle competitions leaderboard
+--download`): 9,288 teams, so under Kaggle's rule for 1,000+ teams gold ends at rank 29
+(10 + 0.2%), silver at 465 (5%), bronze at 929 (10%). Scores at those ranks: rank 1 3,170,
+rank 10 3,005, gold cut 2,929, silver cut 2,666, bronze cut 2,432. Submission 56291900
+validated (status COMPLETE) with an initial score of 1,419.3, the starting point a new
+submission climbs from as it plays (Majkel1337's current submission went 651 after game 1,
+2,543 after 25, 3,097 after 100, memo finding 6); it says nothing yet.
