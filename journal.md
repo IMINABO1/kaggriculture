@@ -1984,3 +1984,17 @@ bundled file against the notebook's own file in mirror seats, seeds 0-4 both sea
 a plain v7 tape package (`TAPE_DAYS = 30`, `TAPE_FILE = "line_v7.py"`) is ready to build
 as the parity anchor at the newest public generation; it is not submitted (Iminabo's
 call), and the tree's default stays the v41-opening hybrid.
+
+### Checkpoint: the plain tape's ramp, and when the produce sells
+Ladder at 15:35Z: the plain v41 tape (56306746, validated 14:18Z at 921) is at 1,935.7;
+the hybrid (56291900) at 1,575.1 after a day. The parity anchor is climbing past the
+hybrid within its first two hours, as the local reading said it would.
+The revenue-by-hour census (days 24-29, seeds 1, 2, 4, hybrid against v41; indicative,
+see P23's caveat above): greedy sells 13.8k of its 21.5k at hours 0-1 and 7.7k during
+the day; the planner 14.6k of 20.4k at hours 0-1 and 5.8k during the day; v41 sells 6.7k
+at hours 0-1 and 17.9k during the day, 8.3k of it at hours 20-23. Milk is the clearest
+difference: greedy sells 1,573 of it at hours 2-11 and the planner 610, whose herd units
+finish their rounds at hour 21-22 and drop at day end. So the tape gets its produce into
+the market during the day and both of our executors dump at dawn, the planner more so;
+HERD_LOAD 4's gain on the search seeds (shorter rounds, units home by mid-afternoon) is
+the same mechanism, and cut 8's return-to-shed stop should apply to the herd as well.
