@@ -2386,4 +2386,5 @@ against v41: 0-20 at -47,746 (77,314 against 125,061; basket 87,278), 3k worse t
 -44,788 before the two changes, so the readings part: the recorded seats like the
 changes, the live line does not. The two are separated next: the guard alone off
 (`KAGG_HERD_GUARD=99`) against the same seeds gives the schedule's effect, and the
-difference to -47,746 the guard's.
+difference to -47,746 the guard's. Ladder at 19:02Z: plain v7 2,603 (three hours in),
+plain v41 2,247; the puller holds 21,572 replays.
