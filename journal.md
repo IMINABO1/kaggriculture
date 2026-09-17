@@ -2421,3 +2421,22 @@ on the team's games; the remaining runtime gap is broad (harvests, fertilizing, 
 hours, ten idle pens late) rather than one defect, and each single change now moves the
 readings by less than their noise. Gate G3 (50% against v7) is not in reach by these
 steps; that is said plainly for the go/no-go on 2026-09-22.
+
+### Checkpoint: end of the third session (evening)
+Tree at the last commit, clean and pushed; 18 tests pass; `scripts/package.py` builds
+1,570.6 KiB, 17 files (the two public tapes, the opening tape and the clone weights are
+bundled; the default agent is still the v41-opening hybrid with the greedy executor,
+`POLICY = "executor"`, `OPENING = None`). Running detached: the gold pull (21,572
+replays, queue headed by the ten teams' current submissions) and the general model's
+training (epochs 1-3 of 4, `data/features/jobs/metrics.jsonl`; `general_e0.pt` saved).
+Ladder: plain v7 2,603 and climbing, plain v41 2,247, the hybrid inactive.
+What the day delivered on the approved plan: Step 0 (v7 submitted, puller re-ordered),
+Step 1 (the level-k report, G0 passed), Step 2 (the opening tape, exact in effect to day
+6), Step 3 (job labels for the ten teams), Step 4 (the clone trained: joint 0.72 on its
+own held-out games; the general model's first epoch: 0.62 on four unseen teams), Step 5
+(the numpy runtime, packaging, seven measured runtime changes), Step 6 partly (fidelity
+0.78 of the team's bank, arena 0-20 at -45k against v41; G2 and G3 not met). Next: the
+general weights fine-tuned on the team (`train_jobs.py --init data/features/jobs/models/
+general_e3.pt --team "THIRD FARM CLUB"`), exported and measured the same way; the
+per-product revenue gap (milk 82 against 173 units, strawberries 147 against 248) is
+where a runtime change would still have to land.

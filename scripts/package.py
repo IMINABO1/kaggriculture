@@ -21,6 +21,7 @@ SIZE_LIMIT = 100 * 1024 * 1024
 def members() -> list[Path]:
     files = [ROOT / "main.py"]
     files += sorted(p for p in (ROOT / "agent").rglob("*.py") if "__pycache__" not in p.parts)
+    files += sorted((ROOT / "agent").glob("*.npz"))  # the clone's weights, when a clone is shipped
     return files
 
 
