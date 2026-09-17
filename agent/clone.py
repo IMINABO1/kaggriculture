@@ -20,6 +20,9 @@ SHOP_ID = {s: i + 1 for i, s in enumerate(SHOPS)}
 QUADRANT_BIT = {"NW": 1, "NE": 2, "SW": 4, "SE": 8}
 TOP_DESTS = 4               # candidate destinations tried per unit before giving up
 WAIT_FOR_INPUT_HOUR = 2
+# what a NONE prediction means: "pass" idles the unit as the team would, "greedy" hands it
+# to the executor for the step (KAGG_CLONE_NONE overrides for an arena A/B)
+NONE_MEANS = __import__("os").environ.get("KAGG_CLONE_NONE", "pass")
 _NET = None
 
 
@@ -136,7 +139,8 @@ def act_units(obs, day, hour, state, me, private, positions, invs, shed_left, pl
             op_l, arg_l, cnt_l = model.heads_at(flat, h[u:u + 1], upos[u:u + 1], np.array([d]))
             cls = int(np.argmax(op_l[0]))
             if cls == 0:
-                out[u] = ["PASS"]
+                if NONE_MEANS == "pass":
+                    out[u] = ["PASS"]
                 break
             op = decode_op(cls, int(np.argmax(arg_l[0])), int(np.argmax(cnt_l[0])))
             tile = tiles[dest[1]][dest[0]]
