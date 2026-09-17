@@ -52,7 +52,7 @@ STICKY_BONUS = -1.5         # a unit keeps the job it set out for unless another
 # priority weights added to walking distance; lower wins
 PRIO = {
     "FEED": 0.0, "PLACE": -3.0, "PLANT": 1.0, "BUILD": -2.0, "WATER": 2.0, "HARVEST": 2.5,
-    "FERTILIZE": 3.0, "DIG": 3.5, "CARE": 4.0, "COLLECT": 5.0, "WATER_SPARE": 7.0,
+    "FERTILIZE": 3.0, "DIG": 3.5, "CARE": 2.0, "COLLECT": 5.0, "WATER_SPARE": 7.0,
     "WATER_MUST": 0.5,
 }
 FERTILIZE_FROM_DAY = 12     # earlier, every fertilizer sold at $90-100 is what buys the herd

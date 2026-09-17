@@ -1411,3 +1411,13 @@ was a days-0-23 effect and it is re-tested on top of H3 now; L0 (liquidation fro
 -7,398 and -3,399, rejected. The earlier "hang" under FW was a worker-pool stall, not the
 agent: FW plays seeds 0-4 in 6-9 s each. Follow-ons queued: H4 (14 hands on days 24-27)
 and E2e (planting and seed purchases to hour 22 from day 24 only).
+
+### Checkpoint: fourth batch on W2 and H3; C1 accepted
+Baseline -6,834 against v41, -2,473 against v5, basket 104,202. C1 (CARE at 2.0) -6,154
+and -1,958, kept: a care is worth about $40 a day per cow and the old 4.0 ranked it last.
+H4 (14 hands on days 24-27) -7,740 and -3,546, rejected, basket up 900 but the fourteenth
+hand costs 377 a day; E2e (planting and seed purchases to hour 22 from day 24) -7,158 and
+-2,930, rejected. End-game stack so far: W2, H3, C1, from -7,979 and -3,698 to -6,154 and
+-1,958 at switch day 24. Note on C1: the full-game gate rejected it this morning through a
+days-0-23 effect, so it holds only while the package switches at day 24 or later; a move
+of the switch earlier re-tests it.
