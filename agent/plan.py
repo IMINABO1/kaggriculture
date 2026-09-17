@@ -52,9 +52,12 @@ MELON_DAY = 0
 
 WHEAT_FEED_RESERVE_DAYS = 0   # shed wheat kept back from sales, in days of feed
 
-# the public line's tape (agent/line_v41.py) plays the first TAPE_DAYS days, our runtime agent
-# the rest; 0 is our agent alone, 30 the tape alone (journal 2026-09-16, hybrid curve)
+# the public line's tape plays the first TAPE_DAYS days, our runtime agent the rest; 0 is our
+# agent alone, 30 the tape alone (journal 2026-09-16, hybrid curve). TAPE_FILE picks the
+# bundled build: line_v41.py (the multi-route family, the ladder's majority) or line_v7.py
+# (its successor, +1.9k over v41 in mirror seats, journal 2026-09-17)
 TAPE_DAYS = 24
+TAPE_FILE = "line_v41.py"
 
 
 def cumulative(target: dict[int, int], day: int) -> int:
