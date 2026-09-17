@@ -249,6 +249,15 @@ def market_orders(obs, day, hour, summary, state=None) -> list:
                 orders.append(["BUY_SEED", crop, n])
                 cash -= n * P.SEED_COST[crop]
 
+    if clone and len(orders) > MAX_ORDERS:
+        # the purchases must reach the engine: the smallest sells wait a turn
+        sells = [o for o in orders if o[0] == "SELL"]
+        rest = [o for o in orders if o[0] != "SELL"]
+        keep = max(0, MAX_ORDERS - len(rest))
+        sells.sort(key=lambda o: -o[2] * prices.get(o[1], 0))
+        hires = [o for o in rest if o[0] == "HIRE"]
+        buys = [o for o in rest if o[0] != "HIRE"]
+        orders = hires + sells[:keep] + buys
     orders = orders[:MAX_ORDERS]
     if state is not None:
         state["my_sells"] = {o[1]: int(o[2]) for o in orders if o[0] == "SELL"}

@@ -153,10 +153,16 @@ def act_units(obs, day, hour, state, me, private, positions, invs, shed_left, pl
                 break
             op = decode_op(cls, int(np.argmax(arg_l[0])), int(np.argmax(cnt_l[0])))
             tile = tiles[dest[1]][dest[0]]
+            if op[0] == "FERTILIZE" and inv.get("FERTILIZER", 0) <= 0 and shed_left.get("FERTILIZER", 0) > 0:
+                # fetch the fertilizer first; the model decides again once it is in hand
+                op, dest = ["PICKUP", "FERTILIZER", min(4, shed_left["FERTILIZER"])], DP.nearest_shed(pos)
+                tile = tiles[dest[1]][dest[0]]
+                stats["fert_fetch"] = stats.get("fert_fetch", 0) + 1
             if op[0] == "PLANT" and tile is None and plant_left.get(op[1], 0) <= 0:
                 wanted = state.setdefault("clone_seed_wanted", {})
                 wanted[op[1]] = wanted.get(op[1], 0) + 1   # the market buys it next turn
                 stats["seed_wanted"] += 1
+                stats[f"seed_wanted_{op[1]}_h{'late' if hour > 20 else 'day'}"] = stats.get(f"seed_wanted_{op[1]}_h{'late' if hour > 20 else 'day'}", 0) + 1
                 continue
             if op[0] in ("PICKUP", "DROP", "PLACE") and dest not in SHED_TILES and not (op[0] == "PLACE" and op[1] in ("COW", "SHEEP", "GOOSE")):
                 continue
