@@ -2473,3 +2473,7 @@ in order: read `metrics.jsonl` for the general model's last epoch; fine-tune it 
 FARM CLUB (`train_jobs.py --team "THIRD FARM CLUB" --init data/features/jobs/models/
 general_e3.pt --lr 1e-3 --epochs 6 --name tfc_ft`), `export_clone.py`, then
 `fidelity.py` and the arena against v41 and v7; decide on 2026-09-22.
+
+The general model's training was stopped at Iminabo's request after its first epoch (only
+`general_e0.pt` exists); the detached gold pull and the idle featuriser keep running, as
+approved. Nothing else of this session runs.
