@@ -46,7 +46,7 @@ STRAWBERRIES_SW = [(1, 5), (2, 5), (3, 5), (4, 5), (1, 6), (2, 6), (3, 6), (4, 6
 STRAWBERRY_FIRST_DAY = 5
 STRAWBERRY_LAST_DAY = 13      # planted later than this cannot finish its four yields
 CARROT_FIRST_DAY = 24
-CARROT_LAST_DAY = 26          # planted day 26 it is harvested at age 3 on day 29
+CARROT_LAST_DAY = 27          # planted day 27 it still gives two units on day 29 (C3)
 WHEAT_LAST_DAY = 25           # planted later it reaches day 29 with 2-3 units and joins the last-day dump
 MELON_DAY = 0
 

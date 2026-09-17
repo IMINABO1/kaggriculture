@@ -1421,3 +1421,12 @@ hand costs 377 a day; E2e (planting and seed purchases to hour 22 from day 24) -
 -1,958 at switch day 24. Note on C1: the full-game gate rejected it this morning through a
 days-0-23 effect, so it holds only while the package switches at day 24 or later; a move
 of the switch earlier re-tests it.
+
+### Checkpoint: fifth batch on W2, H3 and C1; C3 accepted
+Baseline -6,154 against v41, -1,958 against v5, basket 104,219. E4 (carrots on every free
+tile in carrot towns) -8,063 and -3,536, rejected for the second time; C3 (carrots
+plantable through day 27, two units on day 29) -5,682 and -1,229 with basket 105,186,
+kept; D3 (haul threshold 250) -6,108 and -1,682 and H2 (late harvest from hour 15) -6,103
+and -1,904, both a little better, re-tested on top of C3 with C5 (carrots from day 23 on
+the freed strawberry tiles). End-game stack: W2, H3, C1, C3: from -7,979 and -3,698 to
+-5,682 and -1,229 at switch day 24.
