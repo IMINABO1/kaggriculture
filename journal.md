@@ -1779,3 +1779,63 @@ on disk newest first into `data/features/<episode>.npz` (gitignored) with a mani
 two workers, rescanning every ten minutes; started detached through
 `scripts/learn/featurise.cmd` (log `data/features/featurise.log`). At this pace the
 16,422 gold games on disk take about an hour and 1.6 GB.
+
+### Checkpoint: v7 is on the ladder, and it is the target
+v7 replayed in the recorded seat of the 60 most recent gold games on disk (both seats, the
+opponent's recorded stream as a tape; scratch `fidelity_v7.py`): of 120 seat replays, 3
+errored, 67 part from the recording by turn 2 (a different agent's turn-0 market), 34
+match it through the day-6 router (turn 144 or later) and 14 through turn 400 or later.
+The longest matches are LK30's two seats (turns 712 and 698, both seat 0; banks 132,364
+against 133,065 recorded and 133,575 against 133,628), then Ishan Karnick 646, tokitamago
+603, Auto Fermers 584 and 584, lemon13418 533, kanno 516: v7's generation is already
+played on the ladder, by opponents of the gold teams more than by the gold teams
+themselves (of the gold teams, Hamed Vakili's four seats match through turn 383, the rest
+part by turn 2). No seat matched to the end, so v7 is a proxy for the generation, not a
+byte-for-byte copy of any one submission; its live strength is what the arena measured
+(+1,877 over v41 in mirror seats). **Decision:** v7 is the hybrid's target and the
+candidate tape for both slots: the hybrid on v7's code (`KAGG_TAPE`) is being measured
+against v7 and v41 at switch day 24, and the plain v7 tape replaces the plain v41 tape as
+the parity floor once that run is in. The V41 pull and `line:v41` stay as the previous
+generation's yardstick.
+
+### Checkpoint: the hybrid on v7's opening loses more than on v41's
+Switch day 24, decoupled, seeds 0-9 both seats, `KAGG_TAPE` = v7's `main.py`: against v7
+0-20, mean bank 92,713 against 97,608, margin -4,895 (basket 104,942); against v41 0-20,
+92,930 against 98,473, margin -5,542. On v41's opening the same executor is -3,774 against
+v41. So our post-switch play is 4.9k behind v7's own, and swapping the opening alone gains
+nothing: v7's edge over v41 (+1,877 in mirror seats) is in layers that play the whole
+game, which the hybrid discards from day 24. The plain v7 tape is still the better
+parity anchor; the hybrid's second half has to close 4.9k against v7 before it beats it.
+
+### Checkpoint: the day planner, first two cuts (track A)
+`agent/dayplan.py`: from `PLAN_FROM_DAY` (24) to day 28, the hour-0 observation becomes
+one stop per tile with the ops worth doing there today in execution order (a ready wheat:
+water, harvest, replant, water; a strawberry: fertilize on a production age, water,
+harvest; a pen: feed, care, collect, harvest; a weed or exhausted plant: dig, plant,
+water), the pens are chained nearest-neighbour and cut into segments of six for the herd
+units, the field stops are cut into segments for the rest, each unit picks up the wheat or
+fertilizer its segment needs at its spawn tile, and `follow` executes the segment,
+dropping any op whose precondition no longer holds; a unit whose segment is spent joins
+the greedy pool. Jobs on tiles still on a segment are off the greedy table, and the
+market buys the seeds the plan will plant (`plant_wanted`). Measured on the day-24
+snapshots (frozen v41, `scripts/search/resume.py`), the greedy executor's marks being
+-4,144 on seeds 0-19 and -7,088 on 20-29:
+- cut 1 (nearest-neighbour chain from the shed, split into k contiguous pieces of equal
+  chain cost): -7,696 and -10,694, basket 26,998 against 28,266. The diagnostic on seed 1
+  (scratch `plan_diag.py`) showed why: the chain's tail is scattered, so one unit got a
+  49-turn segment for a 23-hour day and seven of its tiles were never reached, five of
+  them strawberries the tape had left unwatered on day 23, which weeded overnight (7
+  weeds at the next hour 0 against the tape's 0).
+- cut 2 (column-serpentine order, a min-max partition by binary search on the segment
+  cap, each segment walked in from its nearer end, spare waterings dropped first when the
+  cap exceeds the day): segments of 16-21 turns, no weeds, -6,469 and -9,406; the basket
+  rises to 28,917 and 29,961 (wheat 216 against 159 a game after day 24, strawberries 53
+  against 50) but milk, wool, eggs and carrots fall (59/36/29/81 against 66/41/34/93)
+  and, decisive, the frozen opponent's bank rises by 2.0k and 1.4k. A frozen tape's
+  orders cannot change, so its extra revenue is price: the planned units carry the
+  harvest to the day-end drop and it sells at hour 0 beside the tape's own morning lots,
+  where the greedy executor hauls a strawberry load home within the hour (D3) and sells
+  ahead of them. The tape itself drops animal products when a herd unit passes a shed
+  tile (`PLACE` at (4,4) and (5,4) in its tours).
+Cut 3 adds both: a planned unit on a shed tile drops what it carries, and one carrying
+more than `HAUL_VALUE` walks it home before continuing; four thresholds are running.
