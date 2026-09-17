@@ -31,11 +31,11 @@ SHOPS = {
 }
 MIN_SELL_PRICE = 2
 FEED_BUY_HOUR = 22
-FERTILIZER_RESERVE_CAP = 20
+FERTILIZER_RESERVE_CAP = 16
 HIRE_LAST_HOUR = 2
 OPENING_WHEAT = 5           # the line's day-0 lot: feed for the first animals and day 1
 # cheap seeds kept in hand so a harvested tile is replanted by the unit still standing on it
-SEED_BUFFER = {"WHEAT": 3, "CARROT": 2}
+SEED_BUFFER = {"WHEAT": 3, "CARROT": 0}
 SEED_BUFFER_FROM_DAY = 10   # before the melon money every dollar goes to the herd
 
 

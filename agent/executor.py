@@ -35,24 +35,24 @@ FERTILIZE_BEST = {"STRAWBERRY": (9, 11, 13, 15), "WHEAT": (2,), "CARROT": (2,)}
 FERTILIZE_ANY = {}
 FERTILIZE_PRIO = {"STRAWBERRY": 0.5, "WHEAT": 3.0, "CARROT": 4.5}
 PICKUP_CAP = {"WHEAT": 6, "FERTILIZER": 4, "COW": 1, "SHEEP": 1, "GOOSE": 1}
-LAST_PLANT_HOUR = 21
+LAST_PLANT_HOUR = 22
 LIQUIDATION_HOUR = 15
-DEPOSIT_VALUE = 200         # carried produce worth this much walks to the shed when nothing is nearer (D3)
-DEPOSIT_URGENT_VALUE = 1500  # worth this much, the walk comes before any other job
+DEPOSIT_VALUE = 250         # carried produce worth this much walks to the shed when nothing is nearer (D3)
+DEPOSIT_URGENT_VALUE = 1800  # worth this much, the walk comes before any other job
 URGENCY_FROM_HOUR = 13      # feeding and must-watering climb over other work from this hour
-URGENCY_PER_HOUR = 1.75
+URGENCY_PER_HOUR = 1.5
 ON_TILE_BONUS = -10.0       # a job under the unit's feet comes before walking to an ordinary one
-FEED_DEADLINE_HOUR = 15     # from here an unfed animal outranks everything but the last melons
+FEED_DEADLINE_HOUR = 18     # from here an unfed animal outranks everything but the last melons
 FEEDER_LOAD = 3             # animals one morning feeder takes on (feed, care, collect, harvest)
 SPARE_WATER_HOUR = 18       # from here a plant not yet watered is worth a walk
 LAST_ACT_HOUR = 22          # step 718 is the last executed action
-LATE_HARVEST_HOUR = 18      # a ready crop still unwatered by now is taken, freeing the tile tonight
-STICKY_BONUS = -2.5         # a unit keeps the job it set out for unless another beats it by this
+LATE_HARVEST_HOUR = 19      # a ready crop still unwatered by now is taken, freeing the tile tonight
+STICKY_BONUS = -4.0         # a unit keeps the job it set out for unless another beats it by this
 
 # priority weights added to walking distance; lower wins
 PRIO = {
-    "FEED": 0.5, "PLACE": -3.0, "PLANT": 0.5, "BUILD": -2.5, "WATER": 2.0, "HARVEST": 2.5,
-    "FERTILIZE": 4.0, "DIG": 3.5, "CARE": 2.0, "COLLECT": 5.0, "WATER_SPARE": 7.0,
+    "FEED": 0.5, "PLACE": -3.0, "PLANT": -0.5, "BUILD": -2.5, "WATER": 2.0, "HARVEST": 2.0,
+    "FERTILIZE": 4.0, "DIG": 4.0, "CARE": 2.0, "COLLECT": 5.5, "WATER_SPARE": 7.0,
     "WATER_MUST": 1.5,
 }
 FERTILIZE_FROM_DAY = 12     # earlier, every fertilizer sold at $90-100 is what buys the herd
@@ -60,7 +60,7 @@ FERTILIZE_FROM_DAY = 12     # earlier, every fertilizer sold at $90-100 is what 
 # strawberries are worth hauling ahead of wheat
 URGENT = -20.0              # beats a job under another unit's feet from ten tiles away
 HARVEST_PRIO = {"MELON": URGENT, "STRAWBERRY": 1.5}
-PLANT_PRIO = {"MELON": -1.0, "STRAWBERRY": 0.0, "CARROT": 0.0, "WHEAT": 1.5}
+PLANT_PRIO = {"MELON": -1.0, "STRAWBERRY": -0.5, "CARROT": 1.0, "WHEAT": 2.5}
 # a watering that adds a unit to a one-time crop is worth the unit ($225 for a melon), so it
 # ranks with a must-watering; higher than that and it starves the herd (journal 2026-09-16)
 WATER_YIELD_PRIO = {"MELON": PRIO["WATER_MUST"]}

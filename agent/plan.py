@@ -12,7 +12,7 @@ from __future__ import annotations
 # the tape's hires per day, plus one from day 10: this executor walks more than the searched
 # routes and the twelfth hand costs $144 a day; 13 on days 24-27 as v41's tape hires (H3)
 HANDS_BY_DAY = [5, 3, 4, 5, 4, 4, 7, 7, 8, 8, 12, 11, 10, 10, 10, 11, 12, 12, 12, 11,
-                12, 12, 11, 11, 13, 11, 11, 13, 11, 12]
+                12, 12, 11, 11, 13, 11, 11, 13, 11, 11]
 
 LAND_DAYS = {"NE": 6, "SW": 11}
 LAND_PRICES = [1000, 2000, 4000]
@@ -45,9 +45,9 @@ STRAWBERRIES_SW = [(1, 5), (2, 5), (3, 5), (4, 5), (1, 6), (2, 6), (3, 6), (4, 6
 
 STRAWBERRY_FIRST_DAY = 5
 STRAWBERRY_LAST_DAY = 13      # planted later than this cannot finish its four yields
-CARROT_FIRST_DAY = 24
+CARROT_FIRST_DAY = 23
 CARROT_LAST_DAY = 27          # planted day 27 it still gives two units on day 29 (C3)
-WHEAT_LAST_DAY = 25           # planted later it reaches day 29 with 2-3 units and joins the last-day dump
+WHEAT_LAST_DAY = 24           # planted later it reaches day 29 with 2-3 units and joins the last-day dump
 MELON_DAY = 0
 
 WHEAT_FEED_RESERVE_DAYS = 0   # shed wheat kept back from sales, in days of feed

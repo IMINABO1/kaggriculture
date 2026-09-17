@@ -1678,3 +1678,19 @@ parity anchor". Three submissions remain today. The repo is back on `TAPE_DAYS =
 (commit 67bbfee) as the development target. Both active submissions now sit on the
 ladder: 56291900 (the pre-search hybrid, 1,569.9 at this check) and the parity anchor;
 their ramps over the same hours are the comparison.
+
+### Milestone: search run 2's incumbent adopted (19 constants); parity with v5 at switch day 24
+Run 2 ended 11:52Z at 779 candidates, 23 accepted, after finding 16 steps in its last
+hour: incumbent -4,144 on search seeds 0-19, hold-out 20-29 -7,088 (from -8,915). Live
+gates, decoupled: against v41 -3,774 on seeds 0-9 (adopted state -4,398) and -7,110 on the
+never-searched seeds 20-29 (adopted -8,718); against v5 on seeds 0-9 10-10 with margin
++34. Adopted into the source (verified equal): plant -0.5, harvest 2.0, dig 4.0, collect
+5.5, planting priorities strawberry -0.5, carrot 1.0, wheat 2.5, haul 250 and urgent
+1,800, urgency 1.5, feed deadline 18, late harvest 19, sticky -4.0, planting to hour 22,
+wheat to day 24, carrots from day 23, 11 hands on day 29, no carrot seed buffer,
+fertilizer reserve 16. Full yardstick: production 167,701 (basket 106,564); competition
+vs v5 10-10 at +34; ladder-style coupled seeds 10-29: v41 0-40 at -5,311 (from -6,883), v5
+14-26 at -556 (from -1,285); gauntlet 30-50 (38%), Unknown Mother-Goose 5-5, DSM and
+Majkel1337 10-0, Artem 0-10 at 91.9k against its 107k. Neither active submission carries
+these constants: 56291900 is the pre-search hybrid, 56306746 the plain tape (validated at
+the fresh-start 600).
