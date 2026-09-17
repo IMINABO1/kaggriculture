@@ -1381,3 +1381,13 @@ the switch-day-24 gate (40 games, against v41 and v5): W2 wheat cut-off day 25, 
 strawberry fertilize at -2.0, L1 liquidation hour 16, S2 sticky -3.0; then FW wheat and
 carrot fertilize at 1.5 with age 3 allowed, FR fertilizer reserve 60, H3 13 hands on days
 24-27, C1 care at 2.0.
+
+### Checkpoint: end-game candidates, first batch; W2 accepted
+Switch-day-24 gate, each alone on the committed agent (baseline -7,979 against v41,
+-3,698 against v5): W2 (no wheat planted after day 25) -7,066 and -3,139, kept; F2
+(strawberry fertilize at -2.0) -8,589 and -4,377, rejected; L1 (liquidation from hour 16)
+-9,638 and -4,844, rejected, its basket rose 800 but the later harvests sold worse; S2
+(sticky -3.0) -7,922 and -3,529, a few hundred better, re-tested on top of W2 next. F2's
+failure with the tape spreading 40 fertilizer to our 27 says the shortfall is the
+fertilizer in hand rather than the job's rank, so the second batch carries the reserve
+(FR) and the wheat and carrot fertilize rules (FW) as well as S2, H3, C1 and L0.

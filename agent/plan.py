@@ -47,7 +47,7 @@ STRAWBERRY_FIRST_DAY = 5
 STRAWBERRY_LAST_DAY = 13      # planted later than this cannot finish its four yields
 CARROT_FIRST_DAY = 24
 CARROT_LAST_DAY = 26          # planted day 26 it is harvested at age 3 on day 29
-WHEAT_LAST_DAY = 27           # harvest at age 2 on day 29 gives 2 units for a $10 seed
+WHEAT_LAST_DAY = 25           # planted later it reaches day 29 with 2-3 units and joins the last-day dump
 MELON_DAY = 0
 
 WHEAT_FEED_RESERVE_DAYS = 1   # shed wheat kept back from sales, in days of feed
