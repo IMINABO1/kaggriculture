@@ -2359,3 +2359,15 @@ team's 13 on day 20 (the mined schedule's rounded means give 6 tomato seeds a ga
 against the 12 it plants). Next single changes: a herd guard (from hour 16 an animal
 that would escape tonight pulls the nearest unit off its model job), and the tomato and
 carrot schedules scaled to the team's planted totals.
+
+### Checkpoint: the general model's first epoch (Iminabo's team split)
+Trained on 5,007 encoded games of Majkel1337, SpaTaro, Sida Zuo, ymg_aq, Excluding and
+Orbital Terraformer (every second step, cutoff 2026-09-17T03:23Z), tested on 2,291 games
+of DSM, Unknown Mother-Goose, THIRD FARM CLUB and HowardLeeTW (8.1 million unit-steps,
+never trained on): destination top-1 0.713, within one tile 0.823, op given the
+destination 0.852, joint 0.620, NONE 0.225; per op PLANT 0.81, CARE 0.81, FEED 0.79,
+WATER 0.78, FERTILIZE 0.70, BUILD_PASTURE 0.65, PICKUP 0.64, DROP 0.64, HARVEST 0.63,
+BUILD_COOP 0.61, COLLECT 0.53, DIG 0.43, PLACE 0.42; joint by day 0.64, 0.63, 0.61, 0.60.
+So one epoch of six teams transfers to four unseen teams at about the level the
+single-team clone reached after its first epoch on its own games (0.57). Three more
+epochs are running; `scripts/learn/eval_jobs.py` reports a saved model per team.
