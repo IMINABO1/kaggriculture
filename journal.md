@@ -1927,3 +1927,30 @@ farm at the switch (checked at steps 575-577 on seeds 0-2). The hybrid-on-v7 num
 the earlier checkpoint are being re-measured: that arena run was launched in the same
 response as the first planner hook went into `agent/executor.py`, so its workers may have
 imported the untested planner (P23).
+
+### Checkpoint: the hybrid-on-v7 numbers stand; the opening's opponent effect
+Re-run with the planner switched off (`KAGG_PLAN_FROM_DAY=99`): the hybrid on v7's
+opening is again 0-20 at -4,895 against v7 (basket 104,942, to the dollar the same as
+before), and the hybrid on v41's opening at the same commit is 0-20 at -3,774 against
+v41 (the journal's number of this morning, reproduced). So both runs were clean and the
+gap is real: with identical farms and sheds at the switch, our executor is 1.8k worse
+against v41 after v7's opening than after v41's. The difference is on the opponent's
+side. Against v7's turn-0 order v41 ends day 0 a melon seed short (66 melons against 72)
+and its runtime layers, which watch the rival's market drops (the RACE layer, journal
+2026-09-16), see a different first 23 days; a v41 that reacts differently to our tape
+then meets our executor differently. Practical reading: the choice of opening tape is
+not free of the opponent, and the hybrid is 3.8-4.9k behind the tapes' own second half
+whichever opening it takes; the plain v7 tape remains the parity floor.
+
+### Checkpoint: first behaviour-cloning run on the GPU (track B)
+Learning environment: a separate venv (`.venv-learn`, gitignored) with torch 2.11.0+cu128
+on the RTX 5070 (CUDA available), so the project venv and the detached `uv run` runners
+are untouched. `scripts/learn/train_bc.py --games 400 --holdout 40 --epochs 1 --stride 2
+--seat gold`: 360 gold games, the gold team's seat only, every second step, 1.5 million
+unit-steps in 80 s. Hold-out op accuracy 0.648 over 101,824 unit-steps of 40 unseen
+games: PLANT 0.95, WATER 0.95, CARE 0.85, FEED 0.84, COLLECT 0.76, HARVEST 0.72, PASS
+0.69, the four moves 0.46-0.52, FERTILIZE 0.30. The moves are the hard part, as expected
+without the unit's destination in the input; the tile ops are already close to their
+ceiling from the grid alone. Encoded games so far: 7,500 of the 16,422 on disk
+(208 a minute). The pipeline is what this session set out to build; the model itself is
+a first cut and nothing plays it.

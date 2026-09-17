@@ -385,9 +385,13 @@ entry also says why I missed it and what changes so it does not happen again.
   workers import the working tree when they start, so some or all of the 40 games may have
   run the planner (which the evaluator later scored 3.5k below greedy) rather than the
   committed executor. Which games did cannot be known from the output.
-- **Fix:** `KAGG_PLAN_FROM_DAY` switches the planner off for an arena run; the run is
-  repeated with it off and the earlier numbers are struck.
-- **Caught by:** me, when the shed-at-switch check left no other explanation.
+- **Fix:** `KAGG_PLAN_FROM_DAY` switches the planner off for an arena run; the run was
+  repeated with it off and reproduced the first run to the dollar (-4,895 against v7,
+  basket 104,942), so the workers had imported the greedy executor after all and the
+  numbers stand. The -5,542 against v41 is therefore not explained by this entry; the
+  v41-tape hybrid is being re-measured at the same commit to settle it (journal).
+- **Caught by:** me, when the shed-at-switch check left no other explanation; the risk was
+  real even though it did not bite here.
 - **Why I missed it:** the tool calls in one response were treated as sequential; a
   background command and an edit are not, and the arena reads the tree, not a commit.
 - **Prevention:** no background arena or evaluator run is launched in a response that also
