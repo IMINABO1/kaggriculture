@@ -1452,3 +1452,14 @@ ladder-style margin by about 2.9k against both lines and turned the v5 matchup f
 win in forty to eight, but the multi-route family, which is the ladder's majority, still
 wins every game by about 7k. Standing estimate unchanged: below the plateau, silver or
 bronze in a final Bradley-Terry, not top 10; no submission.
+
+### Milestone: first submission (Iminabo: "Submit this let's see")
+2026-09-17 02:12Z, Kaggle submission 56291900, `submission.tar.gz` rebuilt from commit
+8444506 (148.2 KiB, 9 files: main.py, agent/{__init__,executor,hybrid,line_v41,market,
+plan,policy,tape}.py), message "hybrid: v41 tape days 0-23, runtime agent from day 24 (W2
+H3 C1 C3 D3), commit 8444506". Status PENDING at submission; 4 submissions remain today.
+This overrides the no-submission rule of 2026-09-16 by Iminabo's decision; the local
+reading stands (0-40 against v41 and 8-32 against v5 under ladder conditions), so the
+ladder result is the test of that reading. Check with `uv run kaggle competitions
+submissions -c kaggriculture`; the entry deadline of 2026-09-23 is now met and the final
+uses the last two active submissions at 2026-09-30.
