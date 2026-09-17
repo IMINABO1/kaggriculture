@@ -1605,3 +1605,17 @@ similarly rated opponents, so the early wins buy little rating, and the plateau'
 needs wins against plateau agents, which the local gate says we do not get (0-40 against
 v41 under ladder conditions). The submission is the D3 stack; the adopted search
 constants are not on the ladder.
+
+### Checkpoint: the rating our ladder games imply (Iminabo asked for verification)
+Public episode endpoint, 68 rated games of submission 56291900 to about 06:40Z: 40-28,
+running rating 1,600.6. Opponents rated 743 to 1,728 (median 1,579). Against opponents
+under 1,500: 16-2; against 1,500-1,800: 24-26. Maximum-likelihood Elo with the opponents
+held fixed: 1,608, 95% interval 1,520-1,698. So the running rating has already found the
+level of the pool it is matched with. Two readings, both stated: the earlier "silver or
+bronze" band (2,432-2,666) is not supported by these games; and the implied 1,608 is a
+floor rather than the settled value, because the low-rated pool contains fresh
+submissions of strong teams still on their own ramps (we lost to farms banking 124k,
+133k and 141k that were rated 1,575-1,650 at the time). What is settled: we are about even
+with the farms the ladder matches us with and lose narrowly to anything at plateau
+strength; the clean verification is the rating in a day and, in the end, the
+post-deadline Bradley-Terry.
