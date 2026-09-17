@@ -92,6 +92,36 @@ TFC_GOOSE_YARN = {11: 3, 13: 4}
 TFC_PASTURES = [(4, 2), (4, 4), (3, 4), (4, 3), (2, 4), (6, 3), (5, 4), (5, 2), (5, 3), (6, 2), (4, 5), (3, 5),
                 (6, 4), (7, 4), (3, 3), (2, 3)]
 TFC_COOPS = [(6, 4), (7, 4), (1, 3), (3, 7), (4, 8), (4, 6), (1, 8), (2, 5)]
+# its seed purchases by day (mean units a game, rounded; scripts/learn/mine_market.py), bought
+# at hour 0 from day 6 (the opening tape carries days 0-5); carrots and wheat have a
+# variant for towns with a carrot shop (Pet Cafe or Farmers Market)
+TFC_SEEDS = {
+    "STRAWBERRY": {2: 1, 3: 2, 4: 2, 6: 10, 7: 1, 10: 3, 11: 1},
+    "MELON": {0: 3, 1: 2, 2: 1, 11: 1},
+    "TOMATO": {11: 2, 12: 1, 18: 1, 19: 1, 20: 1},
+    "CARROT": {11: 2, 12: 1, 18: 1, 19: 1, 20: 1, 21: 1, 22: 1, 23: 1, 24: 1, 25: 1, 26: 2, 27: 2},
+    "WHEAT": {6: 1, 8: 1, 9: 10, 10: 2, 11: 2, 12: 1, 13: 1, 14: 2, 15: 2, 16: 1, 17: 1, 18: 2, 19: 3, 20: 2, 21: 3,
+              22: 4, 23: 4, 24: 4, 25: 4, 26: 4, 27: 4},
+}
+TFC_SEEDS_CARROT_SHOP = {
+    "CARROT": {11: 3, 12: 1, 14: 1, 15: 1, 18: 1, 19: 1, 20: 1, 21: 1, 22: 3, 23: 2, 24: 3, 25: 3, 26: 5, 27: 5},
+    "WHEAT": {6: 1, 8: 1, 9: 12, 10: 3, 11: 2, 12: 1, 13: 1, 14: 2, 15: 3, 16: 2, 17: 2, 18: 3, 19: 3, 20: 3, 21: 3,
+              22: 5, 23: 4, 24: 3, 25: 5, 26: 3, 27: 3},
+}
+CARROT_SHOPS = ("PET_CAFE", "FARMERS_MARKET")
+
+
+def tfc_seeds_today(day: int, shops) -> dict:
+    carrot = any(s in CARROT_SHOPS for s in shops)
+    out = {}
+    for crop, table in TFC_SEEDS.items():
+        if carrot and crop in TFC_SEEDS_CARROT_SHOP:
+            table = TFC_SEEDS_CARROT_SHOP[crop]
+        if table.get(day, 0):
+            out[crop] = table[day]
+    return out
+
+
 MILK_SHOPS = ("PIZZA_SHOP", "ICE_CREAM_SHOP", "SMOOTHIE_SHOP")
 EGG_SHOPS = ("BAKERY", "BRUNCH_SPOT")
 

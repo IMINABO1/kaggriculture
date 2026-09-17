@@ -160,6 +160,11 @@ def crop_exhausted(tile, day) -> bool:
 
 def target_crop(x, y, day):
     """The crop the plan wants on a tile today: the line's layout by tile and date."""
+    if P.POLICY == "clone":
+        # the fallback for the clone plants what the team plants late, on any empty tile
+        if (x, y) in P.TFC_PASTURES or (x, y) in P.TFC_COOPS:
+            return None
+        return "CARROT" if 22 <= day <= 27 else "WHEAT" if day <= 25 else None
     if (x, y) in STRUCTURE_TILES:
         return "MELON" if day == P.MELON_DAY and (x, y) in P.MELONS_NW else None
     if day == P.MELON_DAY and (x, y) in P.MELONS_NW:

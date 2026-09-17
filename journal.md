@@ -2312,3 +2312,11 @@ seed schedule bought at hour 0 each day (the team's own purchases by crop and da
 carrots and wheat conditioned on a carrot shop) with the demand top-up kept, and the
 greedy fallback allowed to plant carrots on any empty tile on days 22-27 and wheat to
 day 25 under the clone policy instead of the v41 layout's tiles.
+
+### Checkpoint: ten-epoch weights, greedy NONE and the team's structures, measured
+Fidelity (10 latest games): bank 0.71 of the recorded median, 1 win (0.67 and 0 with the
+six-epoch weights and the v41 structures). Arena against v41, decoupled, seeds 0-9 both
+seats: 0-20, mean bank 79,118 against 122,872, margin -43,754, basket 88,829 (melons
+78, strawberries 153, wheat 484, carrots 47, tomatoes 22, milk 155, wool 136, eggs 75);
+the sequence of the clone against v41 so far is -54,392, -50,603, -43,754. The seed
+schedule and the fallback crops are the next measurement.

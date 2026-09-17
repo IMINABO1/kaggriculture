@@ -234,6 +234,9 @@ def market_orders(obs, day, hour, summary, state=None) -> list:
     if clone and state is not None:
         for crop, n in state.pop("clone_seed_wanted", {}).items():
             plan_wanted[crop] = plan_wanted.get(crop, 0) + n
+        if hour == 0:  # the team's own purchase schedule, so the seeds are there when the model plants
+            for crop, n in P.tfc_seeds_today(day, obs["town"].get("unlocked_shops", [])).items():
+                plan_wanted[crop] = max(plan_wanted.get(crop, 0), n + seeds.get(crop, 0))
     if hour <= 20:
         for crop in ("MELON", "STRAWBERRY", "CARROT", "WHEAT", "TOMATO"):
             wanting = max(0 if clone else tiles_wanting(me, day, crop), plan_wanted.get(crop, 0))
