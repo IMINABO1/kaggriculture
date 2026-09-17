@@ -1472,3 +1472,26 @@ rank 10 3,005, gold cut 2,929, silver cut 2,666, bronze cut 2,432. Submission 56
 validated (status COMPLETE) with an initial score of 1,419.3, the starting point a new
 submission climbs from as it plays (Majkel1337's current submission went 651 after game 1,
 2,543 after 25, 3,097 after 100, memo finding 6); it says nothing yet.
+
+### Decision (Iminabo): pull every game of the gold zone, about 10 GB, no RL yet
+Iminabo, 2026-09-17: "Do rl with only gold. Don't do the rl but just pull all the gold
+until we have like 10gb of data. Don't skip anything." So: a replay dataset of the gold
+zone's games for a later learning run; nothing is trained now. Scope: the 29 teams at
+ranks 1-29 on the board downloaded 2026-09-17 about 02:20Z (gold = 10 + 0.2% of 9,288),
+every submission the crawl can find for each and every public game of those submissions
+(the crawl keeps two-agent public games; a submission's validation self-play against
+itself is not a ladder game and is left out, said here so it is not a silent skip), plus
+Artem The Farmer as a thirtieth team, flagged: it was rank 1 until it resubmitted at
+2026-09-15 18:42Z and sits at rank 1,162 today with the new submission's rating of 2,277
+still climbing, and its earlier submissions are the strongest recorded games there are.
+Iminabo can strike it. Sixteen of the 29 are already in the study's crawl (histories to
+2026-09-15); thirteen are new: Arda Ceylan, kwa, Driz Lo, Planned Economy, lingxiaojun,
+mikelou1, QQ, "Mot hai ba bon 5 sau bay tam 9", Crop Dustas, Hamed Vakili, forever young,
+Ishan Karnick, Radiant. Storage: replays are kept zstd-compressed at about 143 KB each
+(7,692 on disk take 1.1 GB), so 10 GB is about 70,000 games, roughly the whole gold zone;
+608 GB free. Sources in order: the official daily episode datasets (no quota; the index
+holds 32,802 episodes over 47 days) and then the rationed replay endpoint (about 300 then
+2-4 a minute, so days). Mechanics: `research/paths.py` gains `KAGG_WORKSPACE`, so the gold
+crawl writes its snapshot, teams, history and daily index under `data/gold/` while the
+replay store and the episode-listing cache stay shared with the study; the crawl runs
+alone first, the fetch after it, never together (memory: Kaggle replay quota).
