@@ -2062,3 +2062,47 @@ census was launched against P23's rule and is indicative only; the planner's rem
 1.5k is attributed to the frozen tape's prices without a per-product decomposition of
 its revenue; the BC model has never been played and its accuracy is on the gold seat's
 own games, not on unseen teams.
+
+### Decision (Iminabo): clone the most straightforward top-10 team, split the learning data by team
+Plan approved 16:10Z (plan file `temporal-snuggling-star`). Iminabo's framing: copy the
+strategy of one top-10 team's most successful submission, chosen by how straightforward
+it is, and only after a level-k analysis (K1 what the field does, K2 how the team beats
+it, K3 what beats the team); for the learning track, train on six of the top ten over all
+their games up to the crawl cutoff (2026-09-17T03:23Z) and test only, never tune, on
+ranks 2, 5, 10 plus one random gold team from ranks 11-29. The data read that picked the
+target (current submissions, encoded games; distinct field lines at turns 24/100/200/300
+with the modal share): Majkel1337 73 (24%) / 221 / 228 / 228 of 228; DSM 4 (50%) / 40 /
+97 / 108 of 108; SpaTaro 106 of 106 at turn 24 (noise); Unknown Mother-Goose 3 (79%) /
+21 (77%) / 49 / 112 of 116; THIRD FARM CLUB 1 (100%) / 4 (90%) / 61 / 135 of 135. No
+top-10 team is a replayable tape past day 8; THIRD FARM CLUB (rank 10, median bank 111k,
+the highest of the ten) plays one field line through turn 136 in 98% of its games and
+branches per game afterwards, not by the shop draw (within-shop-pair agreement 0.55 at
+turn 200, 0.28 at 300). It is the target, conditional on the level-k report (gate G0).
+The random test team drawn with `default_rng(20260917)` from ranks 11-29 is HowardLeeTW;
+`data/gold/teams_first.txt` lists the six training teams, the three named test teams
+and it.
+
+### Milestone: third submission, the plain v7 tape (Iminabo: submit it now)
+16:21Z, Kaggle submission 56309360, built from the tree at commit 1fc4642 with
+`TAPE_DAYS = 30` and `TAPE_FILE = "line_v7.py"` (293.4 KiB, 11 files, self-play verified),
+message "plain v7 tape (aurax7 v7 verbatim) for the whole game ... parity anchor at the
+newest public build". Validated COMPLETE at 600.0 (the fresh-start rating). Two
+submissions remain today. The active slots are now the plain v41 tape (56306746, at
+2,169 and climbing) and the plain v7 tape; the hybrid (56291900, 1,568) drops out. The
+tree is back on `TAPE_DAYS = 24`, `TAPE_FILE = "line_v41.py"`. My estimate for v7 settled,
+stated to Iminabo: 2,950-3,050, near the gold cut (2,929) and short of rank 10 (3,005),
+because gold teams beat v7-like ladder agents 55-78% of the time (8 such teams, 55-152
+games each as opponents of the gold teams).
+
+### Milestone: the puller re-ordered to finish the top 10's current submissions
+`pull_gold.py --teams-first <file>` puts the named teams' missing current-submission games
+at the front of the queue (`missing_ids(teams_first)`), then newest-first as before;
+`pull_gold.cmd` passes `data/gold/teams_first.txt`. The old runner and its orphaned
+`fetch.py` batch were stopped (the first attempt killed the shell that issued it; the
+second found the fetch child holding the log) and one runner restarted at 16:23Z: store
+3.20 GB, 151,408 episodes missing, the first 700 of the queue all games of the ten teams'
+current submissions (Majkel1337's first). Pull status at the cutoff (16,588 of 168,025
+gold games on disk, 10%): current submissions complete for DSM, Excluding, Arda Ceylan,
+THIRD FARM CLUB, kwa, Driz Lo, QQ, Planned Economy, forever young, Ishan Karnick; partial
+for Majkel1337 71%, Unknown Mother-Goose 64%, Sida Zuo 59%, ymg_aq 58%, SpaTaro 54%,
+Orbital Terraformer 50%; older submissions 3-30% everywhere.

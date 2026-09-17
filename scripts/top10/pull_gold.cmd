@@ -6,7 +6,7 @@ cd /d "%~dp0..\.."
 set KAGG_WORKSPACE=data/gold
 :loop
 echo == pull_gold.cmd pass %date% %time% >> data\gold\pull.log
-uv run python scripts\top10\pull_gold.py --cap-gb 10 --jobs 2 --sources endpoint >> data\gold\pull.log 2>&1
+uv run python scripts\top10\pull_gold.py --cap-gb 10 --jobs 2 --sources endpoint --teams-first data\gold\teams_first.txt >> data\gold\pull.log 2>&1
 findstr /c:"cap of" /c:"nothing left" data\gold\pull.log >nul && goto done
 timeout /t 120 /nobreak >nul
 goto loop

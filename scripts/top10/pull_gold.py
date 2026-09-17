@@ -30,10 +30,29 @@ def store_gb() -> float:
     return sum(p.stat().st_size for p in REPLAYS.glob("*.json.zst")) / 1e9
 
 
-def missing_ids() -> list[int]:
+def missing_ids(teams_first: list[str] | None = None) -> list[int]:
+    """Every listed game not on disk, newest first; the current-submission games of the
+    named teams (in the order given) ahead of everything else."""
     hist = pd.read_parquet(TOP10 / "history.parquet")
     ids = sorted({int(e) for e in hist.episode_id}, reverse=True)
-    return [e for e in ids if not replay_path(e).exists()]
+    todo = [e for e in ids if not replay_path(e).exists()]
+    if not teams_first:
+        return todo
+    first: list[int] = []
+    seen: set[int] = set()
+    for name in teams_first:
+        cur = hist[(hist.team_name == name) & (hist.is_current_sub == True)]
+        for e in sorted({int(x) for x in cur.episode_id}, reverse=True):
+            if e not in seen and not replay_path(e).exists():
+                first.append(e)
+                seen.add(e)
+    return first + [e for e in todo if e not in seen]
+
+
+def read_teams(path: str) -> list[str]:
+    if not path:
+        return []
+    return [line.strip() for line in Path(path).read_text(encoding="utf-8").splitlines() if line.strip()]
 
 
 def main() -> None:
@@ -42,12 +61,14 @@ def main() -> None:
     ap.add_argument("--jobs", type=int, default=3)
     ap.add_argument("--batch", type=int, default=500, help="downloads per fetch.py call")
     ap.add_argument("--sources", default="daily,endpoint", help="comma list, in order")
+    ap.add_argument("--teams-first", default="", help="file of team names (one a line, UTF-8) whose current-submission games are fetched first")
     args = ap.parse_args()
     ids_file = TOP10 / "ids.txt"
+    teams_first = read_teams(args.teams_first)
     for source in [s for s in args.sources.split(",") if s]:
         while True:
             size = store_gb()
-            todo = missing_ids()
+            todo = missing_ids(teams_first)
             ids_file.write_text("\n".join(str(e) for e in todo), encoding="utf-8")
             print(f"[pull_gold] {time.strftime('%H:%M:%SZ', time.gmtime())} store {size:.2f} GB, {len(todo)} episodes missing, source {source}", flush=True)
             if size >= args.cap_gb:
