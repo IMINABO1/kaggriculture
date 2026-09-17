@@ -1536,3 +1536,18 @@ remaining daily archives (7,896 games; the first archive gave 632 in 106 s), and
 newest first, until the store passes 10 GB. Logs: `data/gold/daily_bulk.log`,
 `data/gold/pull.log`. Store at launch: 8,498 replays, about 1.2 GB. To resume after a
 reboot, start the two `.cmd` files again; both skip what is on disk.
+
+### Milestone: a resume-based evaluator for policy search, exact to the dollar
+Iminabo: "set it up" (the plan search). Since a searched action sequence fits only the
+farm it was searched from and the family's tapes already are that search, the search is
+over the executor's constants, with `scripts/search/resume.py` as the evaluator: snapshots
+of the hybrid against v41 at hour 0 of day 24 on seeds 0-19, both seats, decoupled shops
+(40 files, 7.9 MB, built in 97 s), each holding both players' state, v41's recorded actions
+for the rest of that game as a frozen opponent, and the full game's banks. Three seams had
+to be closed for the resumed game to equal the full game: the framework numbers steps by
+the length of its history (the prefix is padded to the switch step), agents must be handed
+the runner's shared-state merge (player 1's stored view lacks the shared fields), and the
+weed generator reads the seed from `env.info`, which a rebuilt environment lacks. With all
+three, `resume.py check` reproduces 40 of 40 full games exactly; one evaluation of 40 games
+takes 16 s on six workers. Caveat by construction: the frozen opponent cannot react, so
+the arena against the live lines stays the gate for anything the search finds.
