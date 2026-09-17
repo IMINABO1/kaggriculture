@@ -2388,3 +2388,9 @@ changes, the live line does not. The two are separated next: the guard alone off
 (`KAGG_HERD_GUARD=99`) against the same seeds gives the schedule's effect, and the
 difference to -47,746 the guard's. Ladder at 19:02Z: plain v7 2,603 (three hours in),
 plain v41 2,247; the puller holds 21,572 replays.
+Guard off, schedules scaled: 0-20 at -44,582 (78,701 against 123,283; basket 87,767), the
+same as before the two changes, so the schedules are neutral on the live line and the
+guard alone costs about 3.2k there while lifting the recorded seats: at hour 14 it pulls
+units off harvests to feed animals the team would let go (cows on towns where milk is
+worth less than their wheat). The guard now fires from hour 16 and only for an animal
+whose product is worth its feed (the executor's own rule); measured next.

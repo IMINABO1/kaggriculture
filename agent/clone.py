@@ -11,7 +11,7 @@ import numpy as np
 from agent import dayplan as DP
 from agent.clone_feats import ITEMS, CROPS, MAX_UNITS, SHED_TILES, destination_mask, encode_tiles, step_planes, step_scalars, unit_vector
 from agent.clone_net import CloneNet
-from agent.executor import CROPS as CROP_TABLE, crop_exhausted, step_toward
+from agent.executor import ANIMAL_PRODUCT, CROPS as CROP_TABLE, FEED_DAILY_RATIO, crop_exhausted, step_toward
 
 WORK_OPS = ("PLANT", "WATER", "HARVEST", "FERTILIZE", "FEED", "CARE", "COLLECT_FERTILIZER", "BUILD_COOP",
             "BUILD_PASTURE", "DIG", "PLACE", "PICKUP", "DROP")
@@ -20,7 +20,7 @@ SHOP_ID = {s: i + 1 for i, s in enumerate(SHOPS)}
 QUADRANT_BIT = {"NW": 1, "NE": 2, "SW": 4, "SE": 8}
 TOP_DESTS = 4               # candidate destinations tried per unit before giving up
 WAIT_FOR_INPUT_HOUR = 2
-HERD_GUARD_HOUR = int(__import__("os").environ.get("KAGG_HERD_GUARD", 14))  # an animal unfed since yesterday escapes tonight; 99 = off
+HERD_GUARD_HOUR = int(__import__("os").environ.get("KAGG_HERD_GUARD", 16))  # an animal unfed since yesterday escapes tonight; 99 = off
 # what a NONE prediction means: "pass" idles the unit as the team would, "greedy" hands it
 # to the executor for the step (fidelity 0.69 against 0.67 and -50.6k against -54.4k vs
 # v41 with the six-epoch weights, journal 2026-09-17; KAGG_CLONE_NONE overrides)
@@ -122,9 +122,12 @@ def act_units(obs, day, hour, state, me, private, positions, invs, shed_left, pl
     # nearest unit off its model job, and the greedy executor feeds it with its urgency rules
     guarded: set[int] = set()
     if hour >= HERD_GUARD_HOUR:
+        prices = obs["market"]["prices"]
         for y, row in enumerate(tiles):
             for x, tile in enumerate(row):
-                if isinstance(tile, dict) and "animal" in tile and not tile["fed_today"] and tile.get("consecutive_unfed", 0) >= 1:
+                if (isinstance(tile, dict) and "animal" in tile and not tile["fed_today"] and tile.get("consecutive_unfed", 0) >= 1
+                        and prices.get(ANIMAL_PRODUCT[tile["animal"]], 0) >= FEED_DAILY_RATIO * prices.get("WHEAT", 25)):
+                    # only an animal whose product is worth its feed; the team lets the rest go
                     free = [u for u in range(n) if u not in guarded]
                     if free:
                         u = min(free, key=lambda k: abs(positions[k][0] - x) + abs(positions[k][1] - y))
