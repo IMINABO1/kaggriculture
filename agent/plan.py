@@ -70,6 +70,41 @@ OPENING_STEPS = int(os.environ.get("KAGG_OPENING_STEPS", 144))
 # as its fallback, and no public tape
 POLICY = os.environ.get("KAGG_POLICY", "executor")
 
+# THIRD FARM CLUB's purchase schedule, mined from its 135 recorded games by
+# scripts/learn/mine_market.py (journal 2026-09-17): hands per day (median), land bought on
+# days 6 and 9, and animals owned by day conditioned on the shops unlocked so far
+TFC_HANDS_BY_DAY = [4, 4, 6, 6, 6, 6, 11, 9, 9, 12, 13, 10, 9, 8, 9, 11, 10, 10, 11, 11,
+                    11, 11, 11, 10, 11, 11, 11, 10, 9, 11]
+TFC_LAND_DAYS = {"NE": 6, "SW": 9}
+TFC_COW = {1: 2, 7: 6, 9: 7, 10: 9}
+TFC_COW_MILK_SHOP = {13: 10}
+TFC_SHEEP = {1: 3}
+TFC_SHEEP_YARN = {7: 6, 9: 8, 10: 10, 14: 11}
+TFC_GOOSE = {7: 1, 8: 2, 12: 4, 13: 5, 15: 6}
+TFC_GOOSE_EGG_SHOP = {14: 7}
+TFC_GOOSE_NO_EGG_SHOP = {12: 3, 19: 4}
+TFC_GOOSE_YARN = {12: 3, 14: 4}
+MILK_SHOPS = ("PIZZA_SHOP", "ICE_CREAM_SHOP", "SMOOTHIE_SHOP")
+EGG_SHOPS = ("BAKERY", "BRUNCH_SPOT")
+
+
+def tfc_animal_targets(day: int, shops) -> dict:
+    """Cumulative animal targets for today under the shops unlocked so far."""
+    yarn = "YARN_STORE" in shops
+    milk = any(s in MILK_SHOPS for s in shops)
+    egg = any(s in EGG_SHOPS for s in shops)
+    cow = max(cumulative(TFC_COW, day), cumulative(TFC_COW_MILK_SHOP, day) if milk else 0)
+    sheep = max(cumulative(TFC_SHEEP, day), cumulative(TFC_SHEEP_YARN, day) if yarn else 0)
+    if yarn:
+        goose = cumulative(TFC_GOOSE_YARN, day)
+    elif egg:
+        goose = max(cumulative(TFC_GOOSE, day), cumulative(TFC_GOOSE_EGG_SHOP, day))
+    else:
+        goose = min(cumulative(TFC_GOOSE, day), max(cumulative(TFC_GOOSE_NO_EGG_SHOP, day), 2 if day >= 8 else 1 if day >= 7 else 0))
+    if yarn:
+        cow = min(cow, 7 if day >= 14 else 6 if day >= 12 else 4 if day >= 7 else 2)
+    return {"COW": cow, "SHEEP": sheep, "GOOSE": goose}
+
 
 def cumulative(target: dict[int, int], day: int) -> int:
     return max([n for d, n in target.items() if d <= day], default=0)

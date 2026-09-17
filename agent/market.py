@@ -171,9 +171,11 @@ def market_orders(obs, day, hour, summary, state=None) -> list:
     # 2. hands for the day, ahead of the sells so the order cap never drops them; on a
     #    planned day the plan sizes the crew to the work
     dayplan = (state or {}).get("dayplan") or {}
-    if hour <= HIRE_LAST_HOUR and day < len(P.HANDS_BY_DAY):
+    clone = P.POLICY == "clone"
+    hands_by_day = P.TFC_HANDS_BY_DAY if clone else P.HANDS_BY_DAY
+    if hour <= HIRE_LAST_HOUR and day < len(hands_by_day):
         already = me.get("hires_today", 0)
-        hands = dayplan.get("hands", P.HANDS_BY_DAY[day]) if dayplan.get("day") == day else P.HANDS_BY_DAY[day]
+        hands = dayplan.get("hands", hands_by_day[day]) if dayplan.get("day") == day else hands_by_day[day]
         n = hands - already
         while n > 0 and hire_cost(already + n) - hire_cost(already) > money:
             n -= 1
@@ -202,7 +204,7 @@ def market_orders(obs, day, hour, summary, state=None) -> list:
 
     # 4. land
     unlocked = me["unlocked_quadrants"]
-    for quad, land_day in P.LAND_DAYS.items():
+    for quad, land_day in (P.TFC_LAND_DAYS if clone else P.LAND_DAYS).items():
         if day >= land_day and quad not in unlocked:
             price = P.LAND_PRICES[len(unlocked) - 1]
             if cash >= price:
@@ -210,24 +212,32 @@ def market_orders(obs, day, hour, summary, state=None) -> list:
                 cash -= price
             break
 
-    # 5. animals up to the plan's cumulative target
-    targets = {"COW": P.COW_TARGET, "SHEEP": P.SHEEP_TARGET, "GOOSE": P.GOOSE_TARGET}
-    for animal, target in targets.items():
+    # 5. animals up to the plan's cumulative target (the clone follows THIRD FARM CLUB's
+    #    schedule under the shops unlocked so far)
+    if clone:
+        wanted_animals = P.tfc_animal_targets(day, obs["town"].get("unlocked_shops", []))
+    else:
+        wanted_animals = {a: P.cumulative(t, day) for a, t in (("COW", P.COW_TARGET), ("SHEEP", P.SHEEP_TARGET), ("GOOSE", P.GOOSE_TARGET))}
+    for animal, target in wanted_animals.items():
         if day > P.LAST_ANIMAL_DAY:
             break
-        want = P.cumulative(target, day) - animals[animal]
+        want = target - animals[animal]
         n = min(want, int(cash // P.ANIMAL_COST[animal]))
         if n > 0:
             orders.append(["BUY_ANIMAL", animal, n])
             cash -= n * P.ANIMAL_COST[animal]
 
     # 6. seeds for the tiles the plan wants planted today, plus a small buffer in season; on a
-    #    planned day the day plan knows how many tiles will be replanted after their harvest
-    plan_wanted = dayplan.get("plant_wanted", {}) if dayplan.get("day") == day else {}
+    #    planned day the day plan knows how many tiles will be replanted after their harvest,
+    #    and the clone reports the plantings it wanted but had no seed for
+    plan_wanted = dict(dayplan.get("plant_wanted", {}) if dayplan.get("day") == day else {})
+    if clone and state is not None:
+        for crop, n in state.pop("clone_seed_wanted", {}).items():
+            plan_wanted[crop] = plan_wanted.get(crop, 0) + n
     if hour <= 20:
-        for crop in ("MELON", "STRAWBERRY", "CARROT", "WHEAT"):
-            wanting = max(tiles_wanting(me, day, crop), plan_wanted.get(crop, 0))
-            if crop == "WHEAT" and day > P.WHEAT_LAST_DAY:
+        for crop in ("MELON", "STRAWBERRY", "CARROT", "WHEAT", "TOMATO"):
+            wanting = max(0 if clone else tiles_wanting(me, day, crop), plan_wanted.get(crop, 0))
+            if crop == "WHEAT" and day > P.WHEAT_LAST_DAY and not clone:
                 wanting = 0
             buffer = SEED_BUFFER.get(crop, 0) if wanting > 0 and day >= SEED_BUFFER_FROM_DAY else 0
             want = wanting + buffer - seeds.get(crop, 0)
