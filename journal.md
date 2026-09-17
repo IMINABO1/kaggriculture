@@ -2217,3 +2217,22 @@ rising, so a ten-epoch continuation at a lower rate runs alongside the general m
 The one-epoch weights are exported to `agent/clone_weights.npz` (numpy forward equal to
 torch) for the first end-to-end runs: one local game for errors and step time, then ten
 recorded-seat fidelity games.
+
+### Checkpoint: the clone plays end to end; two thirds of the team's bank
+The first export dropped the `tile_w` weights along with the coordinate buffers (a prefix
+filter; every step after the opening fell to `main.py`'s PASS fallback), fixed and
+re-exported from the six-epoch weights: 1.4 MB, 26 arrays, numpy within 1.9e-5 of torch.
+One game against pass on seed 1 (decoupled; opening tape 144 steps then the clone with
+the greedy executor as fallback, THIRD FARM CLUB's purchase schedule): bank 114,849, no
+fallback steps, 2.2 ms a step (10.5 ms max), 13 hands on day 10 and 11 on day 20. Ops
+per game against the team's own (means over its 135 games): WATER 1,004 / 1,089, HARVEST
+335 / 436, COLLECT 310 / 414, FEED 304 / 373, CARE 307 / 340, PLANT 208 / 239, FERTILIZE
+91 / 172, PICKUP 372 / 327, PASS 883 / 669, moves 3,110 / 2,880; final farm 7 weeds, 6
+empty tiles, 8 empty pastures and 2 empty coops (the team ends with 3.6 weeds and 5.6
+empty structures). Fidelity in the team's recorded seat, 10 latest games: bank 0.67 of
+the recorded median, 0 wins, and the opponents bank far more than they did (one game:
+143,712 against 111,484 recorded). So the clone reaches the team's farm and schedule
+but under-harvests, fertilizes half as much, lets animals escape and idles more; the
+per-op recalls said as much (HARVEST 0.65, FERTILIZE 0.64, NONE 0.27). Next, one change
+at a time on the fidelity set: a NONE prediction hands the unit to the greedy executor
+instead of idling; then the longer-trained and the general-pretrained weights.
