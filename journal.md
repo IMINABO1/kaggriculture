@@ -1631,3 +1631,9 @@ its ten seeds and is not adopted. Anchors: the plain tape (switch day 30) agains
 1-1-18 with margin 0, so the parity floor is exact; v41 beats v5 20-0 by 4,613, so the
 successor is the stronger generation and the target. The second search run widens the
 search seeds to 0-19 with hold-out 20-29 and starts from the adopted state.
+
+### Milestone: search run 2 launched on twenty search seeds
+09:0xZ: snapshots for seeds 20-29 built (60 on disk); `climb.py` now searches on seeds 0-19
+(40 resumed games a candidate, about 30 s) with hold-out 20-29, starting from the adopted
+state; run 1's files archived as `results/search_run1.*`. Three hours, four workers,
+detached. The pull continues: 20,285 replays at 08:47Z.
