@@ -27,8 +27,8 @@ from search.resume import evaluate  # noqa: E402
 
 LOG = ROOT / "results" / "search.csv"
 BEST = ROOT / "results" / "search_best.json"
-SEARCH_SEEDS = set(range(0, 10))
-HOLDOUT_SEEDS = set(range(10, 20))
+SEARCH_SEEDS = set(range(0, 20))
+HOLDOUT_SEEDS = set(range(20, 30))
 
 # name -> (kind, low, high, step); "f" float, "i" int
 SPACE = {
