@@ -332,6 +332,21 @@ the public line are not the three named before.
    stacks on it. Path (b) is not in the plan Iminabo saw and is not taken until Iminabo
    says so.
 
+7. **Measured on 2026-09-17, after Iminabo chose "do both".** The hybrid (v41's tape for
+   the first 24 days, our agent after) is the packaged agent; the plain tape ties v41
+   exactly (1-1-18, margin 0) and v41 beats v5 20-0 by 4.6k, so v41 is the target. An
+   exact resume-based evaluator and a parameter search over the executor's constants took
+   the switch-day-24 margin against live v41 from -7,979 to -4,398 (search seeds) and
+   -5,298 on hold-out seeds, with 8 of 20 wins against live v5; under the ladder's coupled
+   draw the hybrid is 0-40 against v41 and 12-28 against v5. Sale timing against the tape
+   is closed as a lever (units respawn at the shed daily; its melon dump is within an hour
+   of the physical minimum). Submission 56291900 (the pre-search hybrid) sits at about
+   1,600 after 68 rated games, even with the low-rated pool it is matched with and losing
+   narrowly to plateau-strength farms; the "silver or bronze" estimate above is withdrawn
+   in favour of "below the plateau until the second half beats the tape's". The remaining
+   levers are a stronger second half (the search, diminishing) or a different skeleton
+   (weeks); the plain tape is the parity floor for one of the two final slots.
+
 ## Limits of this study
 
 - The 75% quarter window is partial for the top-14 and the batch's F and quarter windows
