@@ -2106,3 +2106,37 @@ gold games on disk, 10%): current submissions complete for DSM, Excluding, Arda 
 THIRD FARM CLUB, kwa, Driz Lo, QQ, Planned Economy, forever young, Ishan Karnick; partial
 for Majkel1337 71%, Unknown Mother-Goose 64%, Sida Zuo 59%, ymg_aq 58%, SpaTaro 54%,
 Orbital Terraformer 50%; older submissions 3-30% everywhere.
+
+### Milestone: gate G0 passed; THIRD FARM CLUB confirmed as the clone target
+`scripts/top10/klevel.py` (one row per game from the encoded arrays and the market replica,
+`data/top10/klevel_third-farm-club.parquet`) and the report `reports/top10/tfc_klevel.md`.
+K1: of its 135 current-submission games, 63 were against the public line (v41 and v7
+share the field line through turn 136), 27 against top-10 teams, 45 against others; it
+wins 92% against the line by a median 12,718 and 33% against the peers (median -2,406).
+The margin over the line is 12.4-13.6k with or without each shop group, so the edge is
+not the draw. K2: equal gross revenue (142.8k against 141.6k) but 10.7k less spent (no
+fertilizer bought, 176 FERTILIZE ops from its own 259 units against the line's 114 and
+347 sold); eggs 8.2k, tomatoes 6.8k and carrots 9.1k against the line's 3.8k, 1.0k and
+5.0k; fewer strawberry units at a higher price (177 at $159 against 246 at $110); milk
+42% and eggs 72% sold at hours 0-1 where the line sells its strawberries 79% in the
+afternoon; the last three days 31.0k against 21.7k; hands 4, 4, 6, 6, 6, 6, 11, 9, 9, 12,
+13, then 9-11. K3: 18 of its 26 losses are to top-10 teams, which keep its morning timing
+(their early share 11-42% against the line's 8-15%) and out-produce it in bulk: wheat
+504 units against its 298 and 175 tiles planted against 130, strawberries 193 against
+160; the two largest losses are wool on Yarn Store towns (Arda Ceylan +34.8k, Orbital
+Terraformer +16.9k). Front-running by the opponent is rejected as a cause (its own
+early share is higher in the losses). Decision: clone its K2 play; the K3 candidates,
+each a single measured change later, are more wheat on its empty and weeded tiles and
+a heavier sheep response on Yarn towns.
+
+### Milestone: THIRD FARM CLUB's opening extracted as a tape
+`scripts/learn/extract_opening.py` walks the recorded games step by step, keeping the most
+common full action (every unit op and market order) among the games still on the line:
+135 of 135 through turn 24, 128 through 48, 104 through 100, 136 and 144 (77%), 25
+through 200. Written to `agent/opening_tfc.py` (200 steps, 25 KiB). `agent/opening.py`
+replays it with the family's repairs (plantings trimmed to the seeds in hand, a weed under
+a planned PLANT or BUILD dug first, the hands list cut to the hands that exist);
+`agent/hybrid.py` plays `plan.OPENING` for `plan.OPENING_STEPS` before the tape or the
+executor, with `KAGG_OPENING`, `KAGG_OPENING_STEPS` and `KAGG_TAPE_DAYS` overrides for
+arena runs (`OPENING = None` in the shipped tree). Next: the fidelity check in its
+recorded seats and the floor measurement (opening tape + our executor) against v41 and v7.

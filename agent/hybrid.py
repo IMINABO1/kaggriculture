@@ -24,7 +24,26 @@ def tape():
     return _TAPE
 
 
+_OPENING = None
+
+
+def opening():
+    """A recorded team's modal opening line (agent/opening_<name>.py), replayed with repairs."""
+    global _OPENING
+    if _OPENING is None:
+        import importlib
+
+        from agent.opening import OpeningTape
+
+        module = importlib.import_module(f"agent.opening_{P.OPENING}")
+        _OPENING = OpeningTape(module.ACTIONS)
+    return _OPENING
+
+
 def act(obs, config=None):
-    if int(obs.get("step", 0)) < P.TAPE_DAYS * TURNS_PER_DAY:
+    step = int(obs.get("step", 0))
+    if P.OPENING and step < min(P.OPENING_STEPS, len(opening())):
+        return opening()(obs)
+    if step < P.TAPE_DAYS * TURNS_PER_DAY:
         return tape()(obs, config)
     return runtime_act(obs)

@@ -9,6 +9,8 @@ strawberry tiles from day 24, and the hire count per day of the tape.
 
 from __future__ import annotations
 
+import os
+
 # the tape's hires per day, plus one from day 10: this executor walks more than the searched
 # routes and the twelfth hand costs $144 a day; 13 on days 24-27 as v41's tape hires (H3)
 HANDS_BY_DAY = [5, 3, 4, 5, 4, 4, 7, 7, 8, 8, 12, 11, 10, 10, 10, 11, 12, 12, 12, 11,
@@ -56,8 +58,13 @@ WHEAT_FEED_RESERVE_DAYS = 0   # shed wheat kept back from sales, in days of feed
 # agent alone, 30 the tape alone (journal 2026-09-16, hybrid curve). TAPE_FILE picks the
 # bundled build: line_v41.py (the multi-route family, the ladder's majority) or line_v7.py
 # (its successor, +1.9k over v41 in mirror seats, journal 2026-09-17)
-TAPE_DAYS = 24
+TAPE_DAYS = int(os.environ.get("KAGG_TAPE_DAYS", 24))
 TAPE_FILE = "line_v41.py"
+# a recorded team's modal opening (agent/opening_<name>.py, scripts/learn/extract_opening.py)
+# played for OPENING_STEPS before the tape or the executor takes over; None = off. The
+# KAGG_* variables override these for arena runs and are absent on Kaggle.
+OPENING = os.environ.get("KAGG_OPENING") or None
+OPENING_STEPS = int(os.environ.get("KAGG_OPENING_STEPS", 144))
 
 
 def cumulative(target: dict[int, int], day: int) -> int:
