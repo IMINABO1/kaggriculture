@@ -184,10 +184,8 @@ def act_units(obs, day, hour, state, me, private, positions, invs, shed_left, pl
                 stats[f"seed_wanted_{op[1]}_h{'late' if hour > 20 else 'day'}"] = stats.get(f"seed_wanted_{op[1]}_h{'late' if hour > 20 else 'day'}", 0) + 1
                 continue
             if op[0] in ("PICKUP", "DROP", "PLACE") and dest not in SHED_TILES and not (op[0] == "PLACE" and op[1] in ("COW", "SHEEP", "GOOSE")):
-                # a shed op predicted next to the shed: the nearest access tile is meant
-                dest = DP.nearest_shed(pos)
-                tile = tiles[dest[1]][dest[0]]
-                stats["shed_snap"] = stats.get("shed_snap", 0) + 1
+                # snapping such a job to the nearest access tile cost fidelity 0.05 (journal 2026-09-17)
+                continue
             if dest in claimed and op[0] not in ("PICKUP", "DROP", "PLACE"):
                 continue
             if op[0] == "PICKUP" and shed_left.get(op[1], 0) <= 0 and hour <= WAIT_FOR_INPUT_HOUR:

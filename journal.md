@@ -2406,3 +2406,18 @@ day-end drop) where the team sells 26% then, so its units carry the harvest to t
 during the day and ours do not; the model predicts DROP jobs (recall 0.87) but the
 runtime skipped a shed op whose predicted tile was not one of the four access tiles.
 Such a prediction now snaps to the nearest access tile; measured next.
+
+### Decision: the shed snap is reverted; where the clone stands tonight
+Snap on: fidelity 0.73 (from 0.78), arena against v41 -44,246 (from -45,707), and the
+strawberries still sell 81% at hours 0-1 (milk 72%, wool 63%): the snap sent units home
+without changing when the harvest reaches the market, and cost the recorded seats 5
+points. Reverted. State at 19:45Z: the clone (ten-epoch weights, greedy NONE, the team's
+structures, seed and animal schedules, order-cap fix, fertilizer fetch, value-conditional
+herd guard) reaches 0.78 of THIRD FARM CLUB's recorded bank in its own seats (one win of
+ten) and loses 0-20 to v41 by about 45k with a basket of 88k against the line's 105k.
+The team itself beats that line 92% of the time. The remaining offline lever is the
+general model's pretraining (one of four epochs done, slowed by the shared CPU) fine-tuned
+on the team's games; the remaining runtime gap is broad (harvests, fertilizing, sale
+hours, ten idle pens late) rather than one defect, and each single change now moves the
+readings by less than their noise. Gate G3 (50% against v7) is not in reach by these
+steps; that is said plainly for the go/no-go on 2026-09-22.
