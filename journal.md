@@ -2451,3 +2451,25 @@ workers were killed and data/gold/pull.log marked. Store: 21,622 replays, 3.17 G
 million step-observations over both seats, every gold team's current-submission games
 included (the puller took the newest first). Rerunning pull_gold.cmd resumes it if more is
 ever wanted.
+
+### Note (Iminabo): session stopped here; what was running and what was expected
+Stopped at Iminabo's request (context nearly spent). Still running on the machine, none of
+it needing this session: the gold pull (detached, the ten teams' current submissions
+first), the featuriser (detached, idle until new replays land), and the general model's
+training (`train_jobs.py --split team`, epochs 1-3 of 4, writing
+`data/features/jobs/metrics.jsonl` and `data/features/jobs/models/general_e*.pt`). What
+we were doing: cloning THIRD FARM CLUB (its opening as a tape, a learned job-level policy
+after it, the greedy executor as the safety net, its mined purchase schedule) and
+measuring each runtime change on its recorded seats and against v41. What we expected:
+the fine-tune of the general weights on the team's games to lift the offline joint
+accuracy above the single-team plateau of 0.72, and the runtime to gain from it; the arena
+against v41 to stay near -45k unless the production gap (milk 82 units against 173,
+strawberries 147 against 248, half the fertilizing, idle pens late) closes, so gate G3
+(50% against v7) was not expected from further single runtime changes before the
+2026-09-22 go/no-go. Ladder at the stop: the plain v7 tape climbing through silver
+(2,603 after three hours; the v41-block agents it copies sit near 2,900), the plain v41
+tape at 2,247; the two are the active slots and the deadline is covered. Next session,
+in order: read `metrics.jsonl` for the general model's last epoch; fine-tune it on THIRD
+FARM CLUB (`train_jobs.py --team "THIRD FARM CLUB" --init data/features/jobs/models/
+general_e3.pt --lr 1e-3 --epochs 6 --name tfc_ft`), `export_clone.py`, then
+`fidelity.py` and the arena against v41 and v7; decide on 2026-09-22.
