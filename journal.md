@@ -2258,3 +2258,20 @@ By day at epoch 9: 0.994 on days 0-5, 0.734 on days 6-15. On 110 games the offli
 flattens a full eight points short of gate G1's joint 0.80; the general model's
 pretraining is the remaining offline lever, and the runtime's behaviour (what it does
 with the 28% of jobs it gets wrong) matters more than the last points of accuracy.
+
+### Checkpoint: one recorded game day by day (ten-epoch weights); where the clone falls behind
+`scripts/learn/clone_diag.py` on the team's latest game (109898708, seat 1 against
+Kenjo1209; the ten-epoch weights exported): ours 66,482 against 101,886 recorded. Day by
+day, ours against the recording: day 6 ends with 5 animals against 10 and 1,559 in cash
+against 188, because the team buys its day-6 animals at hour 0 of day 6, the first step
+after the tape, and the mined schedule was keyed by the day the animals are owned (hour
+0 of the next day), a day late; day 12 has 13 animals against 19; day 15 harvests 3 eggs
+against 28 and fertilizes 7 times against 18; day 18 harvests 31 strawberries against 48;
+day 24 harvests 56 wheat against 27 with carrots 0 against 12; day 29 harvests 9 carrots
+and 3 tomatoes against 64 and 34, with 109 idle unit-turns against 16. Money: 13.8k
+against 20.6k at day 15, 39.8k against 59.1k at day 21, 66.5k against 101.9k at the end.
+The clone's counters: 1,496 jobs taken, 1,322 done, 212 dropped on arrival (the op no
+longer possible), 541 NONE predictions, 152 steps with no valid job, 196 plantings
+that wanted a seed the shed did not hold. First single change: the animal schedule
+shifted a day earlier (bought the day before it is owned). The A/B "NONE hands the unit
+to greedy" gave fidelity 0.69 against 0.67, inside the noise, not adopted yet.

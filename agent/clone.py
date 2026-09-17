@@ -104,6 +104,8 @@ def act_units(obs, day, hour, state, me, private, positions, invs, shed_left, pl
     if state.get("clone_day") != day:
         state["clone_day"], state["clone_jobs"] = day, {}
     jobs: dict = state["clone_jobs"]
+    stats = state.setdefault("clone_stats", {"kept": 0, "done": 0, "dropped_on_arrival": 0, "dropped_en_route": 0,
+                                              "new": 0, "none": 0, "no_job": 0, "seed_wanted": 0, "immediate": 0})
     tiles = me["tiles"]
     n = min(len(positions), MAX_UNITS)
     planes, scal, units, dmask = features(obs, me, private, day, hour, positions[:n], invs[:n])
@@ -124,13 +126,18 @@ def act_units(obs, day, hour, state, me, private, positions, invs, shed_left, pl
             if pos == dest:
                 if possible(op, tile, inv, shed_left, private["seeds"], day, plant_left):
                     out[u] = _execute(op, inv, shed_left, plant_left)
+                    stats["done"] += 1
+                else:
+                    stats["dropped_on_arrival"] += 1
                 del jobs[u]
                 if u in out:
                     continue
             else:
                 if op[0] in ("PICKUP", "DROP", "PLACE") or possible(op, tile, inv, shed_left, private["seeds"], day, plant_left):
                     out[u] = [step_toward(pos, dest)]
+                    stats["kept"] += 1
                     continue
+                stats["dropped_en_route"] += 1
                 del jobs[u]
         # a new job: the best destination not claimed by another unit, and the op there
         order = np.argsort(-dest_logits[u])[:TOP_DESTS]
@@ -139,6 +146,7 @@ def act_units(obs, day, hour, state, me, private, positions, invs, shed_left, pl
             op_l, arg_l, cnt_l = model.heads_at(flat, h[u:u + 1], upos[u:u + 1], np.array([d]))
             cls = int(np.argmax(op_l[0]))
             if cls == 0:
+                stats["none"] += 1
                 if NONE_MEANS == "pass":
                     out[u] = ["PASS"]
                 break
@@ -147,6 +155,7 @@ def act_units(obs, day, hour, state, me, private, positions, invs, shed_left, pl
             if op[0] == "PLANT" and tile is None and plant_left.get(op[1], 0) <= 0:
                 wanted = state.setdefault("clone_seed_wanted", {})
                 wanted[op[1]] = wanted.get(op[1], 0) + 1   # the market buys it next turn
+                stats["seed_wanted"] += 1
                 continue
             if op[0] in ("PICKUP", "DROP", "PLACE") and dest not in SHED_TILES and not (op[0] == "PLACE" and op[1] in ("COW", "SHEEP", "GOOSE")):
                 continue
@@ -159,13 +168,17 @@ def act_units(obs, day, hour, state, me, private, positions, invs, shed_left, pl
             if pos == dest:
                 if possible(op, tile, inv, shed_left, private["seeds"], day, plant_left):
                     out[u] = _execute(op, inv, shed_left, plant_left)
+                    stats["immediate"] += 1
                     break
                 continue
             if op[0] in ("PICKUP", "DROP", "PLACE") or possible(op, tile, inv, shed_left, private["seeds"], day, plant_left):
                 jobs[u] = (dest, op)
                 claimed.add(dest)
                 out[u] = [step_toward(pos, dest)]
+                stats["new"] += 1
                 break
+        if u not in out and u not in jobs:
+            stats["no_job"] += 1
     return out
 
 
