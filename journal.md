@@ -2140,3 +2140,23 @@ a planned PLANT or BUILD dug first, the hands list cut to the hands that exist);
 executor, with `KAGG_OPENING`, `KAGG_OPENING_STEPS` and `KAGG_TAPE_DAYS` overrides for
 arena runs (`OPENING = None` in the shipped tree). Next: the fidelity check in its
 recorded seats and the floor measurement (opening tape + our executor) against v41 and v7.
+
+### Checkpoint: the opening tape is faithful in effect; our executor after it is the same 85k
+Fidelity (scratch `fidelity_tape.py`; the tape for 144 steps then our executor with
+`KAGG_TAPE_DAYS=0`, in THIRD FARM CLUB's recorded seat of its 20 latest games, the
+opponent's stream as a tape, the town as recorded): the tile census equals the recording
+at hour 0 of every day through day 6 in 20 of 20 games and first differs on day 7, after
+the tape ends; the action-stream comparison reports a difference from turn 0 only
+because the recording lists `PASS` for hands it is hiring that turn while the extractor
+keeps the hands that exist (the engine ignores both). Banks: ours 0.78 of the recorded
+median, 2 wins of 20 against opponents the team beat 16 times. Floor arena (opening tape
+144 steps + our executor with the v41 skeleton, decoupled, seeds 0-9 both seats): 0-20
+at -21,704 against v41 (85,220 against 106,925; basket 97,943) and 0-20 at -23,084
+against v7. Our executor banks about 85k from THIRD FARM CLUB's day-6 farm as it does
+from v41's (85.4-85.8k on the hybrid curve), so the opening is not where the clone's
+value is: the learned second half is. Job labels for THIRD FARM CLUB's 135 games
+(`research/jobs.py`: a unit's next non-move op within the day and the tile it happens
+on; `tests/test_jobs.py`): 962,299 unit-steps on its own seat; NONE 8.7%, WATER 32.0%,
+COLLECT_FERTILIZER 14.4%, HARVEST 9.2%, FERTILIZE 6.5%, PICKUP 5.9%, FEED 5.7%, PLANT
+5.6%, CARE 4.8%, DROP 3.7%, PLACE 1.7%, DIG 1.1%, BUILD_PASTURE 0.6%, BUILD_COOP 0.2%.
+`agent/clone_feats.py` holds the numpy feature code the trainer and the runtime share.
