@@ -1364,6 +1364,8 @@ the plateau, in silver or bronze, and the plain tape alone (TAPE_DAYS = 30) woul
 mid-plateau. Iminabo's rule stands: no submission until the gauntlet says we stand a
 chance; the entry deadline of 2026-09-23 still requires some submission to exist by then.
 
+## 2026-09-17
+
 ### Checkpoint: days 24-29 from the same farm, ours against the tape, op by op
 Seed 1, switch day 24 (identical farms at day 24 hour 0). Harvested units by day, ours /
 v41: strawberries 7, 20, 0, 20 / 7, 25, 0, 26 on days 24-27 (both harvest on the
