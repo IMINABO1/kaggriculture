@@ -1694,3 +1694,20 @@ vs v5 10-10 at +34; ladder-style coupled seeds 10-29: v41 0-40 at -5,311 (from -
 Majkel1337 10-0, Artem 0-10 at 91.9k against its 107k. Neither active submission carries
 these constants: 56291900 is the pre-search hybrid, 56306746 the plain tape (validated at
 the fresh-start 600).
+
+### Decision (Iminabo): both tracks, and how they share the machine
+Track A, the executor: replace the greedy per-turn pair assignment for days 24-29 with a
+planned daily route per unit. At hour 0 each unit gets a block of tiles (nearest-neighbour
+tour from the shed over the day's jobs, hands split by quadrant), feeders keep the herd,
+one or two runners haul; the day-24 resume evaluator (`scripts/search/resume.py`, exact,
+40 games in 16 s) is the development loop and the live arena against v41 and v5 the gate.
+Target: the 4-5k the tape's second half still holds (the tape idles 5-24 unit-turns a day
+and walks 20% less). Then move the switch day earlier once our post-switch play beats the
+tape's. Track B, the learning run: featurise the replay store incrementally (per step, per
+seat: tiles as a 10x10 grid of crop/age/water/animal channels, shed, seeds, money, market
+prices and inventory, town shops, hour and day; actions per unit as op plus argument,
+market orders as a small set) into arrays as the pull proceeds, then behaviour cloning of
+a per-unit policy on the gold games; RL only after a vectorised simulator exists. Cores:
+the pull two, featurising two to three in the background, the arena the rest; the crawl
+and the fetch never together. Both tracks keep their numbers in this journal; nothing is
+adopted without the live gate.
