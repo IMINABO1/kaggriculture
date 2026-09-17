@@ -2371,3 +2371,15 @@ BUILD_COOP 0.61, COLLECT 0.53, DIG 0.43, PLACE 0.42; joint by day 0.64, 0.63, 0.
 So one epoch of six teams transfers to four unseen teams at about the level the
 single-team clone reached after its first epoch on its own games (0.57). Three more
 epochs are running; `scripts/learn/eval_jobs.py` reports a saved model per team.
+Per team, the general model's first epoch on each team's 120 latest games (joint /
+destination / op given the destination): DSM 0.825 / 0.870 / 0.941 (a soft test: it
+shares Majkel1337's opening byte for byte, and Majkel1337, a training team, scores
+0.793); Unknown Mother-Goose 0.657 / 0.741 / 0.876; HowardLeeTW 0.594 / 0.686 / 0.852;
+THIRD FARM CLUB 0.479 / 0.653 / 0.711, the lowest, so its play is the least like the six
+training teams' and the single-team clone (0.72) remains the better starting point;
+fine-tuning the general weights on its games is the next offline run.
+
+### Checkpoint: herd guard and scaled schedules, measured
+Fidelity 0.76 of the recorded bank (from 0.74; the diagnosed game 64,186 from 60,649);
+the sequence of fidelity readings today: 0.67, 0.69, 0.71, 0.73, 0.74, 0.76. The arena
+against v41 follows.
