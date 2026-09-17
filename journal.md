@@ -1998,3 +1998,37 @@ finish their rounds at hour 21-22 and drop at day end. So the tape gets its prod
 the market during the day and both of our executors dump at dawn, the planner more so;
 HERD_LOAD 4's gain on the search seeds (shorter rounds, units home by mid-afternoon) is
 the same mechanism, and cut 8's return-to-shed stop should apply to the herd as well.
+
+### Checkpoint: cuts 8 and 9; the planner is not adopted
+Day-24 evaluator (search 0-19 / hold-out 20-29; greedy -4,144 / -7,088):
+
+| cut | change | margin |
+|---|---|---|
+| 7 | value-ordered segments, feed-first haul | -5,023 / -8,250 |
+| 8 | field segments end with a walk home and a drop | -5,180 / -8,489 |
+| 9 | wheat fertilized at ages 2-3 as well (the tape's 40 spreadings) | -4,959 / -8,776 |
+| 9 + herd load 4 | | -5,330 / -9,133 (wheat 119 a game: the field loses two units) |
+| 9 + herd load 4 + every segment ends at the shed | | -5,542 / -9,975 |
+
+The frozen tape's bank is 105.0-105.1k under every planner variant against 103.5k under
+greedy, whatever we do with hauling, herd size or fertilizer; the return-to-shed drop did
+not move it by $10. Our own bank is level with greedy's or a few hundred better, the
+basket is bigger, and the net margin is 0.8-1.7k worse. After nine cuts the planner
+matches the greedy executor's production and hands the frozen opponent about 1.5k of
+price, and the evaluator's noise (a few hundred between seed sets) is now larger than
+the differences between cuts. **Decision:** the planner is not adopted. It stays in the
+tree switched off (`PLAN_FROM_DAY = 99`; `KAGG_PLAN_FROM_DAY=24` turns it on) with the
+live gate run once for the record, so the next session can pick it up or drop it. What
+it established: the tape's 20% fewer moves and idle turns are not where its second-half
+margin comes from; a planned executor that out-harvests greedy still banks the same,
+because the last 4-5k against the tape sits in the market interaction, which the frozen
+evaluator cannot show and the live arena has to.
+
+### Checkpoint: the planner's live gate, and the shipped state reproduced
+Live arena, `KAGG_PLAN_FROM_DAY=24` (cut 9), hybrid switch day 24 against v41, seeds 0-9
+both seats, decoupled: 0-20, our bank 93,894 against v41's 98,575, margin -4,681, basket
+105,209; the greedy executor at the same commit is 0-20 at -3,774 (93,614 against 97,388,
+basket 104,910). The live line says what the frozen one said: the planner adds 280 to
+our bank and 1,187 to the opponent's. With the planner off `scripts/eval.sh` reproduces
+the morning's numbers to the dollar (production 167,701, basket 106,564; against v5 10-10
+at +34), so the tree's shipped behaviour is the adopted search state; 16 tests pass.

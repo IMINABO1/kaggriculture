@@ -168,10 +168,13 @@ def market_orders(obs, day, hour, summary, state=None) -> list:
         expected += 0.8 * n * prices[item]
     cash = money + expected
 
-    # 2. hands for the day, ahead of the sells so the order cap never drops them
+    # 2. hands for the day, ahead of the sells so the order cap never drops them; on a
+    #    planned day the plan sizes the crew to the work
+    dayplan = (state or {}).get("dayplan") or {}
     if hour <= HIRE_LAST_HOUR and day < len(P.HANDS_BY_DAY):
         already = me.get("hires_today", 0)
-        n = P.HANDS_BY_DAY[day] - already
+        hands = dayplan.get("hands", P.HANDS_BY_DAY[day]) if dayplan.get("day") == day else P.HANDS_BY_DAY[day]
+        n = hands - already
         while n > 0 and hire_cost(already + n) - hire_cost(already) > money:
             n -= 1
         if n > 0:
@@ -218,10 +221,12 @@ def market_orders(obs, day, hour, summary, state=None) -> list:
             orders.append(["BUY_ANIMAL", animal, n])
             cash -= n * P.ANIMAL_COST[animal]
 
-    # 6. seeds for the tiles the plan wants planted today, plus a small buffer in season
+    # 6. seeds for the tiles the plan wants planted today, plus a small buffer in season; on a
+    #    planned day the day plan knows how many tiles will be replanted after their harvest
+    plan_wanted = dayplan.get("plant_wanted", {}) if dayplan.get("day") == day else {}
     if hour <= 20:
         for crop in ("MELON", "STRAWBERRY", "CARROT", "WHEAT"):
-            wanting = tiles_wanting(me, day, crop)
+            wanting = max(tiles_wanting(me, day, crop), plan_wanted.get(crop, 0))
             if crop == "WHEAT" and day > P.WHEAT_LAST_DAY:
                 wanting = 0
             buffer = SEED_BUFFER.get(crop, 0) if wanting > 0 and day >= SEED_BUFFER_FROM_DAY else 0

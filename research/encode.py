@@ -197,7 +197,7 @@ def encode_replay(replay: dict) -> dict:
                     if it in ITEM_ID:
                         unit_inv[seat, t, u, ITEM_ID[it] - 1] = _u8(n)
             if t + 1 < T:
-                action = step_action = steps[t + 1][seat].get("action") or {}
+                action = steps[t + 1][seat].get("action") or {}
                 if not isinstance(action, dict):
                     action = {}
                 ops = [action.get("farmer")] + list(action.get("hands") or []) if isinstance(action.get("hands"), list) else [action.get("farmer")]

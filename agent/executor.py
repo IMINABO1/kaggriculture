@@ -326,6 +326,8 @@ def act_units(obs, day, hour, state):
     the first few hands are feeders: they take wheat from the shed and work the herd until
     every animal is fed and cared for, then join the field.
     """
+    from agent import dayplan as DP  # dayplan imports this module's helpers
+
     me = obs["farms"][obs["player"]]
     private = obs["private"]
     shed = private["shed"]
@@ -350,14 +352,38 @@ def act_units(obs, day, hour, state):
         jobs = [j for j in jobs if j.kind == "HARVEST"
                 and dist(j.pos, nearest_shed_tile(j.pos)) <= LAST_ACT_HOUR - hour - 1]
 
+    # planned days: each unit follows its segment of stops; the tiles still on a segment are
+    # off the greedy table, and a unit whose segment is spent joins the greedy pool
+    planned: dict[int, list] = {}
+    shed_left = dict(shed)
+    plant_left = dict(seeds)
+    if DP.PLAN_FROM_DAY <= day <= DP.PLAN_LAST_DAY:
+        plan = state.get("dayplan")
+        if plan is None or plan["day"] != day or (hour >= 1 and plan["n_units"] != len(positions)):
+            expected = len(positions) if hour >= 1 else 1 + P.HANDS_BY_DAY[day]
+            plan = DP.build_dayplan(me, private, day, prices, expected, positions if hour >= 1 else None)
+            state["dayplan"] = plan
+        for ui, stops in plan["units"].items():
+            if ui >= len(positions):
+                continue
+            act = DP.follow(stops, positions[ui], me["tiles"], invs[ui], day, hour, shed_left, plant_left, prices)
+            if act is not None:
+                planned[ui] = act
+                if act[0] == "PLANT":
+                    plan["plant_wanted"][act[1]] = plan["plant_wanted"].get(act[1], 1) - 1
+        busy = {s.pos for stops in plan["units"].values() for s in stops}
+        for j in jobs:
+            if j.pos in busy:
+                j.taken = True
+
     # shed inputs the outstanding jobs still need beyond what units carry
     need_from_shed = {item: 0 for item in INPUTS}
     for j in jobs:
-        if j.need:
+        if j.need and not j.taken:
             need_from_shed[j.need[0]] += j.need[1]
     for item in INPUTS:
         need_from_shed[item] -= carried[item]
-    pending_inputs = {item for item in INPUTS if any(j.need and j.need[0] == item for j in jobs)}
+    pending_inputs = {item for item in INPUTS if any(j.need and j.need[0] == item and not j.taken for j in jobs)}
 
     # the melon dump: every unit takes one melon tile first thing and walks its load straight
     # back, so the whole crop sells before the opponent's; the herd is fed afterwards
@@ -379,6 +405,8 @@ def act_units(obs, day, hour, state):
     previous = state.get("targets", {}) if state.get("target_step") == step - 1 else {}
     pairs = []
     for ui, pos in enumerate(positions):
+        if ui in planned:
+            continue
         inv = invs[ui]
         feeder = ui in feeders
         haul_now = inv.get("MELON", 0) > 0   # not even the pasture under its feet on the way
@@ -424,8 +452,8 @@ def act_units(obs, day, hour, state):
     pairs.sort(key=lambda t: (t[0], t[1], str(t[2])))
 
     assigned = [None] * len(positions)
-    plant_left = dict(seeds)
-    shed_left = dict(shed)
+    for ui, act in planned.items():
+        assigned[ui] = ("PLANNED", act, 0, positions[ui])
     for score, ui, ji in pairs:
         if assigned[ui] is not None:
             continue
@@ -464,6 +492,9 @@ def act_units(obs, day, hour, state):
             actions.append(["PASS"])
             continue
         kind, payload, n, target = a
+        if kind == "PLANNED":
+            actions.append(payload)
+            continue
         move = step_toward(pos, target)
         if move:
             actions.append([move])
