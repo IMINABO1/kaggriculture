@@ -2291,3 +2291,24 @@ now `plan.TFC_PASTURES` / `TFC_COOPS`, and `build_jobs` sizes the structures fro
 fidelity games and the arena against v41 with the ten-epoch weights and both changes.
 Ladder at 18:50Z: the plain v7 tape (56309360) is at 2,555 after two and a half hours,
 the plain v41 tape at 2,245 after four and a half; the puller holds 21,542 replays.
+
+### Checkpoint: the clone's seed and crop gap, day by day
+Same game (109898708) with the ten-epoch weights, greedy NONE and the team's structures:
+61,234 against 101,886 (the herd is now 16 on day 12 against 19, from 11). What the
+crop census and the seed orders say, ours against the recording: day 11 we hold 12 empty
+tiles, 26 strawberries, 17 wheat and no carrots or tomatoes, having bought 20 wheat and 2
+strawberry seeds; the team holds 1 empty tile, 31 strawberries, 6 carrots and 4 tomatoes
+and buys 4 tomato, 6 carrot, 3 strawberry, 3 wheat and 2 melon seeds that day. Day 18 the
+team harvests 48 strawberries to our 8 (its day-6 batch of ten strawberry seeds is bought
+at hour 0 of day 6, the first step our market plays, and our market buys only what the
+model asks for a turn later, so our strawberries are fewer, later and less fertilized:
+9 FERTILIZE against 18 on day 15). Days 24-28 the team keeps 9-10 tomatoes and 12-20
+carrots on the farm and plants 21 on day 26 with 10 carrot seeds bought; we keep 1
+tomato and 6-8 carrots and leave 14-27 tiles empty, so its day-29 harvest is 64 carrots,
+34 tomatoes and 63 wheat and ours 15, 0 and 17. The model asked 347 times for a seed the
+shed did not hold: strawberries 123, wheat 159, tomatoes 4, carrots a handful, 134 of
+them after hour 20 when the market buys nothing. Two single changes follow: the mined
+seed schedule bought at hour 0 each day (the team's own purchases by crop and day,
+carrots and wheat conditioned on a carrot shop) with the demand top-up kept, and the
+greedy fallback allowed to plant carrots on any empty tile on days 22-27 and wheat to
+day 25 under the clone policy instead of the v41 layout's tiles.
