@@ -373,3 +373,22 @@ entry also says why I missed it and what changes so it does not happen again.
 - **Prevention:** an A/B on fixed seeds is trusted only when the environment is shown to be
   identical between arms (here: the shop lists), or when the seed count is large enough
   that the coupled draw averages out; every diagnostic that names a seed names its shops.
+
+## 2026-09-17
+
+### P23: an arena run launched in the same response as a code edit measured a moving target
+- **Symptom:** the hybrid on v7's opening measured -5,542 against v41 where the same
+  executor on v41's opening had measured -3,774 the day before, although both tapes leave
+  an identical farm and shed at the switch and v7's bank is 1.1-1.5k higher there.
+- **Cause:** the background arena was started in the same response as the edits that
+  hooked the first, untested cut of the day planner into `agent/executor.py`; the arena's
+  workers import the working tree when they start, so some or all of the 40 games may have
+  run the planner (which the evaluator later scored 3.5k below greedy) rather than the
+  committed executor. Which games did cannot be known from the output.
+- **Fix:** `KAGG_PLAN_FROM_DAY` switches the planner off for an arena run; the run is
+  repeated with it off and the earlier numbers are struck.
+- **Caught by:** me, when the shed-at-switch check left no other explanation.
+- **Why I missed it:** the tool calls in one response were treated as sequential; a
+  background command and an edit are not, and the arena reads the tree, not a commit.
+- **Prevention:** no background arena or evaluator run is launched in a response that also
+  edits `agent/`; a measurement names the commit or the environment override it ran under.

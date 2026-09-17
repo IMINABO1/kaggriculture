@@ -1868,3 +1868,62 @@ nothing can follow (10 wasted DIGs, 33 idle unit-turns), and on the last planned
 banks 2.1k less than greedy in one day. Cut 4: pickups sized to the whole feed need with
 the residual retried at the shed until hour 2, no dig without a planting, and A/Bs of
 the last planned day (27) and the fertilizer reserve cap (40).
+
+### Checkpoint: cut 4, and the herd was not the cause after all
+Cut 4 (pickups sized to the feed need, retried at the shed until hour 2; no dig without a
+planting): -5,835 / -7,602 (cut 3: -5,611 / -8,438; greedy -4,144 / -7,088). Last planned
+day 27: -5,883 / -7,979, worse. Fertilizer reserve cap 40: identical to the cap of 16, so
+the reserve never binds. The census on seeds 1 and 2 with cut 4 (days 24-29) now shows the
+herd even: seed 1 milk 44 against greedy's 44 and wool 60 against 60, seed 2 milk 36
+against 36 and wool 63 against 66; the plan harvests more wheat (192 against 153, 223
+against 191) and as many or more strawberries (54 against 53, 70 against 61) and still
+banks 1.4k and 0.5k less. Two causes read off the census. First, carrots: 94 against 111
+and 89 against 106 units, because on day 27 greedy digs the strawberries it has just
+harvested for the last time and plants carrots on them the same day (13 DIG, 19 PLANT),
+while the hour-0 plan saw a strawberry with yield and wrote only the harvest, so the
+tile waited for a fallback unit; cut 5 writes dig, plant and water after a last harvest.
+Second, timing: the planned harvest reaches the shed at the day-end drop and sells at
+hour 0 beside the tape's own lots (day-end money runs 0.4-2.3k behind greedy's and
+catches up the next morning), where greedy's hauled loads sell the same afternoon; the
+evaluator preferred less hauling (1,200) to more, so the answer is not more trips but
+ending each segment at the shed, which the greedy fallback already does from hour 21.
+
+### Checkpoint: cut 5 out-banks greedy on our side; the rest is the opponent's price
+Cut 5 (a strawberry's last harvest is followed by dig, plant and water in the same stop),
+haul 1,200: search seeds -5,013 (our bank 99,977 against greedy's 99,402, the tape's
+104,991 against 103,547), hold-out -7,684 (93,753 against 93,364; 101,437 against
+100,452); carrots back to 96 and 90 a game. Haul 900: -5,333 / -8,000, worse. So the
+planned suffix now banks 400-600 more than the greedy one and harvests a bigger basket
+(29,166 against 28,266), and the whole remaining deficit, 0.9-1.4k, is the frozen tape
+banking more against it: milk, wool and eggs are 6 units a game lower each on the search
+seeds, and what the tape sells of them fetches more. Per-seed differences are being
+tabulated to find the seeds where the herd falls short.
+
+### Checkpoint: per-seed table, herd load, and two more causes
+Per seed (search seeds 0-19, both seats, cut 5 against greedy): our bank is higher on 32
+of 40 games and the tape's is higher on 40 of 40 (by 280 to 3,110); milk, wool and eggs
+total -246, -216 and -224 units over the 40 games, wheat +2,183, carrots +105. Seed 18
+(a four-quadrant farm with 23 pens) is the outlier at -6.9k a seat: its day-24 plan costs
+363 unit-turns for 14 units, 25.9 each against a 23-hour day, and the overflow weeded
+five strawberries and a wheat that day and seven more tiles on day 26. Seed 15 shows the
+herd cause: a herd unit carrying $1,200 of milk at a 3-Smoothie-Shop price broke off its
+round to haul it and two pens were never fed. HERD_LOAD 5: -5,338 / -8,966; 4: -4,607 /
+-8,563 (search seeds within 460 of greedy, hold-out worse); the evaluator's own noise is
+a few hundred, so the load stays at 6 for now. Cut 6: a herd unit does not haul while it
+still has pens to feed; when the day is too short the plan drops, in order, spare
+waterings, new wheat plantings, wheat and carrot fertilizing and carrot plantings before
+it leaves tiles unreached (`fit_to_day`); and at hour 0 the plan sizes the day's hires to
+the work (`hands`, up to 14, read by `agent/market.py`) instead of the fixed list.
+
+### Surprise: v7's whole edge over v41 is one melon
+Executed revenue by product from the market replica on four v7-vs-v41 games (seeds 0-3,
+decoupled, money checks 0 mismatches): melon +1,279 (72 units against 66: v7 ends day 0
+with a twelfth melon seed where v41's 70-wheat turn-0 round trip leaves it one short),
+milk +170, wheat net +108 (v7 sells 60 fewer wheat and spends 1,922 less buying it),
+everything else within 60. The "same-turn race", "sale advance" and "front-loading"
+overlays contribute nothing measurable in mirror seats against v41. So the newest public
+generation is v41 with its opening defect repaired, and both tapes hold the same shed and
+farm at the switch (checked at steps 575-577 on seeds 0-2). The hybrid-on-v7 numbers of
+the earlier checkpoint are being re-measured: that arena run was launched in the same
+response as the first planner hook went into `agent/executor.py`, so its workers may have
+imported the untested planner (P23).
