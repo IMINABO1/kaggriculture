@@ -1637,3 +1637,15 @@ search seeds to 0-19 with hold-out 20-29 and starts from the adopted state.
 (40 resumed games a candidate, about 30 s) with hold-out 20-29, starting from the adopted
 state; run 1's files archived as `results/search_run1.*`. Three hours, four workers,
 detached. The pull continues: 20,285 replays at 08:47Z.
+
+### Checkpoint: front-running the tape's melon dump is not available (option 3 closed)
+One game, our executor from day 9 against v41, seed 1, decoupled: our melon lots land at
+hours 9 (6 units, $266, the same turn as the tape's 6), 10, 13 and 16; the tape's at 9,
+10, 11, 12, 13 and 15 plus 12 on day 11. Ours 72 at $190, its 72 at $205. Every unit
+respawns at the shed each morning (the engine dismisses the hands and resets the farmer
+at day end), so the earliest a melon can reach the shed is hour 7 for the farmer and 8
+for a hand on the nearest tiles, and the tape already sells at 9: the most a perfect
+melon crew could take from it is about $500 a game. The same bound applies to the tape's
+other lots, which it hauls as it harvests. The lever that remains against the block is a
+stronger second half or a different skeleton, not sale timing. Submission 56291900 at
+1,580.7 (flat).
