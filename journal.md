@@ -2394,3 +2394,15 @@ guard alone costs about 3.2k there while lifting the recorded seats: at hour 14 
 units off harvests to feed animals the team would let go (cows on towns where milk is
 worth less than their wheat). The guard now fires from hour 16 and only for an animal
 whose product is worth its feed (the executor's own rule); measured next.
+
+### Checkpoint: the value-conditional guard is kept; the clone's shed ops
+Guard from hour 16 for animals worth their feed: fidelity 0.78 (from 0.76; one win of
+ten; mean bank 83,042 against 110,932 recorded), arena against v41 0-20 at -45,707
+(78,117 against 123,825; basket 88,211), 1.1k under the guard-off run and inside the
+noise, so the guard stays. Today's fidelity sequence: 0.67, 0.69, 0.71, 0.73, 0.74,
+0.76, 0.78; the arena has sat at -44 to -48k since the structures went in. The revenue
+diagnostic points at the next runtime gap: our strawberries sell 95% at hours 0-1 (the
+day-end drop) where the team sells 26% then, so its units carry the harvest to the shed
+during the day and ours do not; the model predicts DROP jobs (recall 0.87) but the
+runtime skipped a shed op whose predicted tile was not one of the four access tiles.
+Such a prediction now snaps to the nearest access tile; measured next.
