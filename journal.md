@@ -1594,3 +1594,14 @@ Coupled shop draw, seeds 10-29, both seats: against v41 0-40, margin -6,883 (D3 
 smaller than on the decoupled gate the search saw (-4,398 and -781), as the search seeds'
 towns are not the coupled ones; the direction holds. The search relaunched at 05:52Z for
 three hours with four workers, resuming from the incumbent (`results/search.log`).
+
+### Checkpoint: submission 56291900 after 61 ladder games
+02:12Z to 05:42Z: 61 games (the first its validation self-play), 36-25, rating 1,587 after
+1,419 at validation and 1,596 after the first hour. The pattern is the local reading:
+wins by 20-60k against farms banking 50-70k, losses by 1-6k against farms banking
+95-140k (91,955 to 96,213; 102,972 to 105,380 against prvsiyan; 137,766 to 140,650;
+120,433 to 122,220; 104,444 to 109,313). The ladder pairs a new submission with
+similarly rated opponents, so the early wins buy little rating, and the plateau's 2,900
+needs wins against plateau agents, which the local gate says we do not get (0-40 against
+v41 under ladder conditions). The submission is the D3 stack; the adopted search
+constants are not on the ladder.
