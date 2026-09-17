@@ -10,9 +10,9 @@ strawberry tiles from day 24, and the hire count per day of the tape.
 from __future__ import annotations
 
 # the tape's hires per day, plus one from day 10: this executor walks more than the searched
-# routes and the twelfth hand costs $144 a day
+# routes and the twelfth hand costs $144 a day; 13 on days 24-27 as v41's tape hires (H3)
 HANDS_BY_DAY = [5, 3, 4, 5, 4, 4, 7, 7, 8, 8, 12, 11, 10, 10, 10, 11, 12, 12, 12, 11,
-                12, 12, 11, 11, 11, 11, 11, 11, 12, 12]
+                12, 12, 11, 11, 13, 13, 13, 13, 12, 12]
 
 LAND_DAYS = {"NE": 6, "SW": 11}
 LAND_PRICES = [1000, 2000, 4000]

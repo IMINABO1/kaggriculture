@@ -1400,3 +1400,14 @@ runner's output was invisible because the grep in its pipeline block-buffers. Th
 processes were stopped, the tree reverted; FW is being run seed by seed with a timeout to
 find the hanging game, since an agent that can hang would be timed out on the ladder.
 The runner will write unbuffered to a file and give each run a timeout from here on.
+
+### Checkpoint: third batch on W2; H3 accepted, C1 passes at this gate
+Switch-day-24 gate on W2 (baseline -7,066 against v41, -3,139 against v5, basket 102,168):
+FW (wheat and carrot fertilize at 1.5, age 3 allowed) -7,308 and -3,191, rejected; FR
+(fertilizer reserve 60) identical to the baseline, the cap never binds, dropped; H3 (13
+hands on days 24-27, as the tape hires) -6,834 and -2,473 with basket 104,202, kept; C1
+(care at 2.0) -6,537 and -2,449, better on both, so the full-game rejection this morning
+was a days-0-23 effect and it is re-tested on top of H3 now; L0 (liquidation from hour 12)
+-7,398 and -3,399, rejected. The earlier "hang" under FW was a worker-pool stall, not the
+agent: FW plays seeds 0-4 in 6-9 s each. Follow-ons queued: H4 (14 hands on days 24-27)
+and E2e (planting and seed purchases to hour 22 from day 24 only).
