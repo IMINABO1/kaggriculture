@@ -21,8 +21,9 @@ QUADRANT_BIT = {"NW": 1, "NE": 2, "SW": 4, "SE": 8}
 TOP_DESTS = 4               # candidate destinations tried per unit before giving up
 WAIT_FOR_INPUT_HOUR = 2
 # what a NONE prediction means: "pass" idles the unit as the team would, "greedy" hands it
-# to the executor for the step (KAGG_CLONE_NONE overrides for an arena A/B)
-NONE_MEANS = __import__("os").environ.get("KAGG_CLONE_NONE", "pass")
+# to the executor for the step (fidelity 0.69 against 0.67 and -50.6k against -54.4k vs
+# v41 with the six-epoch weights, journal 2026-09-17; KAGG_CLONE_NONE overrides)
+NONE_MEANS = __import__("os").environ.get("KAGG_CLONE_NONE", "greedy")
 _NET = None
 
 

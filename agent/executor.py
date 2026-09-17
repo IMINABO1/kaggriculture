@@ -212,7 +212,7 @@ def needs_feed(tile, day, prices) -> bool:
     return since >= 0 and since % a["interval"] == 0
 
 
-def build_jobs(me, day, hour, shed, seeds, carried, prices) -> list:
+def build_jobs(me, day, hour, shed, seeds, carried, prices, shops=None) -> list:
     tiles = me["tiles"]
     jobs: list[Job] = []
     empty_structures = {"PASTURE": [], "COOP": []}
@@ -280,11 +280,17 @@ def build_jobs(me, day, hour, shed, seeds, carried, prices) -> list:
             empty_structures[structure].remove(pos)
 
     # structures the plan calls for by today that do not exist yet
-    want_pastures = P.cumulative(P.COW_TARGET, day) + P.cumulative(P.SHEEP_TARGET, day)
-    want_coops = P.cumulative(P.GOOSE_TARGET, day)
+    if P.POLICY == "clone":
+        targets = P.tfc_animal_targets(day, shops or [])
+        want_pastures, want_coops = targets["COW"] + targets["SHEEP"], targets["GOOSE"]
+        pasture_order, coop_order = P.TFC_PASTURES, [t for t in P.TFC_COOPS if t not in P.TFC_PASTURES[:want_pastures]]
+    else:
+        want_pastures = P.cumulative(P.COW_TARGET, day) + P.cumulative(P.SHEEP_TARGET, day)
+        want_coops = P.cumulative(P.GOOSE_TARGET, day)
+        pasture_order, coop_order = PASTURE_TILES, P.COOPS_NW
     unlocked = set(me["unlocked_quadrants"])
-    for structure, missing, order in (("PASTURE", want_pastures - pastures, PASTURE_TILES),
-                                      ("COOP", want_coops - coops, P.COOPS_NW)):
+    for structure, missing, order in (("PASTURE", want_pastures - pastures, pasture_order),
+                                      ("COOP", want_coops - coops, coop_order)):
         for (x, y) in order:
             if missing <= 0:
                 break
@@ -340,7 +346,7 @@ def act_units(obs, day, hour, state):
         invs.append({})
     carried = {item: sum(inv.get(item, 0) for inv in invs) for item in INPUTS}
 
-    jobs = build_jobs(me, day, hour, shed, seeds, carried, prices)
+    jobs = build_jobs(me, day, hour, shed, seeds, carried, prices, obs["town"].get("unlocked_shops", []))
     if day >= 29:
         # nothing fed or planted today can be sold before the season ends; a watering
         # still counts when it adds a unit to a one-time crop harvested later today

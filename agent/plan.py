@@ -72,18 +72,26 @@ POLICY = os.environ.get("KAGG_POLICY", "executor")
 
 # THIRD FARM CLUB's purchase schedule, mined from its 135 recorded games by
 # scripts/learn/mine_market.py (journal 2026-09-17): hands per day (median), land bought on
-# days 6 and 9, and animals owned by day conditioned on the shops unlocked so far
+# days 6 and 9, and animals owned at hour 0 of a day conditioned on the shops unlocked so
+# far, keyed here by the day they are bought (the day before they are owned)
 TFC_HANDS_BY_DAY = [4, 4, 6, 6, 6, 6, 11, 9, 9, 12, 13, 10, 9, 8, 9, 11, 10, 10, 11, 11,
                     11, 11, 11, 10, 11, 11, 11, 10, 9, 11]
 TFC_LAND_DAYS = {"NE": 6, "SW": 9}
-TFC_COW = {1: 2, 7: 6, 9: 7, 10: 9}
-TFC_COW_MILK_SHOP = {13: 10}
-TFC_SHEEP = {1: 3}
-TFC_SHEEP_YARN = {7: 6, 9: 8, 10: 10, 14: 11}
-TFC_GOOSE = {7: 1, 8: 2, 12: 4, 13: 5, 15: 6}
-TFC_GOOSE_EGG_SHOP = {14: 7}
-TFC_GOOSE_NO_EGG_SHOP = {12: 3, 19: 4}
-TFC_GOOSE_YARN = {12: 3, 14: 4}
+TFC_COW = {0: 2, 6: 6, 8: 7, 9: 9}
+TFC_COW_MILK_SHOP = {12: 10}
+TFC_SHEEP = {0: 3}
+TFC_SHEEP_YARN = {6: 6, 8: 8, 9: 10, 13: 11}
+TFC_GOOSE = {6: 1, 7: 2, 11: 4, 12: 5, 14: 6}
+TFC_GOOSE_EGG_SHOP = {13: 7}
+TFC_GOOSE_NO_EGG_SHOP = {11: 3, 18: 4}
+TFC_GOOSE_YARN = {11: 3, 13: 4}
+# its structure tiles in the order they appear (share of its games holding one at day 16):
+# five NW pastures on day 1, four NE on day 7, one more NE on day 9, two SW on day 10; coops
+# at (6, 4) and (7, 4) on day 7 (59%; pastures there in the other 40%) and scattered
+# single coops on day 12
+TFC_PASTURES = [(4, 2), (4, 4), (3, 4), (4, 3), (2, 4), (6, 3), (5, 4), (5, 2), (5, 3), (6, 2), (4, 5), (3, 5),
+                (6, 4), (7, 4), (3, 3), (2, 3)]
+TFC_COOPS = [(6, 4), (7, 4), (1, 3), (3, 7), (4, 8), (4, 6), (1, 8), (2, 5)]
 MILK_SHOPS = ("PIZZA_SHOP", "ICE_CREAM_SHOP", "SMOOTHIE_SHOP")
 EGG_SHOPS = ("BAKERY", "BRUNCH_SPOT")
 
@@ -100,9 +108,9 @@ def tfc_animal_targets(day: int, shops) -> dict:
     elif egg:
         goose = max(cumulative(TFC_GOOSE, day), cumulative(TFC_GOOSE_EGG_SHOP, day))
     else:
-        goose = min(cumulative(TFC_GOOSE, day), max(cumulative(TFC_GOOSE_NO_EGG_SHOP, day), 2 if day >= 8 else 1 if day >= 7 else 0))
+        goose = min(cumulative(TFC_GOOSE, day), max(cumulative(TFC_GOOSE_NO_EGG_SHOP, day), 2 if day >= 7 else 1 if day >= 6 else 0))
     if yarn:
-        cow = min(cow, 7 if day >= 14 else 6 if day >= 12 else 4 if day >= 7 else 2)
+        cow = min(cow, 7 if day >= 13 else 6 if day >= 11 else 4 if day >= 6 else 2)
     return {"COW": cow, "SHEEP": sheep, "GOOSE": goose}
 
 
