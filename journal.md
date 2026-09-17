@@ -1619,3 +1619,15 @@ submissions of strong teams still on their own ramps (we lost to farms banking 1
 with the farms the ladder matches us with and lose narrowly to anything at plateau
 strength; the clean verification is the rating in a day and, in the end, the
 post-deadline Bradley-Terry.
+
+### Checkpoint: the first search ended; its later incumbent rejected on hold-out; the anchors
+The relaunched run ended 08:47Z at 1,444 candidates in total (38 accepted): final
+incumbent -4,143 on the search seeds, -5,430 on hold-out (the adopted state: -4,388 and
+-5,326). Live gates, decoupled: on the search seeds 0-9 the final incumbent is -4,128
+against v41 and -443 against v5 (adopted: -4,398, -781), in-sample for the search; on the
+hold-out seeds 10-19 the adopted state is 2-18 at -5,298 against v41 (two wins against the
+live successor) and the final incumbent 0-20 at -5,407. The later incumbent is fitted to
+its ten seeds and is not adopted. Anchors: the plain tape (switch day 30) against v41 ties
+1-1-18 with margin 0, so the parity floor is exact; v41 beats v5 20-0 by 4,613, so the
+successor is the stronger generation and the target. The second search run widens the
+search seeds to 0-19 with hold-out 20-29 and starts from the adopted state.
