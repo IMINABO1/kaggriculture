@@ -2249,3 +2249,12 @@ diagnostic (`scripts/learn/revenue.py`, executed revenue by product and hour for
 seats of a local game). Free memory fell to 2.8 GB with two training processes and the
 browser resident; the memory watchdog killed one run earlier in the session, so the
 runs are sequenced from here.
+
+### Checkpoint: ten more epochs plateau at joint 0.72
+Continuation from the six-epoch weights at half the learning rate (`tfc2`, 10 epochs):
+joint 0.685, 0.687, 0.696, 0.703, 0.700, 0.712, 0.713, 0.718, 0.717, 0.719; destination
+top-1 0.745 to 0.770, within one tile 0.867, op given the destination 0.921 at the end.
+By day at epoch 9: 0.994 on days 0-5, 0.734 on days 6-15. On 110 games the offline curve
+flattens a full eight points short of gate G1's joint 0.80; the general model's
+pretraining is the remaining offline lever, and the runtime's behaviour (what it does
+with the 28% of jobs it gets wrong) matters more than the last points of accuracy.
