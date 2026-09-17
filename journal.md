@@ -2236,3 +2236,16 @@ but under-harvests, fertilizes half as much, lets animals escape and idles more;
 per-op recalls said as much (HARVEST 0.65, FERTILIZE 0.64, NONE 0.27). Next, one change
 at a time on the fidelity set: a NONE prediction hands the unit to the greedy executor
 instead of idling; then the longer-trained and the general-pretrained weights.
+
+### Checkpoint: the six-epoch clone against the live lines
+Decoupled, seeds 0-9 both seats: against v41 0-20, mean bank 72,553 against 126,945,
+margin -54,392, basket 80,937 (strawberries 152, milk 144, wool 127, carrots 43, tomatoes
+14); against v7 0-20, 69,451 against 126,682, margin -57,231, basket 79,163. The line
+banks 20-27k more against the clone than against anything else we have fielded, so the
+clone both under-produces (basket 81k against the executor's 105k) and leaves the market
+to the line's dumps. The harness's scratch directory was withdrawn mid-session, so the
+fidelity harness now lives in the repo (`scripts/learn/fidelity.py`) with a revenue
+diagnostic (`scripts/learn/revenue.py`, executed revenue by product and hour for both
+seats of a local game). Free memory fell to 2.8 GB with two training processes and the
+browser resident; the memory watchdog killed one run earlier in the session, so the
+runs are sequenced from here.
