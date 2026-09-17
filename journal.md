@@ -2275,3 +2275,19 @@ longer possible), 541 NONE predictions, 152 steps with no valid job, 196 plantin
 that wanted a seed the shed did not hold. First single change: the animal schedule
 shifted a day earlier (bought the day before it is owned). The A/B "NONE hands the unit
 to greedy" gave fidelity 0.69 against 0.67, inside the noise, not adopted yet.
+
+### Checkpoint: NONE-to-greedy adopted; the team's structures; the ladder at 18:50Z
+The NONE-to-greedy A/B against v41 (six-epoch weights, seeds 0-9 both seats): 0-20 at
+-50,603 (75,698 against 126,302) against -54,392 without it; with the fidelity 0.69
+against 0.67 that is two readings the same way, so it is the default (`NONE_MEANS`).
+Shifting the animal schedule a day earlier alone changed the diagnosed game by -1k
+(65,407 against 66,482) and left the herd at 11 animals on day 12 against the team's 19:
+the bought animals need pastures and coops the greedy executor was building on the v41
+plan's tiles and counts. Mined from the 135 games (share of games with a structure on
+the tile at day 16): five NW pastures on day 1, four NE on day 7, one more on day 9, two
+SW on day 10, coops at (6, 4) and (7, 4) on day 7 and scattered single coops on day 12;
+now `plan.TFC_PASTURES` / `TFC_COOPS`, and `build_jobs` sizes the structures from
+`tfc_animal_targets` under the clone policy. Measuring next: the diagnosed game, ten
+fidelity games and the arena against v41 with the ten-epoch weights and both changes.
+Ladder at 18:50Z: the plain v7 tape (56309360) is at 2,555 after two and a half hours,
+the plain v41 tape at 2,245 after four and a half; the puller holds 21,542 replays.
