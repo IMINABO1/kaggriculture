@@ -2440,3 +2440,7 @@ general weights fine-tuned on the team (`train_jobs.py --init data/features/jobs
 general_e3.pt --team "THIRD FARM CLUB"`), exported and measured the same way; the
 per-product revenue gap (milk 82 against 173 units, strawberries 147 against 248) is
 where a runtime change would still have to land.
+
+After every clone-gated edit to `agent/executor.py` and `agent/market.py`, `scripts/eval.sh`
+reproduces the shipped hybrid to the dollar: production 167,701 (basket 106,564), against
+v5 10-10 at +34 (19:55Z).
