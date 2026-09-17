@@ -1740,3 +1740,42 @@ P17-P22, then `agent/`, `scripts/eval.sh`, `scripts/search/resume.py` and `climb
 background on two workers, since it is mechanical and the pull grows under it; track A's
 route planner is developed against `resume.py` while it runs; the successor check decides
 which tape the hybrid bundles.
+
+### Surprise: the plateau's successor is already stronger than the tape we bundle
+Arena, decoupled shops, seeds 0-9 both seats, each new build against `line:v41`:
+
+| build | W-L | mean bank vs v41's | margin | basket |
+|---|---|---|---|---|
+| aurax7 v7 | 20-0 | 98,668 vs 96,791 | +1,877 | 108,165 |
+| jaxa623 2802 | 20-0 | 98,668 vs 96,791 | +1,877 | 108,165 |
+| ahmedberatozer V46 | 19-1 | 98,694 vs 98,175 | +519 | 108,030 |
+
+v7 and 2802 produce identical harvests and identical banks on all twenty games: 2802 is a
+315-line wrapper that embeds V43 verbatim (`_PARENT_SRC`, 335 KB) with a single-order
+turn-0 wheat round trip, a 24-turn sale-reservation horizon, market front-loading and a
+two-turn sale advance; v7 describes itself as "V45 Full Chassis + V44 Same-Turn Race
+Escalator + _r60 Survival Guard + 2842 Advance/Frontload Overlay", so it has absorbed the
+same overlay. Every one of the four carries Apache-2.0 notices and retains its upstream
+attributions. The plain tape we submitted (56306746, v41) therefore sits a generation
+behind the newest public build by about 1.9k a game in mirror seats, and the hybrid's
+target moves to v7. Whether v7 is on the ladder yet is being checked by replaying it in
+the recorded seat of the 60 most recent gold games (a first-divergence count, as v5 was
+checked on 2026-09-16); the hybrid with v7's code as its tape is measured after that
+(`KAGG_TAPE` now points `agent/hybrid.py` at any build for an arena run).
+
+### Milestone: the featuriser is written and running detached (track B)
+`research/encode.py` turns a replay into arrays with a step axis: both farms as
+`[2, 720, 10, 10, 12]` uint8 tile grids (kind, crop or animal id, age, yield, tended,
+missed days, fertilizer days left, decaying, cared, dung, care bonus, days of life left),
+each seat's unit positions and inventories (up to 20 units), shed, seeds, money, hires
+and quadrant mask, the shared prices, inventory, shops, day and hour, and each seat's
+actions: per unit an op id (18 ops), argument (crop or item) and count, and up to ten
+market orders as type, item and quantity. The action at index t is the one submitted on
+observation t. Checked on the probe replay 108982600: 14,181 unit ops decode back to the
+recorded ops with 0 mismatches, tile-kind counts equal `tile_summary` at steps 0, 100,
+400 and 719, final money equals the reward; 0.45 s a game, 100 KB compressed
+(`tests/test_encode.py`, 3 tests). `scripts/learn/featurise.py` encodes every gold game
+on disk newest first into `data/features/<episode>.npz` (gitignored) with a manifest,
+two workers, rescanning every ten minutes; started detached through
+`scripts/learn/featurise.cmd` (log `data/features/featurise.log`). At this pace the
+16,422 gold games on disk take about an hour and 1.6 GB.

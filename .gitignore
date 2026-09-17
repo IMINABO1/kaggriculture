@@ -264,3 +264,4 @@ data/gold/episodes/
 data/gold/*.log
 data/gold/daily_index.csv
 data/gold/ids.txt
+data/features/
