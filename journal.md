@@ -2334,3 +2334,11 @@ readings of the game: fertilizing stays at 5-11 a day against the team's 12-24 (
 strawberries on day 18 give 48 units to our 17), and the model asks FERTILIZE of units
 carrying no fertilizer, which `possible()` rejects; the next change turns such a request
 into a fertilizer pickup at the shed first.
+
+### Checkpoint: the seed schedule and fallback crops, measured
+Fidelity 0.73 of the recorded bank (from 0.71), 0 wins; arena against v41 0-20 at -44,944
+(78,307 against 123,251; basket 87,846), against -43,754 before: the two readings move
+in opposite directions by less than the noise, so the schedule is kept for its fidelity
+and its cleaner day-11 farm. The order-cap fix and the fertilizer fetch are measured next
+(their diagnosed game came in at 60,649 against 63,882, so the fetch may be sending
+units home too often; the ten-game and twenty-game readings decide).
