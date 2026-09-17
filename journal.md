@@ -2342,3 +2342,20 @@ in opposite directions by less than the noise, so the schedule is kept for its f
 and its cleaner day-11 farm. The order-cap fix and the fertilizer fetch are measured next
 (their diagnosed game came in at 60,649 against 63,882, so the fetch may be sending
 units home too often; the ten-game and twenty-game readings decide).
+
+### Checkpoint: where the clone's revenue is short, product by product
+`scripts/learn/revenue.py`, the clone against v41 on seeds 0-1 (executed sales from the
+market replica, means): gross 100,839 against the line's 141,040. Milk 9,838 on 82 units
+against 21,526 on 173; strawberries 21,004 on 147 against 32,102 on 248; wool 25,909 on
+189 against 35,172 on 248; melon 12,224 on 74 against 16,750 on 72 (ours sold half at hour
+0-1 of the next day after the line's dump, $165 a unit against $233); carrots 3,710
+against 5,524; eggs 4,846 and tomatoes 824 where the line has none. Harvested: milk 87
+against 191, strawberries 165 against 249, wool 191 against 257. The herd census on the
+diagnosed game explains part of it: cows 8-10 against the team's 9 and geese 4-7 against
+7-8 by day 15, but the geese fall to 4 by day 20 and 2 by day 25 (escapes: 4 animals
+unfed at day end while units follow model jobs) and 10-13 pens stand empty on days
+20-25 against the team's 0-1, so ten tiles grow nothing. Tomatoes: 2 tiles against the
+team's 13 on day 20 (the mined schedule's rounded means give 6 tomato seeds a game
+against the 12 it plants). Next single changes: a herd guard (from hour 16 an animal
+that would escape tonight pulls the nearest unit off its model job), and the tomato and
+carrot schedules scaled to the team's planted totals.

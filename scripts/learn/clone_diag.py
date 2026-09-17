@@ -46,7 +46,27 @@ def day_stats(steps, seat, day, action_at):
     unwatered = sum(1 for row in farm["tiles"] for t in row if isinstance(t, dict) and t.get("kind") == "PLANT" and not t["watered_today"])
     weeds = sum(1 for row in farm["tiles"] for t in row if isinstance(t, dict) and t.get("kind") == "WEED")
     animals = sum(1 for row in farm["tiles"] for t in row if isinstance(t, dict) and "animal" in t)
-    return ops, harvest, unfed, unwatered, weeds, animals, farm["money"]
+    crops = Counter(t["crop"][:3] for row in farm["tiles"] for t in row if isinstance(t, dict) and t.get("kind") == "PLANT")
+    crops["emp"] = sum(1 for row in farm["tiles"] for t in row if t is None)
+    for row in farm["tiles"]:
+        for t in row:
+            if isinstance(t, dict) and "animal" in t:
+                crops[t["animal"][:3]] += 1
+            elif isinstance(t, dict) and t.get("kind") in ("PASTURE", "COOP"):
+                crops["pen0"] += 1
+    shed = end["private"]["shed"] if "private" in end else {}
+    for a in ("COW", "SHEEP", "GOOSE"):
+        if shed.get(a, 0):
+            crops[f"shed_{a[:3]}"] = shed[a]
+    seeds = Counter()
+    for h in range(24):
+        t = day * 24 + h
+        if t + 1 >= len(steps):
+            break
+        for order in action_at(t).get("market") or []:
+            if order and order[0] == "BUY_SEED" and len(order) > 2:
+                seeds[order[1][:3]] += int(order[2])
+    return ops, harvest, unfed, unwatered, weeds, animals, farm["money"], dict(crops), dict(seeds)
 
 
 def main() -> None:
@@ -96,10 +116,10 @@ def main() -> None:
           f"opponent {env.steps[-1][1 - seat].reward:.0f}, recorded {replay['rewards'][1 - seat]:.0f}")
     keys = ["WATER", "HARVEST", "FERTILIZE", "FEED", "CARE", "COLLECT_FERTILIZER", "PLANT", "DIG", "PICKUP", "DROP", "PLACE", "move", "PASS"]
     for d in [int(x) for x in args.days.split(",")]:
-        o_ops, o_h, o_unfed, o_unw, o_weed, o_an, o_money = day_stats(env.steps, seat, d, lambda t: ours[t] if t < len(ours) else {})
-        r_ops, r_h, r_unfed, r_unw, r_weed, r_an, r_money = day_stats(replay["steps"], seat, d, lambda t: rec[t] if t < len(rec) else {})
-        print(f"day {d:>2} ours: " + " ".join(f"{k[:4]}{o_ops.get(k, 0)}" for k in keys) + f" | harvest {dict(o_h)} | unfed {o_unfed} unwatered {o_unw} weeds {o_weed} animals {o_an} money {o_money:.0f}")
-        print(f"       rec:  " + " ".join(f"{k[:4]}{r_ops.get(k, 0)}" for k in keys) + f" | harvest {dict(r_h)} | unfed {r_unfed} unwatered {r_unw} weeds {r_weed} animals {r_an} money {r_money:.0f}")
+        o_ops, o_h, o_unfed, o_unw, o_weed, o_an, o_money, o_crops, o_seeds = day_stats(env.steps, seat, d, lambda t: ours[t] if t < len(ours) else {})
+        r_ops, r_h, r_unfed, r_unw, r_weed, r_an, r_money, r_crops, r_seeds = day_stats(replay["steps"], seat, d, lambda t: rec[t] if t < len(rec) else {})
+        print(f"day {d:>2} ours: " + " ".join(f"{k[:4]}{o_ops.get(k, 0)}" for k in keys) + f" | harvest {dict(o_h)} | unfed {o_unfed} unwatered {o_unw} weeds {o_weed} animals {o_an} money {o_money:.0f} | crops {o_crops} seeds bought {o_seeds}")
+        print(f"       rec:  " + " ".join(f"{k[:4]}{r_ops.get(k, 0)}" for k in keys) + f" | harvest {dict(r_h)} | unfed {r_unfed} unwatered {r_unw} weeds {r_weed} animals {r_an} money {r_money:.0f} | crops {r_crops} seeds bought {r_seeds}")
     st = policy._GAMES.get(seat, {}).get("clone_stats")
     print("clone counters:", st)
 
