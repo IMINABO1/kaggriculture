@@ -2320,3 +2320,17 @@ seats: 0-20, mean bank 79,118 against 122,872, margin -43,754, basket 88,829 (me
 78, strawberries 153, wheat 484, carrots 47, tomatoes 22, milk 155, wool 136, eggs 75);
 the sequence of the clone against v41 so far is -54,392, -50,603, -43,754. The seed
 schedule and the fallback crops are the next measurement.
+
+### Surprise: the market's ten-order cap drops the hour-0 purchases
+With the seed schedule, the diagnosed game gains 2.6k (63,882) but day 11 still shows 14
+empty tiles and no carrot or tomato seeds bought although the schedule asked for them:
+at hour 0 the queue is hires, then one SELL per product the day-end drop left in the shed
+(six to nine of them), then wheat, land, animals and seeds, and `orders[:MAX_ORDERS]`
+cuts the tail, so at hour 0 the seeds (and on some days the animals) never reach the
+engine. The greedy hybrid has the same cap and sells into the same queue, so the fix is
+applied under the clone policy only for now (the hybrid's numbers stand): when the queue
+overflows, the smallest sells wait a turn and the purchases go through. The other two
+readings of the game: fertilizing stays at 5-11 a day against the team's 12-24 (its
+strawberries on day 18 give 48 units to our 17), and the model asks FERTILIZE of units
+carrying no fertilizer, which `possible()` rejects; the next change turns such a request
+into a fertilizer pickup at the shed first.
