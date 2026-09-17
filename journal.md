@@ -2032,3 +2032,33 @@ basket 104,910). The live line says what the frozen one said: the planner adds 2
 our bank and 1,187 to the opponent's. With the planner off `scripts/eval.sh` reproduces
 the morning's numbers to the dollar (production 167,701, basket 106,564; against v5 10-10
 at +34), so the tree's shipped behaviour is the adopted search state; 16 tests pass.
+
+### Checkpoint: end of the third build session
+State at commit 7f47d9b (tree clean, pushed): the packaged agent is unchanged from this
+morning's adopted search state (hybrid, v41 opening, switch day 24; `scripts/package.py`
+builds 293 KiB, 11 files, self-play verified). New in the tree: `agent/line_v7.py` (the
+successor build, byte-exact, selectable by `plan.TAPE_FILE`), `agent/dayplan.py` (the
+planned-route executor, off), `research/encode.py` and `scripts/learn/` (the featuriser
+and the behaviour-cloning pipeline), `KAGG_TAPE` and `KAGG_PLAN_FROM_DAY` overrides, 16
+tests. Running detached: the gold pull (21,086 replays, 3.0 GB, endpoint at 2 a minute)
+and the featuriser (9,500 of 16,422 gold games encoded, 203 a minute, 886 MB).
+Ladder at 15:35Z: plain v41 tape 1,935.7 and climbing, hybrid 1,575.1.
+
+Numbers of the day, all decoupled seeds 0-9 both seats unless said:
+- v7 and 2802 beat v41 20-0 by +1,877, V46 19-1 by +519; the edge is v41's lost melon
+  at turn 0 (+1,279 of it), not the market overlays.
+- Hybrid (switch 24) against v41: -3,774 on v41's opening, -5,542 on v7's; against v7:
+  -4,895 on v7's opening. The bundled v7 ties the notebook's v7 at margin 0.
+- Day planner, nine cuts: best -4,959 / -8,250 on the day-24 evaluator against greedy's
+  -4,144 / -7,088; live against v41 -4,681 against greedy's -3,774. Not adopted.
+- Behaviour cloning: 0.648 hold-out op accuracy from 360 games in 80 s on the GPU; a
+  2,900-game run was killed by the harness's low-memory watchdog (4.2 GB free of 31.3,
+  most of it held by the browser, not by our processes); a 1,440-game run is retrying.
+
+What is missing or unverified, said plainly: the rules page is still unread since
+2026-09-14; no game against a live adaptive opponent other than v5, v41 and v7; the
+opening's opponent effect (1.8k) is a reading, not a traced mechanism; the revenue-by-hour
+census was launched against P23's rule and is indicative only; the planner's remaining
+1.5k is attributed to the frozen tape's prices without a per-product decomposition of
+its revenue; the BC model has never been played and its accuracy is on the gold seat's
+own games, not on unseen teams.
