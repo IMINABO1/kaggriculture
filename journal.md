@@ -1711,3 +1711,32 @@ a per-unit policy on the gold games; RL only after a vectorised simulator exists
 the pull two, featurising two to three in the background, the arena the rest; the crawl
 and the fetch never together. Both tracks keep their numbers in this journal; nothing is
 adopted without the live gate.
+
+### Checkpoint: third build session opened; baseline reproduced, both pullers checked, four new notebooks pulled
+Read in the handoff's order (CLAUDE.md, METHOD.md, analysis.md 1-4, 7, 9b, 11, the memo's
+answer, plan and amendments 6-7, the journal from "build phase opened" and all of today,
+P17-P22, then `agent/`, `scripts/eval.sh`, `scripts/search/resume.py` and `climb.py`,
+`scripts/arena.py`, the pullers, `research/trace.py` and the engine source). Checks, 14:42Z:
+- `scripts/eval.sh` reproduced to the dollar: production 167,701 (basket 106,564) on seeds
+  1-8; competition against v5 10-10, margin +34 on seeds 0-9. Engine 1.32.7; seven routers
+  under `data/notebooks/`; 13 tests pass.
+- Gold pull: 20,991 replays, 3.0 GB in `data/replays`. The daily-archive runner finished
+  at 04:24Z (all 40 archives); the endpoint runner (one process pair) is in its trickle,
+  250 of a 500 batch at 2.0 a minute with 120 s quota waits.
+- Submissions: 56291900 (hybrid) 1,569.9; 56306746 (plain tape, validated 14:18Z) 921.1,
+  on its ramp.
+- Notebook list (`kernels list --sort-by dateRun`), new since 2026-09-16's check: aurax7 v7
+  (09-17 04:33Z, 15 votes), ahmedberatozer V46 "First-Turn Microstructure" (58), nathanjacob
+  "Pipe-7 Wheat Microstructure" (61) and "Pipe-8 Clean Opening" (2), jaxa623 "[2802] Two
+  Identical Agents, 90 Points Apart" (67), degnonguidi "cloning agent" (59), and tetsutani
+  re-run at 13:42Z (98). Pulled V46, Pipe-7, 2802 and v7 (gitignored). Lineage by size and
+  markers: Pipe-7's `main.py` is V41's with one constant changed (`_OPEN_UNITS` 5 against
+  70, the turn-0 wheat round trip); V46 is V41 plus EXP293 layers (3,627 lines); v7 is
+  3,937 lines with V43-V45 markers; 2802 is a 315-line, 350 KB packed build with V43/V45
+  markers. All four are the family. Their strength against v41 is being measured (arena,
+  decoupled, seeds 0-9, both seats) before either track starts.
+
+**Decision (order of work).** Track B's featuriser is written first and left running in the
+background on two workers, since it is mechanical and the pull grows under it; track A's
+route planner is developed against `resume.py` while it runs; the successor check decides
+which tape the hybrid bundles.
