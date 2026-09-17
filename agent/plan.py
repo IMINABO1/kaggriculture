@@ -12,7 +12,7 @@ from __future__ import annotations
 # the tape's hires per day, plus one from day 10: this executor walks more than the searched
 # routes and the twelfth hand costs $144 a day; 13 on days 24-27 as v41's tape hires (H3)
 HANDS_BY_DAY = [5, 3, 4, 5, 4, 4, 7, 7, 8, 8, 12, 11, 10, 10, 10, 11, 12, 12, 12, 11,
-                12, 12, 11, 11, 13, 13, 13, 13, 12, 12]
+                12, 12, 11, 11, 13, 11, 11, 13, 11, 12]
 
 LAND_DAYS = {"NE": 6, "SW": 11}
 LAND_PRICES = [1000, 2000, 4000]
@@ -50,7 +50,7 @@ CARROT_LAST_DAY = 27          # planted day 27 it still gives two units on day 2
 WHEAT_LAST_DAY = 25           # planted later it reaches day 29 with 2-3 units and joins the last-day dump
 MELON_DAY = 0
 
-WHEAT_FEED_RESERVE_DAYS = 1   # shed wheat kept back from sales, in days of feed
+WHEAT_FEED_RESERVE_DAYS = 0   # shed wheat kept back from sales, in days of feed
 
 # the public line's tape (agent/line_v41.py) plays the first TAPE_DAYS days, our runtime agent
 # the rest; 0 is our agent alone, 30 the tape alone (journal 2026-09-16, hybrid curve)

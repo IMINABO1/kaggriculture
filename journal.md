@@ -1567,3 +1567,23 @@ hours; log `results/search.log`, every candidate in `results/search.csv`, the in
 `results/search_best.json` (the run resumes from it). The frozen opponent cannot react, so
 the incumbent is confirmed against the live lines with the arena gate before it is
 adopted; two more detached jobs (the gold pull) share the machine.
+
+### Milestone: the search's incumbent adopted (22 constants), confirmed against the live lines
+The first run ended after 354 candidates (24 accepted) when a worker process died (the
+pool flake seen twice today; the runner now uses four workers and resumes from
+`results/search_best.json`). Incumbent: search margin -4,388 (from -5,606), hold-out
+-5,326 (from -5,994). Against the live lines at switch day 24, decoupled, seeds 0-9: v41
+0-20, margin -4,398 (D3 stack -5,606; the frozen-opponent prediction of -4,388 held), v5
+8-12, margin -781 (from -1,029), the first wins against a live line at this gate. The 22
+constants are written into the source (verified equal to the incumbent by reading the
+modules back): feed 0.5, plant 0.5, build -2.5, fertilize 4.0, must-water 1.5, strawberry
+harvest 1.5, carrot planting 0.0, wheat and carrot fertilize 3.0 and 4.5, haul threshold
+200, urgency 1.75 an hour from hour 13, feed deadline 15, spare watering from 18,
+liquidation from 15, sticky -2.5, hands 13, 11, 11, 13, 11, 12 on days 24-29, seed
+buffers 3 wheat and 2 carrots, fertilizer reserve 20, no feed-wheat reserve. Full
+yardstick on this state: production against pass 166,550 (basket 106,045), competition
+against v5 8-12 at -781; gauntlet in recorded towns 31-49 (39%; from 29-51): DSM and
+Majkel1337 10-0, Unknown Mother-Goose 6-4, SpaTaro 4-6, Ebi 1-9, Artem, carbonapi and
+HowardLeeTW 0-10, Artem's recording 15.9k ahead (from 17.6k). Twenty-two constants moved
+together is not the one-at-a-time rule; the live gate on both lines is the check that
+stands in for it, and the hold-out seeds say about half the search gain is real.
