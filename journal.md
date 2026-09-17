@@ -1391,3 +1391,12 @@ Switch-day-24 gate, each alone on the committed agent (baseline -7,979 against v
 failure with the tape spreading 40 fertilizer to our 27 says the shortfall is the
 fertilizer in hand rather than the job's rank, so the second batch carries the reserve
 (FR) and the wheat and carrot fertilize rules (FW) as well as S2, H3, C1 and L0.
+
+### Checkpoint: second batch, partly; a hang under FW
+On top of W2 (baseline -7,066 against v41, -3,139 against v5): S2 (sticky -3.0) -7,169 and
+-2,863, mixed, rejected. FW (wheat and carrot fertilize at 1.5, age 3 allowed) hung: its
+20-game run against v41 produced nothing for 88 minutes with six workers alive, and the
+runner's output was invisible because the grep in its pipeline block-buffers. The
+processes were stopped, the tree reverted; FW is being run seed by seed with a timeout to
+find the hanging game, since an agent that can hang would be timed out on the ladder.
+The runner will write unbuffered to a file and give each run a timeout from here on.
