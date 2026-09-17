@@ -29,7 +29,7 @@ def main() -> None:
     state = torch.load(src, map_location="cpu")
     model.load_state_dict(state)
     model.eval()
-    arrays = {k: v.detach().cpu().numpy().astype(np.float32) for k, v in state.items() if not k.startswith("tile_")}
+    arrays = {k: v.detach().cpu().numpy().astype(np.float32) for k, v in state.items() if k not in ("tile_x", "tile_y")}
     np.savez(out, **arrays)
     net = CloneNet.load(str(out))
     rng = np.random.default_rng(0)
