@@ -20,6 +20,7 @@ SHOP_ID = {s: i + 1 for i, s in enumerate(SHOPS)}
 QUADRANT_BIT = {"NW": 1, "NE": 2, "SW": 4, "SE": 8}
 TOP_DESTS = 4               # candidate destinations tried per unit before giving up
 WAIT_FOR_INPUT_HOUR = 2
+HERD_GUARD_HOUR = 14        # an animal unfed since yesterday escapes tonight unless fed by day end
 # what a NONE prediction means: "pass" idles the unit as the team would, "greedy" hands it
 # to the executor for the step (fidelity 0.69 against 0.67 and -50.6k against -54.4k vs
 # v41 with the six-epoch weights, journal 2026-09-17; KAGG_CLONE_NONE overrides)
@@ -117,7 +118,22 @@ def act_units(obs, day, hour, state, me, private, positions, invs, shed_left, pl
     dest_logits = model.dest_logits(flat, h, upos, dmask)
     claimed = {jobs[u][0] for u in jobs if u < n}
     out: dict[int, list] = {}
+    # the herd guard: from HERD_GUARD_HOUR an animal that would escape tonight pulls the
+    # nearest unit off its model job, and the greedy executor feeds it with its urgency rules
+    guarded: set[int] = set()
+    if hour >= HERD_GUARD_HOUR:
+        for y, row in enumerate(tiles):
+            for x, tile in enumerate(row):
+                if isinstance(tile, dict) and "animal" in tile and not tile["fed_today"] and tile.get("consecutive_unfed", 0) >= 1:
+                    free = [u for u in range(n) if u not in guarded]
+                    if free:
+                        u = min(free, key=lambda k: abs(positions[k][0] - x) + abs(positions[k][1] - y))
+                        guarded.add(u)
+                        jobs.pop(u, None)
+                        stats["guard"] = stats.get("guard", 0) + 1
     for u in range(n):
+        if u in guarded:
+            continue
         pos = positions[u]
         inv = invs[u]
         job = jobs.get(u)
