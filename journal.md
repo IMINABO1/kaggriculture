@@ -2444,3 +2444,10 @@ where a runtime change would still have to land.
 After every clone-gated edit to `agent/executor.py` and `agent/market.py`, `scripts/eval.sh`
 reproduces the shipped hybrid to the dollar: production 167,701 (basket 106,564), against
 v5 10-10 at +34 (19:55Z).
+
+### Decision (Iminabo): the gold pull is stopped; the store is enough for the learning run
+Stopped at Iminabo's instruction ("don't we have enough"): the endpoint runner and its fetch
+workers were killed and data/gold/pull.log marked. Store: 21,622 replays, 3.17 GB, about 30
+million step-observations over both seats, every gold team's current-submission games
+included (the puller took the newest first). Rerunning pull_gold.cmd resumes it if more is
+ever wanted.
